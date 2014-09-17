@@ -1,10 +1,14 @@
-var xhr = new XMLHttpRequest(),
-	stylesheet = 'app/styles/stable.css';
+(function(){
+	'use strict';
 
-if (/Chrome\/(\d\d)/.exec(navigator.userAgent)[1] > 34) {
-	stylesheet = 'app/styles/custom.css'
-}
+	var xhr        = new XMLHttpRequest();
+	var	stylesheet = 'dist/styles/main.css';
 
-xhr.open("GET", "/" + stylesheet, false);
-xhr.send();
-chrome.devtools.panels.applyStyleSheet(xhr.responseText);
+	// if (/Chrome\/(\d\d)/.exec(navigator.userAgent)[1] > 34) {
+	// 	stylesheet = 'dist/styles/main.css';
+	// }
+
+	xhr.open('GET', '/' + stylesheet, false);
+	xhr.send();
+	chrome.devtools.panels.applyStyleSheet(xhr.responseText);
+})();
