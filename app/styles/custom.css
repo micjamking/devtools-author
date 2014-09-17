@@ -1,0 +1,164 @@
+/* ==========================================================================
+   Base Theme
+   ========================================================================== */
+   
+body.platform-mac .monospace, 
+body.platform-mac .source-code{
+    font-size: 14px !important;
+    line-height: 1.5em !important;
+}
+
+body.platform-mac .sources .source-code {
+  font-size: 16px !important;
+}
+
+/* ==============================================
+   DevTool Chrome
+   ============================================== 
+#console-messages,
+#console-view,
+#network-views .CodeMirror-lines,
+#script-view-fallback,
+.console-view-wrapper,
+.dialog .fill,
+.drawer .revision-history-drawer,
+.help-window-main,
+ .split-view-contents,
+.panel,
+.panel-enabler-view,
+.profiles-sidebar-tree-box,
+.resource-view .script-view,
+.sidebar-overlay,
+.split-view-vertical .sidebar-pane.composite .properties-tree,
+.styles-section.read-only,
+.tabbed-pane-content,
+.tabbed-pane-content.has-no-tabs .timeline-records-title,
+.timeline-records-list,
+#timeline-overview-sidebar {
+  background-color: #002b36 !important;
+  z-index: 0;
+}
+
+Solarized
+
+base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
+base02    #073642  0/4 black    235 #262626 20 -12 -12   7  54  66 192  90  26
+base01    #586e75 10/7 brgreen  240 #585858 45 -07 -07  88 110 117 194  25  46
+base00    #657b83 11/7 bryellow 241 #626262 50 -07 -07 101 123 131 195  23  51
+base0     #839496 12/6 brblue   244 #808080 60 -06 -03 131 148 150 186  13  59
+base1     #93a1a1 14/4 brcyan   245 #8a8a8a 65 -05 -02 147 161 161 180   9  63
+base2     #eee8d5  7/7 white    254 #e4e4e4 92 -00  10 238 232 213  44  11  93
+base3     #fdf6e3 15/7 brwhite  230 #ffffd7 97  00  10 253 246 227  44  10  99
+yellow    #b58900  3/3 yellow   136 #af8700 60  10  65 181 137   0  45 100  71
+orange    #cb4b16  9/3 brred    166 #d75f00 50  50  55 203  75  22  18  89  80
+red       #dc322f  1/1 red      160 #d70000 50  65  45 220  50  47   1  79  86
+magenta   #d33682  5/5 magenta  125 #af005f 50  65 -05 211  54 130 331  74  83
+violet    #6c71c4 13/5 brmagenta 61 #5f5faf 50  15 -45 108 113 196 237  45  77
+blue      #268bd2  4/4 blue      33 #0087ff 55 -10 -45  38 139 210 205  82  82
+cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
+green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
+*/
+
+/* ==============================================
+   Source Editor
+   ============================================== */
+
+.sources .split-view-main.split-view-contents-second{
+  background-color: #002b36 !important;
+}
+
+.sources .cm-html-comment,
+.sources .cm-js-comment,
+.sources .cm-css-comment,
+.sources .CodeMirror-linenumber,
+.sources .split-view-main.split-view-contents-second pre {
+  color: #586e75;
+}
+
+.sources .cm-css-builtin,
+.sources .cm-css-qualifier,
+.sources .cm-js-property {
+  color: #b58900
+}
+
+.sources .cm-css-tag,
+.sources .cm-js-variable,
+.sources .cm-js-operator {
+	color: #859900;
+}
+
+.sources .cm-css-property,
+.sources .cm-js-prototype,
+.sources .CodeMirror .CodeMirror-matchingbracket {
+	color: #839496 !important;
+	position: relative;
+}
+
+.sources .cm-css-string,
+.sources .cm-js-string,
+.sources .cm-js-number,
+.sources .cm-css-property:after {
+	color: #2aa198;
+}
+
+.sources .cm-css-property:after {
+	display: inline-block;
+	content: ':';
+	position: absolute;
+	right: -10px;
+	bottom: -3px;
+}
+
+.sources .cm-css-atom,
+.sources .cm-css-number,
+.sources .cm-js-keyword  {
+	color: #268bd2;
+}
+
+.sources .cm-css-keyword {
+	color: #dc322f;
+}
+
+.sources .CodeMirror .CodeMirror-gutters {
+	background: #073642;
+	border-right: none;
+}
+
+.sources .CodeMirror .CodeMirror-matchingbracket {
+	border-bottom: 1px solid #839496;
+}
+
+.sources .CodeMirror-linenumber {
+    font-size: 12px !important;
+}
+
+.sources .cm-css-variable-3 {
+	color: #cb4b16;
+}
+
+#sources-panel-sources-view .tabbed-pane-header {
+
+}
+
+.sources .tabbed-pane-header-tab {
+	padding: 2px 8px;
+	font-size: 10px;
+}
+
+.CodeMirror div.CodeMirror-cursor {
+	border-left: 1px solid #93a1a1;
+}
+
+/*.sources .tabbed-pane-header-tab.selected {
+	border: 0 none !important;
+	background: #002b36;
+	color: #586e75;
+}*/
+
+#sources-editor-container-tabbed-pane .tabbed-pane-header-tab {
+	border-bottom: 0 none;
+}
+
+.sources .cm-js-def {
+	color: #d33682;
+}

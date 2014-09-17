@@ -1,0 +1,17 @@
+# Ignore patterns for Custom Devtools
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+*.log
+*.zip
+
+node_modules
+dist
+.tmp
+.sass-cache

@@ -1,0 +1,41 @@
+{
+  "name": "Custom-Devtools",
+  "version": "0.1.0",
+  "description": "Customized Theme for Chrome Devtools.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:micjamking/fuzzy-octo-dubstep.git"
+  },
+  "bugs": {
+    "url": "https://github.com/micjamking/fuzzy-octo-dubstep/issues"
+  },
+  "keywords": [
+    "chrome-devtools"
+  ],
+  "author": {
+    "name": "Mike King",
+    "email": "micjamking@gmail.com",
+    "url": "http://micjamking.github.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-autoprefixer": "~0.4.0",
+    "grunt-concurrent": "~0.5.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compass": "~0.7.2",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-newer": "~0.6.1",
+    "jshint-stylish": "~0.1.3",
+    "load-grunt-tasks": "~0.4.0",
+    "time-grunt": "~0.2.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  }
+}
