@@ -2,12 +2,14 @@
    Variables
    ========================================================================== */
 
+$grey: rgb(230, 230, 230);
+
 /* ==========================================================================
    Mixins
    ========================================================================== */
 
-// Source Panel Styles
-@mixin source-panel-rules(
+// Theme Styles
+@mixin styles(
 $background,
 $background-highlight,
 $comments,
@@ -18,14 +20,128 @@ $pseudo,
 $keyword,
 $selectors,
 $strings,
-$operators
+$operators,
+$accent
 ){
-
+  // Sources Panel
   .sources {
+
+    // Background
     .split-view-main.split-view-contents-second{
       background-color: $background !important;
-    }
 
+      ::selection {
+        background: $accent !important;
+        color: #FFF;
+      }
+
+      ::-webkit-selection {
+        background: $accent !important;
+        color: #FFF;
+      }
+
+      .tabbed-pane-header {
+        flex: 0 0 30px;
+        background: darken($background, 3%) !important;
+        border-bottom: 0 none;
+        box-shadow: 0 5px 0 $background;
+
+        .tabbed-pane-header-tab {
+          padding: 2px 12px;
+          overflow: visible;
+          position: relative;
+          background: $background-highlight;
+          border: 0 none !important;
+          border-top-right-radius: 25px 45px;
+          border-top-left-radius: 25px 45px;
+          box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+          color: $body-text;
+
+         .close-button-gray {
+            top: 3px;
+            left: 6px;
+
+            &:hover {
+              background-position: -175px -96px;
+            }
+          }   
+
+          &::before,
+          &::after{
+            content : '';
+            background : transparent;
+            height: 20px;
+            width: 20px;
+            border-radius: 100%;
+            border-width: 8px;
+            top: 0px;
+            border-style : solid;
+            position : absolute;
+          }
+
+          &::before{
+            border-color : transparent $background-highlight transparent transparent;
+            transform : rotate(48deg);
+            left: -28px;
+          }
+
+          &::after{
+            border-color : transparent transparent transparent $background-highlight;
+            transform : rotate(-48deg);
+            right: -28px;
+          }
+
+          &.selected {
+            background: $background;
+            color: #FFF;
+            z-index: 100 !important;
+
+            &::before{
+              border-color : transparent $background transparent transparent;
+            }
+
+            &::after{
+              border-color : transparent transparent transparent $background;
+            }
+          }
+
+          @for $item from 1 through 40{
+            &:nth-child(#{$item}){ 
+              z-index: (100 - $item); 
+            }
+          } 
+
+          &:hover {
+            .close-button-gray {
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+    
+    // Gutter
+    .CodeMirror .CodeMirror-gutters {
+      background: $background-highlight;
+      border-right: none;
+    }
+    
+    // Line Numbers
+    .CodeMirror-linenumber {
+      font-size: 12px !important;
+    }
+    
+    // Cursor
+    .CodeMirror div.CodeMirror-cursor {
+      border-left: 1px solid $body-text-highlight;
+    }
+     
+    // CSS/JS selected brackets
+    .CodeMirror .CodeMirror-matchingbracket {
+      border-bottom: 1px solid $body-text;
+    }
+    
+    // Comments
     .cm-xml-meta,
     .cm-xml-comment,
     .cm-js-comment,
@@ -38,17 +154,20 @@ $operators
     .cm-xml-comment {
       font-style: italic;
     }
-
+    
+    // CSS Properties
     .cm-css-property {
       color: $property;
     }
-
+    
+    // CSS Tags / JS Operators
     .cm-css-def,
     .cm-css-tag,
     .cm-js-operator {
       color: $operators;
     }
-
+    
+    // Body Text
     .cm-xml-attribute,
     .cm-css-variable-2,
     .cm-js-def,
@@ -59,7 +178,8 @@ $operators
       color: $body-text !important;
       position: relative;
     }
-
+    
+    // Strings
     .cm-xml-string,
     .cm-css-atom,
     .cm-css-number,
@@ -69,57 +189,113 @@ $operators
     .cm-js-atom{
       color: $strings;
     }
-
+    
+    // HTML Tags, Class/Id Selectors, JS keywords
     .cm-xml-tag,
     .cm-css-builtin,
     .cm-css-qualifier,
     .cm-js-keyword {
       color: $selectors;
     }
-
+    
+    // CSS-Keyword
     .cm-css-keyword {
       color: $keyword;
     }
-
-    .CodeMirror .CodeMirror-gutters {
-      background: $background-highlight;
-      border-right: none;
-    }
-
-    .CodeMirror .CodeMirror-matchingbracket {
-      border-bottom: 1px solid $body-text;
-    }
-
-    .CodeMirror-linenumber {
-      font-size: 12px !important;
-    }
-
+    
+    // CSS Pseudo Element/Selectors
     .cm-css-variable-3 {
       color: $pseudo;
     }
 
-    .tabbed-pane-header-tab {
-      padding: 2px 8px;
-      font-size: 10px;
+    // UI - Pane tabs
+    .tabbed-pane-header {
+      flex: 0 0 30px;
+      
+      .tabbed-pane-header-tabs {
+        margin-left: 12px;
+        
+        .tabbed-pane-header-tab {
+          font-size: 10px;
+          height: 28px;
+          padding: 6px 16px !important;
+        }
+      }
     }
 
-    .CodeMirror div.CodeMirror-cursor {
-      border-left: 1px solid $body-text-highlight;
+    button.status-bar-item.scripts-navigator-show-hide-button,
+    button.right-sidebar-show-hide-button {
+      top: 8px !important;
     }
 
-    /*.tabbed-pane-header-tab.selected {
-      border: 0 none !important;
-      background: #002b36;
-      color: #586e75;
-    }*/
+    button.status-bar-item.scripts-navigator-show-hide-button {
+      left: 8px !important;
+    }
+
+    button.right-sidebar-show-hide-button {
+      right: 4px !important;
+    }
+
+    .split-view-sidebar.split-view-contents-first {
+      background: $grey !important;
+      font-size: 12px !important;
+
+      .outline-disclosure li {
+        padding: 3px 0 3px 14px;
+      }
+      .navigator li {
+        height: inherit;
+        line-height: inherit;
+      }
+
+      .tabbed-pane-header {
+        background-color: transparent;
+        border-bottom: 0 none;
+
+        .tabbed-pane-header-tab {
+          transition: all 0.25s ease;
+          border-radius: 2px;
+          border: 0 none;
+          padding: 4px 8px !important;
+          text-align: center;
+          height: auto;
+          margin-top: 5px;
+
+          &.selected {
+            border: 0 none;
+          }
+        }
+      }
+      
+      .outline-disclosure ol:focus li.selected .selection,
+      .navigator > ol.being-edited li.selected .selection {
+        background-color: $selectors;
+      }
+
+      .navigator-document-tree-item,
+      .navigator-folder-tree-item,
+      .navigator-other-tree-item,
+      .navigator-script-tree-item, 
+      .navigator-stylesheet-tree-item {
+        .icon {
+          display: none;
+        }
+      }
+    }
+
+    .cm-breakpoint .CodeMirror-linenumber {
+      color: white !important;
+    }
+
+    .sources-status-bar {
+      background-color: rgb(85, 85, 85) !important;
+      border-top: 1px solid rgb(50,50,50) !important;
+      box-shadow: inset 0 1px 0 rgb(125,125,125) !important;
+
+      .status-bar-item,
+      .status-bar-text {
+        color: #FFF;
+      }
+    }
   }
-
-  #sources-panel-sources-view .tabbed-pane-header {
-
-  }
-
-  #sources-editor-container-tabbed-pane .tabbed-pane-header-tab {
-      border-bottom: 0 none;
-  }
-
 }

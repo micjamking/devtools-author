@@ -7,20 +7,21 @@
 @import "base/typography";
 
 // Palette
-$sd-base03: #002b36; // Background
-$sd-base02: #073642; // Background - Highlight
-$sd-base01: #586e75; // Comments / Secondary Content
-$sd-base0:  #839496; // Body text / default code / primary content
-$sd-base1:  #93a1a1; // Optional emphasized content
-$sd-yellow: #b58900; // CSS Properties
-$sd-orange: #cb4b16; // CSS3 pseudo-selectors / elements
-$sd-red:    #dc322f; // CSS Keywords (!important, etc.)
-$sd-blue:   #268bd2; // HTML Tags / CSS ID/Class Selectors / JS Keywords
-$sd-cyan:   #2aa198; // HTML/CSS/JS Strings
-$sd-green:  #859900; // CSS Tag Selectors / JS Operators (in Canary)
+$sd-base03: #002b36;
+$sd-base02: #073642;
+$sd-base01: #586e75;
+$sd-base0:  #839496;
+$sd-base1:  #93a1a1;
+$sd-yellow: #b58900;
+$sd-orange: #cb4b16;
+$sd-red:    #dc322f;
+$sd-blue:   #268bd2;
+$sd-cyan:   #2aa198;
+$sd-green:  #859900;
+$sd-magenta:#d33682;
 
 // Styles
-@include source-panel-rules(
+@include styles(
 $sd-base03, // Background
 $sd-base02, // Background - Highlight
 $sd-base01, // Comments / Secondary Content
@@ -31,5 +32,6 @@ $sd-orange, // CSS3 pseudo-selectors / elements
 $sd-red,    // CSS Keywords (!important, etc.)
 $sd-blue,   // HTML Tags / CSS ID/Class Selectors / JS Keywords
 $sd-cyan,   // HTML/CSS/JS Strings
-$sd-green   // CSS Tag Selectors / JS Operators (in Canary)
+$sd-green,  // CSS Tag Selectors / JS Operators (in Canary)
+$sd-magenta // Accent / Highlight
 );
