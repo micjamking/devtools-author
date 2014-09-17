@@ -30,10 +30,10 @@ module.exports = function(grunt) {
     watch: {
       css: {
         files: ['<%= chrome.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer', 'cssmin']
+        tasks: ['compass:server', 'autoprefixer']
       },
       js: {
-        files: ['<%= chrome.app %>/scripts/{,*/}*.js'],
+        files: [ 'Gruntfile.js', '<%= chrome.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all', 'copy:js']
       }
     },
@@ -43,13 +43,8 @@ module.exports = function(grunt) {
       options: {
         sassDir: '<%= chrome.app %>/styles',
         cssDir: '.tmp/styles',
-        generatedImagesDir: '.tmp/images/generated',
-        imagesDir: '<%= chrome.app %>/images',
         javascriptsDir: '<%= chrome.app %>/scripts',
         fontsDir: '<%= chrome.app %>/styles/fonts',
-        importPath: '<%= chrome.app %>/bower_components',
-        httpImagesPath: '/images',
-        httpGeneratedImagesPath: '/images/generated',
         httpFontsPath: '/styles/fonts',
         relativeAssets: false,
         assetCacheBuster: false,
@@ -73,7 +68,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '.tmp/styles/',
           src: '{,*/}*.css',
-          dest: '.tmp/styles/'
+          dest: '<%= chrome.dist %>/styles/'
         }]
       }
     },
@@ -82,7 +77,7 @@ module.exports = function(grunt) {
     cssmin: {
       dist: {
         files: {
-          '<%= chrome.dist %>/styles/main.css': '.tmp/styles/{,*/}*.css'
+          '<%= chrome.dist %>/styles/main.css': '<%= chrome.dist %>/styles/main.css'
         }
       }
     },
@@ -99,8 +94,8 @@ module.exports = function(grunt) {
     copy: {
       js: {
         expand: true,
-        cwd: '<%= yeoman.app %>/scripts',
-        dest: '<%= yeoman.dist %>/scripts',
+        cwd: '<%= chrome.app %>/scripts',
+        dest: '<%= chrome.dist %>/scripts',
         src: '{,*/}*.js'
       }
     },
@@ -118,27 +113,30 @@ module.exports = function(grunt) {
 
     // Run some tasks in parallel to speed up the build process
     concurrent: {
-      server: 'compass:server',
-      dist: 'compass:dist'
+      server: ['compass:server'],
+      dist: ['compass:dist']
     }
   });
 
-  grunt.registerTask('serve', function (target) {
+  grunt.registerTask('serve', [
+    'clean:server',
+    'concurrent:server',
+    'autoprefixer',
+    'copy:js',
+    'watch'
+  ]);
 
-    grunt.task.run([
-      'clean:server',
-      'concurrent:server',
-      'autoprefixer',
-      'watch'
-    ]);
-  });
+  grunt.registerTask('test', [
+    'newer:jshint'
+  ]);
 
   // Default task.
   grunt.registerTask('default', [
-    'newer:jshint'
+    'newer:jshint',
     'clean:dist',
     'concurrent:dist',
     'autoprefixer',
-    'cssmin'
+    'cssmin',
+    'copy:js'
   ]);
 };
