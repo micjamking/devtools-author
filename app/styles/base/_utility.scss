@@ -27,18 +27,9 @@ $accent
   .sources {
 
     // Background
-    .split-view-main.split-view-contents-second{
+    .split-view-main.split-view-contents-second,
+    .has-no-tabs {
       background-color: $background !important;
-
-      ::selection {
-        background: $accent !important;
-        color: #FFF;
-      }
-
-      ::-webkit-selection {
-        background: $accent !important;
-        color: #FFF;
-      }
 
       .tabbed-pane-header {
         flex: 0 0 30px;
@@ -70,11 +61,11 @@ $accent
           &::after{
             content : '';
             background : transparent;
-            height: 20px;
-            width: 20px;
+            height: 30px;
+            width: 30px;
             border-radius: 100%;
             border-width: 8px;
-            top: 0px;
+            top: 6px;
             border-style : solid;
             position : absolute;
           }
@@ -82,13 +73,13 @@ $accent
           &::before{
             border-color : transparent $background-highlight transparent transparent;
             transform : rotate(48deg);
-            left: -28px;
+            left: -22px;
           }
 
           &::after{
             border-color : transparent transparent transparent $background-highlight;
             transform : rotate(-48deg);
-            right: -28px;
+            right: -22px;
           }
 
           &.selected {
@@ -117,6 +108,12 @@ $accent
             }
           }
         }
+      }
+      
+      .tabbed-pane-placeholder.fill{
+        font-size: 16px;
+        text-shadow: none !important;
+        color: $comments;
       }
     }
     
