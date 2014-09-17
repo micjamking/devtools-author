@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+// Source Panel Styles
+@mixin source-panel-rules(
+$background,
+$background-highlight,
+$comments,
+$body-text,
+$body-text-highlight,
+$property,
+$pseudo,
+$keyword,
+$selectors,
+$strings,
+$operators
+){
+
+  .sources {
+    .split-view-main.split-view-contents-second{
+      background-color: $background !important;
+    }
+
+    .cm-xml-meta,
+    .cm-xml-comment,
+    .cm-js-comment,
+    .cm-css-comment,
+    .CodeMirror-linenumber,
+    .split-view-main.split-view-contents-second pre {
+      color: $comments;
+    }
+
+    .cm-xml-comment {
+      font-style: italic;
+    }
+
+    .cm-css-property {
+      color: $property;
+    }
+
+    .cm-css-def,
+    .cm-css-tag,
+    .cm-js-operator {
+      color: $operators;
+    }
+
+    .cm-xml-attribute,
+    .cm-css-variable-2,
+    .cm-js-def,
+    .cm-js-property,
+    .cm-js-variable,
+    .cm-js-variable-2,
+    .CodeMirror .CodeMirror-matchingbracket {
+      color: $body-text !important;
+      position: relative;
+    }
+
+    .cm-xml-string,
+    .cm-css-atom,
+    .cm-css-number,
+    .cm-css-string,
+    .cm-js-string,
+    .cm-js-number,
+    .cm-js-atom{
+      color: $strings;
+    }
+
+    .cm-xml-tag,
+    .cm-css-builtin,
+    .cm-css-qualifier,
+    .cm-js-keyword {
+      color: $selectors;
+    }
+
+    .cm-css-keyword {
+      color: $keyword;
+    }
+
+    .CodeMirror .CodeMirror-gutters {
+      background: $background-highlight;
+      border-right: none;
+    }
+
+    .CodeMirror .CodeMirror-matchingbracket {
+      border-bottom: 1px solid $body-text;
+    }
+
+    .CodeMirror-linenumber {
+      font-size: 12px !important;
+    }
+
+    .cm-css-variable-3 {
+      color: $pseudo;
+    }
+
+    .tabbed-pane-header-tab {
+      padding: 2px 8px;
+      font-size: 10px;
+    }
+
+    .CodeMirror div.CodeMirror-cursor {
+      border-left: 1px solid $body-text-highlight;
+    }
+
+    /*.tabbed-pane-header-tab.selected {
+      border: 0 none !important;
+      background: #002b36;
+      color: #586e75;
+    }*/
+  }
+
+  #sources-panel-sources-view .tabbed-pane-header {
+
+  }
+
+  #sources-editor-container-tabbed-pane .tabbed-pane-header-tab {
+      border-bottom: 0 none;
+  }
+
+}

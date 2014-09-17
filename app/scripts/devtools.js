@@ -2,11 +2,7 @@
 	'use strict';
 
 	var xhr        = new XMLHttpRequest();
-	var	stylesheet = 'dist/styles/main.css';
-
-	// if (/Chrome\/(\d\d)/.exec(navigator.userAgent)[1] > 34) {
-	// 	stylesheet = 'dist/styles/main.css';
-	// }
+	var	stylesheet = 'dist/themes/solarized-dark.css';
 
 	xhr.open('GET', '/' + stylesheet, false);
 	xhr.send();

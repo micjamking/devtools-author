@@ -68,7 +68,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '.tmp/styles/',
           src: '{,*/}*.css',
-          dest: '<%= chrome.dist %>/styles/'
+          dest: '<%= chrome.dist %>/'
         }]
       }
     },
@@ -76,9 +76,12 @@ module.exports = function(grunt) {
     // The produce minified CSS in the dist folder
     cssmin: {
       dist: {
-        files: {
-          '<%= chrome.dist %>/styles/main.css': '<%= chrome.dist %>/styles/main.css'
-        }
+        files: [{
+          expand: true,
+          cwd: '<%= chrome.dist %>/themes/',
+          src: ['*.css', '!*.min.css'],
+          dest: '<%= chrome.dist %>/themes/'
+        }]
       }
     },
 
@@ -105,7 +108,7 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           dot: true,
-          src: [ '.tmp', '<%= chrome.dist %>/*' ]
+          src: [ '.tmp', '<%= chrome.dist %>/**/*' ]
         }]
       },
       server: '.tmp'
