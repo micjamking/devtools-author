@@ -39,7 +39,11 @@ module.exports = function(grunt) {
       js: {
         files: [ 'Gruntfile.js', '<%= devtools.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all', 'copy:js']
-      }
+      },
+      bower: {
+        files: ['bower.json'],
+        tasks: ['wiredep', 'copy:bower']
+      },
     },
  
     // Compiles Sass to CSS and generates necessary files if requested
@@ -111,6 +115,22 @@ module.exports = function(grunt) {
         cwd: '<%= devtools.app %>/scripts',
         dest: '<%= devtools.dist %>/scripts',
         src: '{,*/}*.js'
+      },
+      bower: {
+        expand: true,
+        cwd: '<%= devtools.app %>/bower_components',
+        dest: '<%= devtools.dist %>/bower_components',
+        src: '{,*/}*.js'
+      }
+    },
+    
+    // Wire up bower components
+    wiredep: {
+      target: {
+        src: [
+          '<%= devtools.app %>/panel/theme.html',
+          '<%= devtools.app %>/styles/theme.scss',
+        ]
       }
     },
 
@@ -133,6 +153,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('serve', [
     'clean',
+    'bowerInstall',
     'concurrent:server',
     'autoprefixer',
     'copy',
@@ -147,6 +168,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'newer:jshint',
     'clean',
+    'bowerInstall',
     'concurrent:dist',
     'autoprefixer',
     'cssmin',
