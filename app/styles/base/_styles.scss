@@ -23,17 +23,18 @@ $strings,
 $operators,
 $accent
 ){
+
   // Sources Panel
   .sources {
 
-    // Background
+    // Background - Main Panel
     .split-view-main.split-view-contents-second,
     .has-no-tabs {
       background-color: $background !important;
 
       .tabbed-pane-header {
         flex: 0 0 30px;
-        background: darken($background, 3%) !important;
+        background: darken($background, 3.5%) !important;
         border-bottom: 0 none;
         box-shadow: 0 5px 0 $background;
 
@@ -46,11 +47,12 @@ $accent
           border-top-right-radius: 25px 45px;
           border-top-left-radius: 25px 45px;
           box-shadow: 0 15px 25px rgba(0,0,0,0.5);
-          color: $body-text;
+          color: $comments;
 
          .close-button-gray {
             top: 3px;
             left: 6px;
+            z-index: 1;
 
             &:hover {
               background-position: -175px -96px;
@@ -84,8 +86,8 @@ $accent
 
           &.selected {
             background: $background;
-            color: #FFF;
-            z-index: 100 !important;
+            color: $body-text-highlight;
+            z-index: 20 !important;
 
             &::before{
               border-color : transparent $background transparent transparent;
@@ -95,10 +97,11 @@ $accent
               border-color : transparent transparent transparent $background;
             }
           }
-
-          @for $item from 1 through 40{
+          
+          // Reverse the z-index of the tabs
+          @for $item from 1 through 15{
             &:nth-child(#{$item}){ 
-              z-index: (100 - $item); 
+              z-index: (15 - $item); 
             }
           } 
 
@@ -109,11 +112,28 @@ $accent
           }
         }
       }
+
+      .tabbed-pane-content {
+        &:before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 10px;
+            background-image: linear-gradient($background 25%, transparent);
+            position: absolute;
+            z-index: 5;
+            top: 0;
+        }
+      }
       
       .tabbed-pane-placeholder.fill{
         font-size: 16px;
         text-shadow: none !important;
         color: $comments;
+      }
+
+      > .view.vbox.visible {
+          z-index: 9;
       }
     }
     
@@ -131,6 +151,19 @@ $accent
     // Cursor
     .CodeMirror div.CodeMirror-cursor {
       border-left: 1px solid $body-text-highlight;
+    }
+
+    // Selection
+
+    .CodeMirror .CodeMirror-selectedtext:not(.CodeMirror-persist-highlight) {
+      color: white !important;
+    }
+    .CodeMirror-selected { 
+      background: $selectors; 
+    }
+ 
+    .CodeMirror-focused .CodeMirror-selected { 
+      background: $selectors; 
     }
      
     // CSS/JS selected brackets
@@ -181,6 +214,7 @@ $accent
     .cm-css-atom,
     .cm-css-number,
     .cm-css-string,
+    .cm-js-string-2,
     .cm-js-string,
     .cm-js-number,
     .cm-js-atom{
@@ -191,6 +225,7 @@ $accent
     .cm-xml-tag,
     .cm-css-builtin,
     .cm-css-qualifier,
+    .cm-css-variable,
     .cm-js-keyword {
       color: $selectors;
     }
@@ -215,51 +250,170 @@ $accent
         .tabbed-pane-header-tab {
           font-size: 10px;
           height: 28px;
-          padding: 6px 16px !important;
+          padding: 6px 12px !important;
+        }
+      }
+    }
+    
+    // Panel Collapse buttons
+    button {
+
+      &:hover {
+        cursor: pointer;
+      }
+      
+      &.status-bar-item.scripts-navigator-show-hide-button,
+      &.right-sidebar-show-hide-button {
+        top: 0 !important;
+        z-index: 10; 
+        width: 30px;
+        height: 30px;       
+/*         width: 0;
+        height: 0;
+        border-top: 5px solid rgba(0, 0, 0, 0);
+        border-bottom: 5px solid rgba(0, 0, 0, 0);
+        border-radius: 2px; */
+
+        .glyph {
+          background: $comments;
+          width: 16px;
+          height: 16px;
+          margin: 7px;
+        }
+      }
+
+      &.status-bar-item.scripts-navigator-show-hide-button {
+        left: 0 !important;
+/*         border-right: 10px solid $body-text; */
+      }
+
+      &.right-sidebar-show-hide-button {
+        right: 0 !important;
+/*         border-left: 10px solid $comments; */
+
+        &.toggled-hide {
+            margin-right: 0 !important;
         }
       }
     }
 
-    button.status-bar-item.scripts-navigator-show-hide-button,
-    button.right-sidebar-show-hide-button {
-      top: 8px !important;
+    .resizer-widget {
+      display: none; 
     }
-
-    button.status-bar-item.scripts-navigator-show-hide-button {
-      left: 8px !important;
-    }
-
-    button.right-sidebar-show-hide-button {
-      right: 4px !important;
-    }
-
-    .split-view-sidebar.split-view-contents-first {
+    
+    // Sources Left Panel
+    .split-view-sidebar {
       background: $grey !important;
       font-size: 12px !important;
 
       .outline-disclosure li {
         padding: 3px 0 3px 14px;
       }
+
       .navigator li {
         height: inherit;
         line-height: inherit;
       }
 
-      .tabbed-pane-header {
-        background-color: transparent;
-        border-bottom: 0 none;
+      &.split-view-contents-first {
 
-        .tabbed-pane-header-tab {
-          transition: all 0.25s ease;
-          border-radius: 2px;
-          border: 0 none;
-          padding: 4px 8px !important;
-          text-align: center;
-          height: auto;
-          margin-top: 5px;
+        .tabbed-pane-header {
+          background-color: transparent;
+          border-bottom: 0 none;
 
-          &.selected {
+          .tabbed-pane-header-tab {
+            transition: all 0.25s ease;
+            border-radius: 2px;
             border: 0 none;
+            padding: 4px 8px !important;
+            text-align: center;
+            height: auto;
+            margin-top: 5px;
+
+            &.selected {
+              border: 0 none;
+            }
+          }
+        }
+      }
+
+      &.split-view-contents-second {
+        
+        .scripts-debug-toolbar-drawer {
+          flex: 0 0 54px;
+          padding-top: 30px;
+
+          &.expand {
+            flex: 0 0 57px;
+          }
+        }
+
+        .scripts-debug-toolbar {
+          height: 30px;
+
+          .status-bar-item {
+            width: 32px;
+
+            > .glyph {
+              margin: 4px 6px 6px;
+              width: 32px;
+              height: 20px;
+            }
+          }
+        }
+
+        .sidebar-pane-stack {
+          .sidebar-pane-title {
+            height: 30px;
+            padding: 5px 10px;
+            border-top: 1px solid $grey;
+            border-bottom: 1px solid $grey;
+            line-height: 18px;
+
+            .sidebar-pane-toolbar {
+              top: 6px;
+            }
+
+            &:active {
+              background-color: rgb(240, 240, 240) !important;
+            }
+
+            &:before {
+              display: none;
+            }
+          }
+
+          .sidebar-pane.visible {
+            background: white;
+            padding: 7px;
+          }
+
+          .event-listener-breakpoints.properties-tree li {
+            height: 26px;
+          }
+
+          .source-code,
+          .breakpoint-list .source-text {
+            height: 30px;
+            font-size: 12px !important;
+          }
+
+          .breakpoint-list {
+
+            .cursor-pointer {
+              margin: 4px 0;
+
+              &:hover {
+                background-color: rgba(56, 121, 217, 0.2);
+              }
+
+            }
+
+            .source-text {
+              padding: 6px;
+              border-radius: 2px;
+              margin-top: 5px;
+            }
           }
         }
       }
@@ -268,7 +422,8 @@ $accent
       .navigator > ol.being-edited li.selected .selection {
         background-color: $selectors;
       }
-
+      
+      // Hide all local resource icons
       .navigator-document-tree-item,
       .navigator-folder-tree-item,
       .navigator-other-tree-item,
@@ -279,11 +434,36 @@ $accent
         }
       }
     }
-
+    
+    // Breakpoint color
     .cm-breakpoint .CodeMirror-linenumber {
       color: white !important;
-    }
+      border-width: 0;
+      border-radius: 1px;
+      -webkit-border-image: none;
+      height: 12px;
+      background: $selectors;
+      padding: 3px 8px 2px 1px;
+      margin: 2px 0 0 3px !important;
+      box-shadow: 0px 0px 4px rgba(0,0,0,0.15);
 
+      &::after {
+          content: '';
+          display: block;
+          width: 0;
+          height: 0;
+          position: absolute;
+          top: 3px;
+          right: -6px;
+          border-radius: 1px;
+          border-top: 12px solid rgba(0, 0, 0, 0);
+          border-right: 12px solid $selectors;
+          -webkit-transform: rotate(-45deg);
+          box-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+      }
+    }
+    
+    // Status bar (I like Sublime Text 2's)
     .sources-status-bar {
       background-color: rgb(85, 85, 85) !important;
       border-top: 1px solid rgb(50,50,50) !important;
@@ -292,6 +472,14 @@ $accent
       .status-bar-item,
       .status-bar-text {
         color: #FFF;
+
+        .glyph{
+          background-color: #FFF;
+
+          &.shadow {
+              background-color: rgba(0,0,0,0.33);
+          }
+        }
       }
     }
   }

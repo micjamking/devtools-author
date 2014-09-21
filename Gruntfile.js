@@ -68,7 +68,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '.tmp/styles/',
           src: '{,*/}*.css',
-          dest: '<%= chrome.dist %>/'
+          dest: '<%= chrome.dist %>/styles/'
         }]
       }
     },
@@ -78,9 +78,9 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= chrome.dist %>/themes/',
+          cwd: '<%= chrome.dist %>/styles/',
           src: ['*.css', '!*.min.css'],
-          dest: '<%= chrome.dist %>/themes/'
+          dest: '<%= chrome.dist %>/styles/'
         }]
       }
     },
@@ -108,10 +108,9 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           dot: true,
-          src: [ '.tmp', '<%= chrome.dist %>/**/*' ]
+          src: [ '.tmp', '<%= chrome.dist %>/{,*/}*.*' ]
         }]
-      },
-      server: '.tmp'
+      }
     },
 
     // Run some tasks in parallel to speed up the build process
@@ -122,7 +121,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('serve', [
-    'clean:server',
+    'clean',
     'concurrent:server',
     'autoprefixer',
     'copy:js',
@@ -136,7 +135,7 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', [
     'newer:jshint',
-    'clean:dist',
+    'clean',
     'concurrent:dist',
     'autoprefixer',
     'cssmin',

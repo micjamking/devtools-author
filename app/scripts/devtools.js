@@ -1,10 +1,26 @@
 (function(){
-	'use strict';
+  'use strict';
 
-	var xhr        = new XMLHttpRequest();
-	var	stylesheet = 'dist/themes/solarized-dark.css';
+  var dir = 'dist/styles/';
 
-	xhr.open('GET', '/' + stylesheet, false);
-	xhr.send();
-	chrome.devtools.panels.applyStyleSheet(xhr.responseText);
+  var loadTheme = function(object){
+
+    var _request = function(stylesheet){
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/' + stylesheet, false);
+      xhr.send();
+      chrome.devtools.panels.applyStyleSheet(xhr.responseText);
+    };
+
+    _request(object.theme);
+
+    if (/Chrome\/(\d\d)/.exec(navigator.userAgent)[1] > 34) {
+      _request(object.isCanary);
+    }
+  };
+
+  loadTheme({
+    theme: dir + 'themes/solarized-dark.css',
+    isCanary: dir + 'modules/canary.css'
+  });
 })();
