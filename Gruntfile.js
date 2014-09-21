@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     // Project settings
-    chrome: {
+    devtools: {
       // configurable paths
       app: 'app',
       dist: 'dist'
@@ -28,12 +28,16 @@ module.exports = function(grunt) {
     
     // Task configuration.
     watch: {
+      html: {
+        files: ['<%= devtools.app %>/panel/{,*/}*.html'],
+        tasks: ['copy:html']
+      },
       css: {
-        files: ['<%= chrome.app %>/styles/{,*/}*.{scss,sass}'],
+        files: ['<%= devtools.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
       },
       js: {
-        files: [ 'Gruntfile.js', '<%= chrome.app %>/scripts/{,*/}*.js'],
+        files: [ 'Gruntfile.js', '<%= devtools.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all', 'copy:js']
       }
     },
@@ -41,10 +45,10 @@ module.exports = function(grunt) {
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
       options: {
-        sassDir: '<%= chrome.app %>/styles',
+        sassDir: '<%= devtools.app %>/styles',
         cssDir: '.tmp/styles',
-        javascriptsDir: '<%= chrome.app %>/scripts',
-        fontsDir: '<%= chrome.app %>/styles/fonts',
+        javascriptsDir: '<%= devtools.app %>/scripts',
+        fontsDir: '<%= devtools.app %>/styles/fonts',
         httpFontsPath: '/styles/fonts',
         relativeAssets: false,
         assetCacheBuster: false,
@@ -68,7 +72,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '.tmp/styles/',
           src: '{,*/}*.css',
-          dest: '<%= chrome.dist %>/styles/'
+          dest: '<%= devtools.dist %>/styles/'
         }]
       }
     },
@@ -78,27 +82,34 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= chrome.dist %>/styles/',
+          cwd: '<%= devtools.dist %>/styles/',
           src: ['*.css', '!*.min.css'],
-          dest: '<%= chrome.dist %>/styles/'
+          dest: '<%= devtools.dist %>/styles/'
         }]
       }
     },
-
+    
+    // Detect errors & potential problems in JS files
     jshint: {
       options: {
         reporter: require('jshint-stylish'),
         jshintrc: '.jshintrc',
       },
-      all: [ 'Gruntfile.js', '<%= chrome.app %>/scripts/{,*/}*.js' ]
+      all: [ 'Gruntfile.js', '<%= devtools.app %>/scripts/{,*/}*.js' ]
     },
 
-    // Copies remaining files to places other tasks can use
+    // Copies remaining files
     copy: {
+      html: {
+        expand: true,
+        cwd: '<%= devtools.app %>/panel',
+        dest: '<%= devtools.dist %>/panel',
+        src: '{,*/}*.html'
+      },
       js: {
         expand: true,
-        cwd: '<%= chrome.app %>/scripts',
-        dest: '<%= chrome.dist %>/scripts',
+        cwd: '<%= devtools.app %>/scripts',
+        dest: '<%= devtools.dist %>/scripts',
         src: '{,*/}*.js'
       }
     },
@@ -108,7 +119,7 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           dot: true,
-          src: [ '.tmp', '<%= chrome.dist %>/{,*/}*.*' ]
+          src: [ '.tmp', '<%= devtools.dist %>/{,*/}*.*' ]
         }]
       }
     },
@@ -124,7 +135,7 @@ module.exports = function(grunt) {
     'clean',
     'concurrent:server',
     'autoprefixer',
-    'copy:js',
+    'copy',
     'watch'
   ]);
 
@@ -139,6 +150,6 @@ module.exports = function(grunt) {
     'concurrent:dist',
     'autoprefixer',
     'cssmin',
-    'copy:js'
+    'copy'
   ]);
 };
