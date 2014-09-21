@@ -1,6 +1,7 @@
 {
    "name": "Custom DevTools Theme",
    "description": "Customized Theme for Chrome Devtools.",
+   "permissions": [ "storage" ],
    "devtools_page": "devtools.html",
    "manifest_version": 2,
    "version": "0.1.0"

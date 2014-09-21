@@ -1,4 +1,4 @@
-(function(){
+(function($){
   'use strict';
 
   // Initialize app module
@@ -28,7 +28,7 @@
       var xhr = new XMLHttpRequest();
       xhr.open('GET', '/' + stylesheet, false);
       xhr.send();
-      chrome.devtools.panels.applyStyleSheet(xhr.responseText);
+      $.devtools.panels.applyStyleSheet(xhr.responseText);
     };
     
     // GET theme
@@ -41,20 +41,21 @@
   };
   
   // Method: Theme selector panel
-  app.themeSelector = function(panel){
+  app.themePanel = function(panel){
     console.log(panel);
   };
   
   // Initialization method
   app.init = function(){
 
-    var stylesDir = this.dir + 'styles/';
+    var stylesDir = this.dir + 'styles/',
+        pagePath  = this.dir + '/panel/theme.html';
 
-    chrome.devtools.panels.create(
-      'Theme',
-      null,
-      this.dir + '/panel/theme.html',
-      this.themeSelector
+    $.devtools.panels.create(
+      'Theme',        // Panel title
+      null,           // Panel icon
+      pagePath,       // Path of panel's HTML page
+      this.themePanel // Callback
     );
    
     this.loadTheme({
@@ -65,4 +66,4 @@
   
   // Fire app
   app.init();
-})();
+})(chrome);
