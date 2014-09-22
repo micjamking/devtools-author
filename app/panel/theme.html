@@ -4,16 +4,19 @@
   <link rel="stylesheet" href="../styles/theme.css" />
   <script src="../bower_components/modernizr/modernizr.js"></script>
 </head>
-<body ng-app="themeApp" ng-controller="ThemePanelCtrl" ng-cloak>
+<body>
   
   <div class="container row">
     <div class="large-4 columns">&nbsp;</div>
     <div class="large-4 columns text-center">
       <h4><small>Current Theme:</small></h4>
-      <h1 ng-show="currentTheme">{{ currentTheme }}</h1>
+      <h1 ng-show="currentTheme"></h1>
 
-      <select ng-model="panel.selectedTheme" 
+<!--       <select ng-model="panel.selectedTheme" 
               ng-options="theme for theme in panel.themes">
+      </select> -->
+      <select data-model="panel.selectedTheme" 
+              data-options="theme for theme in themes">
       </select>
       <button class="button small radius expand" 
               ng-click="save(panel.selectedTheme)">Save</button>
