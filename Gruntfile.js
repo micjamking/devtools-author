@@ -53,6 +53,7 @@ module.exports = function(grunt) {
         cssDir: '.tmp/styles',
         javascriptsDir: '<%= devtools.app %>/scripts',
         fontsDir: '<%= devtools.app %>/styles/fonts',
+        importPath: '<%= devtools.app %>/bower_components',
         httpFontsPath: '/styles/fonts',
         relativeAssets: false,
         assetCacheBuster: false,
@@ -120,7 +121,13 @@ module.exports = function(grunt) {
         expand: true,
         cwd: '<%= devtools.app %>/bower_components',
         dest: '<%= devtools.dist %>/bower_components',
-        src: '{,*/}*.js'
+        src: '{,*/}*.js',
+        exclude: [
+          '<%= devtools.app %>/bower_components/jquery',
+          '<%= devtools.app %>/bower_components/jquery-placeholder',
+          '<%= devtools.app %>/bower_components/jquery-cookie',
+          '<%= devtools.app %>/bower_components/fastclick'
+        ]
       }
     },
     
@@ -130,7 +137,15 @@ module.exports = function(grunt) {
         src: [
           '<%= devtools.app %>/panel/theme.html',
           '<%= devtools.app %>/styles/theme.scss',
-        ]
+        ],
+        options: {
+          exclude: [
+            /jquery/,
+            /jquery-placeholder/,
+            /jquery-cookie/,
+            /fastclick/
+          ]
+        }
       }
     },
 
@@ -153,7 +168,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('serve', [
     'clean',
-    'bowerInstall',
+    'wiredep',
     'concurrent:server',
     'autoprefixer',
     'copy',
@@ -168,7 +183,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'newer:jshint',
     'clean',
-    'bowerInstall',
+    'wiredep',
     'concurrent:dist',
     'autoprefixer',
     'cssmin',

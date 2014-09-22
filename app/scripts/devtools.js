@@ -4,21 +4,11 @@
   // Initialize app module
   var app = app || {};
   
+  // Assign Chrome storage to local variable.
+  var storage = $.storage.local;
+  
   // App directory
   app.dir = 'dist/';
-  
-  // Themes
-  app.themes = [
-    '3024',
-    'bongzilla',
-    'clouds',
-    'coda',
-    'cssedit',
-    'monokai',
-    'nodejs',
-    'solarized-dark',
-    'solarized-light'
-  ];
   
   // Method: load themes 
   app.loadTheme = function(object){
@@ -40,27 +30,27 @@
     }
   };
   
-  // Method: Theme selector panel
-  app.themePanel = function(panel){
-    console.log(panel);
-  };
-  
   // Initialization method
   app.init = function(){
 
-    var stylesDir = this.dir + 'styles/',
-        pagePath  = this.dir + '/panel/theme.html';
+    var stylesDir = app.dir + 'styles/',
+        pagePath  = app.dir + '/panel/theme.html';
 
     $.devtools.panels.create(
-      'Theme',        // Panel title
-      null,           // Panel icon
-      pagePath,       // Path of panel's HTML page
-      this.themePanel // Callback
+      'Theme',  // Panel title
+      null,     // Panel icon
+      pagePath, // Path of panel's HTML page
+      null      // Callback
     );
+
+    storage.get('devtools-theme', function(object){
+
+      var theme = object['devtools-theme'] || 'solarized-dark';
    
-    this.loadTheme({
-      theme: stylesDir + 'themes/3024.css',
-      isCanary: stylesDir + 'modules/canary.css'
+      app.loadTheme({
+        theme: stylesDir + 'themes/' + theme + '.css',
+        isCanary: stylesDir + 'modules/canary.css'
+      });
     });
   };
   

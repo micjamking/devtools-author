@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "angular": "~1.2.25",
-    "angular-route": "~1.2.25"
+    "angular-route": "~1.2.25",
+    "foundation": "~5.4.4"
   }
 }

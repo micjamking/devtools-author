@@ -2,13 +2,31 @@
 <html>
 <head>
   <link rel="stylesheet" href="../styles/theme.css" />
+  <script src="../bower_components/modernizr/modernizr.js"></script>
 </head>
-<body ng-app="themeApp">
-  <h1>Theme Selector</h1>
+<body ng-app="themeApp" ng-controller="ThemePanelCtrl" ng-cloak>
+  
+  <div class="container row">
+    <div class="large-4 columns">&nbsp;</div>
+    <div class="large-4 columns text-center">
+      <h4><small>Currently Theme:</small></h4>
+      <h1 ng-show="currentTheme">{{ currentTheme }}</h1>
+
+      <select ng-model="panel.selectedTheme" 
+              ng-options="theme for theme in panel.themes">
+      </select>
+      <button class="button small radius expand" 
+              ng-click="save(panel.selectedTheme)">Save</button>
+
+      <p class="success-text" ng-show="message">{{ message }}</p>
+    </div>
+    <div class="large-4 columns">&nbsp;</div>
+  </div>
 
   <!-- bower:js -->
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="../bower_components/foundation/js/foundation.js"></script>
   <!-- endbower -->
 
   <script src="../scripts/theme.js"></script>

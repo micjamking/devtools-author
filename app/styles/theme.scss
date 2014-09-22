@@ -2,12 +2,40 @@
    Theme panel stylesheet
    ============================================== */
 
+// Vendor
+/* @import "foundation/scss/normalize",
+ 		"foundation/scss/foundation/components/global",
+ 		"foundation/scss/foundation/components/grid",
+ 		"foundation/scss/foundation/components/type",
+ 		"foundation/scss/foundation/components/visibility"; */
+@import "foundation/scss/normalize",
+        "foundation/scss/foundation";
+@import "compass/css3";
+
 // Base
 @import "base/typography";
 
 // Modules
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
 
 body {
-  background: #000;
-  color: #FFF;
+  background: rgb(230, 230, 230);
+}
+
+.container {
+  position: relative;
+  top: 50%;
+  margin-top: -16em;
+
+  h1 {
+    margin-bottom: 0.5em;
+  }
+
+  .success-text {
+    color: green;
+  }
 }
