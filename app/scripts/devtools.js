@@ -5,7 +5,7 @@
   var app = app || {};
   
   // Assign Chrome storage to local variable.
-  var storage = $.storage.local;
+  var storage = $.storage.sync;
   
   // App directory
   app.dir = 'dist/';

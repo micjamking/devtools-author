@@ -1,10 +1,13 @@
-(function(chrome, document){
+(function(storage, $){
   'use strict';
-
-  var panel   = panel || {};
-//   var storage = chrome.storage.local;
-  var $ = document.querySelectorAll.bind( document );
-
+  
+  // Panel model
+  var panel = panel || {};
+  
+  // Select menu
+  var select = $('[data-options]');
+  
+  // Available themes
   panel.themes = [
     '3024',
     'bongzilla',
@@ -17,69 +20,65 @@
     'solarized-light'
   ];
 
-  var select = $('[data-options]');
+  // Get current theme from Chrome sync
+  storage.get('devtools-theme', function(object){
+    panel.currentTheme = object['devtools-theme'] || 'solarized-dark';
+  });
   
-  for (var i = 0; i < select.length; i++){
-    var options = select[i].dataset.options;
-    options = options.replace(/for\s/g, '').replace(/in\s/g, '');
-    options = options.split(' ').reverse();
-    var array = panel[options[0]];
-    var value = options[1];
-    var label = options[2];
-  }
+  // Build select menus like ngOptions
+  var _buildSelectMenu = function(object){
 
-
-//   angular.module('themeApp', [ 'ngRoute' ])
-//   .controller('ThemePanelCtrl', function ($scope, $timeout) {
-    
-//     // Assign Chrome storage to local variable.
-//     var storage = chrome.storage.local;
-    
-//     // Scope module
-//     $scope.panel = {
+    for (var i = 0; i < select.length; i++){
+      var options, array;
       
-//       // Themes
-//       themes: [
-//         '3024',
-//         'bongzilla',
-//         'clouds',
-//         'coda',
-//         'cssedit',
-//         'monokai',
-//         'nodejs',
-//         'solarized-dark',
-//         'solarized-light'
-//       ]
+      // Get the data attribute value
+      options = select[i].dataset.options;
 
-//     };
+      // Clean string and create reverse array
+      options = options.replace(/in\s/g, '').split(' ');
 
-//     storage.get('devtools-theme', function(object){
-//       $scope.panel.currentTheme = $scope.panel.selectedTheme = object['devtools-theme'];
-//     });
+      // Assign array from object by property name
+      // using the value from the last item in options
+      array   = object[options[options.length - 1]];
+      
+      for (var j = 0; j < array.length; j++){
 
-//     $scope.save = function(theme){
+        var option = document.createElement('option');
 
-//       if (angular.isDefined(theme)) {
-//         storage.set({ 'devtools-theme': theme });
-//         $scope.currentTheme = theme;
-//         $scope.message = 'Theme saved: reload DevTools!';
-//       } else {
+        // Assign option value & text from array
+        option.value = array[j];
+        option.text  = array[j];
 
-//         $scope.panel.message = 'Error: no theme specified';
-//         return;
-//       }
-//     };
+        select[i].add(option, null);
+      }
+    }
+  };
 
-//     $scope.$watch('panel', function(newValue){
-//       $timeout(function(){
-//         if (angular.isDefined(newValue.currentTheme)){
-//           $scope.currentTheme = newValue.currentTheme;
-//         }
-//         if (angular.isDefined(newValue.message)){
-//           $scope.message = newValue.message;
-//         }
-//       }, 500);
-//     });
+  // Create event listeners for select menus
+  var selectListener = function(){
+    var val = select[0].options[select[0].selectedIndex].value;
+    
+    storage.set({
+      'devtools-theme': val
+    }, function(){
+      panel.currentTheme = val;
+    });
+  };
 
-//   });
-})(chrome, document);
+  var observer = function(changes){
+    changes.forEach(function(change){
+      $('#currentTheme')[0].innerHTML = change.object[change.name];
+      console.log(change); // all changes
+    });
+  };
+  
+  // Build select menus
+  _buildSelectMenu(panel);
+      
+  // Watch for changes to the select menu
+  select[0].addEventListener('change', selectListener);
+
+  // Observe changes to panel model
+  Object.observe(panel, observer, ['add', 'update']);
+
+})(chrome.storage.sync, document.querySelectorAll.bind(document));
