@@ -75,10 +75,13 @@
   // Build select menus
   _buildSelectMenu(panel);
       
-  // Watch for changes to the select menu
+  // Listen for changes to the select menu
   select[0].addEventListener('change', selectListener);
 
   // Observe changes to panel model
   Object.observe(panel, observer, ['add', 'update']);
 
-})(chrome.storage.sync, document.querySelectorAll.bind(document));
+})(
+chrome.storage.sync,
+document.querySelectorAll.bind(document)
+);
