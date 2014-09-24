@@ -1,4 +1,4 @@
-(function(storage, $){
+(function($, storage){
   'use strict';
   
   // Panel model
@@ -7,14 +7,14 @@
   // Available themes
   panel.themes = [
     '3024',
-    'bongzilla',
-    'clouds',
-    'coda',
-    'cssedit',
-    'monokai',
-    'nodejs',
-    'solarized-dark',
-    'solarized-light'
+    'Bongzilla',
+    'Clouds',
+    'Coda',
+    'CSSedit',
+    'Monokai',
+    'NodeJS',
+    'Solarized Dark',
+    'Solarized Light'
   ];
   
   // Select menu
@@ -29,7 +29,7 @@
       // Get the data attribute value
       options = select[i].dataset.options;
 
-      // Clean string and create reverse array
+      // Clean string and create array
       options = options.replace(/in\s/g, '').split(' ');
 
       // Assign array from object by property name
@@ -41,7 +41,7 @@
         var option = document.createElement('option');
 
         // Assign option value & text from array
-        option.value = array[j];
+        option.value = array[j].replace(/\s+/g, '-').toLowerCase();
         option.text  = array[j];
         
         // Select currentTheme option
@@ -54,14 +54,12 @@
     }
   };
 
-  // Create event listeners for select menus
+  // Event listener for select menu
   var selectListener = function(){
-    var val = select[0].options[select[0].selectedIndex].value;
-    
     storage.set({
-      'devtools-theme': val
+      'devtools-theme': select[0].options[select[0].selectedIndex].value
     }, function(){
-      panel.currentTheme = val;
+      panel.currentTheme = select[0].options[select[0].selectedIndex].text;
     });
   };
 
@@ -72,9 +70,19 @@
     });
   };
 
+  var getTheme = function(array, string){
+    if (!array){ return false; }
+    for (var i = 0; i < array.length; i++){
+      if (array[i].replace(/\s+/g, '-').toLowerCase() === string){
+        return array[i];
+      }
+    }
+  };
+
   // Get current theme from Chrome sync
   storage.get('devtools-theme', function(object){
-    panel.currentTheme = object['devtools-theme'] || 'solarized-dark';
+
+    panel.currentTheme = getTheme(panel.themes, object['devtools-theme']) || 'Solarized Dark';
   
     // Build select menus
     _buildSelectMenu(panel);
@@ -87,6 +95,6 @@
   Object.observe(panel, observer, ['add', 'update']);
 
 })(
-chrome.storage.sync,
-document.querySelectorAll.bind(document)
+document.querySelectorAll.bind(document),
+chrome.storage.sync
 );

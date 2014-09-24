@@ -2,11 +2,6 @@
    Theme panel stylesheet
    ============================================== */
 
-// Vendor
-@import "foundation/scss/normalize",
-        "foundation/scss/foundation";
-@import "compass/css3";
-
 // Base
 @import "base/typography";
 
@@ -15,19 +10,69 @@
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  padding: 0;
+  margin: 0;
 }
 
+html,
 body {
   background: rgb(230, 230, 230);
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+select {
+  width: 100%;
+  height: 2.3125rem;
+  padding: 0.5rem;
+  margin: 0;
+  border-radius: 0;
+  border: 1px solid #cccccc;
+  background-color: #FAFAFA;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+  background-position: 100% center;
+  background-repeat: no-repeat;
+  line-height: normal;
+  font: inherit;
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.75);
+  text-transform: none;
+  -webkit-appearance: none !important;
 }
 
 .container {
-  position: relative;
+  position: absolute;
   top: 50%;
-  margin-top: -16em;
+  left: 50%;
+  text-align: center;
+  margin: -12em 0 0 -15%;
+  width: 30%;
 
   h1 {
+    font-size: 6em;
     margin-bottom: 0.5em;
+  }
+
+  h4 {
+    font-size: 2em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    color: #222222;
+    text-rendering: optimizeLegibility;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+
+    small {
+      font-size: 60%;
+      color: #6f6f6f;
+      line-height: 0;
+    }
   }
 
   .success-text {

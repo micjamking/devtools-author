@@ -24,6 +24,31 @@ $operators,
 $accent
 ){
 
+  body.undocked.platform-mac.inactive .toolbar-colors {
+    background-image: linear-gradient(to bottom, rgb(208, 208, 208), rgb(200, 200, 200)) !important;
+  }
+
+  .toolbar {
+    flex: 0 0 30px;
+    padding-top: 4px;
+    
+    .tabbed-pane-header-tab {
+      padding: 0px 12px !important;
+      border-width: 0 !important;
+      box-sizing: content-box;
+      text-align: center;
+      transition: all 0.25s ease;
+      box-shadow: 0;
+
+      &.selected {
+        border-width: 0 !important;
+        -webkit-border-image: none;
+        box-shadow: 0 3px 0 $selectors, 
+                    inset 0 -2px 0 $selectors;
+      }
+    }
+  }
+
   // Sources Panel
   .sources {
 
