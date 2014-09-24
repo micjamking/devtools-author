@@ -39,11 +39,7 @@ module.exports = function(grunt) {
       js: {
         files: [ 'Gruntfile.js', '<%= devtools.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all', 'copy:js']
-      },
-      bower: {
-        files: ['bower.json'],
-        tasks: ['wiredep', 'copy:bower']
-      },
+      }
     },
  
     // Compiles Sass to CSS and generates necessary files if requested
@@ -53,7 +49,6 @@ module.exports = function(grunt) {
         cssDir: '.tmp/styles',
         javascriptsDir: '<%= devtools.app %>/scripts',
         fontsDir: '<%= devtools.app %>/styles/fonts',
-        importPath: '<%= devtools.app %>/bower_components',
         httpFontsPath: '/styles/fonts',
         relativeAssets: false,
         assetCacheBuster: false,
@@ -116,36 +111,6 @@ module.exports = function(grunt) {
         cwd: '<%= devtools.app %>/scripts',
         dest: '<%= devtools.dist %>/scripts',
         src: '{,*/}*.js'
-      },
-      bower: {
-        expand: true,
-        cwd: '<%= devtools.app %>/bower_components',
-        dest: '<%= devtools.dist %>/bower_components',
-        src: '{,*/}*.js',
-        exclude: [
-          '<%= devtools.app %>/bower_components/jquery',
-          '<%= devtools.app %>/bower_components/jquery-placeholder',
-          '<%= devtools.app %>/bower_components/jquery-cookie',
-          '<%= devtools.app %>/bower_components/fastclick'
-        ]
-      }
-    },
-    
-    // Wire up bower components
-    wiredep: {
-      target: {
-        src: [
-          '<%= devtools.app %>/panel/theme.html',
-          '<%= devtools.app %>/styles/theme.scss',
-        ],
-        options: {
-          exclude: [
-            /jquery/,
-            /jquery-placeholder/,
-            /jquery-cookie/,
-            /fastclick/
-          ]
-        }
       }
     },
 
@@ -168,7 +133,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('serve', [
     'clean',
-    'wiredep',
     'concurrent:server',
     'autoprefixer',
     'copy',
@@ -183,7 +147,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'newer:jshint',
     'clean',
-    'wiredep',
     'concurrent:dist',
     'autoprefixer',
     'cssmin',
