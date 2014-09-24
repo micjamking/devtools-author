@@ -2,32 +2,18 @@
 <html>
 <head>
   <link rel="stylesheet" href="../styles/theme.css" />
-  <script src="../bower_components/modernizr/modernizr.js"></script>
 </head>
-<body ng-app="themeApp" ng-controller="ThemePanelCtrl" ng-cloak>
+<body>
   
-  <div class="container row">
-    <div class="large-4 columns">&nbsp;</div>
-    <div class="large-4 columns text-center">
+  <div class="container">
       <h4><small>Current Theme:</small></h4>
-      <h1 ng-show="currentTheme">{{ currentTheme }}</h1>
-
-      <select ng-model="panel.selectedTheme" 
-              ng-options="theme for theme in panel.themes">
-      </select>
-      <button class="button small radius expand" 
-              ng-click="save(panel.selectedTheme)">Save</button>
-
-      <p class="success-text" ng-show="message">{{ message }}</p>
-    </div>
-    <div class="large-4 columns">&nbsp;</div>
+      <h1 id="currentTheme"></h1>
+      <select data-options="theme in themes"></select>
   </div>
-
-  <!-- bower:js -->
-  <script src="../bower_components/angular/angular.js"></script>
-  <script src="../bower_components/angular-route/angular-route.js"></script>
-  <script src="../bower_components/foundation/js/foundation.js"></script>
-  <!-- endbower -->
+  
+  <div class="footer">
+    <a href="https://github.com/micjamking">Mahalo from Mike King</a>
+  </div>
 
   <script src="../scripts/theme.js"></script>
 </body>

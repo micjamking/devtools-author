@@ -5,7 +5,17 @@
   var app = app || {};
   
   // Assign Chrome storage to local variable.
-  var storage = $.storage.local;
+  var storage = $.storage.sync;
+  
+  // AJAX request for Chrome version
+  var getChromeVersion = function(){
+    var ajax = new XMLHttpRequest();
+    // Chromium release tracker API
+    ajax.open('GET', 'https://omahaproxy.appspot.com/mac', false);
+    ajax.send();
+
+    return parseInt(ajax.responseText, 10) || console.log('There was an error with your request');
+  };
   
   // App directory
   app.dir = 'dist/';
@@ -24,8 +34,8 @@
     // GET theme
     _request(object.theme);
     
-    // GET Canary CSS if Canary
-    if (/Chrome\/(\d\d)/.exec(navigator.userAgent)[1] > 34) {
+    // GET Canary CSS if pre-release (beta, canary, dev)
+    if (/Chrome\/(\d\d)/.exec(navigator.userAgent)[1] > getChromeVersion()) {
       _request(object.isCanary);
     }
   };
