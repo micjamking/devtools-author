@@ -12,7 +12,7 @@
     'Coda',
     'CSSedit',
     'Monokai',
-    'NodeJS',
+    'Nodejs',
     'Solarized Dark',
     'Solarized Light'
   ];
@@ -22,35 +22,32 @@
   
   // Build select menus like ngOptions
   var _buildSelectMenu = function(object){
+    var options, array;
 
-    for (var i = 0; i < select.length; i++){
-      var options, array;
-      
-      // Get the data attribute value
-      options = select[i].dataset.options;
+    // Get the data attribute value
+    options = select[0].dataset.options;
 
-      // Clean string and create array
-      options = options.replace(/in\s/g, '').split(' ');
+    // Clean string and create array
+    options = options.replace(/in\s/g, '').split(' ');
 
-      // Assign array from object by property name
-      // using the value from the last item in options
-      array   = object[options[options.length - 1]];
-      
-      for (var j = 0; j < array.length; j++){
+    // Assign array from object by property name
+    // using the value from the last item in options
+    array = object[options[options.length - 1]];
 
-        var option = document.createElement('option');
+    for (var j = 0; j < array.length; j++){
 
-        // Assign option value & text from array
-        option.value = array[j].replace(/\s+/g, '-').toLowerCase();
-        option.text  = array[j];
-        
-        // Select currentTheme option
-        if (panel.currentTheme === array[j]){
-          option.selected = 'selected';
-        }
+      var option = document.createElement('option');
 
-        select[i].add(option, null);
+      // Assign option value & text from array
+      option.value = array[j].replace(/\s+/g, '-').toLowerCase();
+      option.text  = array[j];
+
+      // Select currentTheme option
+      if (panel.currentTheme === array[j]){
+        option.selected = 'selected';
       }
+
+      select[0].add(option, null);
     }
   };
 

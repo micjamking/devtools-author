@@ -27,9 +27,9 @@ select {
   height: 2.3125rem;
   padding: 0.5rem;
   margin: 0;
-  border-radius: 0;
+  border-radius: 2px;
   border: 1px solid #cccccc;
-  background-color: #FAFAFA;
+  background-color: transparent;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
   background-position: 100% center;
   background-repeat: no-repeat;
@@ -39,6 +39,11 @@ select {
   color: rgba(0, 0, 0, 0.75);
   text-transform: none;
   -webkit-appearance: none !important;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
 .container {
@@ -46,17 +51,8 @@ select {
   top: 50%;
   left: 50%;
   text-align: center;
-  margin: -12em 0 0 -15%;
-  width: 30%;
-
-  h1 {
-    font-size: 6em;
-    margin-bottom: 0.5em;
-  }
-
-  h4 {
-    font-size: 2em;
-  }
+  margin: -14em 0 0 -20%;
+  width: 40%;
 
   h1, h2, h3, h4, h5, h6 {
     font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
@@ -72,10 +68,35 @@ select {
       font-size: 60%;
       color: #6f6f6f;
       line-height: 0;
+      font-weight: 300;
+      letter-spacing: 0.05em;
     }
   }
 
-  .success-text {
-    color: green;
+  h1 {
+    font-size: 6em;
+    font-weight: lighter;
+    margin-bottom: 0.35em;
+    letter-spacing: 0.025em;
+  }
+
+  h4 {
+    font-size: 2em;
+  }
+
+  select {
+    width: 60%
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 2.5%;
+  right: 2.5%;
+
+  a {
+    font-size: 80%;
+    text-decoration: none;
+    color: #6f6f6f;
   }
 }
