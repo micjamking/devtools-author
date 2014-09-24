@@ -4,9 +4,6 @@
   // Panel model
   var panel = panel || {};
   
-  // Select menu
-  var select = $('[data-options]');
-  
   // Available themes
   panel.themes = [
     '3024',
@@ -19,11 +16,9 @@
     'solarized-dark',
     'solarized-light'
   ];
-
-  // Get current theme from Chrome sync
-  storage.get('devtools-theme', function(object){
-    panel.currentTheme = object['devtools-theme'] || 'solarized-dark';
-  });
+  
+  // Select menu
+  var select = $('[data-options]');
   
   // Build select menus like ngOptions
   var _buildSelectMenu = function(object){
@@ -48,6 +43,11 @@
         // Assign option value & text from array
         option.value = array[j];
         option.text  = array[j];
+        
+        // Select currentTheme option
+        if (panel.currentTheme === array[j]){
+          option.selected = 'selected';
+        }
 
         select[i].add(option, null);
       }
@@ -71,9 +71,14 @@
       console.log(change); // all changes
     });
   };
+
+  // Get current theme from Chrome sync
+  storage.get('devtools-theme', function(object){
+    panel.currentTheme = object['devtools-theme'] || 'solarized-dark';
   
-  // Build select menus
-  _buildSelectMenu(panel);
+    // Build select menus
+    _buildSelectMenu(panel);
+  });
       
   // Listen for changes to the select menu
   select[0].addEventListener('change', selectListener);
