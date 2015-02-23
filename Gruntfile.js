@@ -34,7 +34,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['<%= devtools.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer']
+        tasks: ['sass:server', 'autoprefixer']
       },
       js: {
         files: [ 'Gruntfile.js', '<%= devtools.app %>/scripts/{,*/}*.js'],
@@ -43,23 +43,30 @@ module.exports = function(grunt) {
     },
  
     // Compiles Sass to CSS and generates necessary files if requested
-    compass: {
-      options: {
-        sassDir: '<%= devtools.app %>/styles',
-        cssDir: '.tmp/styles',
-        javascriptsDir: '<%= devtools.app %>/scripts',
-        fontsDir: '<%= devtools.app %>/styles/fonts',
-        httpFontsPath: '/styles/fonts',
-        relativeAssets: false,
-        assetCacheBuster: false,
-        raw: 'Sass::Script::Number.precision = 10\n'
-      },
-      dist: {},
-      server: {
+    sass: {
         options: {
-          debugInfo: true
+            includePaths: [
+                'bower_components'
+            ]
+        },
+        dist: {
+            files: [{
+                expand: true,
+                cwd: '<%= devtools.app %>/styles',
+                src: ['*.scss'],
+                dest: '.tmp/styles',
+                ext: '.css'
+            }]
+        },
+        server: {
+            files: [{
+                expand: true,
+                cwd: '<%= devtools.app %>/styles',
+                src: ['*.scss'],
+                dest: '.tmp/styles',
+                ext: '.css'
+            }]
         }
-      }
     },
 
     // Add CSS vendor prefixed styles
@@ -126,8 +133,8 @@ module.exports = function(grunt) {
 
     // Run some tasks in parallel to speed up the build process
     concurrent: {
-      server: ['compass:server'],
-      dist: ['compass:dist']
+      server: ['sass:server'],
+      dist: ['sass:dist']
     }
   });
 
