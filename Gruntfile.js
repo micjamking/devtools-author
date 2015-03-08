@@ -17,7 +17,7 @@ module.exports = function(grunt) {
       app: 'app',
       dist: 'dist'
     },
-    
+
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
-    
+
     // Task configuration.
     watch: {
       html: {
@@ -41,32 +41,30 @@ module.exports = function(grunt) {
         tasks: ['newer:jshint:all', 'copy:js']
       }
     },
- 
+
     // Compiles Sass to CSS and generates necessary files if requested
     sass: {
-        options: {
-            includePaths: [
-                'bower_components'
-            ]
-        },
-        dist: {
-            files: [{
-                expand: true,
-                cwd: '<%= devtools.app %>/styles',
-                src: ['*.scss'],
-                dest: '.tmp/styles',
-                ext: '.css'
-            }]
-        },
-        server: {
-            files: [{
-                expand: true,
-                cwd: '<%= devtools.app %>/styles',
-                src: ['*.scss'],
-                dest: '.tmp/styles',
-                ext: '.css'
-            }]
-        }
+      options: {
+        includePaths: [ '<%= devtools.app %>/styles' ]
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= devtools.app %>/styles',
+          src: ['{,*/}*.scss'],
+          dest: '.tmp/styles',
+          ext: '.css'
+        }]
+      },
+      server: {
+        files: [{
+          expand: true,
+          cwd: '<%= devtools.app %>/styles',
+          src: ['*.scss'],
+          dest: '.tmp/styles',
+          ext: '.css'
+        }]
+      }
     },
 
     // Add CSS vendor prefixed styles
@@ -83,7 +81,7 @@ module.exports = function(grunt) {
         }]
       }
     },
-    
+
     // The produce minified CSS in the dist folder
     cssmin: {
       dist: {
@@ -95,7 +93,7 @@ module.exports = function(grunt) {
         }]
       }
     },
-    
+
     // Detect errors & potential problems in JS files
     jshint: {
       options: {
