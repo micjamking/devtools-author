@@ -31,7 +31,7 @@ $accent
   .toolbar {
     flex: 0 0 30px;
     padding-top: 4px;
-    
+
     .tabbed-pane-header-tab {
       padding: 0px 12px !important;
       border-width: 0 !important;
@@ -43,7 +43,7 @@ $accent
       &.selected {
         border-width: 0 !important;
         -webkit-border-image: none;
-        box-shadow: 0 3px 0 $selectors, 
+        box-shadow: 0 3px 0 $selectors,
                     inset 0 -2px 0 $selectors;
       }
     }
@@ -54,10 +54,12 @@ $accent
 
     // Background - Main Panel
     .split-view-main.split-view-contents-second,
-    .has-no-tabs {
+    .insertion-point-main,
+    .has-no-tabs,
+    .source-code {
       background-color: $background !important;
 
-      .tabbed-pane-header {
+    .tabbed-pane-header {
         flex: 0 0 30px;
         background: darken($background, 3.5%) !important;
         border-bottom: 0 none;
@@ -82,7 +84,7 @@ $accent
             &:hover {
               background-position: -175px -96px;
             }
-          }   
+          }
 
           &::before,
           &::after{
@@ -122,13 +124,13 @@ $accent
               border-color : transparent transparent transparent $background;
             }
           }
-          
+
           // Reverse the z-index of the tabs
           @for $item from 1 through 15{
-            &:nth-child(#{$item}){ 
-              z-index: (15 - $item); 
+            &:nth-child(#{$item}){
+              z-index: (15 - $item);
             }
-          } 
+          }
 
           &:hover {
             .close-button-gray {
@@ -150,7 +152,7 @@ $accent
             top: 0;
         }
       }
-      
+
       .tabbed-pane-placeholder.fill{
         font-size: 16px;
         text-shadow: none !important;
@@ -161,18 +163,18 @@ $accent
           z-index: 9;
       }
     }
-    
+
     // Gutter
     .CodeMirror .CodeMirror-gutters {
       background: $background-highlight;
       border-right: none;
     }
-    
+
     // Line Numbers
     .CodeMirror-linenumber {
       font-size: 12px !important;
     }
-    
+
     // Cursor
     .CodeMirror div.CodeMirror-cursor {
       border-left: 1px solid $body-text-highlight;
@@ -183,19 +185,19 @@ $accent
     .CodeMirror .CodeMirror-selectedtext:not(.CodeMirror-persist-highlight) {
       color: white !important;
     }
-    .CodeMirror-selected { 
-      background: $selectors; 
+    .CodeMirror-selected {
+      background: $selectors;
     }
- 
-    .CodeMirror-focused .CodeMirror-selected { 
-      background: $selectors; 
+
+    .CodeMirror-focused .CodeMirror-selected {
+      background: $selectors;
     }
-     
+
     // CSS/JS selected brackets
     .CodeMirror .CodeMirror-matchingbracket {
       border-bottom: 1px solid $body-text;
     }
-    
+
     // Comments
     .cm-xml-meta,
     .cm-xml-comment,
@@ -209,19 +211,19 @@ $accent
     .cm-xml-comment {
       font-style: italic;
     }
-    
+
     // CSS Properties
     .cm-css-property {
       color: $property;
     }
-    
+
     // CSS Tags / JS Operators
     .cm-css-def,
     .cm-css-tag,
     .cm-js-operator {
       color: $operators;
     }
-    
+
     // Body Text
     .cm-xml-attribute,
     .cm-css-variable-2,
@@ -233,7 +235,7 @@ $accent
       color: $body-text !important;
       position: relative;
     }
-    
+
     // Strings
     .cm-xml-string,
     .cm-css-atom,
@@ -245,7 +247,7 @@ $accent
     .cm-js-atom{
       color: $strings;
     }
-    
+
     // HTML Tags, Class/Id Selectors, JS keywords
     .cm-xml-tag,
     .cm-css-builtin,
@@ -254,12 +256,12 @@ $accent
     .cm-js-keyword {
       color: $selectors;
     }
-    
+
     // CSS-Keyword
     .cm-css-keyword {
       color: $keyword;
     }
-    
+
     // CSS Pseudo Element/Selectors
     .cm-css-variable-3 {
       color: $pseudo;
@@ -268,10 +270,10 @@ $accent
     // UI - Pane tabs
     .tabbed-pane-header {
       flex: 0 0 30px;
-      
+
       .tabbed-pane-header-tabs {
         margin-left: 12px;
-        
+
         .tabbed-pane-header-tab {
           font-size: 10px;
           height: 28px;
@@ -279,20 +281,20 @@ $accent
         }
       }
     }
-    
+
     // Panel Collapse buttons
     button {
 
       &:hover {
         cursor: pointer;
       }
-      
+
       &.status-bar-item.scripts-navigator-show-hide-button,
       &.right-sidebar-show-hide-button {
         top: 0 !important;
-        z-index: 10; 
+        z-index: 10;
         width: 30px;
-        height: 30px;       
+        height: 30px;
 /*         width: 0;
         height: 0;
         border-top: 5px solid rgba(0, 0, 0, 0);
@@ -323,9 +325,9 @@ $accent
     }
 
     .resizer-widget {
-      display: none; 
+      display: none;
     }
-    
+
     // Sources Left Panel
     .split-view-sidebar {
       background: $grey !important;
@@ -363,7 +365,7 @@ $accent
       }
 
       &.split-view-contents-second {
-        
+
         .scripts-debug-toolbar-drawer {
           flex: 0 0 54px;
           padding-top: 30px;
@@ -442,24 +444,24 @@ $accent
           }
         }
       }
-      
+
       .outline-disclosure ol:focus li.selected .selection,
       .navigator > ol.being-edited li.selected .selection {
         background-color: $selectors;
       }
-      
+
       // Hide all local resource icons
       .navigator-document-tree-item,
       .navigator-folder-tree-item,
       .navigator-other-tree-item,
-      .navigator-script-tree-item, 
+      .navigator-script-tree-item,
       .navigator-stylesheet-tree-item {
         .icon {
           display: none;
         }
       }
     }
-    
+
     // Breakpoint color
     .cm-breakpoint .CodeMirror-linenumber {
       color: white !important;
@@ -487,7 +489,7 @@ $accent
           box-shadow: 1px 1px 2px rgba(0,0,0,0.15);
       }
     }
-    
+
     // Status bar (I like Sublime Text 2's)
     .sources-status-bar {
       background-color: rgb(85, 85, 85) !important;

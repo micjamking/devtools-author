@@ -1,9 +1,18 @@
 (function($, storage){
   'use strict';
-  
+
   // Panel model
   var panel = panel || {};
-  
+
+  // Select menu
+  var $select = $('[data-options]')[0];
+
+  // Current theme
+  panel.currentTheme = '';
+
+  // Default theme
+  panel.defaultTheme = 'Solarized Dark';
+
   // Available themes
   panel.themes = [
     '3024',
@@ -16,16 +25,13 @@
     'Solarized Dark',
     'Solarized Light'
   ];
-  
-  // Select menu
-  var select = $('[data-options]');
-  
+
   // Build select menus like ngOptions
-  var _buildSelectMenu = function(object){
+  function _buildSelectMenu(menu, object){
     var options, array;
 
     // Get the data attribute value
-    options = select[0].dataset.options;
+    options = menu.dataset.options;
 
     // Clean string and create array
     options = options.replace(/in\s/g, '').split(' ');
@@ -43,54 +49,75 @@
       option.text  = array[j];
 
       // Select currentTheme option
-      if (panel.currentTheme === array[j]){
+      if (object.currentTheme === array[j]){
         option.selected = 'selected';
       }
 
-      select[0].add(option, null);
+      menu.add(option, null);
     }
-  };
 
-  // Event listener for select menu
-  var selectListener = function(){
-    storage.set({
-      'devtools-theme': select[0].options[select[0].selectedIndex].value
-    }, function(){
-      panel.currentTheme = select[0].options[select[0].selectedIndex].text;
-    });
-  };
+    return menu;
+  }
 
-  var observer = function(changes){
+  // Set & save theme based on select menu change event
+  function setTheme(event, obj){
+    function save(theme){
+      storage.set({ 'devtools-theme': theme.value },
+      function(){ panel.currentTheme = theme.text; });
+    }
+    if (event && event.type === 'change'){
+      var el     = event.target || event.srcElement;
+      var option = el.options[el.selectedIndex];
+      save(option);
+    } else if (event === null && obj){
+      save(obj);
+    }
+  }
+
+  // Object observer for current theme
+  function observer(changes){
     changes.forEach(function(change){
-      $('#currentTheme')[0].innerHTML = change.object[change.name];
-      console.log(change); // all changes
+      if (change.name === 'currentTheme') {
+        $('#currentTheme')[0].innerHTML = change.object.currentTheme;
+      }
     });
-  };
+  }
 
-  var getTheme = function(array, string){
-    if (!array){ return false; }
+  // Get theme from chrome sync
+  function getTheme(array, string){
+    if (!array || !string){
+      setTheme(null, {
+        value: panel.defaultTheme.replace(/\s+/g, '-').toLowerCase(),
+        text: panel.defaultTheme
+      });
+      return panel.defaultTheme;
+    }
     for (var i = 0; i < array.length; i++){
       if (array[i].replace(/\s+/g, '-').toLowerCase() === string){
         return array[i];
       }
     }
-  };
+  }
 
-  // Get current theme from Chrome sync
-  storage.get('devtools-theme', function(object){
+  // Initialize theme panel
+  function init(){
+    // Listen for changes to the select menu
+    $select.addEventListener('change', setTheme);
 
-    panel.currentTheme = getTheme(panel.themes, object['devtools-theme']) || 'Solarized Dark';
+    // Observe changes to panel model
+    Object.observe(panel, observer, ['add', 'update']);
+
+    // Get current theme from Chrome sync
+    storage.get('devtools-theme', function(object){
+
+      panel.currentTheme = getTheme(panel.themes, object['devtools-theme']);
+
+      // Build select menus
+      _buildSelectMenu($select, panel);
+    });
+  }
   
-    // Build select menus
-    _buildSelectMenu(panel);
-  });
-      
-  // Listen for changes to the select menu
-  select[0].addEventListener('change', selectListener);
-
-  // Observe changes to panel model
-  Object.observe(panel, observer, ['add', 'update']);
-
+  init();
 })(
 document.querySelectorAll.bind(document),
 chrome.storage.sync

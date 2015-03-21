@@ -3,67 +3,87 @@
 
   // Initialize app module
   var app = app || {};
-  
-  // Assign Chrome storage to local variable.
+
+  // Assign chrome methods to local variables
   var storage = $.storage.sync;
-  
+  var panel   = $.devtools.panels;
+
+  // App directory
+  app.dir = 'dist/';
+
   // AJAX request for Chrome version
   var getChromeVersion = function(){
     var ajax = new XMLHttpRequest();
     // Chromium release tracker API
-    ajax.open('GET', 'https://omahaproxy.appspot.com/mac', false);
-    ajax.send();
+    ajax.open('GET', 'https://omahaproxy.appspot.com/mac');
+    ajax.send(null);
 
-    return parseInt(ajax.responseText, 10) || console.log('There was an error with your request');
+    ajax.onreadystatechange = function(){
+      if (ajax.readyState === 4) {
+        if (ajax.status === 200) {
+          return parseInt(ajax.responseText, 10);
+        } else {
+          console.log('Status Code: ' + ajax.status + '\nThere was an error with your request');
+        }
+      }
+    };
   };
-  
-  // App directory
-  app.dir = 'dist/';
-  
-  // Method: load themes 
+
+  // Method: load themes
   app.loadTheme = function(object){
-    
+
     // AJAX load of stylesheet
     var _request = function(stylesheet){
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', '/' + stylesheet, false);
-      xhr.send();
-      $.devtools.panels.applyStyleSheet(xhr.responseText);
+      var ajax = new XMLHttpRequest();
+      ajax.open('GET', './' + stylesheet);
+      ajax.send(null);
+
+      ajax.onreadystatechange = function(){
+        if (ajax.readyState === 4) {
+          if (ajax.status === 200) {
+            return panel.applyStyleSheet(ajax.responseText);
+          } else {
+            return console.log('Status Code: ' + ajax.status + '\nThere was an error with your request');
+          }
+        }
+      };
     };
-    
+
     // GET theme
     _request(object.theme);
-    
+
     // GET Canary CSS if pre-release (beta, canary, dev)
     if (/Chrome\/(\d\d)/.exec(navigator.userAgent)[1] > getChromeVersion()) {
       _request(object.isCanary);
     }
   };
-  
-  // Initialization method
+
+  // Method: initialize app
   app.init = function(){
 
     var stylesDir = app.dir + 'styles/',
-        pagePath  = app.dir + '/panel/theme.html';
+        pagePath  = app.dir + 'panel/theme.html';
 
-    $.devtools.panels.create(
+    // Create Devtools panel
+    panel.create(
       'Theme',  // Panel title
       null,     // Panel icon
       pagePath, // Path of panel's HTML page
       null      // Callback
     );
 
+    // Get theme from Chrome storage
     storage.get('devtools-theme', function(object){
 
       var theme = object['devtools-theme'] || 'solarized-dark';
-   
+
       app.loadTheme({
         theme: stylesDir + 'themes/' + theme + '.css',
         isCanary: stylesDir + 'modules/canary.css'
       });
     });
   };
-  
+
   // Fire app
   app.init();
 })(chrome);
