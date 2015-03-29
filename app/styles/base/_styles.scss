@@ -10,18 +10,18 @@ $grey: rgb(230, 230, 230);
 
 // Theme Styles
 @mixin styles(
-$background,
-$background-highlight,
-$comments,
-$body-text,
-$body-text-highlight,
-$property,
-$pseudo,
-$keyword,
-$selectors,
-$strings,
-$operators,
-$accent
+$background,            // Background
+$background-highlight,  // Background - Highlight
+$comments,              // Comments / Secondary Content
+$body-text,             // Body text / default code / primary content
+$body-text-highlight,   // Optional emphasized content
+$property,              // CSS Properties
+$pseudo,                // CSS3 pseudo-selectors / elements
+$keyword,               // CSS Keywords (!important, etc.)
+$selectors,             // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$strings,               // HTML/CSS/JS Strings
+$operators,             // CSS Tag Selectors / JS Operators (in Canary)
+$accent                 // Accent / Highlight
 ){
 
   body.undocked.platform-mac.inactive .toolbar-colors {
@@ -231,6 +231,7 @@ $accent
     .cm-js-property,
     .cm-js-variable,
     .cm-js-variable-2,
+    .CodeMirror pre,
     .CodeMirror .CodeMirror-matchingbracket {
       color: $body-text !important;
       position: relative;
@@ -245,6 +246,12 @@ $accent
     .cm-js-string,
     .cm-js-number,
     .cm-js-atom{
+      color: $strings;
+    }
+
+    // Numbers
+    .cm-css-number,
+    .cm-js-number {
       color: $strings;
     }
 
@@ -329,7 +336,8 @@ $accent
     }
 
     // Sources Left Panel
-    .split-view-sidebar {
+    .split-view-sidebar,
+    .insertion-point-sidebar {
       background: $grey !important;
       font-size: 12px !important;
 
@@ -342,7 +350,7 @@ $accent
         line-height: inherit;
       }
 
-      &.split-view-contents-first {
+      &.navigator-tabbed-pane {
 
         .tabbed-pane-header {
           background-color: transparent;
@@ -363,8 +371,6 @@ $accent
           }
         }
       }
-
-      &.split-view-contents-second {
 
         .scripts-debug-toolbar-drawer {
           flex: 0 0 54px;
@@ -443,7 +449,6 @@ $accent
             }
           }
         }
-      }
 
       .outline-disclosure ol:focus li.selected .selection,
       .navigator > ol.being-edited li.selected .selection {
