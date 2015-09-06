@@ -29,7 +29,7 @@ module.exports = function(grunt) {
     // Task configuration.
     watch: {
       html: {
-        files: ['<%= devtools.app %>/panel/{,*/}*.html'],
+        files: ['<%= devtools.app %>/{,*/}*.html'],
         tasks: ['copy:html']
       },
       css: {
@@ -107,8 +107,8 @@ module.exports = function(grunt) {
     copy: {
       html: {
         expand: true,
-        cwd: '<%= devtools.app %>/panel',
-        dest: '<%= devtools.dist %>/panel',
+        cwd: '<%= devtools.app %>',
+        dest: '<%= devtools.dist %>',
         src: '{,*/}*.html'
       },
       js: {

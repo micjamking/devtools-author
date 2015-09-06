@@ -62,7 +62,7 @@
   app.init = function(){
 
     var stylesDir = app.dir + 'styles/',
-        pagePath  = app.dir + 'panel/theme.html';
+        pagePath  = app.dir + 'panel.html';
 
     // Create Devtools panel
     panel.create(
