@@ -150,7 +150,7 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', [
-    'newer:jshint',
+    'test',
     'clean',
     'concurrent:dist',
     'autoprefixer',
