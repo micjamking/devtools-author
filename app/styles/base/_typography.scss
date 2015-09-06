@@ -3,7 +3,8 @@
    ========================================================================== */
    
 :host-context(.platform-mac),
-body.platform-mac {
+body.platform-mac,
+body.platform-mac ::shadow {
   
   .monospace,
   .source-code {
