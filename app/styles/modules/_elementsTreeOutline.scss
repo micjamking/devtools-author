@@ -1,0 +1,19 @@
+/*
+ * Copyright (c) 2014 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+::shadow {
+    .elements-disclosure li.parent::before {
+/*         -webkit-mask-image: url(Images/toolbarButtonGlyphs.png); */
+        height: 10px;
+        margin-top: 4px;
+    }
+
+    /* @media (-webkit-min-device-pixel-ratio: 1.5) {
+        .elements-disclosure li.parent::before {
+            -webkit-mask-image: url(Images/toolbarButtonGlyphs_2x.png);
+        }
+    } */
+}

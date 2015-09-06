@@ -24,15 +24,25 @@ $operators,             // CSS Tag Selectors / JS Operators (in Canary)
 $accent                 // Accent / Highlight
 ){
 
-  body.undocked.platform-mac.inactive .toolbar-colors {
-    background-image: linear-gradient(to bottom, rgb(208, 208, 208), rgb(200, 200, 200)) !important;
+  ::shadow .tabbed-pane-header.toolbar-colors {
+/*     background-image: linear-gradient(to bottom, rgb(208, 208, 208), rgb(200, 200, 200)) !important; */
+    background-color: #e1e1e1;
   }
 
-  .toolbar {
-    flex: 0 0 30px;
-    padding-top: 4px;
+  .inactive ::shadow .tabbed-pane-header.toolbar-colors {
+    background-color: #f3f3f3;
+  }
 
-    .tabbed-pane-header-tab {
+  .toolbar.inspector-view-toolbar.inspector-view-toolbar-left.tabbed-pane-header-before {
+    flex: 0 0 61px;
+    padding-top: 0px;
+  }
+
+   .toolbar {
+/*     flex: 0 0 30px;
+    padding-top: 4px; */
+
+    ::shadow .tabbed-pane-header-tab {
       padding: 0px 12px !important;
       border-width: 0 !important;
       box-sizing: content-box;
@@ -59,11 +69,10 @@ $accent                 // Accent / Highlight
     .source-code {
       background-color: $background !important;
 
-    .tabbed-pane-header {
-        flex: 0 0 30px;
+      ::shadow .tabbed-pane-header {
+/*         flex: 0 0 30px; */
         background: darken($background, 3.5%) !important;
         border-bottom: 0 none;
-        box-shadow: 0 5px 0 $background;
 
         .tabbed-pane-header-tab {
           padding: 2px 12px;
@@ -71,9 +80,6 @@ $accent                 // Accent / Highlight
           position: relative;
           background: $background-highlight;
           border: 0 none !important;
-          border-top-right-radius: 25px 45px;
-          border-top-left-radius: 25px 45px;
-          box-shadow: 0 15px 25px rgba(0,0,0,0.5);
           color: $comments;
 
          .close-button-gray {
@@ -86,50 +92,10 @@ $accent                 // Accent / Highlight
             }
           }
 
-          &::before,
-          &::after{
-            content : '';
-            background : transparent;
-            height: 30px;
-            width: 30px;
-            border-radius: 100%;
-            border-width: 8px;
-            top: 6px;
-            border-style : solid;
-            position : absolute;
-          }
-
-          &::before{
-            border-color : transparent $background-highlight transparent transparent;
-            transform : rotate(48deg);
-            left: -22px;
-          }
-
-          &::after{
-            border-color : transparent transparent transparent $background-highlight;
-            transform : rotate(-48deg);
-            right: -22px;
-          }
-
           &.selected {
             background: $background;
+            box-shadow: -2px 0 0 $selectors;
             color: $body-text-highlight;
-            z-index: 20 !important;
-
-            &::before{
-              border-color : transparent $background transparent transparent;
-            }
-
-            &::after{
-              border-color : transparent transparent transparent $background;
-            }
-          }
-
-          // Reverse the z-index of the tabs
-          @for $item from 1 through 15{
-            &:nth-child(#{$item}){
-              z-index: (15 - $item);
-            }
           }
 
           &:hover {
