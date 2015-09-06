@@ -1,11 +1,9 @@
-# Custom Devtools
-*Customized Theme for Chrome Devtools.*
-
-## WIP
+# Devtools Themes
+*Themes for Chrome Developer Tools.*
 
 ## Install dependencies: 
 ```
-$ cd custom-devtools
+$ cd devtools-themes
 $ npm install
 ```
 

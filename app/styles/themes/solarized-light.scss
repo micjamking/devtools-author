@@ -2,9 +2,8 @@
    Solarized Light Theme
    ============================================== */
 
-// Base
-@import "base/styles";
-@import "base/typography";
+// Import Styles
+@import "base/config";
 
 // Palette
 $sd-base01: #586e75;

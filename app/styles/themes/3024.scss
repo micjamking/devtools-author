@@ -2,9 +2,9 @@
    3024 (Light) Theme
    ============================================== */
 
-// Base
-@import "base/styles";
-@import "base/typography";
+// Import Styles
+@import "base/config";
+
 
 // Styles
 @include styles(

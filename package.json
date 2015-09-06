@@ -1,7 +1,7 @@
 {
-  "name": "Custom-Devtools",
-  "version": "0.1.0",
-  "description": "Customized Theme for Chrome Devtools.",
+  "name": "Devtools-Themes",
+  "version": "0.1.1",
+  "description": "Themes for Chrome Developer Tools.",
   "repository": {
     "type": "git",
     "url": "git@github.com:micjamking/fuzzy-octo-dubstep.git"
@@ -10,12 +10,14 @@
     "url": "https://github.com/micjamking/fuzzy-octo-dubstep/issues"
   },
   "keywords": [
-    "chrome-devtools"
+    "chrome",
+    "devtools",
+    "themes"
   ],
   "author": {
     "name": "Mike King",
-    "email": "micjamking@gmail.com",
-    "url": "http://micjamking.github.com"
+    "email": "yo@mikeking.io",
+    "url": "http://mikeking.io"
   },
   "license": "MIT",
   "devDependencies": {

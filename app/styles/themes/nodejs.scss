@@ -2,9 +2,8 @@
    NodeJS Theme
    ============================================== */
 
-// Base
-@import "base/styles";
-@import "base/typography";
+// Import Styles
+@import "base/config";
 
 // Palette
 $background: #22252A;
