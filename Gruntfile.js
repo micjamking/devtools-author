@@ -34,7 +34,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['<%= devtools.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer']
+        tasks: ['sass', 'autoprefixer']
       },
       js: {
         files: [ 'Gruntfile.js', '<%= devtools.app %>/scripts/{,*/}*.js'],
@@ -52,15 +52,6 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '<%= devtools.app %>/styles',
           src: ['{,*/}*.scss'],
-          dest: '.tmp/styles',
-          ext: '.css'
-        }]
-      },
-      server: {
-        files: [{
-          expand: true,
-          cwd: '<%= devtools.app %>/styles',
-          src: ['*.scss'],
           dest: '.tmp/styles',
           ext: '.css'
         }]
@@ -124,21 +115,15 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           dot: true,
-          src: [ '.tmp', '<%= devtools.dist %>/{,*/}*.*' ]
+          src: [ '.tmp', '<%= devtools.dist %>/**/*' ]
         }]
       }
-    },
-
-    // Run some tasks in parallel to speed up the build process
-    concurrent: {
-      server: ['sass:server'],
-      dist: ['sass:dist']
     }
   });
 
   grunt.registerTask('serve', [
     'clean',
-    'concurrent:server',
+    'sass',
     'autoprefixer',
     'copy',
     'watch'
@@ -152,7 +137,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'test',
     'clean',
-    'concurrent:dist',
+    'sass',
     'autoprefixer',
     'cssmin',
     'copy'
