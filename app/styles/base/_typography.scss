@@ -3,17 +3,55 @@
    ========================================================================== */
    
 :host-context(.platform-mac),
-body.platform-mac,
-body.platform-mac ::shadow {
+.platform-mac,
+.platform-mac ::shadow {
   
   .monospace,
   .source-code {
+    font-family: $mac-fonts;
     font-size: 14px !important;
-    line-height: 1.5em !important;
+    line-height: 1.6em !important;
   }
 
   .sources .source-code {
     font-size: 16px !important;
-    line-height: 1.5em !important;
+    
+    // Apply antialiased setting for dark themes
+    // http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
+    @if $dark-theme == true {
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+}
+
+:host-context(.platform-windows),
+.platform-windows,
+.platform-windows ::shadow {
+  
+  .monospace,
+  .source-code {
+    font-family: $win-fonts;
+    font-size: 14px !important;
+    line-height: 1.6em !important;
+  }
+
+  .sources .source-code {
+    font-size: 16px !important;
+  }
+}
+
+:host-context(.platform-linux),
+.platform-linux,
+.platform-linux ::shadow {
+  
+  .monospace,
+  .source-code {
+    font-family: $lin-fonts;
+    font-size: 14px !important;
+    line-height: 1.6em !important;
+  }
+
+  .sources .source-code {
+    font-size: 16px !important;
   }
 }

@@ -2,7 +2,13 @@
    Variables
    ========================================================================== */
 
+$dark-theme: false !default;
+
 $grey: rgb(230, 230, 230);
+
+$mac-fonts: 'Hack', 'Source Code Pro','Droid Sans Mono', Monaco, Menlo, monospace;
+$win-fonts: 'Hack', 'Source Code Pro','Droid Sans Mono', Consolas, Lucida Console, monospace;
+$lin-fonts: 'Hack', 'Source Code Pro','Droid Sans Mono', dejavu sans mono, monospace;
 
 /* ==========================================================================
    Mixins

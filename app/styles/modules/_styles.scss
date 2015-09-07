@@ -18,7 +18,8 @@ $accent                 // Accent / Highlight
 ){
 
   // Sources Panel
-  .sources {
+  .sources,
+  .console-view-wrapper {
 
     ::shadow .tabbed-pane-header {
       flex: none !important;
@@ -28,8 +29,13 @@ $accent                 // Accent / Highlight
       }
     }
 
+    ::shadow .shadow-split-widget.hbox > .shadow-split-widget-sidebar:not(.maximized) {
+      border-right: 1px solid $background;
+    }
+
     // Background - Main Panel
-    #sources-panel-sources-view {
+    #sources-panel-sources-view,
+    #console-messages {
       background-color: $background !important;
 
       .sources-editor-tabstrip-left {
@@ -143,6 +149,24 @@ $accent                 // Accent / Highlight
 
       > .view.vbox.visible {
           z-index: 9;
+      }
+    }
+    
+    .console-view {
+      .toolbar {
+        background: darken($background, 3.5%) !important;
+        border-bottom: 0 none;
+
+        &::shadow {
+          .toolbar-item {
+            color: $body-text;
+            text-shadow: none;
+          }
+        }
+      }
+      
+      #console-messages {
+        color: $body-text;
       }
     }
 
