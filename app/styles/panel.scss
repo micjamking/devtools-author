@@ -2,10 +2,15 @@
    Theme panel stylesheet
    ============================================== */
 
-// Base
+/**
+ * Base
+ */
+@import "base/utility";
 @import "base/typography";
 
-// Modules
+/**
+ * Custom panel styles
+ */
 * {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -16,7 +21,7 @@
 
 html,
 body {
-  background: rgb(230, 230, 230);
+  background: $grey;
   position: relative;
   height: 100%;
   width: 100%;

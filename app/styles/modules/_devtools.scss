@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Devtools Frame Styling
+   ========================================================================== */
+
+.tabbed-pane:not(.insertion-point-sidebar)::shadow,
+.inactive .tabbed-pane:not(.insertion-point-sidebar)::shadow {
+  
+  .tabbed-pane-header.toolbar-colors {
+    background-color: #e1e1e1;
+  }
+
+  .tabbed-pane-header-contents .tabbed-pane-header-tab {
+    border-width: 0 !important;
+    transition: all 0.25s ease;
+    box-shadow: 0;
+
+    .tabbed-pane-header-tab-title {
+      margin: 0 auto;
+    }
+  }
+}
+
+// Compensate for device icon 
+.toolbar.inspector-view-toolbar.inspector-view-toolbar-left.tabbed-pane-header-before {
+  flex: 0 0 61px;
+  padding-top: 0px;
+}

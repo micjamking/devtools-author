@@ -1,14 +1,7 @@
 /* ==========================================================================
-   Variables
+   Temporary theme styles (needs to be broken up & referenced as individual modules)
    ========================================================================== */
 
-$grey: rgb(230, 230, 230);
-
-/* ==========================================================================
-   Mixins
-   ========================================================================== */
-
-// Theme Styles
 @mixin styles(
 $background,            // Background
 $background-highlight,  // Background - Highlight
@@ -24,84 +17,107 @@ $operators,             // CSS Tag Selectors / JS Operators (in Canary)
 $accent                 // Accent / Highlight
 ){
 
-  ::shadow .tabbed-pane-header.toolbar-colors {
-/*     background-image: linear-gradient(to bottom, rgb(208, 208, 208), rgb(200, 200, 200)) !important; */
-    background-color: #e1e1e1;
-  }
-
-  .inactive ::shadow .tabbed-pane-header.toolbar-colors {
-    background-color: #f3f3f3;
-  }
-
-  .toolbar.inspector-view-toolbar.inspector-view-toolbar-left.tabbed-pane-header-before {
-    flex: 0 0 61px;
-    padding-top: 0px;
-  }
-
-   .toolbar {
-/*     flex: 0 0 30px;
-    padding-top: 4px; */
-
-    ::shadow .tabbed-pane-header-tab {
-      padding: 0px 12px !important;
-      border-width: 0 !important;
-      box-sizing: content-box;
-      text-align: center;
-      transition: all 0.25s ease;
-      box-shadow: 0;
-
-      &.selected {
-        border-width: 0 !important;
-        -webkit-border-image: none;
-        box-shadow: 0 3px 0 $selectors,
-                    inset 0 -2px 0 $selectors;
-      }
-    }
-  }
-
   // Sources Panel
   .sources {
 
+    ::shadow .tabbed-pane-header {
+      flex: none !important;
+
+      .tabbed-pane-header-tab {
+        height: 33px;
+      }
+    }
+
     // Background - Main Panel
-    .split-view-main.split-view-contents-second,
-    .insertion-point-main,
-    .has-no-tabs,
-    .source-code {
+    #sources-panel-sources-view {
       background-color: $background !important;
 
+      .sources-editor-tabstrip-left {
+        width: 25px;
+      }
+
       ::shadow .tabbed-pane-header {
-/*         flex: 0 0 30px; */
         background: darken($background, 3.5%) !important;
         border-bottom: 0 none;
 
-        .tabbed-pane-header-tab {
-          padding: 2px 12px;
-          overflow: visible;
-          position: relative;
-          background: $background-highlight;
-          border: 0 none !important;
+        .tabbed-pane-header-tabs-drop-down-container {
+          opacity: 1;
           color: $comments;
+          padding: 4px 15px;
+          height: 33px;
 
-         .close-button-gray {
+          &:hover {
+            background-color: darken($background, 2.25%);
+          }
+        }
+
+        .tabbed-pane-header-tab {
+          position: relative;
+          margin-right: 1px;
+          margin-top: 0;
+          background: darken($background, 2.25%);
+          border: 0 none !important;
+          box-shadow: inset 0 1px 0 darken($background, 3.5%),
+                      inset 0 -1px 0 darken($background, 3.5%);
+          color: $comments;
+          transition: all 0.15s ease;
+
+          .tabbed-pane-header-tab-title {
+            box-sizing: content-box;
+            padding: 0 16px;
+          }
+
+          .tabbed-pane-close-button {
+            left: -4px;
+          }
+
+          .close-button-gray {
             top: 3px;
             left: 6px;
             z-index: 1;
+            transition: all 0.15s ease;
+            opacity: 0;
+            transform: scale(0.7);
 
             &:hover {
               background-position: -175px -96px;
             }
           }
 
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: $selectors;
+            transform: scaleX(0);
+            transition: inherit;
+          }
+
           &.selected {
+            position: relative;
             background: $background;
-            box-shadow: -2px 0 0 $selectors;
+            box-shadow: 0 1px 0 $background;
             color: $body-text-highlight;
+
+            &:before {
+              transform: scaleX(1);
+            }
           }
 
           &:hover {
             .close-button-gray {
               visibility: visible;
+              opacity: 1;
+              transform: scale(1);
             }
+          }
+
+          &:last-child {
+              margin-right: 0;
           }
         }
       }
@@ -256,24 +272,13 @@ $accent                 // Accent / Highlight
     }
 
     // Panel Collapse buttons
-    button {
+    ::shadow button {
 
       &:hover {
         cursor: pointer;
       }
 
-      &.status-bar-item.scripts-navigator-show-hide-button,
       &.right-sidebar-show-hide-button {
-        top: 0 !important;
-        z-index: 10;
-        width: 30px;
-        height: 30px;
-/*         width: 0;
-        height: 0;
-        border-top: 5px solid rgba(0, 0, 0, 0);
-        border-bottom: 5px solid rgba(0, 0, 0, 0);
-        border-radius: 2px; */
-
         .glyph {
           background: $comments;
           width: 16px;
@@ -282,18 +287,18 @@ $accent                 // Accent / Highlight
         }
       }
 
-      &.status-bar-item.scripts-navigator-show-hide-button {
-        left: 0 !important;
-/*         border-right: 10px solid $body-text; */
+      &.left-sidebar-show-hide-button,
+      &.top-sidebar-show-hide-button,
+      &.right-sidebar-show-hide-button {
+        top: 9px;
+      }
+
+      &.left-sidebar-show-hide-button,
+      &.top-sidebar-show-hide-button {
+        left: 7px;
       }
 
       &.right-sidebar-show-hide-button {
-        right: 0 !important;
-/*         border-left: 10px solid $comments; */
-
-        &.toggled-hide {
-            margin-right: 0 !important;
-        }
       }
     }
 
@@ -316,7 +321,7 @@ $accent                 // Accent / Highlight
         line-height: inherit;
       }
 
-      &.navigator-tabbed-pane {
+      &::shadow {
 
         .tabbed-pane-header {
           background-color: transparent;
@@ -326,10 +331,14 @@ $accent                 // Accent / Highlight
             transition: all 0.25s ease;
             border-radius: 2px;
             border: 0 none;
-            padding: 4px 8px !important;
             text-align: center;
             height: auto;
             margin-top: 5px;
+
+            .tabbed-pane-header-tab-title {
+              box-sizing: content-box;
+              padding: 0 8px;
+            }
 
             &.selected {
               border: 0 none;
@@ -443,7 +452,7 @@ $accent                 // Accent / Highlight
       background: $selectors;
       padding: 3px 8px 2px 1px;
       margin: 2px 0 0 3px !important;
-      box-shadow: 0px 0px 4px rgba(0,0,0,0.15);
+      box-shadow: 0 0 4px rgba(0,0,0,0.15);
 
       &::after {
           content: '';

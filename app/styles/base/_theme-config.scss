@@ -2,11 +2,15 @@
    Theme Configuration
    ========================================================================== */
 
-/* ==========================================================================
-   Imports
-   ========================================================================== */
-
-// Base
+/**
+ * Base
+ */
+@import "base/utility";
 @import "base/typography";
+
+/**
+ * Modules
+ */
+@import "modules/devtools";
 @import "modules/styles";
-@import "modules/elementsTreeOutline";
+@import "modules/elements-panel";
