@@ -3,19 +3,17 @@
    ========================================================================== */
    
 :host-context(.platform-mac),
-.platform-mac,
-.platform-mac ::shadow {
+body.platform-mac,
+body.platform-mac ::shadow {
   
   .monospace,
   .source-code {
-    font-family: $mac-fonts;
+    font-family: $mac-fonts !important;
     font-size: 14px !important;
     line-height: 1.6em !important;
   }
 
-  .sources .source-code {
-    font-size: 16px !important;
-    
+  .source-code {
     // Apply antialiased setting for dark themes
     // http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
     @if $dark-theme == true {
@@ -30,13 +28,9 @@
   
   .monospace,
   .source-code {
-    font-family: $win-fonts;
+    font-family: $win-fonts !important;
     font-size: 14px !important;
     line-height: 1.6em !important;
-  }
-
-  .sources .source-code {
-    font-size: 16px !important;
   }
 }
 
@@ -46,12 +40,8 @@
   
   .monospace,
   .source-code {
-    font-family: $lin-fonts;
+    font-family: $lin-fonts !important;
     font-size: 14px !important;
     line-height: 1.6em !important;
-  }
-
-  .sources .source-code {
-    font-size: 16px !important;
   }
 }

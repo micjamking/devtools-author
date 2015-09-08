@@ -6,6 +6,7 @@
  * Base
  */
 @import "base/utility";
+@import "base/iconography";
 @import "base/typography";
 
 /**
@@ -14,3 +15,4 @@
 @import "modules/devtools";
 @import "modules/styles";
 @import "modules/elements-panel";
+@import "modules/console-panel";
