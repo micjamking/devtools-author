@@ -29,38 +29,34 @@ module.exports = function(grunt) {
     // Task configuration.
     watch: {
       html: {
-        files: ['<%= devtools.app %>/panel/{,*/}*.html'],
+        files: ['<%= devtools.app %>/{,*/}*.html'],
         tasks: ['copy:html']
       },
       css: {
         files: ['<%= devtools.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer']
+        tasks: ['sass', 'autoprefixer']
       },
       js: {
         files: [ 'Gruntfile.js', '<%= devtools.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all', 'copy:js']
+      },
+      images: {
+        files: [ '<%= devtools.app %>/images/{,*/}*.png'],
+        tasks: ['copy:images']
       }
     },
 
     // Compiles Sass to CSS and generates necessary files if requested
     sass: {
       options: {
-        includePaths: [ '<%= devtools.app %>/styles' ]
+        includePaths: [ '<%= devtools.app %>/styles' ],
+        sourceMap: true
       },
       dist: {
         files: [{
           expand: true,
           cwd: '<%= devtools.app %>/styles',
           src: ['{,*/}*.scss'],
-          dest: '.tmp/styles',
-          ext: '.css'
-        }]
-      },
-      server: {
-        files: [{
-          expand: true,
-          cwd: '<%= devtools.app %>/styles',
-          src: ['*.scss'],
           dest: '.tmp/styles',
           ext: '.css'
         }]
@@ -107,8 +103,8 @@ module.exports = function(grunt) {
     copy: {
       html: {
         expand: true,
-        cwd: '<%= devtools.app %>/panel',
-        dest: '<%= devtools.dist %>/panel',
+        cwd: '<%= devtools.app %>',
+        dest: '<%= devtools.dist %>',
         src: '{,*/}*.html'
       },
       js: {
@@ -116,6 +112,12 @@ module.exports = function(grunt) {
         cwd: '<%= devtools.app %>/scripts',
         dest: '<%= devtools.dist %>/scripts',
         src: '{,*/}*.js'
+      },
+      images: {
+        expand: true,
+        cwd: '<%= devtools.app %>/images',
+        dest: '<%= devtools.dist %>/images',
+        src: '{,*/}*.png'
       }
     },
 
@@ -124,21 +126,15 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           dot: true,
-          src: [ '.tmp', '<%= devtools.dist %>/{,*/}*.*' ]
+          src: [ '.tmp', '<%= devtools.dist %>/**/*' ]
         }]
       }
-    },
-
-    // Run some tasks in parallel to speed up the build process
-    concurrent: {
-      server: ['sass:server'],
-      dist: ['sass:dist']
     }
   });
 
   grunt.registerTask('serve', [
     'clean',
-    'concurrent:server',
+    'sass',
     'autoprefixer',
     'copy',
     'watch'
@@ -150,9 +146,9 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', [
-    'newer:jshint',
+    'test',
     'clean',
-    'concurrent:dist',
+    'sass',
     'autoprefixer',
     'cssmin',
     'copy'

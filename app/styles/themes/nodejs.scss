@@ -2,8 +2,10 @@
    NodeJS Theme
    ============================================== */
 
+$dark-theme: true;
+
 // Import Styles
-@import "base/config";
+@import "base/theme-config";
 
 // Palette
 $background: #22252A;

@@ -15,15 +15,42 @@
 
   // Available themes
   panel.themes = [
-    '3024',
-    'Bongzilla',
-    'Clouds',
-    'Coda',
-    'CSSedit',
-    'Monokai',
-    'Nodejs',
-    'Solarized Dark',
-    'Solarized Light'
+    {
+      'name': '3024',
+      'colors': ['#F7F7F7', '#F0F0F0', '#807d7c', '#4a4543', '#a16a94', '#ed0c8c', '#01a252', '#db2d20', '#cdab53']
+    },
+    {
+      'name': 'Bongzilla',
+      'colors': ['#1F1F1F', '#262626', '#AEAEAE', '#F8F8F8', '#8DA6CE', '#FF593E', '#FF6400', '#7F90AA', '#78CE91', '#FFCC66']
+    },
+    {
+      'name': 'Clouds',
+      'colors': []
+    },
+    {
+      'name': 'Coda',
+      'colors': []
+    },
+    {
+      'name': 'CSSedit',
+      'colors': []
+    },
+    {
+      'name': 'Monokai',
+      'colors': []
+    },
+    {
+      'name': 'Nodejs',
+      'colors': []
+    },
+    {
+      'name': 'Solarized Dark',
+      'colors': []
+    },
+    {
+      'name': 'Solarized Light',
+      'colors': []
+    }
   ];
 
   // Build select menus like ngOptions
@@ -45,11 +72,11 @@
       var option = document.createElement('option');
 
       // Assign option value & text from array
-      option.value = array[j].replace(/\s+/g, '-').toLowerCase();
-      option.text  = array[j];
+      option.value = array[j].name.replace(/\s+/g, '-').toLowerCase();
+      option.text  = array[j].name;
 
       // Select currentTheme option
-      if (object.currentTheme === array[j]){
+      if (object.currentTheme === array[j].name){
         option.selected = 'selected';
       }
 
@@ -93,8 +120,8 @@
       return panel.defaultTheme;
     }
     for (var i = 0; i < array.length; i++){
-      if (array[i].replace(/\s+/g, '-').toLowerCase() === string){
-        return array[i];
+      if (array[i].name.replace(/\s+/g, '-').toLowerCase() === string){
+        return array[i].name;
       }
     }
   }

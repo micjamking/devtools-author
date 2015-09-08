@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Devtools Frame Styling
+   ========================================================================== */
+
+.inspector-view-tabbed-pane.tabbed-pane:not(.insertion-point-sidebar)::shadow,
+.inactive .inspector-view-tabbed-pane.tabbed-pane:not(.insertion-point-sidebar)::shadow {
+  
+  .tabbed-pane-header.toolbar-colors {
+    background-color: #e1e1e1;
+  }
+
+  .tabbed-pane-header-contents .tabbed-pane-header-tab {
+    position: relative;
+    border-width: 0 !important;
+    background-color: rgba(0,0,0,0);
+    transition: all 0.25s ease;
+    box-shadow: none;
+
+    .tabbed-pane-header-tab-title {
+      margin: 0 auto;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: rgba(0, 0, 0, 0.25);
+      transform: scaleX(0);
+      transition: inherit;
+    }
+
+    &.selected {
+      border-width: 0;
+      -webkit-border-image: none;
+      background-image: linear-gradient(transparent 35%, rgba(0,0,0,0.15));
+
+      &:before {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+// Compensate for device icon 
+.toolbar.inspector-view-toolbar.inspector-view-toolbar-left.tabbed-pane-header-before {
+  flex: 0 0 61px;
+  padding-top: 0px;
+}

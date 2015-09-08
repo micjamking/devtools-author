@@ -2,8 +2,10 @@
    Solarized Dark Theme
    ============================================== */
 
+$dark-theme: true;
+
 // Import Styles
-@import "base/config";
+@import "base/theme-config";
 
 // Palette
 $sd-base03: #002b36;
