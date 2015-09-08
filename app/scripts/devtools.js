@@ -30,7 +30,7 @@
   };
 
   // Method: load themes
-  app.loadTheme = function(object){
+  app.loadTheme = function(object, cb){
 
     // AJAX load of stylesheet
     var _request = function(stylesheet){
@@ -41,7 +41,8 @@
       ajax.onreadystatechange = function(){
         if (ajax.readyState === 4) {
           if (ajax.status === 200) {
-            return panel.applyStyleSheet(ajax.responseText);
+            panel.applyStyleSheet(ajax.responseText);
+            cb();
           } else {
             return console.log('Status Code: ' + ajax.status + '\nThere was an error with your request');
           }
@@ -80,6 +81,17 @@
       app.loadTheme({
         theme: stylesDir + 'themes/' + theme + '.css',
         isCanary: stylesDir + 'canary.css'
+      }, function(){
+        // Get fontSize from Chrome storage
+        storage.get('devtools-fontSize', function(object){
+
+          var fontSize = object['devtools-fontSize'];
+
+          if (fontSize){
+            var styles = ':host-context(.platform-mac) .monospace, :host-context(.platform-mac) .source-code, body.platform-mac .monospace, body.platform-mac .source-code, body.platform-mac ::shadow .monospace, body.platform-mac ::shadow .source-code { font-size: ' + fontSize + 'px !important; } :host-context(.platform-windows) .monospace, :host-context(.platform-windows) .source-code, body.platform-windows .monospace, body.platform-windows .source-code, body.platform-windows ::shadow .monospace, body.platform-windows ::shadow .source-code { font-size: ' + fontSize + 'px !important; } :host-context(.platform-linux) .monospace, :host-context(.platform-linux) .source-code, body.platform-linux .monospace, body.platform-linux .source-code, body.platform-linux ::shadow .monospace, body.platform-linux ::shadow .source-code { font-size: ' + fontSize + 'px !important; }';
+            panel.applyStyleSheet(styles);
+          }
+        });
       });
     });
   };

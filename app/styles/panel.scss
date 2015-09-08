@@ -27,7 +27,8 @@ body {
   width: 100%;
 }
 
-select {
+select,
+input {
   width: 100%;
   height: 2.3125rem;
   padding: 0.5rem;
@@ -89,8 +90,26 @@ select {
     font-size: 2em;
   }
 
-  select {
-    width: 60%
+  select,
+  .font-size {
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .font-size {
+    margin-top: 20px;
+    
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 0.5em;
+    }
+    input {
+      display: block;
+      background-image: none;
+      box-sizing: border-box;
+    }
   }
 }
 

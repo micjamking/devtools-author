@@ -7,11 +7,17 @@
   // Select menu
   var $select = $('[data-options]')[0];
 
+  // Number input
+  var $number = $('input[type=number]')[0];
+
   // Current theme
   panel.currentTheme = '';
 
   // Default theme
   panel.defaultTheme = 'Solarized Dark';
+
+  // Default fontSize
+  panel.defaultFontSize = 14;
 
   // Available themes
   panel.themes = [
@@ -101,13 +107,39 @@
     }
   }
 
+  // Set & save font size based on input menu change event
+  function setFontSize(event, value){
+    function save(fontSize){
+      storage.set({ 'devtools-fontSize': fontSize },
+      function(){ panel.currentFontSize = fontSize; });
+    }
+    if (event && event.type === 'change'){
+      var el     = event.target || event.srcElement;
+      save(el.value);
+    } else if (event === null && value){
+      save(value);
+    }
+  }
+
   // Object observer for current theme
   function observer(changes){
     changes.forEach(function(change){
       if (change.name === 'currentTheme') {
         $('#currentTheme')[0].innerHTML = change.object.currentTheme;
+      } else if (change.name === 'currentFontSize') {
+        $number.value = change.object.currentFontSize;
       }
     });
+  }
+
+  // Get fontSize from chrome sync
+  function getFontSize(value){
+    if (!value){
+      setFontSize(null, panel.defaultFontSize);
+      return panel.defaultFontSize;
+    } else {
+      return value;
+    }
   }
 
   // Get theme from chrome sync
@@ -130,6 +162,9 @@
   function init(){
     // Listen for changes to the select menu
     $select.addEventListener('change', setTheme);
+    
+    // Listen for changes to the select menu
+    $number.addEventListener('change', setFontSize);
 
     // Observe changes to panel model
     Object.observe(panel, observer, ['add', 'update']);
@@ -141,6 +176,11 @@
 
       // Build select menus
       _buildSelectMenu($select, panel);
+    });
+
+    // Get current fontSize from Chrome sync
+    storage.get('devtools-fontSize', function(object){
+      panel.currentFontSize = getFontSize(object['devtools-fontSize']);
     });
   }
   
