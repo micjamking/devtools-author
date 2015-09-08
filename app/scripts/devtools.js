@@ -79,7 +79,7 @@
 
       app.loadTheme({
         theme: stylesDir + 'themes/' + theme + '.css',
-        isCanary: stylesDir + 'modules/canary.css'
+        isCanary: stylesDir + 'canary.css'
       });
     });
   };
