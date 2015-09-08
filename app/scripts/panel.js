@@ -26,6 +26,14 @@
       'colors': ['#F7F7F7', '#F0F0F0', '#807d7c', '#4a4543', '#a16a94', '#ed0c8c', '#01a252', '#db2d20', '#cdab53']
     },
     {
+      'name': 'Arstotzka',
+      'colors': []
+    },
+    {
+      'name': 'Azure',
+      'colors': []
+    },
+    {
       'name': 'Bongzilla',
       'colors': ['#1F1F1F', '#262626', '#AEAEAE', '#F8F8F8', '#8DA6CE', '#FF593E', '#FF6400', '#7F90AA', '#78CE91', '#FFCC66']
     },
@@ -39,6 +47,10 @@
     },
     {
       'name': 'CSSedit',
+      'colors': []
+    },
+    {
+      'name': 'GitHub',
       'colors': []
     },
     {
