@@ -102,6 +102,7 @@
       var el     = event.target || event.srcElement;
       var option = el.options[el.selectedIndex];
       save(option);
+      $('.alert')[0].style.display = 'block';
     } else if (event === null && obj){
       save(obj);
     }
@@ -114,8 +115,9 @@
       function(){ panel.currentFontSize = fontSize; });
     }
     if (event && event.type === 'change'){
-      var el     = event.target || event.srcElement;
+      var el = event.target || event.srcElement;
       save(el.value);
+      $('.alert')[0].style.display = 'block';
     } else if (event === null && value){
       save(value);
     }
