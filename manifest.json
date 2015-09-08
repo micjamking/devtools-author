@@ -4,5 +4,8 @@
    "permissions": [ "storage" ],
    "devtools_page": "devtools.html",
    "manifest_version": 2,
-   "version": "0.1.1"
+   "version": "0.1.1",
+   "icons": { 
+      "128": "app/images/icon_128.png" 
+    }
 }
