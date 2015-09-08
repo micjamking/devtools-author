@@ -1,0 +1,9 @@
+.console {
+    .console-message::before,
+    .console-user-command::before,
+    #console-prompt::before,
+    .console-group-title::before {
+        content: "\203A";
+        background-image: none;
+    }
+}
