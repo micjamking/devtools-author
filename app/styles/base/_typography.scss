@@ -8,12 +8,10 @@ body.platform-mac ::shadow {
   
   .monospace,
   .source-code {
-    font-family: $mac-fonts !important;
     font-size: 14px !important;
     line-height: 1.6em !important;
-  }
-
-  .source-code {
+    font-family: $mac-fonts !important;
+    
     // Apply antialiased setting for dark themes
     // http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
     @if $dark-theme == true {
@@ -23,8 +21,8 @@ body.platform-mac ::shadow {
 }
 
 :host-context(.platform-windows),
-.platform-windows,
-.platform-windows ::shadow {
+body.platform-windows,
+body.platform-windows ::shadow {
   
   .monospace,
   .source-code {
@@ -35,13 +33,38 @@ body.platform-mac ::shadow {
 }
 
 :host-context(.platform-linux),
-.platform-linux,
-.platform-linux ::shadow {
+body.platform-linux,
+body.platform-linux ::shadow {
   
   .monospace,
   .source-code {
     font-family: $lin-fonts !important;
     font-size: 14px !important;
     line-height: 1.6em !important;
+  }
+}
+
+// Sources tabs
+body.platform-mac .sources ::shadow,
+body.platform-mac .console ::shadow,
+body.platform-mac .console-view-wrapper ::shadow {
+  .tabbed-pane-header-tab-title {
+    font-family: $mac-fonts !important;
+  }
+}
+
+body.platform-windows .sources ::shadow,
+body.platform-windows .console ::shadow,
+body.platform-windows .console-view-wrapper ::shadow {
+  .tabbed-pane-header-tab-title {
+    font-family: $win-fonts !important;
+  }
+}
+
+body.platform-linux .sources ::shadow,
+body.platform-linux .console ::shadow,
+body.platform-linux .console-view-wrapper ::shadow {
+  .tabbed-pane-header-tab-title {
+    font-family: $lin-fonts !important;
   }
 }

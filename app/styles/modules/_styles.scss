@@ -17,7 +17,7 @@ $operators,             // CSS Tag Selectors / JS Operators (in Canary)
 $accent                 // Accent / Highlight
 ){
 
-  // Panel
+  // Panels
   .sources,
   .console,
   .console-view-wrapper {
@@ -32,6 +32,10 @@ $accent                 // Accent / Highlight
 
     ::shadow .shadow-split-widget.hbox > .shadow-split-widget-sidebar:not(.maximized) {
       border-right: 1px solid $background-highlight;
+    }
+
+    .console-message-wrapper {
+      border-bottom: 1px solid $background-highlight;
     }
 
     // Background - Main Panel
@@ -157,6 +161,7 @@ $accent                 // Accent / Highlight
       }
     }
     
+    // Console
     .console-view {
       .toolbar {
         background: darken($background, 3.5%) !important;
@@ -256,7 +261,12 @@ $accent                 // Accent / Highlight
     .cm-js-string-2,
     .cm-js-string,
     .cm-js-number,
-    .cm-js-atom{
+    .cm-js-atom,
+    .object-value-number, 
+    .object-value-boolean,
+    .object-value-string,
+    .object-value-regexp,
+    .object-value-symbol {
       color: $strings;
     }
 
@@ -271,7 +281,9 @@ $accent                 // Accent / Highlight
     .cm-css-builtin,
     .cm-css-qualifier,
     .cm-css-variable,
-    .cm-js-keyword {
+    .cm-js-keyword,
+    .object-value-null,
+    .object-value-undefined {
       color: $selectors;
     }
 
