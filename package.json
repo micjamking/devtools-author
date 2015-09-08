@@ -4,10 +4,10 @@
   "description": "Themes for Chrome Developer Tools.",
   "repository": {
     "type": "git",
-    "url": "git@github.com:micjamking/fuzzy-octo-dubstep.git"
+    "url": "git@github.com:micjamking/devtools-themes.git"
   },
   "bugs": {
-    "url": "https://github.com/micjamking/fuzzy-octo-dubstep/issues"
+    "url": "https://github.com/micjamking/devtools-themes/issues"
   },
   "keywords": [
     "chrome",
