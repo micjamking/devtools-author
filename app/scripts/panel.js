@@ -17,7 +17,7 @@
   panel.defaultTheme = 'Solarized Dark';
 
   // Default fontSize
-  panel.defaultFontSize = 14;
+  panel.defaultFontSize = 12;
 
   // Available themes
   panel.themes = [
