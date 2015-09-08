@@ -39,13 +39,18 @@ module.exports = function(grunt) {
       js: {
         files: [ 'Gruntfile.js', '<%= devtools.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all', 'copy:js']
+      },
+      images: {
+        files: [ '<%= devtools.app %>/images/{,*/}*.png'],
+        tasks: ['copy:images']
       }
     },
 
     // Compiles Sass to CSS and generates necessary files if requested
     sass: {
       options: {
-        includePaths: [ '<%= devtools.app %>/styles' ]
+        includePaths: [ '<%= devtools.app %>/styles' ],
+        sourceMap: true
       },
       dist: {
         files: [{
@@ -107,6 +112,12 @@ module.exports = function(grunt) {
         cwd: '<%= devtools.app %>/scripts',
         dest: '<%= devtools.dist %>/scripts',
         src: '{,*/}*.js'
+      },
+      images: {
+        expand: true,
+        cwd: '<%= devtools.app %>/images',
+        dest: '<%= devtools.dist %>/images',
+        src: '{,*/}*.png'
       }
     },
 
