@@ -1,0 +1,42 @@
+/* ==============================================
+   Arstotzka Theme
+   ============================================== */
+
+$dark-theme: true;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+$base03: #211f1e;
+$base02: lighten($base03, 5%);
+$base01: #586e75;
+$base00: #657b83;
+$base0:  #839496;
+$base1:  #93a1a1;
+$base2:  #eee8d5;
+$base3:  #fdf6e3;
+$yellow: #b58900;
+$orange: #cb4b16;
+$red:    #dc322f;
+$blue:   #268bd2;
+$cyan:   #2aa198;
+$green:  #859900;
+$magenta:#d33682;
+$violet: #6c71c4;
+
+// Styles
+@include styles(
+$base03, // Background
+$base02, // Background - Highlight
+$base01, // Comments / Secondary Content
+$base0,  // Body text / default code / primary content
+$base1,  // Optional emphasized content
+$yellow, // CSS Properties
+$orange, // CSS3 pseudo-selectors / elements
+$red,    // CSS Keywords (!important, etc.)
+$blue,   // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$cyan,   // HTML/CSS/JS Strings
+$green,  // CSS Tag Selectors / JS Operators (in Canary)
+$magenta // Accent / Highlight
+);

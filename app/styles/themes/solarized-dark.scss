@@ -1,0 +1,38 @@
+/* ==============================================
+   Solarized Dark Theme
+   ============================================== */
+
+$dark-theme: true;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+$sd-base03: #002b36;
+$sd-base02: #073642;
+$sd-base01: #586e75;
+$sd-base0:  #839496;
+$sd-base1:  #93a1a1;
+$sd-yellow: #b58900;
+$sd-orange: #cb4b16;
+$sd-red:    #dc322f;
+$sd-blue:   #268bd2;
+$sd-cyan:   #2aa198;
+$sd-green:  #859900;
+$sd-magenta:#d33682;
+
+// Styles
+@include styles(
+$sd-base03, // Background
+$sd-base02, // Background - Highlight
+$sd-base01, // Comments / Secondary Content
+$sd-base0,  // Body text / default code / primary content
+$sd-base1,  // Optional emphasized content
+$sd-yellow, // CSS Properties
+$sd-orange, // CSS3 pseudo-selectors / elements
+$sd-red,    // CSS Keywords (!important, etc.)
+$sd-blue,   // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$sd-cyan,   // HTML/CSS/JS Strings
+$sd-green,  // CSS Tag Selectors / JS Operators (in Canary)
+$sd-magenta // Accent / Highlight
+);

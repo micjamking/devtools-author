@@ -1,0 +1,22 @@
+/* ==============================================
+   CSSEdit Theme
+   ============================================== */
+
+// Import Styles
+@import "base/theme-config";
+
+// Styles
+@include styles(
+#FFFFFF, // Background
+#F7F7F7, // Background - Highlight
+#A8A8A8, // Comments / Secondary Content
+#474747, // Body text / default code / primary content
+#474747, // Optional emphasized content
+#474747, // CSS Properties
+#6D4496, // CSS3 pseudo-selectors / elements
+#B84610, // CSS Keywords (!important, etc.)
+#4678BC, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+#5D9629, // HTML/CSS/JS Strings
+#4678BC, // CSS Tag Selectors / JS Operators (in Canary)
+#6D4496  // Accent / Highlight
+);

@@ -1,0 +1,22 @@
+/* ==============================================
+   Coda Theme
+   ============================================== */
+
+// Import Styles
+@import "base/theme-config";
+
+// Styles
+@include styles(
+#FFFFFF, // Background
+#F7F7F7, // Background - Highlight
+#3C802C, // Comments / Secondary Content
+#000000, // Body text / default code / primary content
+#000000, // Optional emphasized content
+#000000, // CSS Properties
+#916319, // CSS3 pseudo-selectors / elements
+#AA1F63, // CSS Keywords (!important, etc.)
+#881181, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+#ED7722, // HTML/CSS/JS Strings
+#916319, // CSS Tag Selectors / JS Operators (in Canary)
+#AA2063  // Accent / Highlight
+);

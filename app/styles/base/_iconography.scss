@@ -1,0 +1,39 @@
+/* ==========================================================================
+   Iconography
+   ========================================================================== */
+
+html /deep/ {
+  div.error-icon,
+  div.revokedError-icon,
+  div.warning-icon,
+  div.info-icon,
+  div.device-icon,
+  div.red-ball,
+  div.green-ball,
+  div.orange-ball,
+  .toolbar-select-arrow,
+  .emulation-toolbar-item.warning::after,
+  .console-error-level .console-message::before,
+  .console-revokedError-level .console-message::before,
+  .console-warning-level .console-message::before,
+  .console-debug-level .console-message::before,
+  .console-info-level .console-message::before {
+    content: '';
+    background-image: url('chrome-extension://__MSG_@@extension_id__/dist/images/toolbarButtonGlyphs.png');
+    background-size: 352px 144px;
+
+    @media (-webkit-min-device-pixel-ratio: 1.5) {
+      background-image: url('chrome-extension://__MSG_@@extension_id__/dist/images/toolbarButtonGlyphs_2x.png');
+    }
+  }
+
+  .long-click-glyph,
+  .toolbar-item > .glyph {
+    -webkit-mask-image: url('chrome-extension://__MSG_@@extension_id__/dist/images/toolbarButtonGlyphs.png');
+    -webkit-mask-size: 352px 144px;
+
+    @media (-webkit-min-device-pixel-ratio: 1.5) {
+      -webkit-mask-image: url('chrome-extension://__MSG_@@extension_id__/dist/images/toolbarButtonGlyphs_2x.png');
+    }
+  }
+}

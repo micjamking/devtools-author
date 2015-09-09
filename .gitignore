@@ -1,0 +1,18 @@
+# Ignore patterns for Devtools Themes
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+*.log
+*.zip
+
+node_modules
+dist
+.tmp
+.sass-cache
+app/bower_components

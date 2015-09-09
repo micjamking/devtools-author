@@ -1,0 +1,32 @@
+/* ==============================================
+   NodeJS Theme
+   ============================================== */
+
+$dark-theme: true;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+$background: #22252A;
+$background-highlight:  #292D33;
+$foreground: #FFFFFF;
+$strings: #B4C2D6;
+$comments: #5D5D5D;
+$keyword:  #B6DB51;
+
+// Styles
+@include styles(
+$background,           // Background
+$background-highlight, // Background - Highlight
+$comments,             // Comments / Secondary Content
+$foreground,           // Body text / default code / primary content
+$foreground,           // Optional emphasized content
+$foreground,           // CSS Properties
+$foreground,           // CSS3 pseudo-selectors / elements
+$keyword,              // CSS Keywords (!important, etc.)
+$keyword,              // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$strings,              // HTML/CSS/JS Strings
+$keyword,              // CSS Tag Selectors / JS Operators (in Canary)
+$keyword               // Accent / Highlight
+);

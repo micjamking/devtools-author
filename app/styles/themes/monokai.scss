@@ -1,0 +1,24 @@
+/* ==============================================
+   Monokai Theme
+   ============================================== */
+
+$dark-theme: true;
+
+// Import Styles
+@import "base/theme-config";
+
+// Styles
+@include styles(
+#272822, // Background
+#30322A, // Background - Highlight
+#75715E, // Comments / Secondary Content
+#F8F8F0, // Body text / default code / primary content
+#F8F8F0, // Optional emphasized content
+#66D9EF, // CSS Properties
+#A6E22E, // CSS3 pseudo-selectors / elements
+#F92672, // CSS Keywords (!important, etc.)
+#F92672, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+#E6DB74, // HTML/CSS/JS Strings
+#F92672, // CSS Tag Selectors / JS Operators (in Canary)
+#A6E22E  // Accent / Highlight
+);

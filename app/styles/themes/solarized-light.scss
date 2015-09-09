@@ -1,0 +1,36 @@
+/* ==============================================
+   Solarized Light Theme
+   ============================================== */
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+$sd-base01: #586e75;
+$sd-base00: #657b83;
+$sd-base1:  #93a1a1;
+$sd-base2:  #eee8d5;
+$sd-base3:  #fdf6e3;
+$sd-yellow: #b58900;
+$sd-orange: #cb4b16;
+$sd-red:    #dc322f;
+$sd-blue:   #268bd2;
+$sd-cyan:   #2aa198;
+$sd-green:  #859900;
+$sd-magenta:#d33682;
+
+// Styles
+@include styles(
+$sd-base3,  // Background
+$sd-base2,  // Background - Highlight
+$sd-base1,  // Comments / Secondary Content
+$sd-base00, // Body text / default code / primary content
+$sd-base01, // Optional emphasized content
+$sd-yellow, // CSS Properties
+$sd-orange, // CSS3 pseudo-selectors / elements
+$sd-red,    // CSS Keywords (!important, etc.)
+$sd-blue,   // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$sd-cyan,   // HTML/CSS/JS Strings
+$sd-green,  // CSS Tag Selectors / JS Operators (in Canary)
+$sd-magenta // Accent / Highlight
+);

@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Console Panel
+   ========================================================================== */
+
+.console,
+.console-view-wrapper {
+  .console-message::before,
+  .console-user-command::before,
+  #console-prompt::before,
+  .console-group-title::before {
+    background-image: none;
+    top: 12px;
+  }
+
+  #console-prompt::before {
+    content: "\203A";
+    font-size: 1.5em;
+    top: 6px;
+    left: -20px;
+  }
+
+  .console-message > .outline-disclosure li.parent::before {
+    top: 4px;
+    margin-right: 4px;
+  }
+
+  .console-error-level ::shadow .stack-preview-container {
+    color: #FF0033 !important;
+  }
+
+/*.console-message-wrapper.console-error-level,
+  .console-message-wrapper.console-warning-level {
+      border-top: 0 none;
+      border-bottom: 0 none;
+      margin-top: 0;
+      background: 0 none;
+  }
+
+  .console-warning-level .console-message-text {
+      color: hsl(39, 100%, 18%) !important;
+  }
+
+  .console-error-level {
+    .console-message-text,
+    .console-view-object-properties-section {
+      color: #FF0033 !important;
+    }
+    
+    ::shadow .stack-preview-container {
+       color: #FF0033 !important;
+    }
+  }
+
+  .console-debug-level .console-message-text {
+      color: blue;
+  } */
+}

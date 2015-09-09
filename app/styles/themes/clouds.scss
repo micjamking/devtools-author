@@ -1,0 +1,22 @@
+/* ==============================================
+   Clouds Theme
+   ============================================== */
+
+// Import Styles
+@import "base/theme-config";
+
+// Styles
+@include styles(
+#FFFFFF, // Background
+#F7F7F7, // Background - Highlight
+#BCC8BA, // Comments / Secondary Content
+#000000, // Body text / default code / primary content
+#484848, // Optional emphasized content
+#484848, // CSS Properties
+#C52727, // CSS3 pseudo-selectors / elements
+#C52727, // CSS Keywords (!important, etc.)
+#AF956F, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+#5D90CD, // HTML/CSS/JS Strings
+#46A609, // CSS Tag Selectors / JS Operators (in Canary)
+#BF78CC  // Accent / Highlight
+);

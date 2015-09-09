@@ -1,0 +1,22 @@
+/* ==============================================
+   3024 (Light) Theme
+   ============================================== */
+
+// Import Styles
+@import "base/theme-config";
+
+// Styles
+@include styles(
+#F7F7F7, // Background
+#F0F0F0, // Background - Highlight
+#807d7c, // Comments / Secondary Content
+#4a4543, // Body text / default code / primary content
+#4a4543, // Optional emphasized content
+#4a4543, // CSS Properties
+#a16a94, // CSS3 pseudo-selectors / elements
+#a16a94, // CSS Keywords (!important, etc.)
+#ed0c8c, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+#01a252, // HTML/CSS/JS Strings
+#db2d20, // CSS Tag Selectors / JS Operators (in Canary)
+#cdab53  // Accent / Highlight
+);

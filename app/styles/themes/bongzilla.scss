@@ -1,0 +1,24 @@
+/* ==============================================
+   Bongzilla Theme
+   ============================================== */
+
+$dark-theme: true;
+
+// Import Styles
+@import "base/theme-config";
+
+// Styles
+@include styles(
+#1F1F1F, // Background
+#262626, // Background - Highlight
+#AEAEAE, // Comments / Secondary Content
+#F8F8F8, // Body text / default code / primary content
+#F8F8F8, // Optional emphasized content
+#8DA6CE, // CSS Properties
+#FF593E, // CSS3 pseudo-selectors / elements
+#FF6400, // CSS Keywords (!important, etc.)
+#7F90AA, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+#78CE91, // HTML/CSS/JS Strings
+#FFCC66, // CSS Tag Selectors / JS Operators (in Canary)
+#78CE91  // Accent / Highlight
+);
