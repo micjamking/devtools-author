@@ -129,6 +129,10 @@ module.exports = function(grunt) {
           src: [ '.tmp', '<%= devtools.dist %>/**/*' ]
         }]
       }
+    },
+
+    zip: {
+      'dist.zip': ['<%= devtools.dist %>', 'devtools.html', 'manifest.json']
     }
   });
 
@@ -144,6 +148,10 @@ module.exports = function(grunt) {
     'newer:jshint'
   ]);
 
+  grunt.registerTask('package', [
+    'zip'
+  ]);
+
   // Default task.
   grunt.registerTask('default', [
     'test',
@@ -151,6 +159,7 @@ module.exports = function(grunt) {
     'sass',
     'autoprefixer',
     'cssmin',
-    'copy'
+    'copy',
+    'package'
   ]);
 };
