@@ -1,5 +1,5 @@
 /* ==============================================
-   Codeschool Theme
+   Railscast Theme
    ============================================== */
 
 $dark-theme: true;
@@ -8,25 +8,22 @@ $dark-theme: true;
 @import "base/theme-config";
 
 // Palette
-$base00: #232C31;
-$base01: #1C3657;
-$base02: #2A343A;
-$base03: #3F4944;
-$base04: #84898C;
-$base05: #9EA7A6;
-$base06: #A7CFA3;
-$base07: #B5D8F6;
-$base08: #2A5491;
-$base09: #43820D;
-$base0A: #A03B1E;
-$base0B: #237986;
-$base0C: #B02F30;
-$base0D: #484D79;
-$base0E: #C59820;
-$base0F: #C98344;
-
-// Overrides
-$base01: darken($base00, 3.5%);
+$base00: #2B2B2B;
+$base01: #272935;
+$base02: #3A4055;
+$base03: #5A647E;
+$base04: #D4CFC9;
+$base05: #E6E1DC;
+$base06: #F4F1ED;
+$base07: #F9F7F3;
+$base08: #DA4939;
+$base09: #CC7833;
+$base0A: #FFC66D;
+$base0B: #A5C261;
+$base0C: #519F50;
+$base0D: #6D9CBE;
+$base0E: #B6B3EB;
+$base0F: #BC9458;
 
 // Styles
 @include styles(
