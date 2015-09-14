@@ -10,6 +10,12 @@
   // Number input
   var $number = $('input[type=number]')[0];
 
+  // Palette container
+  var $palette = $('.palette')[0];
+  
+  // Theme title
+  var $themeTitle = $('#currentTheme')[0];
+
   // Current theme
   panel.currentTheme = '';
 
@@ -27,11 +33,11 @@
     },
     {
       'name': 'Arstotzka',
-      'colors': []
+      'colors': ['#211f1e', '#586e75', '#657b83', '#839496', '#93a1a1', '#eee8d5', '#fdf6e3', '#b58900', '#cb4b16', '#dc322f', '#268bd2', '#2aa198', '#859900', '#d33682', '#6c71c4']
     },
     {
       'name': 'Azure',
-      'colors': []
+      'colors': ['#181D26', '#586e75', '#657b83', '#839496', '#93a1a1', '#eee8d5', '#fdf6e3', '#b58900', '#cb4b16', '#dc322f', '#268bd2', '#2aa198', '#859900', '#d33682', '#6c71c4']
     },
     {
       'name': 'Bongzilla',
@@ -39,37 +45,63 @@
     },
     {
       'name': 'Clouds',
-      'colors': []
+      'colors': ['#FFFFFF', '#F7F7F7', '#BCC8BA', '#000000', '#484848', '#484848', '#C52727', '#AF956F', '#5D90CD', '#46A609', '#BF78CC']
     },
     {
       'name': 'Coda',
-      'colors': []
+      'colors': ['#FFFFFF', '#F7F7F7', '#3C802C', '#000000', '#AA1F63', '#881181', '#ED7722', '#916319', '#AA2063']
     },
     {
       'name': 'CSSedit',
-      'colors': []
+      'colors': ['#FFFFFF', '#F7F7F7', '#A8A8A8', '#474747', '#6D4496', '#B84610', '#4678BC', '#5D9629', '#6D4496']
     },
     {
       'name': 'GitHub',
-      'colors': []
+      'colors': ['#ffffff', '#586e75', '#657b83', '#839496', '#93a1a1', '#eee8d5', '#fdf6e3', '#b58900', '#cb4b16', '#dc322f', '#d33682', '#6c71c4', '#268bd2', '#2aa198', '#859900']
     },
     {
       'name': 'Monokai',
-      'colors': []
+      'colors': ['#272822', '#30322A', '#75715E', '#F8F8F0', '#F8F8F0', '#66D9EF', '#A6E22E', '#F92672', '#F92672', '#E6DB74', '#F92672', '#A6E22E']
     },
     {
       'name': 'Nodejs',
-      'colors': []
+      'colors': ['#22252A', '#292D33', '#FFFFFF', '#B4C2D6', '#5D5D5D', '#B6DB51']
     },
     {
       'name': 'Solarized Dark',
-      'colors': []
+      'colors': ['#002b36', '#073642', '#586e75', '#839496', '#93a1a1', '#b58900', '#cb4b16', '#dc322f', '#268bd2', '#2aa198', '#859900', '#d33682']
     },
     {
       'name': 'Solarized Light',
-      'colors': []
+      'colors': ['#586e75', '#657b83', '#93a1a1', '#eee8d5', '#fdf6e3', '#b58900', '#cb4b16', '#dc322f', '#268bd2', '#2aa198', '#859900', '#d33682']
     }
   ];
+
+  function themeLookUp(theme){
+    for (var i = 0; i < panel.themes.length; i++){
+      if (panel.themes[i].name === theme) {
+        return panel.themes[i].colors;
+      }
+    }
+  }
+
+  function createLI(palette){
+    palette = palette.filter(function(item, pos, self) {
+      return self.indexOf(item) === pos;
+    });
+    
+    for (var i = 0; i < palette.length; i++){
+      // Create the list item:
+      var item = document.createElement('li');
+      
+      // Style item
+      item.style.backgroundColor = palette[i];
+      item.style.width = (100 / palette.length) + '%';
+
+      // Add it to the list:
+      $palette.appendChild(item);
+    }
+  }
 
   // Build select menus like ngOptions
   function _buildSelectMenu(menu, object){
@@ -111,6 +143,7 @@
       function(){ panel.currentTheme = theme.text; });
     }
     if (event && event.type === 'change'){
+      $themeTitle.style.display = 'none';
       var el     = event.target || event.srcElement;
       var option = el.options[el.selectedIndex];
       save(option);
@@ -137,9 +170,27 @@
 
   // Object observer for current theme
   function observer(changes){
+    function updatePalette(theme){
+      var children = $palette.querySelectorAll('li');
+      
+      // Remove children from $palette
+      if (children.length){
+        for (var i = 0; i < children.length; i++){
+          $palette.removeChild(children[i]);
+        }
+      }
+
+      createLI(themeLookUp(theme));
+    }
+
     changes.forEach(function(change){
       if (change.name === 'currentTheme') {
-        $('#currentTheme')[0].innerHTML = change.object.currentTheme;
+        $themeTitle.innerHTML = change.object.currentTheme;
+        setTimeout(function(){
+          console.log('yo!');
+        });
+        $themeTitle.style.display = 'block';
+        updatePalette(change.object.currentTheme);
       } else if (change.name === 'currentFontSize') {
         $number.value = change.object.currentFontSize;
       }
@@ -174,6 +225,7 @@
 
   // Initialize theme panel
   function init(){
+
     // Listen for changes to the select menu
     $select.addEventListener('change', setTheme);
     

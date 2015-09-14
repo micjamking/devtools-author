@@ -17,6 +17,7 @@
   user-select: none;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 html,
@@ -55,7 +56,6 @@ input {
 
 .alert {
   display: none;
-  box-sizing: border-box;
   position: absolute;
   width: 100%;
   height: 40px;
@@ -65,7 +65,7 @@ input {
   text-align: center;
   font-size: 14px;
   transition: all 0.25s ease;
-  animation: fadeInDown 0.75s cubic-bezier(.55,0,.1,1) both 0.5s;
+  animation: fadeInDown 0.75s $custom-easing both 1s;
 }
 
 .container {
@@ -94,15 +94,72 @@ input {
     }
   }
 
+  .title {
+    height: 9.85em;
+  }
+
   h1 {
     font-size: 6em;
     font-weight: lighter;
-    margin-bottom: 0.35em;
+    margin-bottom: 0.25em;
     letter-spacing: 0.025em;
+    animation: fadeInDownShort 0.5s $custom-easing both 0.5s;
   }
 
   h4 {
     font-size: 2em;
+  }
+
+  .palette {
+    height: 2em;
+    margin-bottom: 2em;
+    font-size: 1em;
+
+    li {
+      position: relative;
+      z-index: 1;
+      list-style: none;
+      display: block;
+      float: left;
+      height: 50%;
+      transition: transform 0.25s cubic-bezier(.55, 1.15, 0.1, 1.15); 
+      animation: zoomIn 0.15s cubic-bezier(0.215, 0.610, 0.355, 1.000) both; 
+
+      @for $item from 1 through 20 {
+        &:nth-child(#{$item}){
+          animation-delay: #{$item/12}s;
+        }  
+      }
+
+      &::before {
+        display: block;
+        transition: inherit;
+        content: '';
+        position: absolute;
+        border-radius: 10%;
+        width: 100%;
+        height: 100%;
+        background-color: inherit;
+        transform: scale3d(1, 1, 1);
+        box-shadow: none;
+      }
+
+      &:hover {
+        z-index: 2;
+
+        &::before {
+          border-radius: 1%;
+          transform: scale3d(1.5, 4, 1);
+          box-shadow: 0 0 2px 0 rgba(0,0,0,0.15);
+        }
+      }
+    }
+
+    &::after {
+      display: table;
+      content: '';
+      clear: both;
+    }
   }
 
   select,
@@ -123,7 +180,6 @@ input {
     input {
       display: block;
       background-image: none;
-      box-sizing: border-box;
     }
   }
 }
@@ -147,6 +203,34 @@ input {
   }
   93% {
     transform: translate3d(0, 7%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDownShort {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -30%, 0);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+  50% {
+    opacity: 1;
   }
   100% {
     opacity: 1;
