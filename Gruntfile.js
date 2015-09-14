@@ -111,7 +111,7 @@ module.exports = function(grunt) {
         expand: true,
         cwd: '<%= devtools.app %>/scripts',
         dest: '<%= devtools.dist %>/scripts',
-        src: '{,*/}*.js'
+        src: ['{,*/}*.js', '{,*/}*.json']
       },
       images: {
         expand: true,
