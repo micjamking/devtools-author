@@ -206,6 +206,13 @@
       if (ajax.readyState === 4) {
         if (ajax.status === 200) {
           panel.themes = JSON.parse(ajax.responseText);
+
+          panel.themes.sort(function(a, b){
+            if(a.name < b.name) return -1;
+            if(a.name > b.name) return 1;
+            return 0;
+          });
+          
           callback();
         } else {
           console.log('Status Code: ' + ajax.status + '\nThere was an error with your request');

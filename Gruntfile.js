@@ -37,7 +37,7 @@ module.exports = function(grunt) {
         tasks: ['sass', 'autoprefixer']
       },
       js: {
-        files: [ 'Gruntfile.js', '<%= devtools.app %>/scripts/{,*/}*.js'],
+        files: [ 'Gruntfile.js', '<%= devtools.app %>/scripts/{,*/}*.js', '<%= devtools.app %>/scripts/{,*/}*.json'],
         tasks: ['newer:jshint:all', 'copy:js']
       },
       images: {
