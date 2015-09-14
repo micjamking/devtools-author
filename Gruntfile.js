@@ -150,10 +150,6 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
-  grunt.registerTask('package', [
-    'zip'
-  ]);
-
   // Default task.
   grunt.registerTask('default', [
     'newer:jshint',
@@ -162,5 +158,10 @@ module.exports = function(grunt) {
     'autoprefixer',
     'cssmin',
     'copy'
+  ]);
+
+  grunt.registerTask('package', [
+    'default',
+    'zip'
   ]);
 };
