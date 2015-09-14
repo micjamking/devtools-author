@@ -31,8 +31,8 @@ $ grunt serve
 
 #### Creating additional themes
 1. Make a copy of `app/styles/themes/_theme-template.scss` and rename the file to your theme name **without the underscore**, ie. if your theme is called *aloha*, inside of `app/styles/themes/`, copy `_theme-template.scss` and rename it to `aloha.scss`
-2. Add color values for the palette based on the code syntax highlighter variables.
-3. Add your color palette object (name and colors array) to the `panel.themes` array in `app/scripts/panel.js`
+2. Add color values for the palette based on the code syntax highlighter variables in your scss file.
+3. Add your color palette object (name and colors array) to the `themes.json` in `app/scripts/`
 4. In DevTools, select your theme palette in the *Author Settings* panel.
 5. Preview and adjust your colors as needed.
 6. Commit and push your changes to your repo, then create a [pull request](../../compare) for your new theme once it is ready!
