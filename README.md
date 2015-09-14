@@ -4,8 +4,9 @@
 ![Devtools Author Logo](app/images/1400x560_marquee.png)
 
 ## Usage
-1. Enable Developer Tools experiments in `chrome://flags/#enable-devtools-experiments`.
-2. Open DevTools (`cmd + opt + I`); *Settings* > *Experiments* > check **Allow custom UI themes**.
+1. Install the [Chrome extension](https://chrome.google.com/webstore/detail/devtools-themes/egfhcfdfnajldliefpdoaojgahefjhhi)
+2. Enable Developer Tools experiments in `chrome://flags/#enable-devtools-experiments`.
+3. Open DevTools (`cmd + opt + I`); *Settings* > *Experiments* > check **Allow custom UI themes**.
 
 After restarting DevTools, you should see the default theme *3024* take affect within the *Sources* and *Console* panels.
 
