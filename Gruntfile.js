@@ -150,22 +150,17 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
-  grunt.registerTask('test', [
-    'newer:jshint'
-  ]);
-
   grunt.registerTask('package', [
     'zip'
   ]);
 
   // Default task.
   grunt.registerTask('default', [
-    'test',
+    'newer:jshint',
     'clean',
     'sass',
     'autoprefixer',
     'cssmin',
-    'copy',
-    'package'
+    'copy'
   ]);
 };
