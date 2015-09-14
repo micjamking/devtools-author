@@ -7,17 +7,20 @@
   <div class="alert">Reload DevTools to apply your changes!</div>
   <div class="container">
       <h4><small>Current Theme:</small></h4>
-      <h1 id="currentTheme"></h1>
+      <header class="title">
+        <h1 id="currentTheme"></h1>
+      </header>
+      <ul class="palette"></ul>
       <select data-options="theme in themes"></select>
       
       <div class="font-size">
-        <label for="font-size-input">Font Size:</label>
-        <input id="font-size-input" type="number" min="10" max="16" value="14" placeholder="Default 14px" />
+        <label for="font-size-input">Font size (px):</label>
+        <input id="font-size-input" type="number" min="10" max="16" value="12" placeholder="Default 12px" />
       </div>
   </div>
   
   <div class="footer">
-    Mahalo from <a href="https://github.com/micjamking">Mike King</a>
+    Mahalo from <a target="_blank" href="https://github.com/micjamking">Mike King</a>
   </div>
 
   <script src="scripts/panel.js"></script>
