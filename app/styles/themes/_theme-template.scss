@@ -19,11 +19,19 @@ $base3:;
 $yellow:;
 $orange:;
 $red:;
+$magenta:;
+$violet:;
 $blue:;
 $cyan:;
 $green:;
-$magenta:;
-$violet:;
+
+// Comment out below if 
+// customizing palette
+@if $dark-theme == true {
+$base02: lighten($base03, 5%);
+} @else {
+$base02: darken($base03, 3.5%);   
+}
 
 // Styles
 @include styles(

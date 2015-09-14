@@ -1,5 +1,5 @@
 /* ==============================================
-   Theme Name
+   Box UK Theme
    ============================================== */
 
 $dark-theme: false; // Set true if theme has a dark background
@@ -9,7 +9,6 @@ $dark-theme: false; // Set true if theme has a dark background
 
 // Palette
 $base03: #ffffff;
-$base02: darken($base03, 3.5%);
 $base01: #586e75;
 $base00: #657b83;
 $base0:  #839496;
@@ -24,6 +23,14 @@ $violet: #6c71c4;
 $blue:   #268bd2;
 $cyan:   #2aa198;
 $green:  #859900;
+
+// Comment out below if 
+// customizing palette
+@if $dark-theme == true {
+$base02: lighten($base03, 5%);
+} @else {
+$base02: darken($base03, 3.5%);   
+}
 
 // Styles
 @include styles(
