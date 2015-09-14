@@ -14,7 +14,7 @@
   panel.currentTheme = '';
 
   // Default theme
-  panel.defaultTheme = 'Solarized Dark';
+  panel.defaultTheme = '3024';
 
   // Default fontSize
   panel.defaultFontSize = 12;
