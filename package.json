@@ -23,8 +23,9 @@
   "keywords": [
     "chrome",
     "devtools",
-    "editor",
-    "themes"
+    "devtools-themes",
+    "themes",
+    "editor"
   ],
   "engines": {
     "node": ">=0.10.0"
