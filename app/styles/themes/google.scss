@@ -1,0 +1,42 @@
+/* ==============================================
+   Google Theme
+   ============================================== */
+
+$dark-theme: false;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+$base00: #1D1F21;
+$base01: #282A2E;
+$base02: #373B41;
+$base03: #969896;
+$base04: #B4B7B4;
+$base05: #C5C8C6;
+$base06: #E0E0E0;
+$base07: #FFFFFF;
+$base08: #CC342B;
+$base09: #F96A38;
+$base0A: #FBA922;
+$base0B: #198844;
+$base0C: #3971ED;
+$base0D: #3971ED;
+$base0E: #A36AC7;
+$base0F: #3971ED;
+
+// Styles
+@include styles(
+$base07, // Background
+$base06, // Background - Highlight
+$base04, // Comments / Secondary Content
+$base01, // Body text / default code / primary content
+$base00, // Optional emphasized content
+$base0A, // CSS Properties
+$base09, // CSS3 pseudo-selectors / elements
+$base08, // CSS Keywords (!important, etc.)
+$base0D, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$base0B, // HTML/CSS/JS Strings
+$base0C, // CSS Tag Selectors / JS Operators (in Canary)
+$base0D  // Accent / Highlight
+);

@@ -1,0 +1,42 @@
+/* ==============================================
+   Mocha Theme
+   ============================================== */
+
+$dark-theme: true;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+$base00: #3B3228;
+$base01: #534636;
+$base02: #645240;
+$base03: #7E705A;
+$base04: #B8AFAD;
+$base05: #D0C8C6;
+$base06: #E9E1DD;
+$base07: #F5EEEB;
+$base08: #CB6077;
+$base09: #D28B71;
+$base0A: #F4BC87;
+$base0B: #BEB55B;
+$base0C: #7BBDA4;
+$base0D: #8AB3B5;
+$base0E: #A89BB9;
+$base0F: #BB9584;
+
+// Styles
+@include styles(
+$base00, // Background
+$base01, // Background - Highlight
+$base04, // Comments / Secondary Content
+$base06, // Body text / default code / primary content
+$base07, // Optional emphasized content
+$base0A, // CSS Properties
+$base09, // CSS3 pseudo-selectors / elements
+$base08, // CSS Keywords (!important, etc.)
+$base0E, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$base0B, // HTML/CSS/JS Strings
+$base0C, // CSS Tag Selectors / JS Operators (in Canary)
+$base0E  // Accent / Highlight
+);

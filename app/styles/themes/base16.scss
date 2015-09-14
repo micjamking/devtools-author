@@ -1,0 +1,42 @@
+/* ==============================================
+   Theme Name
+   ============================================== */
+
+$dark-theme: true;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+$base00: #151515; // darkest
+$base01: #202020;
+$base02: #303030;
+$base03: #505050;
+$base04: #b0b0b0;
+$base05: #d0d0d0;
+$base06: #e0e0e0;
+$base07: #f5f5f5; // brighest
+$base08: #ac4142; // red
+$base09: #d28445; // orange
+$base0A: #f4bf75; // yellow
+$base0B: #90a959; // green
+$base0C: #75b5aa; // aqua
+$base0D: #6a9fb5; // blue
+$base0E: #aa759f; // purple
+$base0F: #8f5536; // brown
+
+// Styles
+@include styles(
+$base00, // Background
+$base01, // Background - Highlight
+$base04, // Comments / Secondary Content
+$base06, // Body text / default code / primary content
+$base07, // Optional emphasized content
+$base0A, // CSS Properties
+$base09, // CSS3 pseudo-selectors / elements
+$base08, // CSS Keywords (!important, etc.)
+$base0E, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$base0B, // HTML/CSS/JS Strings
+$base0C, // CSS Tag Selectors / JS Operators (in Canary)
+$base0E  // Accent / Highlight
+);

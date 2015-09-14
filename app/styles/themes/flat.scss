@@ -1,0 +1,42 @@
+/* ==============================================
+   Flat Theme
+   ============================================== */
+
+$dark-theme: false;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+$base00: #2C3E50;
+$base01: #34495E;
+$base02: #7F8C8D;
+$base03: #95A5A6;
+$base04: #BDC3C7;
+$base05: #E0E0E0;
+$base06: #F5F5F5;
+$base07: #ECF0F1;
+$base08: #E74C3C;
+$base09: #E67E22;
+$base0A: #F1C40F;
+$base0B: #2ECC71;
+$base0C: #1ABC9C;
+$base0D: #3498DB;
+$base0E: #9B59B6;
+$base0F: #BE643C;
+
+// Styles
+@include styles(
+$base07, // Background
+$base06, // Background - Highlight
+$base04, // Comments / Secondary Content
+$base01, // Body text / default code / primary content
+$base00, // Optional emphasized content
+$base0A, // CSS Properties
+$base09, // CSS3 pseudo-selectors / elements
+$base08, // CSS Keywords (!important, etc.)
+$base0E, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$base0B, // HTML/CSS/JS Strings
+$base0C, // CSS Tag Selectors / JS Operators (in Canary)
+$base0E  // Accent / Highlight
+);
