@@ -1,11 +1,11 @@
 {
-   "name": "DevTools Themes",
-   "description": "Themes for Chrome Developer Tools.",
+   "name": "DevTools Author",
+   "description": "A simple set of editor settings for Chrome Developer Tools.",
    "permissions": [ "storage" ],
    "devtools_page": "devtools.html",
    "manifest_version": 2,
-   "version": "0.1.1",
+   "version": "0.1.5",
    "icons": { 
-      "128": "app/images/icon_128.png" 
+      "128": "dist/images/icon_128.png" 
     }
 }

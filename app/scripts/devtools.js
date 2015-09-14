@@ -67,7 +67,7 @@
 
     // Create Devtools panel
     panel.create(
-      'Theme',  // Panel title
+      'Author Settings',  // Panel title
       null,     // Panel icon
       pagePath, // Path of panel's HTML page
       null      // Callback
@@ -76,7 +76,7 @@
     // Get theme from Chrome storage
     storage.get('devtools-theme', function(object){
 
-      var theme = object['devtools-theme'] || 'solarized-dark';
+      var theme = object['devtools-theme'] || '3024';
 
       app.loadTheme({
         theme: stylesDir + 'themes/' + theme + '.css',
