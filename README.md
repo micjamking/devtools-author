@@ -3,6 +3,13 @@
 
 ![Devtools Author Logo](app/images/1400x560_marquee.png)
 
+## Features
+If you develop in the browser and/or use Chrome Developer Tools as your web authoring environment, this extension provides a small set of settings to enhance DevTools editing environment:
+
+- Choose from +25 editor themes (applies to `Sources` and `Console` panels only)
+- Supports custom editor fonts 'Hack', 'Source Code Pro', 'Droid Sans Mono' (must be installed prior on your computer)
+- Change font size from 10px - 16px
+
 ## Usage
 1. Install the [Chrome extension](https://chrome.google.com/webstore/detail/devtools-themes/egfhcfdfnajldliefpdoaojgahefjhhi)
 2. Enable Developer Tools experiments in `chrome://flags/#enable-devtools-experiments`.
