@@ -1,5 +1,5 @@
-# Devtools Themes
-*Themes for Chrome Developer Tools.*
+# DevTools Author
+*A simple set of editor settings for Chrome Developer Tools.*
 
 ## Install dependencies: 
 ```

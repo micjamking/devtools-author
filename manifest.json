@@ -1,6 +1,6 @@
 {
-   "name": "DevTools Themes",
-   "description": "Themes for Chrome Developer Tools.",
+   "name": "DevTools Author",
+   "description": "A simple set of editor settings for Chrome Developer Tools.",
    "permissions": [ "storage" ],
    "devtools_page": "devtools.html",
    "manifest_version": 2,
