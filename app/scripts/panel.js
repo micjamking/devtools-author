@@ -233,7 +233,7 @@
   ga('create', 'UA-67907671-1', 'auto');
   ga('set', 'checkProtocolTask', function(){}); // Removes failing protocol check. @see: http://stackoverflow.com/a/22152353/1958200
   ga('require', 'displayfeatures');
-  ga('send', 'pageview', '/options.html');
+  ga('send', 'pageview', '/dist/panel.html');
 })(
 document.querySelectorAll.bind(document),
 chrome.storage.sync
