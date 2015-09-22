@@ -96,7 +96,11 @@ module.exports = function(grunt) {
         reporter: require('jshint-stylish'),
         jshintrc: '.jshintrc',
       },
-      all: [ 'Gruntfile.js', '<%= devtools.app %>/scripts/{,*/}*.js' ]
+      all: [
+        'Gruntfile.js',
+        '<%= devtools.app %>/scripts/{,*/}*.js',
+        '!<%= devtools.app %>/scripts/ga.js'
+      ]
     },
 
     // Copies remaining files

@@ -7,5 +7,6 @@
    "version": "0.2.0",
    "icons": { 
       "128": "dist/images/icon_128.png" 
-    }
+    },
+    "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"
 }
