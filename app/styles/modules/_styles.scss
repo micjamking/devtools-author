@@ -218,7 +218,7 @@ $accent                 // Accent / Highlight
     .cm-xml-comment,
     .cm-js-comment,
     .cm-css-comment,
-    .cm-comment,
+    .cm-s-default .cm-comment,
     .CodeMirror-linenumber,
     .split-view-main.split-view-contents-second pre {
       color: $comments;
@@ -229,7 +229,9 @@ $accent                 // Accent / Highlight
     }
 
     // CSS Properties
-    .cm-css-property {
+    .cm-css-property,
+    .cm-s-default .cm-keyword,
+    .cm-s-default .cm-builtin {
       color: $property;
     }
 
@@ -237,19 +239,19 @@ $accent                 // Accent / Highlight
     .cm-css-def,
     .cm-css-tag,
     .cm-js-operator,
-    .cm-property {
+    .cm-s-default .cm-property {
       color: $operators;
     }
 
     // Body Text
     .cm-xml-attribute,
     .cm-css-variable-2,
-    .cm-js-def,
     .cm-js-variable,
     .cm-js-variable-2,
-    .cm-def,
-    .cm-variable,
-    .cm-variable-2,
+    .cm-s-default .cm-def,
+    .cm-s-default .cm-variable,
+    .cm-s-default .cm-variable-2,
+    .cm-s-default .cm-meta,
     .CodeMirror pre,
     .CodeMirror .CodeMirror-matchingbracket {
       color: $body-text !important;
@@ -263,11 +265,10 @@ $accent                 // Accent / Highlight
     .cm-css-string,
     .cm-js-string-2,
     .cm-js-string,
-    .cm-js-atom,
+    .cm-js-def,
     .cm-string,
-    .cm-atom,
-    .cm-string,
-    .cm-string-2,
+    .cm-s-default .cm-string,
+    .cm-s-default .cm-string-2,
     .object-value-number, 
     .object-value-boolean,
     .object-value-string,
@@ -279,7 +280,9 @@ $accent                 // Accent / Highlight
     // Numbers
     .cm-css-number,
     .cm-js-number,
-    .cm-number {
+    .cm-s-default .cm-number,
+    .cm-js-atom,
+    .cm-s-default .cm-atom {
       color: $strings;
     }
 
@@ -289,7 +292,6 @@ $accent                 // Accent / Highlight
     .cm-css-qualifier,
     .cm-css-variable,
     .cm-js-keyword,
-    .cm-keyword,
     .object-value-null,
     .object-value-undefined {
       color: $selectors;
@@ -301,8 +303,9 @@ $accent                 // Accent / Highlight
     }
 
     // CSS Pseudo Element/Selectors
-    .cm-css-variable-3 {
-      color: $pseudo;
+    .cm-css-variable-3,
+    .cm-s-default .cm-variable-2 {
+      color: $pseudo !important;
     }
 
     // UI - Pane tabs
