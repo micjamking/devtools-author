@@ -1,0 +1,42 @@
+/* ==============================================
+   Railscast Theme
+   ============================================== */
+
+$dark-theme: true;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+$base00: #2B2B2B;
+$base01: #272935;
+$base02: #3A4055;
+$base03: #5A647E;
+$base04: #D4CFC9;
+$base05: #E6E1DC;
+$base06: #F4F1ED;
+$base07: #F9F7F3;
+$base08: #DA4939;
+$base09: #CC7833;
+$base0A: #FFC66D;
+$base0B: #A5C261;
+$base0C: #519F50;
+$base0D: #6D9CBE;
+$base0E: #B6B3EB;
+$base0F: #BC9458;
+
+// Styles
+@include styles(
+$base00, // Background
+$base01, // Background - Highlight
+$base04, // Comments / Secondary Content
+$base06, // Body text / default code / primary content
+$base07, // Optional emphasized content
+$base0A, // CSS Properties
+$base09, // CSS3 pseudo-selectors / elements
+$base08, // CSS Keywords (!important, etc.)
+$base0E, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$base0B, // HTML/CSS/JS Strings
+$base0C, // CSS Tag Selectors / JS Operators (in Canary)
+$base0E  // Accent / Highlight
+);

@@ -10,66 +10,49 @@
   // Number input
   var $number = $('input[type=number]')[0];
 
+  // Palette container
+  var $palette = $('.palette')[0];
+  
+  // Theme title
+  var $themeTitle = $('#currentTheme')[0];
+
+  // Theme JSON file
+  panel.themeJSON = '/dist/scripts/themes.json';
+
   // Current theme
   panel.currentTheme = '';
 
   // Default theme
-  panel.defaultTheme = 'Solarized Dark';
+  panel.defaultTheme = '3024';
 
   // Default fontSize
   panel.defaultFontSize = 12;
 
-  // Available themes
-  panel.themes = [
-    {
-      'name': '3024',
-      'colors': ['#F7F7F7', '#F0F0F0', '#807d7c', '#4a4543', '#a16a94', '#ed0c8c', '#01a252', '#db2d20', '#cdab53']
-    },
-    {
-      'name': 'Arstotzka',
-      'colors': []
-    },
-    {
-      'name': 'Azure',
-      'colors': []
-    },
-    {
-      'name': 'Bongzilla',
-      'colors': ['#1F1F1F', '#262626', '#AEAEAE', '#F8F8F8', '#8DA6CE', '#FF593E', '#FF6400', '#7F90AA', '#78CE91', '#FFCC66']
-    },
-    {
-      'name': 'Clouds',
-      'colors': []
-    },
-    {
-      'name': 'Coda',
-      'colors': []
-    },
-    {
-      'name': 'CSSedit',
-      'colors': []
-    },
-    {
-      'name': 'GitHub',
-      'colors': []
-    },
-    {
-      'name': 'Monokai',
-      'colors': []
-    },
-    {
-      'name': 'Nodejs',
-      'colors': []
-    },
-    {
-      'name': 'Solarized Dark',
-      'colors': []
-    },
-    {
-      'name': 'Solarized Light',
-      'colors': []
+  function themeLookUp(theme){
+    for (var i = 0; i < panel.themes.length; i++){
+      if (panel.themes[i].name === theme) {
+        return panel.themes[i].colors;
+      }
     }
-  ];
+  }
+
+  function createLI(palette){
+    palette = palette.filter(function(item, pos, self) {
+      return self.indexOf(item) === pos;
+    });
+    
+    for (var i = 0; i < palette.length; i++){
+      // Create the list item:
+      var item = document.createElement('li');
+      
+      // Style item
+      item.style.backgroundColor = palette[i];
+      item.style.width = (100 / palette.length) + '%';
+
+      // Add it to the list:
+      $palette.appendChild(item);
+    }
+  }
 
   // Build select menus like ngOptions
   function _buildSelectMenu(menu, object){
@@ -111,6 +94,7 @@
       function(){ panel.currentTheme = theme.text; });
     }
     if (event && event.type === 'change'){
+      $themeTitle.style.display = 'none';
       var el     = event.target || event.srcElement;
       var option = el.options[el.selectedIndex];
       save(option);
@@ -137,9 +121,24 @@
 
   // Object observer for current theme
   function observer(changes){
+    function updatePalette(theme){
+      var children = $palette.querySelectorAll('li');
+      
+      // Remove children from $palette
+      if (children.length){
+        for (var i = 0; i < children.length; i++){
+          $palette.removeChild(children[i]);
+        }
+      }
+
+      createLI(themeLookUp(theme));
+    }
+
     changes.forEach(function(change){
       if (change.name === 'currentTheme') {
-        $('#currentTheme')[0].innerHTML = change.object.currentTheme;
+        $themeTitle.innerHTML = change.object.currentTheme;
+        $themeTitle.style.display = 'block';
+        updatePalette(change.object.currentTheme);
       } else if (change.name === 'currentFontSize') {
         $number.value = change.object.currentFontSize;
       }
@@ -174,30 +173,55 @@
 
   // Initialize theme panel
   function init(){
-    // Listen for changes to the select menu
-    $select.addEventListener('change', setTheme);
-    
-    // Listen for changes to the select menu
-    $number.addEventListener('change', setFontSize);
 
-    // Observe changes to panel model
-    Object.observe(panel, observer, ['add', 'update']);
+    function callback(){
+      // Listen for changes to the select menu
+      $select.addEventListener('change', setTheme);
 
-    // Get current theme from Chrome sync
-    storage.get('devtools-theme', function(object){
+      // Listen for changes to the select menu
+      $number.addEventListener('change', setFontSize);
 
-      panel.currentTheme = getTheme(panel.themes, object['devtools-theme']);
+      // Observe changes to panel model
+      Object.observe(panel, observer, ['add', 'update']);
 
-      // Build select menus
-      _buildSelectMenu($select, panel);
-    });
+      // Get current theme from Chrome sync
+      storage.get('devtools-theme', function(object){
 
-    // Get current fontSize from Chrome sync
-    storage.get('devtools-fontSize', function(object){
-      panel.currentFontSize = getFontSize(object['devtools-fontSize']);
-    });
+        panel.currentTheme = getTheme(panel.themes, object['devtools-theme']);
+
+        // Build select menus
+        _buildSelectMenu($select, panel);
+      });
+
+      // Get current fontSize from Chrome sync
+      storage.get('devtools-fontSize', function(object){
+        panel.currentFontSize = getFontSize(object['devtools-fontSize']);
+      });
+    }
+
+    var ajax = new XMLHttpRequest();
+    ajax.open('GET', panel.themeJSON);
+    ajax.send(null);
+    ajax.onreadystatechange = function(){
+      if (ajax.readyState === 4) {
+        if (ajax.status === 200) {
+          panel.themes = JSON.parse(ajax.responseText);
+
+          panel.themes.sort(function(a, b){
+            if(a.name < b.name) { return -1; }
+            if(a.name > b.name) { return 1; }
+            return 0;
+          });
+          
+          callback();
+        } else {
+          console.log('Status Code: ' + ajax.status + '\nThere was an error with your request');
+        }
+      }
+    };
   }
   
+  // Kickstart panel
   init();
 })(
 document.querySelectorAll.bind(document),

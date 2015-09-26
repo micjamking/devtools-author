@@ -1,0 +1,45 @@
+/* ==============================================
+   Codeschool Theme
+   ============================================== */
+
+$dark-theme: true;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+$base00: #232C31;
+$base01: #1C3657;
+$base02: #2A343A;
+$base03: #3F4944;
+$base04: #84898C;
+$base05: #9EA7A6;
+$base06: #A7CFA3;
+$base07: #B5D8F6;
+$base08: #2A5491;
+$base09: #43820D;
+$base0A: #A03B1E;
+$base0B: #237986;
+$base0C: #B02F30;
+$base0D: #484D79;
+$base0E: #C59820;
+$base0F: #C98344;
+
+// Overrides
+$base01: darken($base00, 3.5%);
+
+// Styles
+@include styles(
+$base00, // Background
+$base01, // Background - Highlight
+$base04, // Comments / Secondary Content
+$base06, // Body text / default code / primary content
+$base07, // Optional emphasized content
+$base0A, // CSS Properties
+$base09, // CSS3 pseudo-selectors / elements
+$base08, // CSS Keywords (!important, etc.)
+$base0D, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$base0B, // HTML/CSS/JS Strings
+$base0C, // CSS Tag Selectors / JS Operators (in Canary)
+$base0E  // Accent / Highlight
+);

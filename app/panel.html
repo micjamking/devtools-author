@@ -2,12 +2,16 @@
 <html>
 <head>
   <link rel="stylesheet" href="styles/panel.css" />
+  <script src="scripts/ga.js"></script>
 </head>
 <body>
   <div class="alert">Reload DevTools to apply your changes!</div>
   <div class="container">
       <h4><small>Current Theme:</small></h4>
-      <h1 id="currentTheme"></h1>
+      <header class="title">
+        <h1 id="currentTheme"></h1>
+      </header>
+      <ul class="palette"></ul>
       <select data-options="theme in themes"></select>
       
       <div class="font-size">
@@ -17,7 +21,7 @@
   </div>
   
   <div class="footer">
-    Mahalo from <a href="https://github.com/micjamking">Mike King</a>
+    Mahalo from <a target="_blank" href="https://github.com/micjamking">Mike King</a>
   </div>
 
   <script src="scripts/panel.js"></script>
