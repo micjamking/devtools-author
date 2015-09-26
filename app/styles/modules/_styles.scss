@@ -218,6 +218,7 @@ $accent                 // Accent / Highlight
     .cm-xml-comment,
     .cm-js-comment,
     .cm-css-comment,
+    .cm-comment,
     .CodeMirror-linenumber,
     .split-view-main.split-view-contents-second pre {
       color: $comments;
@@ -235,7 +236,8 @@ $accent                 // Accent / Highlight
     // CSS Tags / JS Operators
     .cm-css-def,
     .cm-css-tag,
-    .cm-js-operator {
+    .cm-js-operator,
+    .cm-property {
       color: $operators;
     }
 
@@ -243,9 +245,11 @@ $accent                 // Accent / Highlight
     .cm-xml-attribute,
     .cm-css-variable-2,
     .cm-js-def,
-    .cm-js-property,
     .cm-js-variable,
     .cm-js-variable-2,
+    .cm-def,
+    .cm-variable,
+    .cm-variable-2,
     .CodeMirror pre,
     .CodeMirror .CodeMirror-matchingbracket {
       color: $body-text !important;
@@ -259,8 +263,11 @@ $accent                 // Accent / Highlight
     .cm-css-string,
     .cm-js-string-2,
     .cm-js-string,
-    .cm-js-number,
     .cm-js-atom,
+    .cm-string,
+    .cm-atom,
+    .cm-string,
+    .cm-string-2,
     .object-value-number, 
     .object-value-boolean,
     .object-value-string,
@@ -271,7 +278,8 @@ $accent                 // Accent / Highlight
 
     // Numbers
     .cm-css-number,
-    .cm-js-number {
+    .cm-js-number,
+    .cm-number {
       color: $strings;
     }
 
@@ -281,6 +289,7 @@ $accent                 // Accent / Highlight
     .cm-css-qualifier,
     .cm-css-variable,
     .cm-js-keyword,
+    .cm-keyword,
     .object-value-null,
     .object-value-undefined {
       color: $selectors;
