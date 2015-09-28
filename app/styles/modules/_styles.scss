@@ -43,6 +43,10 @@ $accent                 // Accent / Highlight
     #console-messages {
       background-color: $background !important;
 
+      .cm-line-without-source-mapping {
+        background-color: $background !important;
+      }
+
       .sources-editor-tabstrip-left {
         width: 25px;
       }

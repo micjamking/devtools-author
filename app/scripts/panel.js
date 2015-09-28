@@ -186,7 +186,7 @@
       // Listen for changes to the select menu
       $number.addEventListener('change', setFontSize);
       
-      // Listen for cl
+      // Listen for click on element
       $('.footer a')[0].addEventListener('click', trackMe);
 
       // Observe changes to panel model
