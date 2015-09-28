@@ -1,4 +1,4 @@
-(function($, storage){
+(function($, storage, ga){
   'use strict';
 
   // Panel model
@@ -162,6 +162,7 @@
         value: panel.defaultTheme.replace(/\s+/g, '-').toLowerCase(),
         text: panel.defaultTheme
       });
+      ga('send', 'event', 'Install', 'Install', 'Devtools Author', 1);
       return panel.defaultTheme;
     }
     for (var i = 0; i < array.length; i++){
@@ -169,6 +170,10 @@
         return array[i].name;
       }
     }
+  }
+
+  function trackMe(){
+    ga('send', 'event', 'Link', 'Click', 'Mike King on GitHub');
   }
 
   // Initialize theme panel
@@ -180,6 +185,9 @@
 
       // Listen for changes to the select menu
       $number.addEventListener('change', setFontSize);
+      
+      // Listen for click on element
+      $('.footer a')[0].addEventListener('click', trackMe);
 
       // Observe changes to panel model
       Object.observe(panel, observer, ['add', 'update']);
@@ -225,5 +233,6 @@
   init();
 })(
 document.querySelectorAll.bind(document),
-chrome.storage.sync
+chrome.storage.sync,
+window.ga
 );
