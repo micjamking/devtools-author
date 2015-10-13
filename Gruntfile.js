@@ -5,67 +5,69 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
 
     grunt.initConfig({
-      // CSS | Process SCSS files
-      sass: {
-        options: {
-          sourceMap: true,
-          outputStyle: 'expanded'
-        },
-        dist: {
-          files: [{
-            expand: true,
-            cwd: 'scss/',
-            src: ['{,*/}*.scss'],
-            dest: './',
-            ext: '.css'
-          }]
-        }
-      },
-
-      // Add vendor prefixes
+      
+      /* 
+       * PostCSS: CSS Transformer via JS plugins
+       * https://github.com/postcss/postcss
+       */
       postcss: {
         options: {
           map: {
               inline: false,
               annotation: './'
           },
+          
+          /* 
+           * PostCSS SCSS: SCSS parser for PostCSS
+           * https://github.com/postcss/postcss-scss
+           */
+          parser: require('postcss-scss'),
           processors: [
-            require('autoprefixer-core')({browsers: ['last 2 versions']})
+            
+            /* 
+             * PreCSS: Sass-like markup
+             * https://github.com/jonathantneal/precss
+             */
+            require('precss'),
+            
+            /* 
+             * Autoprefixer: Add vendor prefixes using caniuse.com
+             * https://github.com/postcss/autoprefixer
+             */
+            require('autoprefixer-core')({
+                browsers: ['last 2 versions']
+            }),
+            
+            /* 
+             * CSS Nano: Modular minifier
+             * https://github.com/ben-eb/cssnano
+             */
+            require('cssnano'),
+            
+            /* 
+             * Style Guide: Generate a style guide automatically
+             * https://github.com/morishitter/postcss-style-guide
+             */
+            require('postcss-style-guide')({
+                name: 'DevTools Author',
+                dir: 'docs/css'
+            })
           ]
         },
         dist: {
           files: [{
               expand: true,
               cwd: './',
-              src: '{,*/}*.css',
+              src: './scss/{,*/}*.scss',
               dest: './'
           }]
         }
       },
 
-      // Minify CSS
-      cssmin: {
-        options: {
-          sourceMap: true
-        },
-        target: {
-          files: {
-            './style.css': './style.css'
-          }
-        }
-      },
-
-      // JS | Concat js files
-      concat: {
-        dist: {
-          src: [
-                './js/app.js'
-               ],
-          dest: './script.js',
-        },
-      },
-
-      // Check js files for errors
+      /*
+       * JSHint: Validate JavaScript files
+       * https://github.com/gruntjs/grunt-contrib-jshint
+       */
       jshint: {
           options: {
             node: true,
@@ -97,7 +99,36 @@ module.exports = function (grunt) {
           ]
       },
 
-      // Minify js files
+      /*
+       * JSDoc: Generate JS documentation
+       * https://github.com/gruntjs/grunt-contrib-concat
+       */
+      jsdoc : {
+        options: {
+          destination: 'docs/js'
+        },
+        dist : {
+          src: './js/**/*.js'
+        }
+      },
+
+      /*
+       * Concat: Concatenate JS files
+       * https://github.com/gruntjs/grunt-contrib-concat
+       */
+      concat: {
+        dist: {
+          src: [
+            './js/app.js'
+          ],
+          dest: './script.js',
+        },
+      },
+
+      /*
+       * Uglify: Minify JS files
+       * https://github.com/gruntjs/grunt-contrib-uglify
+       */
       uglify: {
         options: {
           preserveComments: false,
@@ -110,7 +141,10 @@ module.exports = function (grunt) {
         }
       },
 
-      // Watch files for changes
+      /*
+       * Watch: Run tasks whenever watched files change
+       * https://github.com/gruntjs/grunt-contrib-watch
+       */
       watch: {
         options: {
           livereload: 35729
@@ -120,7 +154,7 @@ module.exports = function (grunt) {
         },
         sass: {
           files: './scss/**/*.scss',
-          tasks: ['sass', 'postcss']
+          tasks: ['postcss']
         },
         scripts: {
           files: './js/app.js',
@@ -137,25 +171,16 @@ module.exports = function (grunt) {
     // Development
     grunt.registerTask('serve', [
         'jshint',
-        'sass',
-        'postcss',
         'concat',
+        'postcss',
         'watch'
     ]);
 
-    // Build
-    grunt.registerTask('build', [
+    // Default: Production build
+    grunt.registerTask('default', [
         'jshint',
-        'sass',
         'postcss',
-        'cssmin',
         'concat',
         'uglify'
     ]);
-
-    // Default
-    grunt.registerTask('default', [
-        'build',
-    ]);
-
 };
