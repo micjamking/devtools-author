@@ -49,6 +49,7 @@ module.exports = function (grunt) {
              * https://github.com/morishitter/postcss-style-guide
              */
             require('postcss-style-guide')({
+                theme: 'material-design',
                 name: 'DevTools Author',
                 dir: 'docs/css'
             })
