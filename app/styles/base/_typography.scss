@@ -12,7 +12,7 @@ body.platform-mac ::shadow {
     line-height: 1.6em !important;
     font-family: $mac-fonts !important;
     
-    // Apply antialiased setting for dark themes
+    // Apply antialiased setting for dark themes only
     // http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
     @if $dark-theme == true {
       -webkit-font-smoothing: antialiased;
