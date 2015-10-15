@@ -16,52 +16,67 @@ module.exports = function (grunt) {
               inline: false,
               annotation: './'
           },
-          
-          /* 
-           * PostCSS SCSS: SCSS parser for PostCSS
-           * https://github.com/postcss/postcss-scss
-           */
-          parser: require('postcss-scss'),
-          processors: [
-            
-            /* 
-             * PreCSS: Sass-like markup
-             * https://github.com/jonathantneal/precss
-             */
-            require('precss'),
-            
-            /* 
-             * Autoprefixer: Add vendor prefixes using caniuse.com
-             * https://github.com/postcss/autoprefixer
-             */
-            require('autoprefixer-core')({
-                browsers: ['last 2 versions']
-            }),
-            
-            /* 
-             * CSS Nano: Modular minifier
-             * https://github.com/ben-eb/cssnano
-             */
-            require('cssnano'),
-            
-            /* 
-             * Style Guide: Generate a style guide automatically
-             * https://github.com/morishitter/postcss-style-guide
-             */
-            require('postcss-style-guide')({
-                theme: 'default',
-                name: 'DevTools Author',
-                dir: 'docs/css'
-            })
-          ]
+          parser: require('postcss-scss')
+        },
+        serve: {
+            options: {
+              processors: [
+
+                /* 
+                 * PreCSS: Sass-like markup
+                 * https://github.com/jonathantneal/precss
+                 */
+                require('precss'),
+
+                /* 
+                 * Autoprefixer: Add vendor prefixes using caniuse.com
+                 * https://github.com/postcss/autoprefixer
+                 */
+                require('autoprefixer')({
+                    browsers: ['last 2 versions']
+                }),
+
+                /* 
+                 * Style Guide: Generate a style guide automatically
+                 * https://github.com/morishitter/postcss-style-guide
+                 */
+                require('postcss-style-guide')({
+                    name: 'DevTools Author',
+                    dir: 'docs/css'
+                })
+              ]
+            },
+          src: 'scss/style.scss',
+          dest: './style.css'
         },
         dist: {
-          files: [{
-              expand: true,
-              cwd: './',
-              src: './scss/{,*/}*.scss',
-              dest: './'
-          }]
+            options: {
+              processors: [
+
+                /* 
+                 * PreCSS: Sass-like markup
+                 * https://github.com/jonathantneal/precss
+                 */
+                require('precss'),
+
+                /* 
+                 * CSS Nano: Modular minifier
+                 * https://github.com/ben-eb/cssnano
+                 */
+                require('cssnano'),
+
+                /* 
+                 * Style Guide: Generate a style guide automatically
+                 * https://github.com/morishitter/postcss-style-guide
+                 */
+                require('postcss-style-guide')({
+                    name: 'DevTools Author',
+                    dir: 'docs/css'
+                })
+              ]
+            },
+          src: 'scss/style.scss',
+          dest: './style.css'
         }
       },
 
@@ -155,7 +170,7 @@ module.exports = function (grunt) {
         },
         sass: {
           files: './scss/**/*.scss',
-          tasks: ['postcss']
+          tasks: ['postcss:serve']
         },
         scripts: {
           files: './js/app.js',
@@ -173,15 +188,15 @@ module.exports = function (grunt) {
     grunt.registerTask('serve', [
         'jshint',
         'concat',
-        'postcss',
+        'postcss:serve',
         'watch'
     ]);
 
     // Default: Production build
     grunt.registerTask('default', [
         'jshint',
-        'postcss',
         'concat',
-        'uglify'
+        'uglify',
+        'postcss:dist'
     ]);
 };

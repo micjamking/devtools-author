@@ -1,0 +1,1 @@
+{"version":3,"sources":["scss/style.scss"],"names":[],"mappings":"AAAA;EAGE,UAAU;EACV,WAAW;EACX,uBAAuB;CACxB;;AAED;EACE,mBAAmB;CACpB","file":"style.css","sourcesContent":["*,\n*::after,\n*::before {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nbody {\n  background: orange;\n}"]}
