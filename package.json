@@ -1,7 +1,7 @@
 {
   "name": "Devtools-Author",
   "version": "0.3.1",
-  "description": "A simple set of editor settings for Chrome Developer Tools.",
+  "description": "A simple set of author settings for Chrome Developer Tools.",
   "homepage": "https://github.com/micjamking/devtools-author",
   "license": "MIT",
   "author": {
@@ -25,6 +25,7 @@
     "devtools",
     "devtools-themes",
     "themes",
+    "author",
     "editor"
   ],
   "engines": {

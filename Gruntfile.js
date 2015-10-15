@@ -143,7 +143,11 @@ module.exports = function(grunt) {
     },
 
     zip: {
-      'dist.zip': ['<%= devtools.dist %>/**/*', 'devtools.html', 'manifest.json']
+      'dist.zip': {
+        src: ['<%= devtools.dist %>/**/*', 'devtools.html', 'manifest.json'],
+        dest: 'dist.zip',
+        compression: 'DEFLATE'
+      }
     }
   });
 
