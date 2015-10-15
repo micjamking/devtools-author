@@ -123,6 +123,7 @@ module.exports = function(grunt) {
         dest: '<%= devtools.dist %>/images',
         src: [
           '{,*/}*.png',
+          '!screenshots/{,*/}*.png',
           '!440x280_small-tile.png',
           '!920x680_large-tile.png',
           '!1400x560_marquee.png',
