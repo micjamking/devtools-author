@@ -42,7 +42,7 @@ $ grunt serve
 2. Add color values for the palette based on the code syntax highlighter variables in your scss file.
 3. Add your color palette object (name and colors array) to the `themes.json` in `app/scripts/`
 4. In DevTools, select your theme palette in the *Author Settings* panel.
-5. Preview and adjust your colors as needed. See [**Development - Step 2**](#develoment).
+5. Preview and adjust your colors as needed. See [**Development - Step 2**](#development).
 6. Commit and push your changes to your repo, then create a [pull request](../../compare) for your new theme once it is ready!
 
 ## License
