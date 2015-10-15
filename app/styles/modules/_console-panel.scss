@@ -27,31 +27,4 @@
   .console-error-level ::shadow .stack-preview-container {
     color: #FF0033 !important;
   }
-
-/*.console-message-wrapper.console-error-level,
-  .console-message-wrapper.console-warning-level {
-      border-top: 0 none;
-      border-bottom: 0 none;
-      margin-top: 0;
-      background: 0 none;
-  }
-
-  .console-warning-level .console-message-text {
-      color: hsl(39, 100%, 18%) !important;
-  }
-
-  .console-error-level {
-    .console-message-text,
-    .console-view-object-properties-section {
-      color: #FF0033 !important;
-    }
-    
-    ::shadow .stack-preview-container {
-       color: #FF0033 !important;
-    }
-  }
-
-  .console-debug-level .console-message-text {
-      color: blue;
-  } */
 }
