@@ -5,10 +5,13 @@
   var panel = panel || {};
 
   // Select menu
-  var $select = $('[data-options]')[0];
+  var $select = $('#theme-options')[0];
 
-  // Number input
-  var $number = $('input[type=number]')[0];
+  // Font size range input
+  var $range = $('#font-size-input')[0];
+
+  // Font size output
+  var $output = $('#font-size-output')[0];
 
   // Palette container
   var $palette = $('.palette')[0];
@@ -26,7 +29,7 @@
   panel.defaultTheme = '3024';
 
   // Default fontSize
-  panel.defaultFontSize = 12;
+  panel.defaultFontSize = 14;
 
   function themeLookUp(theme){
     for (var i = 0; i < panel.themes.length; i++){
@@ -140,7 +143,7 @@
         $themeTitle.style.display = 'block';
         updatePalette(change.object.currentTheme);
       } else if (change.name === 'currentFontSize') {
-        $number.value = change.object.currentFontSize;
+        $range.value = $output.value = change.object.currentFontSize;
       }
     });
   }
@@ -184,7 +187,7 @@
       $select.addEventListener('change', setTheme);
 
       // Listen for changes to the select menu
-      $number.addEventListener('change', setFontSize);
+      $range.addEventListener('change', setFontSize);
       
       // Listen for click on element
       $('.footer a')[0].addEventListener('click', trackMe);
