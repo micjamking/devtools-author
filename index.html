@@ -8,35 +8,104 @@
 
   <!-- Search -->
   <meta name="author" content="Mike King" />
-  <meta name="description" content="DevTools Author is a Hawaii-based interaction designer specializing in digital product design and full-stack javascript web development." />
-  <meta name="keywords" content="Mike King, personal website, interaction designer, css, javascript" />
+  <meta name="description" content="DevTools Author is a Google Chrome extension which provides a simple set of editor settings for Chrome Developer Tools." />
+  <meta name="keywords" content="Mike King, devtools author, chrome devtools, devtools, devtools themes, devtools fonts, custom themes, custom fonts, frontend development" />
 
-  <!-- Open Graph -->
+  <!-- Open Graph (Facebook) -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="//mikeking.io" />
-  <meta property="og:title" content="Mike King, Interaction Designer" />
-  <meta property="og:site_name" content="Mike King | Interaction Designer" />
-  <meta property="og:description" content="Aloha! I am a Hawaii-based interaction designer specializing in digital product design and full-stack javascript web development. I am passionate about crafting great digital experiences." />
-  <meta property="og:image" content="//s.gravatar.com/avatar/8365fc33c74cfba5994786d954b29f90?s=240" />
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="240">
-  <meta property="og:image:height" content="240">
+  <meta property="og:url" content="//mikeking.io/devtools-author" />
+  <meta property="og:title" content="DevTools Author, a simple set of editor settings for Chrome Developer Tools" />
+  <meta property="og:site_name" content="DevTools Author | A simple set of editor settings for Chrome Developer Tools" />
+  <meta property="og:description" content="DevTools Author is a Google Chrome extension which provides a simple set of editor settings for Chrome Developer Tools." />
+  <meta property="og:image" content="//mikeking.io/devtools-author/images/icon_512.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@micjamking">
-  <meta name="twitter:title" content="Mike King, Interaction Designer">
-  <meta name="twitter:description" content="Aloha! I am a Hawaii-based interaction designer specializing in digital product design and full-stack javascript web development. I am passionate about crafting great digital experiences.">
+  <meta name="twitter:title" content="DevTools Author | A simple set of editor settings for Chrome Developer Tools">
+  <meta name="twitter:description" content="DevTools Author is a Google Chrome extension which provides a simple set of editor settings for Chrome Developer Tools.">
   <meta name="twitter:creator" content="@micjamking">
 
-  <!-- Links -->
+  <!-- Stylesheet + Links -->
   <link rel="author" href="//plus.google.com/112398162809101288990/posts" />
   <link rel="publisher" href="//plus.google.com/112398162809101288990/about" />
   <link rel="stylesheet" href="style.css" />
 
-  <title>DevTools Author</title>
+  <title>DevTools Author | A simple set of editor settings for Chrome Developer Tools</title>
 </head>
 <body>
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="container">
+      <img src="images/icon_512.png" class="logo" alt="logo" />
+      <h1 class="sitename">Devtools Author</h1>
+    </div>
+  </header>
+
+  <!-- Main Intro -->
+  <section id="intro" class="main-intro">
+    <div class="container">
+      <h2>A simple set of author settings for Chrome Developer Tools.</h2>
+      <p>If you use DevTools as your frontend development environment, <em>DevTools Author</em> provides a small set of options to enhance your authoring experience.</p>
+      <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="button cta" title="Add DevTools Author to Chrome">Add DevTools Author to Chrome</a>
+      <span class="link-to-github">or <a href="https://github.com/micjamking/devtools-author" class="link" title="View DevTools Author on GitHub">View on GitHub</a></span>
+    </div>
+  </section>
+
+  <!-- Feature Section -->
+  <section id="features" class="feature-section">
+    <div class="container">
+      <h3>Enhance Your Authoring Experience</h3>
+      <div class="callout themes">
+        <h4>+25 Editor Themes</h4>
+      </div>
+      <div class="callout font-family">
+        <h4>*Custom Font Support</h4>
+      </div>
+      <div class="callout font-size">
+        <h4>Font Size Adjustments</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Usage Section -->
+  <section id="usage" class="usage-section">
+    <div class="container">
+      <h3>Installation &amp; Usage</h3>
+      <pre>
+        <ol>
+          <li>1. Install the <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="link" title="DevTools Author Chrome Extension">DevTools Author Chrome Extension</a></li>
+          <li>2. Enable DevTools experiments in <a href="chrome://flags/#enable-devtools-experiments" class="link internal" title="Enable DevTools Experiments in Chrome Flags">chrome://flags/#enable-devtools-experiments</a></li>
+          <li>3. Open DevTools (<span class="keyword">cmd</span> + <span class="keyword">opt</span> + <span class="keyword">I</span>); Settings > Experiments > check <span class="option"><strong>Allow custom UI Themes</strong></span>.</li>
+        </ol>
+        <p class="comment">/* After restarting DevTools, you should see the default theme 3024 take affect within the Sources and Console panels. */</p>
+        <p class="comment">/* DevTools Author currently supports custom monospace fonts <a href="http://sourcefoundry.org/hack/" class="keyword" title="Hack font">Hack</a>, <a href="http://adobe-fonts.github.io/source-code-pro/" class="keyword" title="Source Code Pro Font">Source Code Pro</a>, and <a href="https://www.google.com/fonts/specimen/Droid+Sans+Mono" class="keyword" title="Droid Sans Mono Font">Droid Sans Mono</a>. (Must be installed on your computer).*/</p>
+      </pre>
+    </div>
+  </section>
+
+  <!-- faq Section -->
+  <section id="faq" class="faq-section">
+    <div class="container">
+      <h3>FAQ</h3>
+      <dl>
+        <dt>...sounds cool, but can DevTools really replace <span class="fake-element">< insert editor here ></span>?</dt>
+        <dd>Pretty much!</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <p>&copy; <span class="currentYear"><span> | Made with <span class="keyword"><3</span> and Aloha by <a href="//mikeking.io" title="Mike King">Mike King</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
