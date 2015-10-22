@@ -8,7 +8,7 @@ module.exports = function (grunt) {
       
       /* 
        * PostCSS: CSS Transformer via JS plugins
-       * https://github.com/postcss/postcss
+       * https://github.com/nDmitry/grunt-postcss
        */
       postcss: {
         options: {
