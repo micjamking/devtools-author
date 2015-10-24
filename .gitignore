@@ -15,3 +15,7 @@ node_modules
 .tmp
 .sass-cache
 vendor
+
+# Project
+dist/
+*.zip
