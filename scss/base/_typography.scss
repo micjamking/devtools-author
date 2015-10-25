@@ -20,6 +20,7 @@ h3,
 h4, {
 /*   font-family: $sans-serif; */
   font-weight: 300;
+  margin: 0 0 1em;
 }
 
 h1 {
@@ -39,16 +40,21 @@ h4 {
 }
 
 /**
- * @section Inline
+ * @section Margins
  */
-p {
+ul, ol, p {
   margin: 0 0 1em;
 }
+
+/**
+ * @section Inline
+ */
 
 a {
   text-decoration: none;
   word-wrap: break-word;
   color: $pablo;
+  transition: all 0.25s ease;
   
   &:link {
     color: $pablo;
@@ -68,6 +74,6 @@ a {
 }
 
 pre {
-  font-family: 'Hack', 'Source Code Pro', 'Droid Sans Mono', monospace;
+  font-family: $monospace;
   white-space: normal;
 }

@@ -1,0 +1,85 @@
+.usage-section {
+  
+  .installation {
+    width: em-calc(660px);
+    margin: 0 auto;
+    background-color: $blackhunt;
+    font-size: type-scale(-1);
+    padding: 2rem;
+    border-radius: 3px;
+
+    li {
+      margin-left: 1.5rem;
+    }
+
+    a {
+      position: relative;
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        transform: scaleX(0);
+        transition: inherit;
+      }
+
+      &:hover {
+        &:before {
+          transform: scaleX(1);
+        }
+      }
+    }
+
+    .link {
+      color: $radical-red;
+
+      &:before {
+        background-color: $radical-red;
+      }
+
+      &:hover {
+        color: lighten($radical-red, 10%);
+      }
+
+      &.internal {
+        display: inline-block;
+        color: $inchworm;
+
+        &:before {
+          background-color: $inchworm;
+        }
+
+        &:hover {
+          color: lighten($inchworm, 10%);
+        }
+      }
+    }
+
+    .keyword {
+      color: $turquoiseblue; 
+    }
+
+    .option {
+      color: $confetti;
+    }
+
+    .comment {
+      color: $pablo;
+      font-style: italic;
+
+      a {
+        &:before {
+          background-color: $turquoiseblue;
+        }
+
+        &:hover {
+          color: lighten($turquoiseblue, 10%);
+        }
+      }
+    }
+  }
+}

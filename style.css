@@ -55,7 +55,7 @@ html {
 
 body {
   font: normal normal 300 1em/1.5 "Open Sans", sans-serif;
-  color: RGBA(74, 74, 74, 1);
+  color: #4a4a4a;
 }
 
 /**
@@ -67,6 +67,7 @@ h3,
 h4 {
   /*   font-family: $sans-serif; */
   font-weight: 300;
+  margin: 0 0 1em;
 }
 
 h1 {
@@ -86,20 +87,24 @@ h4 {
 }
 
 /**
- * @section Inline
+ * @section Margins
  */
-p {
+ul, ol, p {
   margin: 0 0 1em;
 }
 
+/**
+ * @section Inline
+ */
 a {
   text-decoration: none;
   word-wrap: break-word;
-  color: RGBA(118, 112, 92, 1);
+  color: #76705c;
+  transition: all 0.25s ease;
 }
 
 a:link {
-  color: RGBA(118, 112, 92, 1);
+  color: #76705c;
 }
 
 a:visited,
@@ -107,15 +112,15 @@ a:hover,
 a:active,
 a:focus {
   outline: none;
-  color: RGBA(230, 230, 230, 1);
+  color: #e6e6e6;
 }
 
 a:hover {
-  color: RGBA(230, 230, 230, 1);
+  color: #e6e6e6;
 }
 
 pre {
-  font-family: 'Hack', 'Source Code Pro', 'Droid Sans Mono', monospace;
+  font-family: "Hack", "Source Code Pro", "Droid Sans Mono", monospace;
   white-space: normal;
 }
 
@@ -123,15 +128,42 @@ pre {
  * Layout
  */
 /*
+ * Common layout styles
+ */
+.main-header,
+.main-intro,
+.feature-section,
+.usage-section,
+.faq-section {
+  height: 45rem;
+}
+
+.feature-section,
+.usage-section,
+.faq-section {
+  padding-top: 10rem;
+}
+
+.feature-section h3,
+.usage-section h3,
+.faq-section h3 {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 2em;
+}
+
+/*
  * Grid
  */
 .container {
   width: 100%;
+  height: 100%;
   max-width: 960px;
   margin: 0 auto;
 }
 
 .row {
+  position: relative;
   margin-left: -1em;
   margin-right: -1em;
 }
@@ -226,7 +258,7 @@ pre {
 }
 
 .main-header {
-  box-shadow: inset 0 10px 0 0 RGBA(30, 30, 25, 1);
+  box-shadow: inset 0 10px 0 0 #1e1e19;
 }
 
 .main-header .sitename {
@@ -236,7 +268,6 @@ pre {
 
 @media only screen and (min-width: 1024px) {
   .main-header {
-    min-height: 34.65rem;
     padding-top: 4rem;
   }
   .main-header .row {
@@ -254,18 +285,285 @@ pre {
   }
 }
 
-.main-intro {
-  min-height: 46.4rem;
-  background-image: url("images/devtools-author-settings.png");
-  background-repeat: no-repeat;
-  background-position: -25% 50%;
+.main-intro .subtitle {
+  font-style: italic;
+}
+
+.main-intro .row {
+  height: 100%;
+}
+
+.main-intro .cta {
+  display: block;
+  background-color: #FB2E72;
+  color: #eaeaea;
+  margin: 1.75em 0;
+}
+
+.main-intro .cta:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+  background-color: #fb1561;
+}
+
+.main-intro .cta:focus,
+.main-intro .cta:active {
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+}
+
+@media only screen and (min-width: 1024px) {
+  .main-intro .main-intro-image {
+    position: absolute;
+    top: 50%;
+    left: -40%;
+    margin-top: -15.975rem;
+  }
+  .main-intro .subtitle {
+    width: 20rem;
+  }
+  .main-intro .content {
+    position: relative;
+    top: 13.35rem;
+  }
+  .main-intro .link-to-github {
+    color: #76705c;
+    font-size: 0.8em;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .main-intro .main-intro-image {
+    left: -45%;
+  }
+}
+
+.feature-section .callout {
+  min-height: 10rem;
+}
+
+.feature-section .callout h4 {
+  font-size: 1em;
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  margin-left: -2em;
+}
+
+.feature-section .callout .theme-demo {
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  margin: 0.5rem auto 0;
+}
+
+.feature-section .callout .theme-demo [class^='theme-'] {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+}
+
+.feature-section .callout .theme-demo .theme-monokai-1 {
+  background-color: #1e1e19;
+  top: 0;
+  left: 0;
+}
+
+.feature-section .callout .theme-demo .theme-monokai-2 {
+  background-color: #76705c;
+  top: 0.25rem;
+  left: 0.5rem;
+}
+
+.feature-section .callout .theme-demo .theme-monokai-3 {
+  background-color: #5DD9F3;
+  top: 0.5rem;
+  left: 1rem;
+}
+
+.feature-section .callout .theme-demo .theme-monokai-4 {
+  background-color: #abdf00;
+  top: 0.75rem;
+  left: 1.5rem;
+}
+
+.feature-section .callout .theme-demo .theme-monokai-5 {
+  background-color: #FB2E72;
+  top: 1rem;
+  left: 2rem;
+}
+
+.feature-section .callout .hack-demo {
+  font-family: "Hack", "Source Code Pro", "Droid Sans Mono", monospace;
+  font-size: 2.44140625em;
+}
+
+.feature-section .callout [class^='font-size-'] {
+  font-weight: 400;
+  color: #FB2E72;
+}
+
+.feature-section .callout .font-size-demo {
+  margin-top: 0.75rem;
+}
+
+.feature-section .callout .font-size-10 {
+  font-size: 1rem;
+}
+
+.feature-section .callout .font-size-12 {
+  font-size: 1.2rem;
+}
+
+.feature-section .callout .font-size-14 {
+  font-size: 1.4rem;
+}
+
+.feature-section .callout .font-size-16 {
+  font-size: 1.6rem;
+}
+
+.usage-section .installation {
+  width: 33rem;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 0.8em;
+  padding: 2rem;
+  border-radius: 3px;
+}
+
+.usage-section .installation li {
+  margin-left: 1.5rem;
+}
+
+.usage-section .installation a {
+  position: relative;
+}
+
+.usage-section .installation a:before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  transition: inherit;
+}
+
+.usage-section .installation a:hover:before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.usage-section .installation .link {
+  color: #FB2E72;
+}
+
+.usage-section .installation .link:before {
+  background-color: #FB2E72;
+}
+
+.usage-section .installation .link:hover {
+  color: #fc6094;
+}
+
+.usage-section .installation .link.internal {
+  display: inline-block;
+  color: #abdf00;
+}
+
+.usage-section .installation .link.internal:before {
+  background-color: #abdf00;
+}
+
+.usage-section .installation .link.internal:hover {
+  color: #c8ff13;
+}
+
+.usage-section .installation .keyword {
+  color: #5DD9F3;
+}
+
+.usage-section .installation .option {
+  color: #ead95c;
+}
+
+.usage-section .installation .comment {
+  color: #76705c;
+  font-style: italic;
+}
+
+.usage-section .installation .comment a:before {
+  background-color: #5DD9F3;
+}
+
+.usage-section .installation .comment a:hover {
+  color: #8ce4f7;
+}
+
+/*
+ * Modules
+ */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: 0 none;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  padding: 1em;
+  margin-bottom: 0.5em;
+  background-color: #DEDEDE;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+  background-color: #CACACA;
+}
+
+.button:focus,
+.button:active,
+button:focus,
+button:active,
+input[type="submit"]:focus,
+input[type="submit"]:active,
+input[type="reset"]:focus,
+input[type="reset"]:active,
+input[type="button"]:focus,
+input[type="button"]:active {
+  outline: none;
+  box-shadow: 0 0 1px 3px rgba(76, 130, 246, 0.5);
+}
+
+.callout {
+  position: relative;
+  padding: 2em;
+  background-color: #eaeaea;
+  border-radius: 4px 4px 0px 0px;
+  box-shadow: 0px 5px 0px 0px #272821;
+  text-align: center;
 }
 
 /*
  * Pages
  */
 .dark-bg {
-  color: RGBA(230, 230, 230, 1);
-  background-color: RGBA(30, 30, 25, 1);
+  color: #e6e6e6;
+  background-color: #1e1e19;
 }
 /*# sourceMappingURL=style.css.map */

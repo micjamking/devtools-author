@@ -1,6 +1,58 @@
 .main-intro {
-  min-height: em-calc(928px);
-  background-image: url('images/devtools-author-settings.png');
-  background-repeat: no-repeat;
-  background-position: -25% 50%;
+
+  .subtitle {
+    font-style: italic;
+  }
+
+  .row {
+    height: 100%;
+  }
+
+  .cta {
+    display: block;
+    background-color: $radical-red;
+    color: $lilywhite;
+    margin: 1.75em 0;
+
+    &:hover {
+      transform: scale(1.03);
+      background-color: darken(#FB2E72, 5%);
+    }
+
+    &:focus,
+    &:active {
+      transform: translateY(5px);
+    }
+  }
+
+  @media #{$large-screen} {
+    .main-intro-image {
+      position: absolute;
+      top: 50%;
+      left: -40%;
+      margin-top: em-calc(-319.5px);
+    }
+
+    .subtitle {
+      width: em-calc(400px);
+    }
+
+    .content {
+      position: relative;
+      top: em-calc(267px);
+    }
+
+    .link-to-github {
+      color: $pablo;
+      font-size: type-scale(-1);
+    }
+  }
+
+  
+
+  @media #{$xlarge-screen} {
+    .main-intro-image {
+      left: -45%;
+    }
+  }
 }

@@ -7,15 +7,22 @@ $base-font: 20px;
 $line-height: 1.5;
 $serif: 'Neuton', serif;
 $sans-serif: 'Open Sans', sans-serif;
+$monospace: 'Hack', 'Source Code Pro', 'Droid Sans Mono', monospace;
 
 // Colors
-$blackhunt: RGBA(0, 0, 0, 0.2);
-$lilywhite: RGBA(234, 234, 234, 1);
-$mercury: RGBA(230, 230, 230, 1);
-$pablo: RGBA(118, 112, 92, 1);
-$armadillo: RGBA(74, 74, 74, 1);
-$rangoon-green: RGBA(30, 30, 25, 1);
-$radical-red: RGBA(251, 46, 114, 1);
+$mineshaft: rgba(51, 51, 51, 1);
+$blackhunt: rgba(0, 0, 0, 0.2);
+$lilywhite: rgba(234, 234, 234, 1);
+$mercury: rgba(230, 230, 230, 1);
+$armadillo: rgba(74, 74, 74, 1);
+
+// Monokai
+$rangoon-green: rgba(30, 30, 25, 1);
+$pablo: rgba(118, 112, 92, 1);
+$turquoiseblue: #5DD9F3;
+$inchworm: rgba(171, 223, 0, 1);
+$radical-red: #FB2E72; // Sass color functions don't like rgba... ?
+$confetti: rgba(234, 217, 92, 1);
 
 /*
  * Mixins

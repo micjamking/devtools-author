@@ -53,10 +53,19 @@
   <!-- Main Intro -->
   <section id="intro" class="main-intro dark-bg">
     <div class="container">
-      <h4><em>A simple set of author settings for Chrome Developer Tools.</em></h4>
-      <p>If you use DevTools as your frontend development environment, <em>DevTools Author</em> provides a small set of options to enhance your authoring experience.</p>
-      <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="button cta" title="Add DevTools Author to Chrome">Add DevTools Author to Chrome</a>
-      <span class="link-to-github">or <a href="https://github.com/micjamking/devtools-author" class="link" title="View DevTools Author on GitHub">View on GitHub</a></span>
+      <div class="row">
+        <div class="col-6">
+          <img src="images/devtools-author-settings.png" width="832" height="639" alt="DevTools Author Settings" class="main-intro-image" />
+        </div>
+        <div class="col-6">
+          <div class="content">
+            <h3 class="subtitle">A simple set of author settings for Chrome Developer Tools.</h3>
+            <p>If you use DevTools as your frontend development environment, <em>DevTools Author</em> provides a <a href="#features" title="DevTools Feature Set"><em>small set</em></a> of options to enhance your authoring experience.</p>
+            <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="button cta" title="Add DevTools Author to Chrome">Add DevTools Author to Chrome</a>
+            <span class="link-to-github">or <a href="https://github.com/micjamking/devtools-author" class="link" title="View DevTools Author on GitHub">View on GitHub</a></span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -64,14 +73,33 @@
   <section id="features" class="feature-section">
     <div class="container">
       <h3>Enhance Your Authoring Experience</h3>
-      <div class="callout themes">
-        <h4>+25 Editor Themes</h4>
-      </div>
-      <div class="callout font-family">
-        <h4>*Custom Font Support</h4>
-      </div>
-      <div class="callout font-size">
-        <h4>Font Size Adjustments</h4>
+      <div class="row">
+        <div class="col-4">
+          <div class="callout themes">
+            <div class="theme-demo">
+              <span class="theme-monokai-1"></span>
+              <span class="theme-monokai-2"></span>
+              <span class="theme-monokai-3"></span>
+              <span class="theme-monokai-4"></span>
+              <span class="theme-monokai-5"></span>
+            </div>
+            <h4>+25 Editor Themes</h4>
+          </div>
+        </div>
+        <div class="col-4 ">
+          <div class="callout font-family">
+            <span class="hack-demo">Hack</span>
+            <h4>*Custom Font Support</h4>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="callout font-size">
+            <div class="font-size-demo">
+              <span class="font-size-ellipsis-one">...</span><span class="font-size-10">10</span> <span class="font-size-12">12</span> <span class="font-size-14">14</span> <span class="font-size-16">16</span><span class="font-size-ellipsis-two">...</span>
+            </div>
+            <h4>Font Size Adjustments</h4>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -79,12 +107,12 @@
   <!-- Usage Section -->
   <section id="usage" class="usage-section dark-bg">
     <div class="container">
-      <h3>Installation &amp; Usage</h3>
-      <pre>
+      <h3>Getting Setup</h3>
+      <pre class="installation">
         <ol>
-          <li>1. Install the <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="link" title="DevTools Author Chrome Extension">DevTools Author Chrome Extension</a></li>
-          <li>2. Enable DevTools experiments in <a href="chrome://flags/#enable-devtools-experiments" class="link internal" title="Enable DevTools Experiments in Chrome Flags">chrome://flags/#enable-devtools-experiments</a></li>
-          <li>3. Open DevTools (<span class="keyword">cmd</span> + <span class="keyword">opt</span> + <span class="keyword">I</span>); Settings > Experiments > check <span class="option"><strong>Allow custom UI Themes</strong></span>.</li>
+          <li>Install the <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="link" title="DevTools Author Chrome Extension">DevTools Author Chrome Extension</a></li>
+          <li>Enable DevTools experiments in <a href="chrome://flags/#enable-devtools-experiments" class="link internal" title="Enable DevTools Experiments in Chrome Flags">chrome://flags/#enable-devtools-experiments</a></li>
+          <li>Open DevTools (<span class="keyword">cmd</span> + <span class="keyword">opt</span> + <span class="keyword">I</span>); Settings > Experiments > check <span class="option"><strong>Allow custom UI Themes</strong></span>.</li>
         </ol>
         <p class="comment">/* After restarting DevTools, you should see the default theme 3024 take affect within the Sources and Console panels. */</p>
         <p class="comment">/* DevTools Author currently supports custom monospace fonts <a href="http://sourcefoundry.org/hack/" class="keyword" title="Hack font">Hack</a>, <a href="http://adobe-fonts.github.io/source-code-pro/" class="keyword" title="Source Code Pro Font">Source Code Pro</a>, and <a href="https://www.google.com/fonts/specimen/Droid+Sans+Mono" class="keyword" title="Droid Sans Mono Font">Droid Sans Mono</a>. (Must be installed on your computer).*/</p>
@@ -95,7 +123,7 @@
   <!-- faq Section -->
   <section id="faq" class="faq-section">
     <div class="container">
-      <h3>FAQ</h3>
+      <h3>Common Questions</h3>
       <dl>
         <dt>...sounds cool, but can DevTools really replace <span class="fake-element">< insert editor here ></span>?</dt>
         <dd>Pretty much!</dd>

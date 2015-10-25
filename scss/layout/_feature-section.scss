@@ -1,0 +1,88 @@
+.feature-section {
+
+  .callout {
+    min-height: em-calc(200px);
+
+    h4 {
+      font-size: type-scale(0);
+      position: absolute;
+      bottom: 1rem;
+      width: 100%;
+      margin-left: -2em;
+    }
+
+    .theme-demo {
+      width: em-calc(80px);
+      height: em-calc(80px);
+      position: relative;
+      margin: 0.5rem auto 0;
+
+      [class^='theme-'] {
+        display: inline-block;
+        width: em-calc(40px);
+        height: em-calc(40px);
+        position: absolute;
+      }
+
+      .theme-monokai-1 { 
+        background-color: $rangoon-green;
+        top: 0;
+        left: 0;
+      }
+
+      .theme-monokai-2 { 
+        background-color: $pablo;
+        top: em-calc(5px);
+        left: em-calc(10px);
+      }
+
+      .theme-monokai-3 { 
+        background-color: $turquoiseblue;
+        top: em-calc(10px);
+        left: em-calc(20px);
+      }
+
+      .theme-monokai-4 { 
+        background-color: $inchworm;
+        top: em-calc(15px);
+        left: em-calc(30px);
+      }
+
+      .theme-monokai-5 { 
+        background-color: $radical-red;
+        top: em-calc(20px);
+        left: em-calc(40px);
+      }
+    }
+
+    .hack-demo {
+      font-family: $monospace;
+      font-size: type-scale(4);
+    }
+
+    [class^='font-size-']{
+      font-weight: 400;
+      color: $radical-red;
+    }
+
+    .font-size-demo {
+      margin-top: 0.75rem;
+    }
+
+    .font-size-10 {
+      font-size: em-calc(20px);
+    }
+
+    .font-size-12 {
+      font-size: em-calc(24px);
+    }
+
+    .font-size-14 {
+      font-size: em-calc(28px);
+    }
+
+    .font-size-16 {
+      font-size: em-calc(32px);
+    }
+  }
+}
