@@ -25,6 +25,14 @@
     }
   }
 
+  .content {
+    position: relative;
+  }
+
+  .link-to-github {
+    color: $pablo;
+  }
+
   @media #{$large-screen} {
     .main-intro-image {
       position: absolute;
@@ -38,17 +46,13 @@
     }
 
     .content {
-      position: relative;
       top: em-calc(267px);
     }
 
     .link-to-github {
-      color: $pablo;
       font-size: type-scale(-1);
     }
   }
-
-  
 
   @media #{$xlarge-screen} {
     .main-intro-image {

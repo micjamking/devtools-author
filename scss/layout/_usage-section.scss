@@ -12,28 +12,6 @@
       margin-left: 1.5rem;
     }
 
-    a {
-      position: relative;
-
-      &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        right: 0;
-        height: 2px;
-        transform: scaleX(0);
-        transition: inherit;
-      }
-
-      &:hover {
-        &:before {
-          transform: scaleX(1);
-        }
-      }
-    }
-
     .link {
       color: $radical-red;
 

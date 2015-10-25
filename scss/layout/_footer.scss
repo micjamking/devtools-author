@@ -1,0 +1,19 @@
+.main-footer {
+  height: em-calc(200px);
+  padding: em-calc(50px);
+
+  .copyright {
+    text-align: center;
+
+    .keyword {
+      display: inline-block;
+      color: $radical-red;
+      cursor: pointer;
+      transition: all 0.15s ease;
+
+      &:hover {
+        transform: scale(1.25);
+      }
+    }
+  }
+}

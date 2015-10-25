@@ -119,6 +119,27 @@ a:hover {
   color: #e6e6e6;
 }
 
+a:not(.button) {
+  position: relative;
+}
+
+a:not(.button):before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #e6e6e6;
+  transform: scaleX(0);
+  transition: inherit;
+}
+
+a:not(.button):hover:before {
+  transform: scaleX(1);
+}
+
 pre {
   font-family: "Hack", "Source Code Pro", "Droid Sans Mono", monospace;
   white-space: normal;
@@ -304,15 +325,21 @@ pre {
 }
 
 .main-intro .cta:hover {
-  -webkit-transform: scale(1.03);
-          transform: scale(1.03);
+  transform: scale(1.03);
   background-color: #fb1561;
 }
 
 .main-intro .cta:focus,
 .main-intro .cta:active {
-  -webkit-transform: translateY(5px);
-          transform: translateY(5px);
+  transform: translateY(5px);
+}
+
+.main-intro .content {
+  position: relative;
+}
+
+.main-intro .link-to-github {
+  color: #76705c;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -326,11 +353,9 @@ pre {
     width: 20rem;
   }
   .main-intro .content {
-    position: relative;
     top: 13.35rem;
   }
   .main-intro .link-to-github {
-    color: #76705c;
     font-size: 0.8em;
   }
 }
@@ -429,13 +454,21 @@ pre {
 
 .faq-section dl {
   width: 33rem;
-  margin: 0 auto;
+  margin: 0 auto 6em;
   text-align: center;
 }
 
 .faq-section dl dt {
   font-style: italic;
   font-size: 1.25em;
+}
+
+.faq-section dl dd a {
+  color: #5DD9F3;
+}
+
+.faq-section dl dd a::before {
+  background-color: #5DD9F3;
 }
 
 .faq-section dl dt,
@@ -458,28 +491,6 @@ pre {
 
 .usage-section .installation li {
   margin-left: 1.5rem;
-}
-
-.usage-section .installation a {
-  position: relative;
-}
-
-.usage-section .installation a:before {
-  content: '';
-  display: block;
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  transition: inherit;
-}
-
-.usage-section .installation a:hover:before {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
 }
 
 .usage-section .installation .link {
@@ -528,6 +539,26 @@ pre {
   color: #8ce4f7;
 }
 
+.main-footer {
+  height: 10rem;
+  padding: 2.5rem;
+}
+
+.main-footer .copyright {
+  text-align: center;
+}
+
+.main-footer .copyright .keyword {
+  display: inline-block;
+  color: #FB2E72;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.main-footer .copyright .keyword:hover {
+  transform: scale(1.25);
+}
+
 /*
  * Modules
  */
@@ -536,9 +567,7 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   background-color: transparent;
   border: 0 none;
   display: inline-block;
@@ -589,4 +618,5 @@ input[type="button"]:active {
   color: #e6e6e6;
   background-color: #1e1e19;
 }
+
 /*# sourceMappingURL=style.css.map */

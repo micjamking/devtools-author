@@ -116,7 +116,7 @@ module.exports = function (grunt) {
             'Gruntfile.js',
           ],
           scripts: [
-            './js/app.js'
+            './js/**/*.js'
           ]
       },
 
@@ -140,7 +140,7 @@ module.exports = function (grunt) {
       concat: {
         dist: {
           src: [
-            './js/app.js'
+            './js/**/*.js'
           ],
           dest: './script.js',
         },
@@ -178,7 +178,7 @@ module.exports = function (grunt) {
           tasks: ['sass', 'postcss:serve']
         },
         scripts: {
-          files: 'js/app.js',
+          files: 'js/**/*.js',
           tasks: ['jshint:scripts', 'concat']
         },
         gruntfile: {

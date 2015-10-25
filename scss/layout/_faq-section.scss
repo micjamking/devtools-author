@@ -2,7 +2,7 @@
 
   dl {
     width: em-calc(660px);
-    margin: 0 auto;
+    margin: 0 auto 6em;
     text-align: center;
 
     dt {
@@ -11,6 +11,13 @@
     }
 
     dd {
+      a {
+        color: $turquoiseblue;
+
+        &::before {
+          background-color: $turquoiseblue;
+        }
+      }
     }
 
     dt,
