@@ -1,12 +1,115 @@
 /*
  * Vendor
  */
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 /* 
  * Variables
  */
+/**
+ * Utilities
+ */
+/**
+ * @section Functions
+ */
+/**
+ * rem/em Calculator
+ *
+ * target / context = result
+ * @param {$target}  Target size in pixels (ie. 32px)
+ * @param {$context} Font size providing context for proportion, defaults to $base-font)
+ * @param {$unit} unit for rem/em output, defaults to 'em'
+ */
+/**
+ * Exponent Calculator
+ *
+ * https://gist.github.com/scottkellum/1160816
+ * @param {$base} base number
+ * @param {$exponent} exponent/power number
+ */
+/**
+ * Type Scale Calculator
+ * 
+ * Create typographic scales
+ * @param {$i} increment of scale; 0 is base
+ * @param {$scale} scale ratio; defaults to 1.25
+ */
+/**
+ * Typography
+ */
+html {
+  font-size: 20px;
+}
+
+body {
+  font: normal normal 300 1em/1.5 "Open Sans", sans-serif;
+  color: RGBA(74, 74, 74, 1);
+}
+
+/**
+ * @section Headings
+ */
+h1,
+h2,
+h3,
+h4 {
+  /*   font-family: $sans-serif; */
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 2.44140625em;
+}
+
+h2 {
+  font-size: 1.953125em;
+}
+
+h3 {
+  font-size: 1.5625em;
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+/**
+ * @section Inline
+ */
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  text-decoration: none;
+  word-wrap: break-word;
+  color: RGBA(118, 112, 92, 1);
+}
+
+a:link {
+  color: RGBA(118, 112, 92, 1);
+}
+
+a:visited,
+a:hover,
+a:active,
+a:focus {
+  outline: none;
+  color: RGBA(230, 230, 230, 1);
+}
+
+a:hover {
+  color: RGBA(230, 230, 230, 1);
+}
+
+pre {
+  font-family: 'Hack', 'Source Code Pro', 'Droid Sans Mono', monospace;
+  white-space: normal;
+}
 /*# sourceMappingURL=style.css.map */

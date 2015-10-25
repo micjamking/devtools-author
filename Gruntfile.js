@@ -5,6 +5,22 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
 
     grunt.initConfig({
+      // CSS | Process SCSS files
+      sass: {
+        options: {
+          sourceMap: true,
+          outputStyle: 'expanded'
+        },
+        dist: {
+          files: [{
+            expand: true,
+            cwd: 'scss/',
+            src: ['{,*/}*.scss'],
+            dest: './',
+            ext: '.css'
+          }]
+        }
+      },
       
       /* 
        * PostCSS: CSS Transformer via JS plugins
@@ -15,18 +31,12 @@ module.exports = function (grunt) {
           map: {
               inline: false,
               annotation: './'
-          },
-          parser: require('postcss-scss')
+          }
         },
         serve: {
             options: {
+              map: true,
               processors: [
-
-                /* 
-                 * PreCSS: Sass-like markup
-                 * https://github.com/jonathantneal/precss
-                 */
-                require('precss'),
 
                 /* 
                  * Autoprefixer: Add vendor prefixes using caniuse.com
@@ -46,18 +56,13 @@ module.exports = function (grunt) {
                 })
               ]
             },
-          src: 'scss/style.scss',
+          src: './style.css',
           dest: './style.css'
         },
         dist: {
             options: {
+              map: true,
               processors: [
-
-                /* 
-                 * PreCSS: Sass-like markup
-                 * https://github.com/jonathantneal/precss
-                 */
-                require('precss'),
 
                 /* 
                  * CSS Nano: Modular minifier
@@ -75,7 +80,7 @@ module.exports = function (grunt) {
                 })
               ]
             },
-          src: 'scss/style.scss',
+          src: './style.css',
           dest: './style.css'
         }
       },
@@ -170,7 +175,7 @@ module.exports = function (grunt) {
         },
         sass: {
           files: './scss/**/*.scss',
-          tasks: ['postcss:serve']
+          tasks: ['sass', 'postcss:serve']
         },
         scripts: {
           files: './js/app.js',
@@ -186,17 +191,19 @@ module.exports = function (grunt) {
 
     // Development
     grunt.registerTask('serve', [
+        'sass',
+        'postcss:serve',
         'jshint',
         'concat',
-        'postcss:serve',
         'watch'
     ]);
 
     // Default: Production build
     grunt.registerTask('default', [
+        'sass',
+        'postcss:dist',
         'jshint',
         'concat',
-        'uglify',
-        'postcss:dist'
+        'uglify'
     ]);
 };

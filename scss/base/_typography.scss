@@ -1,0 +1,73 @@
+/**
+ * Typography
+ */
+
+html {
+  font-size: $base-font;
+}
+
+body{
+  font: normal normal 300 #{type-scale(0)}/#{$line-height} $sans-serif;
+  color: $armadillo;
+}
+
+/**
+ * @section Headings
+ */
+h1,
+h2,
+h3,
+h4, {
+/*   font-family: $sans-serif; */
+  font-weight: 400;
+}
+
+h1 {
+  font-size: type-scale(4);
+}
+
+h2 {
+  font-size: type-scale(3);
+}
+
+h3 {
+  font-size: type-scale(2);
+}
+
+h4 {
+  font-size: type-scale(1);
+}
+
+/**
+ * @section Inline
+ */
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  text-decoration: none;
+  word-wrap: break-word;
+  color: $pablo;
+  
+  &:link {
+    color: $pablo;
+  }
+
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none;
+    color: $mercury;
+  }
+
+  &:hover {
+    color: $mercury;
+  }
+}
+
+pre {
+  font-family: 'Hack', 'Source Code Pro', 'Droid Sans Mono', monospace;
+  white-space: normal;
+}
