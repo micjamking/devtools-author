@@ -1,0 +1,25 @@
+.faq-section {
+
+  dl {
+    width: em-calc(660px);
+    margin: 0 auto;
+    text-align: center;
+
+    dt {
+      font-style: italic;
+      font-size: type-scale(1);
+    }
+
+    dd {
+    }
+
+    dt,
+    dd {
+      margin: 0 0 1rem;
+    }
+  }
+
+  .fake-element {
+    color: $pablo;
+  }
+}

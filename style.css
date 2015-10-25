@@ -269,6 +269,9 @@ pre {
 @media only screen and (min-width: 1024px) {
   .main-header {
     padding-top: 4rem;
+    background-image: url("images/devtools-author-monokai-theme.png");
+    background-repeat: no-repeat;
+    background-position: center 200%;
   }
   .main-header .row {
     width: 60%;
@@ -422,6 +425,26 @@ pre {
 
 .feature-section .callout .font-size-16 {
   font-size: 1.6rem;
+}
+
+.faq-section dl {
+  width: 33rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.faq-section dl dt {
+  font-style: italic;
+  font-size: 1.25em;
+}
+
+.faq-section dl dt,
+.faq-section dl dd {
+  margin: 0 0 1rem;
+}
+
+.faq-section .fake-element {
+  color: #76705c;
 }
 
 .usage-section .installation {
