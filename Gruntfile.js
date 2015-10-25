@@ -174,11 +174,11 @@ module.exports = function (grunt) {
           files: ['./**/*.html']
         },
         sass: {
-          files: './scss/**/*.scss',
+          files: 'scss/**/*.scss',
           tasks: ['sass', 'postcss:serve']
         },
         scripts: {
-          files: './js/app.js',
+          files: 'js/app.js',
           tasks: ['jshint:scripts', 'concat']
         },
         gruntfile: {

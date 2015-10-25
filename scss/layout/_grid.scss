@@ -1,0 +1,30 @@
+/*
+ * Grid
+ */
+
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.row {
+  margin-left: -1em;
+  margin-right: -1em;
+  @include cf;
+}
+
+[class^="col-"] {
+  width: 100%;
+  float: left;
+  min-height: 1px; 
+  padding: 0 1em;
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} { 
+    @media screen and (min-width: 600px){
+      width: ($i / 12) * 100%;
+    }
+  }
+}

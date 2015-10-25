@@ -12,13 +12,16 @@
 /* 
  * Variables
  */
-/**
+/*
+ * Mixins
+ */
+/*
  * Utilities
  */
-/**
+/*
  * @section Functions
  */
-/**
+/*
  * rem/em Calculator
  *
  * target / context = result
@@ -26,19 +29,22 @@
  * @param {$context} Font size providing context for proportion, defaults to $base-font)
  * @param {$unit} unit for rem/em output, defaults to 'em'
  */
-/**
+/*
  * Exponent Calculator
  *
  * https://gist.github.com/scottkellum/1160816
  * @param {$base} base number
  * @param {$exponent} exponent/power number
  */
-/**
+/*
  * Type Scale Calculator
  * 
  * Create typographic scales
  * @param {$i} increment of scale; 0 is base
  * @param {$scale} scale ratio; defaults to 1.25
+ */
+/**
+ * Media Queries
  */
 /**
  * Typography
@@ -60,7 +66,7 @@ h2,
 h3,
 h4 {
   /*   font-family: $sans-serif; */
-  font-weight: 400;
+  font-weight: 300;
 }
 
 h1 {
@@ -111,5 +117,155 @@ a:hover {
 pre {
   font-family: 'Hack', 'Source Code Pro', 'Droid Sans Mono', monospace;
   white-space: normal;
+}
+
+/*
+ * Layout
+ */
+/*
+ * Grid
+ */
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.row {
+  margin-left: -1em;
+  margin-right: -1em;
+}
+
+.row:before,
+.row:after {
+  content: "";
+  display: table;
+}
+
+.row:after {
+  clear: both;
+}
+
+[class^="col-"] {
+  width: 100%;
+  float: left;
+  min-height: 1px;
+  padding: 0 1em;
+}
+
+@media screen and (min-width: 600px) {
+  .col-1 {
+    width: 8.3333333333%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .col-2 {
+    width: 16.6666666667%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .col-3 {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .col-4 {
+    width: 33.3333333333%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .col-5 {
+    width: 41.6666666667%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .col-6 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .col-7 {
+    width: 58.3333333333%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .col-8 {
+    width: 66.6666666667%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .col-9 {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .col-10 {
+    width: 83.3333333333%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .col-11 {
+    width: 91.6666666667%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .col-12 {
+    width: 100%;
+  }
+}
+
+.main-header {
+  box-shadow: inset 0 10px 0 0 RGBA(30, 30, 25, 1);
+}
+
+.main-header .sitename {
+  font-weight: 300;
+  line-height: 1.25;
+}
+
+@media only screen and (min-width: 1024px) {
+  .main-header {
+    min-height: 34.65rem;
+    padding-top: 4rem;
+  }
+  .main-header .row {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .main-header .logo {
+    float: left;
+  }
+  .main-header .sitename {
+    margin-top: 5rem;
+    margin-left: 1.25rem;
+    width: 40%;
+    float: left;
+  }
+}
+
+.main-intro {
+  min-height: 46.4rem;
+  background-image: url("images/devtools-author-settings.png");
+  background-repeat: no-repeat;
+  background-position: -25% 50%;
+}
+
+/*
+ * Pages
+ */
+.dark-bg {
+  color: RGBA(230, 230, 230, 1);
+  background-color: RGBA(30, 30, 25, 1);
 }
 /*# sourceMappingURL=style.css.map */

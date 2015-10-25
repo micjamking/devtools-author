@@ -1,6 +1,18 @@
 /*
  * Vendor
  */
-@import "base/_reset.scss";
-@import "base/_utilities.scss";
-@import "base/_typography.scss";
+@import "base/reset";
+@import "base/utilities";
+@import "base/typography";
+
+/*
+ * Layout
+ */
+@import "layout/grid";
+@import "layout/header";
+@import "layout/main-intro";
+
+/*
+ * Pages
+ */
+@import "pages/home";

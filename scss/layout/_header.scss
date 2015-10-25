@@ -1,0 +1,29 @@
+.main-header {
+  box-shadow: inset 0 10px 0 0 $rangoon-green;
+
+  .sitename {
+    font-weight: 300;
+    line-height: 1.25;
+  }
+
+  @media #{$large-screen}{
+    min-height: em-calc(693px);
+    padding-top: em-calc(80px);
+
+    .row {
+      width: 60%;
+      margin: 0 auto;
+    }
+
+    .logo {
+      float: left;
+    }
+
+    .sitename {
+      margin-top: em-calc(100px);
+      margin-left: em-calc(25px);
+      width: 40%;
+      float: left;
+    }
+  }
+}

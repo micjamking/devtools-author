@@ -17,16 +17,30 @@ $armadillo: RGBA(74, 74, 74, 1);
 $rangoon-green: RGBA(30, 30, 25, 1);
 $radical-red: RGBA(251, 46, 114, 1);
 
+/*
+ * Mixins
+ */
+@mixin cf {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
 
-/**
+  &:after {
+    clear: both;
+  }
+}
+
+/*
  * Utilities
  */
 
-/**
+/*
  * @section Functions
  */
 
-/**
+/*
  * rem/em Calculator
  *
  * target / context = result
@@ -34,11 +48,11 @@ $radical-red: RGBA(251, 46, 114, 1);
  * @param {$context} Font size providing context for proportion, defaults to $base-font)
  * @param {$unit} unit for rem/em output, defaults to 'em'
  */
-@function em-calc($target, $context: $base-font, $unit: 'em'){
+@function em-calc($target, $context: $base-font, $unit: 'rem'){
   @return #{$target/$context} + $unit;
 }
 
-/**
+/*
  * Exponent Calculator
  *
  * https://gist.github.com/scottkellum/1160816
@@ -68,7 +82,7 @@ $radical-red: RGBA(251, 46, 114, 1);
   @return ($value);
 }
 
-/**
+/*
  * Type Scale Calculator
  * 
  * Create typographic scales
@@ -78,3 +92,11 @@ $radical-red: RGBA(251, 46, 114, 1);
 @function type-scale($i, $scale: 1.25){
   @return exponent($scale, $i) * 1em;
 }
+
+/**
+ * Media Queries
+ */
+$small-screen:  'only screen';
+$medium-screen: 'only screen and (min-width: 640px)';
+$large-screen:  'only screen and (min-width: 1024px)';
+$xlarge-screen: 'only screen and (min-width: 1440px)';
