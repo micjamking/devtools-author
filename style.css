@@ -103,8 +103,32 @@ a {
   transition: all 0.25s ease;
 }
 
-a:link {
+a:link:not(.button) {
+  position: relative;
   color: #76705c;
+}
+
+a:link:not(.button):before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #e6e6e6;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  transition: inherit;
+}
+
+a:link:not(.button):hover {
+  color: #e6e6e6;
+}
+
+a:link:not(.button):hover:before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
 }
 
 a:visited,
@@ -117,27 +141,6 @@ a:focus {
 
 a:hover {
   color: #e6e6e6;
-}
-
-a:not(.button) {
-  position: relative;
-}
-
-a:not(.button):before {
-  content: '';
-  display: block;
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: #e6e6e6;
-  transform: scaleX(0);
-  transition: inherit;
-}
-
-a:not(.button):hover:before {
-  transform: scaleX(1);
 }
 
 pre {
@@ -162,12 +165,14 @@ pre {
 .feature-section,
 .usage-section,
 .faq-section {
-  padding-top: 10rem;
+  padding-top: 7rem;
 }
 
 .feature-section h3,
+.feature-section h4,
 .usage-section h3,
-.faq-section h3 {
+.usage-section h4,
+.faq-section h3, .faq-section h4 {
   text-align: center;
   font-style: italic;
   margin-bottom: 2em;
@@ -313,6 +318,10 @@ pre {
   font-style: italic;
 }
 
+.main-intro .main-intro-image {
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+
 .main-intro .row {
   height: 100%;
 }
@@ -324,14 +333,16 @@ pre {
   margin: 1.75em 0;
 }
 
+.main-intro .cta:focus,
 .main-intro .cta:hover {
-  transform: scale(1.03);
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
   background-color: #fb1561;
 }
 
-.main-intro .cta:focus,
 .main-intro .cta:active {
-  transform: translateY(5px);
+  -webkit-transform: scale(0.93);
+          transform: scale(0.93);
 }
 
 .main-intro .content {
@@ -368,6 +379,7 @@ pre {
 
 .feature-section .callout {
   min-height: 10rem;
+  margin-bottom: 5rem;
 }
 
 .feature-section .callout h4 {
@@ -482,7 +494,7 @@ pre {
 
 .usage-section .installation {
   width: 33rem;
-  margin: 0 auto;
+  margin: 0 auto 3em;
   background-color: rgba(0, 0, 0, 0.2);
   font-size: 0.8em;
   padding: 2rem;
@@ -539,9 +551,13 @@ pre {
   color: #8ce4f7;
 }
 
+.usage-section .keyword {
+  color: #5DD9F3;
+}
+
 .main-footer {
-  height: 10rem;
-  padding: 2.5rem;
+  height: 7.5rem;
+  padding: 3rem;
 }
 
 .main-footer .copyright {
@@ -556,7 +572,8 @@ pre {
 }
 
 .main-footer .copyright .keyword:hover {
-  transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
 }
 
 /*
@@ -567,7 +584,9 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   background-color: transparent;
   border: 0 none;
   display: inline-block;
@@ -599,7 +618,6 @@ input[type="reset"]:active,
 input[type="button"]:focus,
 input[type="button"]:active {
   outline: none;
-  box-shadow: 0 0 1px 3px rgba(76, 130, 246, 0.5);
 }
 
 .callout {
@@ -618,5 +636,4 @@ input[type="button"]:active {
   color: #e6e6e6;
   background-color: #1e1e19;
 }
-
 /*# sourceMappingURL=style.css.map */

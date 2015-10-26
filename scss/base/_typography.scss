@@ -56,24 +56,9 @@ a {
   color: $pablo;
   transition: all 0.25s ease;
   
-  &:link {
-    color: $pablo;
-  }
-
-  &:visited,
-  &:hover,
-  &:active,
-  &:focus {
-    outline: none;
-    color: $mercury;
-  }
-
-  &:hover {
-    color: $mercury;
-  }
-  
-  &:not(.button){  
+  &:link:not(.button){  
     position: relative;
+    color: $pablo;
 
     &:before {
       content: '';
@@ -89,10 +74,24 @@ a {
     }
 
     &:hover {
+      color: $mercury;
+
       &:before {
         transform: scaleX(1);
       }
     }
+  }
+
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none;
+    color: $mercury;
+  }
+
+  &:hover {
+    color: $mercury;
   }
 }
 
