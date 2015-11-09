@@ -24,6 +24,17 @@ $inchworm: rgba(171, 223, 0, 1);
 $radical-red: #FB2E72; // Sass color functions don't like rgba... ?
 $confetti: rgba(234, 217, 92, 1);
 
+// General screen sizes
+$medium: 640px;
+$large: 1024px;
+$xlarge: 1440px;
+
+// Media Queries
+$small-screen:  'only screen';
+$medium-screen: 'only screen and (min-width: #{$medium})';
+$large-screen:  'only screen and (min-width: #{$large})';
+$xlarge-screen: 'only screen and (min-width: #{$xlarge})';
+
 /*
  * Mixins
  */
@@ -99,11 +110,3 @@ $confetti: rgba(234, 217, 92, 1);
 @function type-scale($i, $scale: 1.25){
   @return exponent($scale, $i) * 1em;
 }
-
-/**
- * Media Queries
- */
-$small-screen:  'only screen';
-$medium-screen: 'only screen and (min-width: 640px)';
-$large-screen:  'only screen and (min-width: 1024px)';
-$xlarge-screen: 'only screen and (min-width: 1440px)';

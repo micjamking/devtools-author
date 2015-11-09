@@ -44,9 +44,6 @@
  * @param {$scale} scale ratio; defaults to 1.25
  */
 /**
- * Media Queries
- */
-/**
  * Typography
  */
 html {
@@ -54,8 +51,14 @@ html {
 }
 
 body {
-  font: normal normal 300 1em/1.5 "Open Sans", sans-serif;
+  font: normal normal 300 0.8em/1.5 "Open Sans", sans-serif;
   color: #4a4a4a;
+}
+
+@media only screen and (min-width: 640px) {
+  body {
+    font-size: 1em;
+  }
 }
 
 /**
@@ -65,7 +68,6 @@ h1,
 h2,
 h3,
 h4 {
-  /*   font-family: $sans-serif; */
   font-weight: 300;
   margin: 0 0 1em;
 }
@@ -104,31 +106,34 @@ a {
 }
 
 a:link:not(.button) {
-  position: relative;
   color: #76705c;
-}
-
-a:link:not(.button):before {
-  content: '';
-  display: block;
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: #e6e6e6;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  transition: inherit;
 }
 
 a:link:not(.button):hover {
   color: #e6e6e6;
 }
 
-a:link:not(.button):hover:before {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
+@media only screen and (min-width: 640px) {
+  a:link:not(.button) {
+    position: relative;
+  }
+  a:link:not(.button):before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #e6e6e6;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    transition: inherit;
+  }
+  a:link:not(.button):hover:before {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
 }
 
 a:visited,
@@ -159,13 +164,31 @@ pre {
 .feature-section,
 .usage-section,
 .faq-section {
-  height: 45rem;
+  min-height: 45rem;
+}
+
+@media only screen and (min-width: 640px) {
+  .main-header,
+  .main-intro,
+  .feature-section,
+  .usage-section,
+  .faq-section {
+    height: 45rem;
+  }
 }
 
 .feature-section,
 .usage-section,
 .faq-section {
-  padding-top: 7rem;
+  padding-top: 3.5rem;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section,
+  .usage-section,
+  .faq-section {
+    padding-top: 7rem;
+  }
 }
 
 .feature-section h3,
@@ -173,9 +196,20 @@ pre {
 .usage-section h3,
 .usage-section h4,
 .faq-section h3, .faq-section h4 {
+  width: 90%;
   text-align: center;
   font-style: italic;
-  margin-bottom: 2em;
+  margin: 0 auto 2em;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section h3,
+  .feature-section h4,
+  .usage-section h3,
+  .usage-section h4,
+  .faq-section h3, .faq-section h4 {
+    width: 100%;
+  }
 }
 
 /*
@@ -188,10 +222,14 @@ pre {
   margin: 0 auto;
 }
 
+.container img {
+  width: 100%;
+  height: auto;
+}
+
 .row {
+  width: 100%;
   position: relative;
-  margin-left: -1em;
-  margin-right: -1em;
 }
 
 .row:before,
@@ -204,6 +242,13 @@ pre {
   clear: both;
 }
 
+@media only screen and (min-width: 640px) {
+  .row {
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+}
+
 [class^="col-"] {
   width: 100%;
   float: left;
@@ -211,80 +256,89 @@ pre {
   padding: 0 1em;
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
   .col-1 {
     width: 8.3333333333%;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
   .col-2 {
     width: 16.6666666667%;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
   .col-3 {
     width: 25%;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
   .col-4 {
     width: 33.3333333333%;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
   .col-5 {
     width: 41.6666666667%;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
   .col-6 {
     width: 50%;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
   .col-7 {
     width: 58.3333333333%;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
   .col-8 {
     width: 66.6666666667%;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
   .col-9 {
     width: 75%;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
   .col-10 {
     width: 83.3333333333%;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
   .col-11 {
     width: 91.6666666667%;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
   .col-12 {
     width: 100%;
   }
 }
 
 .main-header {
+  padding-top: 4rem;
+  background-image: url("images/devtools-author-monokai-theme.png");
+  background-repeat: no-repeat;
+  background-position: center 200%;
   box-shadow: inset 0 10px 0 0 #1e1e19;
+  text-align: center;
+}
+
+.main-header .logo {
+  max-width: 12rem;
 }
 
 .main-header .sitename {
@@ -292,18 +346,27 @@ pre {
   line-height: 1.25;
 }
 
-@media only screen and (min-width: 1024px) {
-  .main-header {
-    padding-top: 4rem;
-    background-image: url("images/devtools-author-monokai-theme.png");
-    background-repeat: no-repeat;
-    background-position: center 200%;
-  }
+@media only screen and (min-width: 640px) {
   .main-header .row {
-    width: 60%;
     margin: 0 auto;
   }
+  .main-header .col-12 {
+    padding: 0;
+  }
   .main-header .logo {
+    max-width: 14rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .main-header {
+    text-align: left;
+  }
+  .main-header .row {
+    max-width: 60%;
+  }
+  .main-header .logo {
+    max-width: 16rem;
     float: left;
   }
   .main-header .sitename {
@@ -314,12 +377,24 @@ pre {
   }
 }
 
+.main-intro {
+  text-align: center;
+  padding-top: 5rem;
+}
+
 .main-intro .subtitle {
   font-style: italic;
 }
 
 .main-intro .main-intro-image {
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.15);
+  margin-bottom: 3.5rem;
+}
+
+@media only screen and (min-width: 640px) {
+  .main-intro .main-intro-image {
+    margin-bottom: 0;
+  }
 }
 
 .main-intro .row {
@@ -353,8 +428,13 @@ pre {
   color: #76705c;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 640px) {
+  .main-intro {
+    text-align: left;
+    padding-top: 0;
+  }
   .main-intro .main-intro-image {
+    max-width: 41.6rem;
     position: absolute;
     top: 50%;
     left: -40%;
@@ -379,15 +459,27 @@ pre {
 
 .feature-section .callout {
   min-height: 10rem;
-  margin-bottom: 5rem;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section .callout {
+    margin-bottom: 5rem;
+  }
 }
 
 .feature-section .callout h4 {
-  font-size: 1em;
+  font-size: 1.25em;
   position: absolute;
-  bottom: 1rem;
+  bottom: 0.5rem;
   width: 100%;
-  margin-left: -2em;
+  margin-left: -1.6rem;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section .callout h4 {
+    font-size: 1em;
+    margin-left: -2rem;
+  }
 }
 
 .feature-section .callout .theme-demo {
@@ -465,7 +557,8 @@ pre {
 }
 
 .faq-section dl {
-  width: 33rem;
+  width: 100%;
+  max-width: 32rem;
   margin: 0 auto 6em;
   text-align: center;
 }
@@ -493,16 +586,23 @@ pre {
 }
 
 .usage-section .installation {
-  width: 33rem;
+  width: 100%;
+  max-width: 32rem;
   margin: 0 auto 3em;
   background-color: rgba(0, 0, 0, 0.2);
-  font-size: 0.8em;
-  padding: 2rem;
   border-radius: 3px;
+  padding: 1rem;
+}
+
+@media only screen and (min-width: 640px) {
+  .usage-section .installation {
+    font-size: 0.8em;
+    padding: 2rem;
+  }
 }
 
 .usage-section .installation li {
-  margin-left: 1.5rem;
+  margin: 0 0 0.5rem 1.5rem;
 }
 
 .usage-section .installation .link {
@@ -551,17 +651,28 @@ pre {
   color: #8ce4f7;
 }
 
+.usage-section .installation > :last-child {
+  margin-bottom: 0;
+}
+
 .usage-section .keyword {
   color: #5DD9F3;
 }
 
 .main-footer {
-  height: 7.5rem;
-  padding: 3rem;
+  min-height: 7.5rem;
+  padding: 3.25rem 2rem;
+}
+
+@media only screen and (min-width: 640px) {
+  .main-footer {
+    padding: 3rem;
+  }
 }
 
 .main-footer .copyright {
   text-align: center;
+  margin-bottom: 0;
 }
 
 .main-footer .copyright .keyword {
@@ -627,6 +738,7 @@ input[type="button"]:active {
   border-radius: 4px 4px 0px 0px;
   box-shadow: 0px 5px 0px 0px #272821;
   text-align: center;
+  margin-bottom: 3em;
 }
 
 /*

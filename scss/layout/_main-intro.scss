@@ -1,4 +1,6 @@
 .main-intro {
+  text-align: center;
+  padding-top: em-calc(100px);
 
   .subtitle {
     font-style: italic;
@@ -6,6 +8,11 @@
 
   .main-intro-image {
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: em-calc(70px);
+
+    @media #{$medium-screen}{
+      margin-bottom: 0;
+    }
   }
 
   .row {
@@ -37,8 +44,12 @@
     color: $pablo;
   }
 
-  @media #{$large-screen} {
+  @media #{$medium-screen} {
+    text-align: left;
+    padding-top: 0;
+    
     .main-intro-image {
+      max-width: em-calc(832px);
       position: absolute;
       top: 50%;
       left: -40%;

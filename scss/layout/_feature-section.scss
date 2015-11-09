@@ -2,14 +2,22 @@
 
   .callout {
     min-height: em-calc(200px);
-    margin-bottom: 5rem;
+
+    @media #{$medium-screen}{
+      margin-bottom: 5rem;
+    }
 
     h4 {
-      font-size: type-scale(0);
+      font-size: type-scale(1);
       position: absolute;
-      bottom: 1rem;
+      bottom: 0.5rem;
       width: 100%;
-      margin-left: -2em;
+      margin-left: -1.6rem;
+
+      @media #{$medium-screen}{
+        font-size: type-scale(0);
+        margin-left: -2rem;
+      }
     }
 
     .theme-demo {

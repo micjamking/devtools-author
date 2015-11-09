@@ -1,15 +1,20 @@
 .usage-section {
   
   .installation {
-    width: em-calc(660px);
+    width: 100%;
+    max-width: em-calc($medium);
     margin: 0 auto 3em;
     background-color: $blackhunt;
-    font-size: type-scale(-1);
-    padding: 2rem;
     border-radius: 3px;
+    padding: 1rem;
+
+    @media #{$medium-screen}{
+      font-size: type-scale(-1);
+      padding: 2rem;
+    }
 
     li {
-      margin-left: 1.5rem;
+      margin: 0 0 0.5rem 1.5rem;
     }
 
     .link {
@@ -58,6 +63,10 @@
           color: lighten($turquoiseblue, 10%);
         }
       }
+    }
+
+    > :last-child {
+      margin-bottom: 0;
     }
   }
 

@@ -1,23 +1,43 @@
 .main-header {
+  padding-top: em-calc(80px);
+  background-image: url('images/devtools-author-monokai-theme.png');
+  background-repeat: no-repeat;
+  background-position: center 200%;
   box-shadow: inset 0 10px 0 0 $rangoon-green;
+  text-align: center;
+
+  .logo {
+    max-width: em-calc(240px);
+  }
 
   .sitename {
     font-weight: 300;
     line-height: 1.25;
   }
 
-  @media #{$large-screen}{
-    padding-top: em-calc(80px);
-    background-image: url('images/devtools-author-monokai-theme.png');
-    background-repeat: no-repeat;
-    background-position: center 200%;
-
+  @media #{$medium-screen}{
     .row {
-      width: 60%;
       margin: 0 auto;
     }
 
+    .col-12 {
+      padding: 0;
+    }
+    
     .logo {
+      max-width: em-calc(280px);
+    }
+  }
+
+  @media #{$large-screen}{
+    text-align: left;
+
+    .row {
+      max-width: 60%;
+    }
+
+    .logo {
+      max-width: em-calc(320px);
       float: left;
     }
 

@@ -34,7 +34,7 @@
   <link rel="publisher" href="//plus.google.com/112398162809101288990/about" />
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic">
   <link rel="stylesheet" href="style.css" />
 
   <title>DevTools Author | A simple set of editor settings for Chrome Developer Tools</title>
@@ -44,12 +44,16 @@
   <header class="main-header">
     <div class="container">
       <div class="row">
-        <img src="images/icon_512.png" width="320" class="logo" alt="logo" />
-        <h1 class="sitename">DevTools Author</h1>
+        <div class="col-12">
+          <img src="images/icon_512.png" width="320" class="logo" alt="DevTools Author Logo" />
+          <h1 class="sitename">DevTools Author</h1>
+        </div>
       </div>
       <div class="row">
-        <a href="https://github.com/micjamking/devtools-author" class="stargazers" title="Stargazers on GitHub"></a>
-        <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="stargazers" title="DevTool Authors"></a>
+        <div class="col-12">
+          <a href="//github.com/micjamking/devtools-author" class="stargazers" title="Stargazers on GitHub"></a>
+          <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="stargazers" title="DevTool Authors"></a>
+        </div>
       </div>
     </div>
   </header>
@@ -66,7 +70,7 @@
             <h3 class="subtitle">A simple set of author settings for Chrome Developer Tools.</h3>
             <p>If you use DevTools as your frontend development environment, <em>DevTools Author</em> provides a <a href="#features" title="DevTools Feature Set"><em>small set</em></a> of options to enhance your authoring experience.</p>
             <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="button cta" title="Add DevTools Author to Chrome">Add DevTools Author to Chrome</a>
-            <span class="link-to-github">or <a href="https://github.com/micjamking/devtools-author" class="link" title="View DevTools Author on GitHub">View on GitHub</a></span>
+            <span class="link-to-github">or <a href="//github.com/micjamking/devtools-author" class="link" title="View DevTools Author on GitHub">View on GitHub</a></span>
           </div>
         </div>
       </div>
@@ -93,7 +97,7 @@
         <div class="col-4 ">
           <div class="callout font-family">
             <span class="hack-demo">Hack</span>
-            <h4>*Custom Font Support</h4>
+            <h4>Custom Font Support</h4>
           </div>
         </div>
         <div class="col-4">
@@ -106,7 +110,9 @@
         </div>
       </div>
       <div class="row">
-        <h4 class="storage">Your settings are saved automatically & persisted using Chrome Storage.</h4>
+        <div class="col-12">
+          <h4 class="storage">Your settings are saved automatically & persisted using Chrome Storage.</h4>
+        </div>
       </div>
     </div>
   </section>
@@ -114,31 +120,42 @@
   <!-- Usage Section -->
   <section id="usage" class="usage-section dark-bg">
     <div class="container">
-      <h3>Getting Setup</h3>
-      <pre class="installation">
-        <ol>
-          <li>Install the <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="link" title="DevTools Author Chrome Extension">DevTools Author Chrome Extension</a></li>
-          <li>Enable DevTools experiments in <span class="comment">(copy below in to omnibox)</span> <a class="link internal" title="Enable DevTools Experiments in Chrome Flags">chrome://flags/#enable-devtools-experiments</a></li>
-          <li>Open DevTools (<span class="keyword">cmd</span> + <span class="keyword">opt</span> + <span class="keyword">I</span>); Settings > Experiments > check <span class="option"><strong>Allow custom UI Themes</strong></span>.</li>
-        </ol>
-        <p class="comment">/* After restarting DevTools, you should see the default theme 3024 take affect within the Sources and Console panels. */</p>
-        <p class="comment">/* DevTools Author currently supports custom monospace fonts <a href="http://sourcefoundry.org/hack/" class="keyword" title="Hack font">Hack</a>, <a href="http://adobe-fonts.github.io/source-code-pro/" class="keyword" title="Source Code Pro Font">Source Code Pro</a>, and <a href="https://www.google.com/fonts/specimen/Droid+Sans+Mono" class="keyword" title="Droid Sans Mono Font">Droid Sans Mono</a>. (Must be installed on your computer).*/</p>
-      </pre>
-      <h4>Have a Question or an Issue?<br/><small><a href="https://github.com/micjamking/devtools-author/issues" class="keyword" title="DevTools Author Issues on GitHub">See existing discussions</a> or <a href="https://github.com/micjamking/devtools-author/issues/new" class="keyword" title="Create an Issue on GitHub">open a new issue.</a></small></h4>
+      <div class="row">
+        <div class="col-12">
+          <h3>Getting Setup</h3>
+          <pre class="installation">
+            <ol>
+              <li>Install the <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="link" title="DevTools Author Chrome Extension">DevTools Author Chrome Extension</a></li>
+              <li>Enable DevTools experiments in <span class="comment">(copy below in to omnibox)</span> <a class="link internal" title="Enable DevTools Experiments in Chrome Flags">chrome://flags/#enable-devtools-experiments</a></li>
+              <li>Open DevTools (<span class="keyword">cmd</span> + <span class="keyword">opt</span> + <span class="keyword">I</span>); Settings > Experiments > check <span class="option"><strong>Allow custom UI Themes</strong></span>.</li>
+            </ol>
+            <p class="comment">/* After restarting DevTools, you should see the default theme 3024 take affect within the Sources and Console panels. */</p>
+            <p class="comment">/* DevTools Author currently supports custom monospace fonts <a href="//sourcefoundry.org/hack/" class="keyword" title="Hack font">Hack</a>, <a href="//adobe-fonts.github.io/source-code-pro/" class="keyword" title="Source Code Pro Font">Source Code Pro</a>, and <a href="//www.google.com/fonts/specimen/Droid+Sans+Mono" class="keyword" title="Droid Sans Mono Font">Droid Sans Mono</a>. (Must be installed on your computer).*/</p>
+          </pre>
+          <h4>Have a Question or an Issue?<br/><small><a href="//github.com/micjamking/devtools-author/issues" class="keyword" title="DevTools Author Issues on GitHub">See existing discussions</a> or <a href="//github.com/micjamking/devtools-author/issues/new" class="keyword" title="Create an Issue on GitHub">open a new issue.</a></small></h4>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- faq Section -->
+  <!-- FAQ Section -->
   <section id="faq" class="faq-section">
     <div class="container">
-      <h3>Most Common Question:</h3>
-      <dl>
-        <dt>Why should I use DevTools instead of <span class="fake-element">&lt;insert editor here&gt;</span>?</dt>
-        <dd>See <a href="https://medium.com/p/779c599b022">Chrome DevTools: an IDE for the Web</a></dd>
-        <dd>Also:</dd>
-      </dl>
-      <h3>Chrome DevTools Resources</h3>
       <div class="row">
+        <div class="col-12">
+          <h3>Most Common Question:</h3>
+          <dl>
+            <dt>Why should I use DevTools instead of <span class="fake-element">&lt;insert editor here&gt;</span>?</dt>
+            <dd>See <a href="//medium.com/p/779c599b022">Chrome DevTools: an IDE for the Web</a></dd>
+            <dd>Also:</dd>
+          </dl>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-12">
+          <h3>Chrome DevTools Resources</h3>
+        </div>
         <div class="col-3">
           <div class="callout"></div>
         </div>
@@ -158,7 +175,11 @@
   <!-- Main Footer -->
   <footer class="main-footer dark-bg">
     <div class="container">
-      <p class="copyright">Made with <span class="keyword">&#10084;</span> and aloha by <a href="//mikeking.io" title="Mike King">Mike King</a> &copy; <span class="currentYear"></span></p>
+      <div class="row">
+        <div class="col-12">
+          <p class="copyright">Made with <span class="keyword">&#10084;</span> and aloha by <a href="//mikeking.io" title="Mike King">Mike King</a> &copy; <span class="currentYear"></span></p>
+        </div>
+      </div>
     </div>
   </footer>
 

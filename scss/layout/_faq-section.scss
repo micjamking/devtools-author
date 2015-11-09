@@ -1,7 +1,8 @@
 .faq-section {
 
   dl {
-    width: em-calc(660px);
+    width: 100%;
+    max-width: em-calc($medium);
     margin: 0 auto 6em;
     text-align: center;
 

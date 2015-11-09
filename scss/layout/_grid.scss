@@ -7,13 +7,22 @@
   height: 100%;
   max-width: 960px;
   margin: 0 auto;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .row {
+  width: 100%;
   position: relative;
-  margin-left: -1em;
-  margin-right: -1em;
   @include cf;
+
+  @media #{$medium-screen}{ 
+    margin-left: -1em;
+    margin-right: -1em;
+  }
 }
 
 [class^="col-"] {
@@ -25,7 +34,7 @@
 
 @for $i from 1 through 12 {
   .col-#{$i} { 
-    @media screen and (min-width: 600px){
+    @media #{$medium-screen}{
       width: ($i / 12) * 100%;
     }
   }

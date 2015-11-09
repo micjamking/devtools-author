@@ -1,9 +1,14 @@
 .main-footer {
-  height: em-calc(150px);
-  padding: em-calc(60px);
+  min-height: em-calc(150px);
+  padding: em-calc(65px) em-calc(40px);
+
+  @media #{$medium-screen}{
+    padding: em-calc(60px);
+  }
 
   .copyright {
     text-align: center;
+    margin-bottom: 0;
 
     .keyword {
       display: inline-block;
