@@ -244,6 +244,7 @@ pre {
 
 @media only screen and (min-width: 640px) {
   .row {
+    width: auto;
     margin-left: -1em;
     margin-right: -1em;
   }
