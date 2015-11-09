@@ -31,10 +31,9 @@
       &.internal {
         display: inline-block;
         color: $inchworm;
-
-        &:before {
-          background-color: $inchworm;
-        }
+        word-wrap: break-word;
+        word-break: break-word;
+        overflow-wrap: break-word;
 
         &:hover {
           color: lighten($inchworm, 10%);

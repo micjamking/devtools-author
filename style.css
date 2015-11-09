@@ -218,8 +218,9 @@ pre {
 .container {
   width: 100%;
   height: 100%;
-  max-width: 960px;
+  max-width: 50rem;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .container img {
@@ -459,27 +460,66 @@ pre {
 }
 
 .feature-section .callout {
-  min-height: 10rem;
+  height: 8rem;
 }
 
 @media only screen and (min-width: 640px) {
   .feature-section .callout {
+    height: 9rem;
+    margin-bottom: 5rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .feature-section .callout {
+    height: 10rem;
     margin-bottom: 5rem;
   }
 }
 
 .feature-section .callout h4 {
   font-size: 1.25em;
-  position: absolute;
-  bottom: 0.5rem;
   width: 100%;
-  margin-left: -1.6rem;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 640px) {
   .feature-section .callout h4 {
     font-size: 1em;
-    margin-left: -2rem;
+    padding: 0 0.7rem;
+  }
+}
+
+@media screen and (min-width: 790px) {
+  .feature-section .callout h4 {
+    padding: 0;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .feature-section .callout h4 {
+    position: absolute;
+    bottom: 0.5rem;
+    padding: 0 1rem;
+    margin: 0 0 1em -2rem;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section .callout.font-family h4 {
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 783px) {
+  .feature-section .callout.font-family h4 {
+    padding: 0 0.7rem;
+  }
+}
+
+@media screen and (min-width: 790px) {
+  .feature-section .callout.font-family h4 {
+    padding: 0;
   }
 }
 
@@ -528,8 +568,24 @@ pre {
 }
 
 .feature-section .callout .hack-demo {
+  display: inline-block;
   font-family: "Hack", "Source Code Pro", "Droid Sans Mono", monospace;
   font-size: 2.44140625em;
+  margin: 1rem 0 0;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section .callout .hack-demo {
+    font-size: 1.953125em;
+    margin: 1rem 0 0.35rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .feature-section .callout .hack-demo {
+    font-size: 2.44140625em;
+    margin: 0.25rem 0 0.35rem;
+  }
 }
 
 .feature-section .callout [class^='font-size-'] {
@@ -538,23 +594,64 @@ pre {
 }
 
 .feature-section .callout .font-size-demo {
-  margin-top: 0.75rem;
+  margin: 0.75rem 0 1em;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section .callout .font-size-demo {
+    font-size: 0.5rem;
+    margin: 1.5rem 0;
+  }
+}
+
+@media screen and (min-width: 660px) {
+  .feature-section .callout .font-size-demo {
+    font-size: 0.6rem;
+    margin: 1.35rem 0;
+  }
+}
+
+@media screen and (min-width: 710px) {
+  .feature-section .callout .font-size-demo {
+    font-size: 0.7rem;
+    margin: 1.25rem 0;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  .feature-section .callout .font-size-demo {
+    font-size: 0.8rem;
+    margin: 1.15rem 0;
+  }
+}
+
+@media screen and (min-width: 810px) {
+  .feature-section .callout .font-size-demo {
+    font-size: 0.9rem;
+    margin: 1rem 0;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .feature-section .callout .font-size-demo {
+    font-size: 1rem;
+  }
 }
 
 .feature-section .callout .font-size-10 {
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 .feature-section .callout .font-size-12 {
-  font-size: 1.2rem;
+  font-size: 1.2em;
 }
 
 .feature-section .callout .font-size-14 {
-  font-size: 1.4rem;
+  font-size: 1.4em;
 }
 
 .feature-section .callout .font-size-16 {
-  font-size: 1.6rem;
+  font-size: 1.6em;
 }
 
 .faq-section dl {
@@ -621,10 +718,9 @@ pre {
 .usage-section .installation .link.internal {
   display: inline-block;
   color: #abdf00;
-}
-
-.usage-section .installation .link.internal:before {
-  background-color: #abdf00;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .usage-section .installation .link.internal:hover {
@@ -734,12 +830,18 @@ input[type="button"]:active {
 
 .callout {
   position: relative;
-  padding: 2em;
+  padding: 1em;
   background-color: #eaeaea;
   border-radius: 4px 4px 0px 0px;
   box-shadow: 0px 5px 0px 0px #272821;
   text-align: center;
   margin-bottom: 3em;
+}
+
+@media only screen and (min-width: 1024px) {
+  .callout {
+    padding: 2em;
+  }
 }
 
 /*

@@ -5,8 +5,9 @@
 .container {
   width: 100%;
   height: 100%;
-  max-width: 960px;
+  max-width: em-calc(1000px);
   margin: 0 auto;
+  padding: 0 em-calc(20px);
 
   img {
     width: 100%;
