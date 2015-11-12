@@ -11,7 +11,24 @@
     margin-bottom: em-calc(70px);
 
     @media #{$medium-screen}{
+      width: em-calc(832px);
+      position: absolute;
+      top: 50%;
+      left: em-calc(-540px);
+      margin-top: em-calc(-319.5px);
       margin-bottom: 0;
+    }
+
+    @media #{$large-screen}{
+      position: absolute;
+      top: 50%;
+      left: -40%;
+      margin-top: em-calc(-319.5px);
+      margin-bottom: 0;
+    }
+
+    @media #{$xlarge-screen} {
+      left: -45%;
     }
   }
 
@@ -47,17 +64,10 @@
   @media #{$medium-screen} {
     text-align: left;
     padding-top: 0;
-    
-    .main-intro-image {
-      max-width: em-calc(832px);
-      position: absolute;
-      top: 50%;
-      left: -40%;
-      margin-top: em-calc(-319.5px);
-    }
 
     .subtitle {
-      width: em-calc(400px);
+      width: 100%;
+      max-width: em-calc(400px);
     }
 
     .content {
@@ -66,12 +76,6 @@
 
     .link-to-github {
       font-size: type-scale(-1);
-    }
-  }
-
-  @media #{$xlarge-screen} {
-    .main-intro-image {
-      left: -45%;
     }
   }
 }

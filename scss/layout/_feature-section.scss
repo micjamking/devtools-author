@@ -97,11 +97,11 @@
       display: inline-block;
       font-family: $monospace;
       font-size: type-scale(4);
-      margin: 1rem 0 0;
+      margin: 1.15rem 0 0;
 
       @media #{$medium-screen}{
         font-size: type-scale(3);
-        margin: 1rem 0 0.35rem;
+        margin: 1.15rem 0 0.35rem;
       }
 
       @media #{$large-screen}{
@@ -119,28 +119,13 @@
       margin: 0.75rem 0 1em;
 
       @media #{$medium-screen}{
-        font-size: em-calc(10px);
-        margin: 1.5rem 0;
-      }
-
-      @media screen and (min-width: 660px){
-        font-size: em-calc(12px);
-        margin: 1.35rem 0;
-      }
-
-      @media screen and (min-width: 710px){
-        font-size: em-calc(14px);
-        margin: 1.25rem 0;
-      }
-
-      @media screen and (min-width: 760px){
         font-size: em-calc(16px);
-        margin: 1.15rem 0;
+        margin: 1.35rem 0 0.9rem;
       }
 
-      @media screen and (min-width: 810px){
+      @media screen and (min-width: 790px){
         font-size: em-calc(18px);
-        margin: 1rem 0;
+        margin: 1.15rem 0;
       }
 
       @media #{$large-screen}{

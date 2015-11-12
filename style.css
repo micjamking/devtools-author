@@ -395,7 +395,28 @@ pre {
 
 @media only screen and (min-width: 640px) {
   .main-intro .main-intro-image {
+    width: 41.6rem;
+    position: absolute;
+    top: 50%;
+    left: -27rem;
+    margin-top: -15.975rem;
     margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .main-intro .main-intro-image {
+    position: absolute;
+    top: 50%;
+    left: -40%;
+    margin-top: -15.975rem;
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .main-intro .main-intro-image {
+    left: -45%;
   }
 }
 
@@ -435,27 +456,15 @@ pre {
     text-align: left;
     padding-top: 0;
   }
-  .main-intro .main-intro-image {
-    max-width: 41.6rem;
-    position: absolute;
-    top: 50%;
-    left: -40%;
-    margin-top: -15.975rem;
-  }
   .main-intro .subtitle {
-    width: 20rem;
+    width: 100%;
+    max-width: 20rem;
   }
   .main-intro .content {
     top: 13.35rem;
   }
   .main-intro .link-to-github {
     font-size: 0.8em;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .main-intro .main-intro-image {
-    left: -45%;
   }
 }
 
@@ -571,13 +580,13 @@ pre {
   display: inline-block;
   font-family: "Hack", "Source Code Pro", "Droid Sans Mono", monospace;
   font-size: 2.44140625em;
-  margin: 1rem 0 0;
+  margin: 1.15rem 0 0;
 }
 
 @media only screen and (min-width: 640px) {
   .feature-section .callout .hack-demo {
     font-size: 1.953125em;
-    margin: 1rem 0 0.35rem;
+    margin: 1.15rem 0 0.35rem;
   }
 }
 
@@ -599,36 +608,15 @@ pre {
 
 @media only screen and (min-width: 640px) {
   .feature-section .callout .font-size-demo {
-    font-size: 0.5rem;
-    margin: 1.5rem 0;
-  }
-}
-
-@media screen and (min-width: 660px) {
-  .feature-section .callout .font-size-demo {
-    font-size: 0.6rem;
-    margin: 1.35rem 0;
-  }
-}
-
-@media screen and (min-width: 710px) {
-  .feature-section .callout .font-size-demo {
-    font-size: 0.7rem;
-    margin: 1.25rem 0;
-  }
-}
-
-@media screen and (min-width: 760px) {
-  .feature-section .callout .font-size-demo {
     font-size: 0.8rem;
-    margin: 1.15rem 0;
+    margin: 1.35rem 0 0.9rem;
   }
 }
 
-@media screen and (min-width: 810px) {
+@media screen and (min-width: 790px) {
   .feature-section .callout .font-size-demo {
     font-size: 0.9rem;
-    margin: 1rem 0;
+    margin: 1.15rem 0;
   }
 }
 
