@@ -697,13 +697,13 @@ pre {
 .feature-section {
   background-image: url("images/chrome-512.png");
   background-repeat: no-repeat;
-  background-position: center 120%;
+  background-position: center 118%;
   background-size: 15rem;
 }
 
 @media only screen and (min-width: 640px) {
   .feature-section {
-    background-position: center 170%;
+    background-position: center 155%;
     background-size: auto auto;
   }
 }
@@ -883,18 +883,18 @@ pre {
 }
 
 .feature-section .storage-section {
-  padding-bottom: 7rem;
+  padding-bottom: 8rem;
 }
 
 @media only screen and (min-width: 640px) {
   .feature-section .storage-section {
-    padding-bottom: 6rem;
+    padding-bottom: 7rem;
   }
 }
 
 @media only screen and (min-width: 802px) {
   .feature-section .storage-section {
-    padding-bottom: 7rem;
+    padding-bottom: 8rem;
   }
 }
 
@@ -912,6 +912,26 @@ pre {
     width: auto;
     height: auto;
     max-width: 9.15rem;
+  }
+}
+
+.feature-section .storage-section .radio {
+  position: relative;
+  top: 0.75rem;
+  display: block;
+  width: auto;
+  height: auto;
+  min-height: 1rem;
+  max-height: 1.75rem;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section .storage-section .radio {
+    top: 1rem;
+    width: auto;
+    height: auto;
+    max-height: 2.5rem;
   }
 }
 

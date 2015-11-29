@@ -1,11 +1,11 @@
 .feature-section {
   background-image: url('images/chrome-512.png');
   background-repeat: no-repeat;
-  background-position: center 120%;
+  background-position: center 118%;
   background-size: em-calc(300px);
 
   @media #{$medium-screen}{
-    background-position: center 170%;
+    background-position: center 155%;
     background-size: auto auto;
   }
 
@@ -160,14 +160,14 @@
   }
 
   .storage-section {
-    padding-bottom: em-calc(140px);
+    padding-bottom: em-calc(160px);
     
     @media #{$medium-screen}{
-      padding-bottom: em-calc(120px);
+      padding-bottom: em-calc(140px);
     }
     
     @media only screen and (min-width: 802px){
-      padding-bottom: em-calc(140px);
+      padding-bottom: em-calc(160px);
     }
 
     .cloud {
@@ -182,6 +182,24 @@
         width: auto;
         height: auto;
         max-width: em-calc(183px);
+      }
+    }
+
+    .radio {
+      position: relative;
+      top: em-calc(15px);
+      display: block;
+      width: auto;
+      height: auto;
+      min-height: em-calc(20px);
+      max-height: em-calc(35px);
+      margin: 0 auto;
+
+      @media #{$medium-screen}{
+        top: em-calc(20px);
+        width: auto;
+        height: auto;
+        max-height: em-calc(50px);
       }
     }
   }
