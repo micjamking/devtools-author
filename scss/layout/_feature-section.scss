@@ -1,4 +1,7 @@
 .feature-section {
+  background-image: url('images/chrome-512.png');
+  background-repeat: no-repeat;
+  background-position: center 170%;
 
   .callout {
     height: em-calc(160px);
@@ -97,7 +100,7 @@
       display: inline-block;
       font-family: $monospace;
       font-size: type-scale(4);
-      margin: 1.15rem 0 0;
+      margin: 0.70rem 0 0.45rem;
 
       @media #{$medium-screen}{
         font-size: type-scale(3);

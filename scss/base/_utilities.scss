@@ -35,6 +35,9 @@ $medium-screen: 'only screen and (min-width: #{$medium})';
 $large-screen:  'only screen and (min-width: #{$large})';
 $xlarge-screen: 'only screen and (min-width: #{$xlarge})';
 
+// Animation
+$ease: cubic-bezier(0.400,  0.000, 0.200, 1.000);
+
 /*
  * Mixins
  */

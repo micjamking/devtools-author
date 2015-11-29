@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="117px" height="73px" viewBox="0 0 117 73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4 (15575) - http://www.bohemiancoding.com/sketch -->
+    <title>radio</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop-HD" sketch:type="MSArtboardGroup" transform="translate(-662.000000, -2317.000000)">
+            <g id="radio" sketch:type="MSLayerGroup" transform="translate(720.342053, 2347.462585) rotate(-45.000000) translate(-720.342053, -2347.462585) translate(674.342053, 2301.962585)">
+                <path d="M0.776994612,50.1467535 C23.362047,50.1467535 41.6708494,68.4142051 41.6708494,90.9482485 L31.4473857,90.9482485 C31.4473857,74.0477159 17.7157839,60.3471273 0.776994612,60.3471273 L0.776994612,50.1467535 L0.776994612,50.1467535 Z" id="Oval-6" fill="#4586F3" sketch:type="MSShapeGroup"></path>
+                <path d="M5.06703911,25.4608596 C38.9446176,25.4608596 66.4078212,52.862037 66.4078212,86.6631022 L56.1843575,86.6631022 C56.1843575,58.4955478 33.2983545,35.6612334 5.06703911,35.6612334 L5.06703911,25.4608596 L5.06703911,25.4608596 Z" id="Oval-6" fill="#EAEAEA" sketch:type="MSShapeGroup"></path>
+                <path d="M91.1447931,82.3779558 L80.9213294,82.3779558 C80.9213294,42.9433797 48.8809252,10.9753395 9.3570836,10.9753395 L9.3570836,0.774965747 C54.5271883,0.774965747 91.1447931,37.3098688 91.1447931,82.3779558 Z" id="Oval-6" fill="#EAEAEA" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

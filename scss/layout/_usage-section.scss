@@ -18,35 +18,17 @@
     }
 
     .link {
-      color: $radical-red;
 
       &:before {
         background-color: $radical-red;
       }
 
-      &:hover {
-        color: lighten($radical-red, 10%);
-      }
-
       &.internal {
         display: inline-block;
-        color: $inchworm;
         word-wrap: break-word;
         word-break: break-word;
         overflow-wrap: break-word;
-
-        &:hover {
-          color: lighten($inchworm, 10%);
-        }
       }
-    }
-
-    .keyword {
-      color: $turquoiseblue; 
-    }
-
-    .option {
-      color: $confetti;
     }
 
     .comment {
@@ -69,7 +51,17 @@
     }
   }
 
-  .keyword {
-    color: $turquoiseblue; 
+  .github-issues {
+    &::before {
+      content: '';
+      display: block;
+      width: em-calc(48px);
+      height: em-calc(48px);
+      background-image: url('images/GitHub-Mark-Light-64px.png');
+      background-repeat: no-repeat;
+      background-size: 48px;
+      margin: -0.4rem auto 1.4rem;
+      opacity: 0.1;
+    }
   }
 }

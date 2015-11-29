@@ -59,11 +59,48 @@ a {
   color: $pablo;
   transition: all 0.25s ease;
 
-  &:link:not(.button){ 
+  &:link:not(.button){
     color: $pablo;
 
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+      color: darken($pablo, 10%);
+    }
+
     &:hover {
-      color: $mercury;
+      color: darken($pablo, 10%);
+    }
+
+    &.link {
+      color: $radical-red;
+
+      &::before {
+        background-color: lighten($radical-red, 10%);
+      }
+
+      &:hover {
+        color: lighten($radical-red, 10%);
+      }
+    }
+
+    &.external,
+    &.keyword {
+      color: $turquoiseblue;
+    }
+
+    &.option {
+      color: $confetti;
+    }
+  }
+
+  &.internal {
+    color: $inchworm;
+
+    &:hover {
+      color: lighten($inchworm, 10%);
     }
   }
 
@@ -89,21 +126,17 @@ a {
       }
     }
   }
-
-  &:visited,
-  &:hover,
-  &:active,
-  &:focus {
-    outline: none;
-    color: $mercury;
-  }
-
-  &:hover {
-    color: $mercury;
-  }
 }
 
 pre {
   font-family: $monospace;
   white-space: normal;
+}
+
+.keyword {
+  color: $turquoiseblue;
+}
+
+.option {
+  color: $confetti;
 }

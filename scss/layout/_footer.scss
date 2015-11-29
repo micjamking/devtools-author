@@ -14,7 +14,7 @@
       display: inline-block;
       color: $radical-red;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.15s $ease;
 
       &:hover {
         transform: scale(1.25);

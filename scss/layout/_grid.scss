@@ -41,3 +41,19 @@
     }
   }
 }
+
+@for $i from 1 through 12 {
+  .col-#{$i}-medium { 
+    @media #{$medium-screen}{
+      width: ($i / 12) * 100%;
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i}-large { 
+    @media #{$large-screen}{
+      width: ($i / 12) * 100%;
+    }
+  }
+}

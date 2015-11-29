@@ -8,19 +8,31 @@
 .usage-section,
 .faq-section {
   min-height: em-calc(900px);
+}
 
+.main-header,
+.main-intro,
+.feature-section,
+.usage-section {
   @media #{$medium-screen}{
     height: em-calc(900px);
   }
 }
 
+.main-intro,
 .feature-section,
 .usage-section,
 .faq-section {
   padding-top: em-calc(70px);
+}
+
+.feature-section,
+.usage-section,
+.faq-section {
 
   @media #{$medium-screen}{
-    padding-top: em-calc(140px);
+    padding-top: em-calc(100px);
+    padding-bottom: em-calc(100px);
   }
   
   h3, h4 {
