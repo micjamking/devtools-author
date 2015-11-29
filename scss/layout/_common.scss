@@ -10,15 +10,6 @@
   min-height: em-calc(900px);
 }
 
-.main-header,
-.main-intro,
-.feature-section,
-.usage-section {
-  @media #{$medium-screen}{
-    height: em-calc(900px);
-  }
-}
-
 .main-intro,
 .feature-section,
 .usage-section,

@@ -1,7 +1,13 @@
 .feature-section {
   background-image: url('images/chrome-512.png');
   background-repeat: no-repeat;
-  background-position: center 170%;
+  background-position: center 120%;
+  background-size: em-calc(300px);
+
+  @media #{$medium-screen}{
+    background-position: center 170%;
+    background-size: auto auto;
+  }
 
   .callout {
     height: em-calc(160px);
@@ -26,7 +32,7 @@
         padding: 0 em-calc(14px);
       }
       
-      @media screen and (min-width: 790px){
+      @media only screen and (min-width: 790px){
         padding: 0;
       }
 
@@ -43,11 +49,11 @@
         padding: 0;
       }
       
-      @media screen and (min-width: 783px){
+      @media only screen and (min-width: 783px){
         padding: 0 em-calc(14px);
       }
       
-      @media screen and (min-width: 790px){
+      @media only screen and (min-width: 790px){
         padding: 0;
       }
     }
@@ -126,7 +132,7 @@
         margin: 1.35rem 0 0.9rem;
       }
 
-      @media screen and (min-width: 790px){
+      @media only screen and (min-width: 790px){
         font-size: em-calc(18px);
         margin: 1.15rem 0;
       }
@@ -150,6 +156,33 @@
 
     .font-size-16 {
       font-size: em-calc(32px, $base-font, 'em');
+    }
+  }
+
+  .storage-section {
+    padding-bottom: em-calc(140px);
+    
+    @media #{$medium-screen}{
+      padding-bottom: em-calc(120px);
+    }
+    
+    @media only screen and (min-width: 802px){
+      padding-bottom: em-calc(140px);
+    }
+
+    .cloud {
+      display: block;
+      width: 50%;
+      height: auto;
+      min-width: em-calc(110px);
+      max-width: em-calc(160px);
+      margin: 0 auto;
+
+      @media #{$medium-screen}{
+        width: auto;
+        height: auto;
+        max-width: em-calc(183px);
+      }
     }
   }
 }

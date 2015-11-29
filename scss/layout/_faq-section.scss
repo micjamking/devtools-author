@@ -30,8 +30,8 @@
           display: block;
           background-image: url('images/YouTube-social-icon_dark_24px.png');
           background-size: contain;
-          width: 24px;
-          height: 17px;
+          width: em-calc(24px);
+          height: em-calc(17px);
           position: absolute;
           top: 50%;
           left: -2.5%;
@@ -57,7 +57,7 @@
     height: em-calc(60px);
     overflow: hidden;
     text-align: center;
-    margin-bottom: em-calc(30px);
+    margin-bottom: em-calc(20px);
 
     &::after {
       content: '';
@@ -74,26 +74,27 @@
     }
   }
 
-  .callout {
+  .resource {
     padding: 2rem 3rem;
     height: em-calc(210px);
 
     &.google-developer {
       img {
+        max-width: em-calc(256px);
         margin-top: em-calc(-3px);
       }
     }
 
     &.chrome-developer {
       img {
-        width: 120px;
+        width: em-calc(120px);
         margin-top: em-calc(10px);
       }
     }
 
     &.addy-osmani {
       img {
-        width: 230px;
+        width: em-calc(230px);
         margin-top: em-calc(5px);
         margin-left: em-calc(20px);
       }
@@ -101,7 +102,7 @@
 
     &.code-school {
       img {
-        width: 120px;
+        width: em-calc(120px);
         margin-top: em-calc(10px);
       }
     }

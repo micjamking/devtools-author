@@ -88,6 +88,19 @@ h4 {
   font-size: 1.25em;
 }
 
+h5, h6 {
+  font-size: 0.8em;
+}
+
+h5 {
+  font-weight: bold;
+  font-weight: 400;
+}
+
+h6 {
+  font-style: italic;
+}
+
 /**
  * @section Margins
  */
@@ -198,15 +211,6 @@ pre {
 .usage-section,
 .faq-section {
   min-height: 45rem;
-}
-
-@media only screen and (min-width: 640px) {
-  .main-header,
-  .main-intro,
-  .feature-section,
-  .usage-section {
-    height: 45rem;
-  }
 }
 
 .main-intro,
@@ -564,6 +568,12 @@ pre {
   background-position: center 200%;
 }
 
+@media only screen and (min-width: 640px) {
+  .main-intro {
+    height: 45rem;
+  }
+}
+
 .main-intro .subtitle {
   font-style: italic;
 }
@@ -687,7 +697,15 @@ pre {
 .feature-section {
   background-image: url("images/chrome-512.png");
   background-repeat: no-repeat;
-  background-position: center 170%;
+  background-position: center 120%;
+  background-size: 15rem;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section {
+    background-position: center 170%;
+    background-size: auto auto;
+  }
 }
 
 .feature-section .callout {
@@ -721,7 +739,7 @@ pre {
   }
 }
 
-@media screen and (min-width: 790px) {
+@media only screen and (min-width: 790px) {
   .feature-section .callout h4 {
     padding: 0;
   }
@@ -742,13 +760,13 @@ pre {
   }
 }
 
-@media screen and (min-width: 783px) {
+@media only screen and (min-width: 783px) {
   .feature-section .callout.font-family h4 {
     padding: 0 0.7rem;
   }
 }
 
-@media screen and (min-width: 790px) {
+@media only screen and (min-width: 790px) {
   .feature-section .callout.font-family h4 {
     padding: 0;
   }
@@ -835,7 +853,7 @@ pre {
   }
 }
 
-@media screen and (min-width: 790px) {
+@media only screen and (min-width: 790px) {
   .feature-section .callout .font-size-demo {
     font-size: 0.9rem;
     margin: 1.15rem 0;
@@ -862,6 +880,39 @@ pre {
 
 .feature-section .callout .font-size-16 {
   font-size: 1.6em;
+}
+
+.feature-section .storage-section {
+  padding-bottom: 7rem;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section .storage-section {
+    padding-bottom: 6rem;
+  }
+}
+
+@media only screen and (min-width: 802px) {
+  .feature-section .storage-section {
+    padding-bottom: 7rem;
+  }
+}
+
+.feature-section .storage-section .cloud {
+  display: block;
+  width: 50%;
+  height: auto;
+  min-width: 5.5rem;
+  max-width: 8rem;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section .storage-section .cloud {
+    width: auto;
+    height: auto;
+    max-width: 9.15rem;
+  }
 }
 
 .faq-section dl {
@@ -897,8 +948,8 @@ pre {
   display: block;
   background-image: url("images/YouTube-social-icon_dark_24px.png");
   background-size: contain;
-  width: 24px;
-  height: 17px;
+  width: 1.2rem;
+  height: 0.85rem;
   position: absolute;
   top: 50%;
   left: -2.5%;
@@ -921,7 +972,7 @@ pre {
   height: 3rem;
   overflow: hidden;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .faq-section .thumbnail::after {
@@ -938,38 +989,39 @@ pre {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.faq-section .callout {
+.faq-section .resource {
   padding: 2rem 3rem;
   height: 10.5rem;
 }
 
-.faq-section .callout.google-developer img {
+.faq-section .resource.google-developer img {
+  max-width: 12.8rem;
   margin-top: -0.15rem;
 }
 
-.faq-section .callout.chrome-developer img {
-  width: 120px;
+.faq-section .resource.chrome-developer img {
+  width: 6rem;
   margin-top: 0.5rem;
 }
 
-.faq-section .callout.addy-osmani img {
-  width: 230px;
+.faq-section .resource.addy-osmani img {
+  width: 11.5rem;
   margin-top: 0.25rem;
   margin-left: 1rem;
 }
 
-.faq-section .callout.code-school img {
-  width: 120px;
+.faq-section .resource.code-school img {
+  width: 6rem;
   margin-top: 0.5rem;
 }
 
-.faq-section .callout:hover img {
+.faq-section .resource:hover img {
   -webkit-transform: translateY(-10px);
           transform: translateY(-10px);
 }
 
 @media only screen and (min-width: 640px) {
-  .faq-section .callout {
+  .faq-section .resource {
     padding: 2rem;
   }
 }

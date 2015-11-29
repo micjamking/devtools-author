@@ -42,6 +42,19 @@ h4 {
   font-size: type-scale(1);
 }
 
+h5, h6 {
+  font-size: type-scale(-1);
+}
+
+h5 {
+  font-weight: bold;
+  font-weight: 400;
+}
+
+h6 {
+  font-style: italic;
+}
+
 /**
  * @section Margins
  */
