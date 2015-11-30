@@ -12,7 +12,7 @@
   <meta name="keywords" content="Mike King, devtools author, chrome devtools, devtools, devtools themes, devtools fonts, custom themes, custom fonts, frontend development, design in browser, develop in browser" />
 
   <!-- Facebook -->
-  <meta property="og:type" content="website" />
+  <meta property="fb:app_id" content="1686524291587989" /> 
   <meta property="og:url" content="http://mikeking.io/devtools-author/" />
   <meta property="og:title" content="DevTools Author, a simple set of editor settings for Chrome Developer Tools" />
   <meta property="og:site_name" content="DevTools Author | A simple set of editor settings for Chrome Developer Tools" />
@@ -60,7 +60,7 @@
           <g:plusone data-href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" data-size="small" data-recommendations="false"></g:plusone>
           <iframe class="github-star" src="//ghbtns.com/github-btn.html?user=micjamking&repo=devtools-author&type=star&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
           <a class="twitter-share-button"{count} href="//twitter.com/share" data-via="micjamking" data-hashtags="devtools">Tweet</a>
-          <div class="fb-share-button" data-href="http://mikeking.io/devtools-author/" data-layout="button_count"></div>
+          <div class="fb-share-button" data-share="true" data-layout="button_count"></div>
         </div>
       </div>
     </div>
@@ -253,13 +253,23 @@
   </footer>
 
   <!-- Scripts -->
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1686524291587989',
+        xfbml      : true,
+        version    : 'v2.5'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   <script src="script.js"></script>
