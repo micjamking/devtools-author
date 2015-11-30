@@ -1,0 +1,75 @@
+/**
+ * Animations
+ */
+
+// Easing functions
+$ease: (
+  in-out-quad:  cubic-bezier(0.455,  0.030, 0.515, 0.955),
+  in-out-cubic: cubic-bezier(0.645,  0.045, 0.355, 1.000),
+  in-out-quart: cubic-bezier(0.770,  0.000, 0.175, 1.000),
+  in-out-quint: cubic-bezier(0.860,  0.000, 0.070, 1.000),
+  in-out-circ:  cubic-bezier(0.785,  0.135, 0.150, 0.860),
+  swift-out:    cubic-bezier(0.550,  0.000, 0.100, 1.000),
+  material:     cubic-bezier(0.400,  0.000, 0.200, 1.000)
+);
+
+// Animation properties 
+$duration:        0.25s;
+$timing-function: map-get($ease, 'material');
+$delay:           0s;
+$iteration-count: infinite;
+$direction:       normal;
+$fill-mode:       both;
+$play-state:      running;
+
+// Animate mixin
+@mixin animation(
+  $name, 
+  $duration: $duration,
+  $timing-function: $timing-function,
+  $delay: $delay,
+  $iteration-count: $iteration-count,
+  $direction: $direction,
+  $fill-mode: $fill-mode,
+  $play-state: $play-state
+){
+  animation-name: $name;
+  animation-duration: $duration;
+  animation-timing-function: $timing-function;
+  animation-delay: $delay;
+  animation-iteration-count: $iteration-count;
+  animation-direction: $direction;
+  animation-fill-mode: $fill-mode;
+  animation-play-state: $play-state;
+}
+
+// Animations
+@keyframes svg-fill-change {
+  0%   { fill: transparent; }
+  10%  { fill: $googleblue; }
+  30%  { fill: $googleblue; }
+  40%  { fill: transparent; }
+  100% { fill: transparent; }
+}
+
+@keyframes svg-stroke-change {
+  0%   { stroke: $lilywhite;  fill: transparent; }
+  10%  { stroke: $googleblue; fill: $googleblue; }
+  30%  { stroke: $googleblue; fill: $googleblue; }
+  40%  { stroke: $lilywhite;  fill: transparent; }
+  100% { stroke: $lilywhite;  fill: transparent; }
+}
+
+@keyframes rotate-pause {
+  0%   { transform: rotate(0); }
+  30%  { transform: rotate(0); }
+  40%  { transform: rotate(180deg); }
+  100% { transform: rotate(180deg); }
+}
+
+@keyframes rotate-pause-slow {
+  0%   { transform: rotate(0); }
+  30%  { transform: rotate(0); }
+  40%  { transform: rotate(45deg); }
+  100% { transform: rotate(45deg); }
+}

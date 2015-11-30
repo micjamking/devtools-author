@@ -1,7 +1,48 @@
 .main-intro {
+  text-align: center;
+  background-image: url('images/devtools-author-settings.png');
+  background-repeat: no-repeat;
+  background-position: center 200%;
+
+  @media #{$medium-screen}{
+    height: em-calc(900px);
+  }
 
   .subtitle {
     font-style: italic;
+  }
+
+  .main-intro-image {
+    display: none;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: em-calc(70px);
+    transition: all 0.25s $ease;
+
+    @media #{$medium-screen}{
+      display: block;
+      width: em-calc(832px);
+      position: absolute;
+      top: 50%;
+      left: em-calc(-520px);
+      margin-top: em-calc(-319.5px);
+      margin-bottom: 0;
+    }
+
+    @media only screen and (min-width: 792px){
+      left: em-calc(-500px);
+    }
+
+    @media only screen and (min-width: 867px){
+      left: em-calc(-467px);
+    }
+
+    @media only screen and (min-width: 1000px){
+      left: em-calc(-400px);
+    }
+
+    @media #{$large-screen}{
+      left: -40%;
+    }
   }
 
   .row {
@@ -12,16 +53,16 @@
     display: block;
     background-color: $radical-red;
     color: $lilywhite;
-    margin: 1.75em 0;
+    margin: 2rem 0 1rem;
 
+    &:focus,
     &:hover {
       transform: scale(1.03);
       background-color: darken(#FB2E72, 5%);
     }
 
-    &:focus,
     &:active {
-      transform: translateY(5px);
+      transform: scale(0.93);
     }
   }
 
@@ -29,34 +70,50 @@
     position: relative;
   }
 
+  .cta,
+  .link-to-github {
+    font-size: type-scale(-1);
+  }
+
   .link-to-github {
     color: $pablo;
   }
 
-  @media #{$large-screen} {
-    .main-intro-image {
-      position: absolute;
-      top: 50%;
-      left: -40%;
-      margin-top: em-calc(-319.5px);
-    }
+  @media #{$medium-screen} {
+    background-image: none;
+    text-align: left;
+    padding-top: 0;
 
     .subtitle {
-      width: em-calc(400px);
+      width: 100%;
+      max-width: em-calc(400px);
     }
 
     .content {
-      top: em-calc(267px);
+      top: em-calc(150px);
     }
 
-    .link-to-github {
-      font-size: type-scale(-1);
+    .cta {
+      margin: 1.75em 0;
+      font-size: type-scale(0);
     }
   }
 
-  @media #{$xlarge-screen} {
-    .main-intro-image {
-      left: -45%;
+  @media only screen and (min-width: 653px){
+    .content {
+      top: em-calc(180px);
+    }
+  }
+
+  @media only screen and (min-width: 792px){
+    .content {
+      top: em-calc(220px);
+    }
+  }
+
+  @media only screen and (min-width: 867px){
+    .content {
+      top: em-calc(267px);
     }
   }
 }

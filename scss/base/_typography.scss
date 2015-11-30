@@ -7,8 +7,12 @@ html {
 }
 
 body{
-  font: normal normal 300 #{type-scale(0)}/#{$line-height} $sans-serif;
+  font: normal normal 300 #{type-scale(-1)}/#{$line-height} $sans-serif;
   color: $armadillo;
+
+  @media #{$medium-screen}{
+    font-size: type-scale(0);
+  }
 }
 
 /**
@@ -18,7 +22,6 @@ h1,
 h2,
 h3,
 h4, {
-/*   font-family: $sans-serif; */
   font-weight: 300;
   margin: 0 0 1em;
 }
@@ -39,6 +42,19 @@ h4 {
   font-size: type-scale(1);
 }
 
+h5, h6 {
+  font-size: type-scale(-1);
+}
+
+h5 {
+  font-weight: bold;
+  font-weight: 400;
+}
+
+h6 {
+  font-style: italic;
+}
+
 /**
  * @section Margins
  */
@@ -55,41 +71,70 @@ a {
   word-wrap: break-word;
   color: $pablo;
   transition: all 0.25s ease;
-  
-  &:link {
+
+  &:link:not(.button){
     color: $pablo;
-  }
 
-  &:visited,
-  &:hover,
-  &:active,
-  &:focus {
-    outline: none;
-    color: $mercury;
-  }
-
-  &:hover {
-    color: $mercury;
-  }
-  
-  &:not(.button){  
-    position: relative;
-
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background-color: $mercury;
-      transform: scaleX(0);
-      transition: inherit;
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+      color: darken($pablo, 10%);
     }
 
     &:hover {
+      color: darken($pablo, 10%);
+    }
+
+    &.link {
+      color: $radical-red;
+
+      &::before {
+        background-color: lighten($radical-red, 10%);
+      }
+
+      &:hover {
+        color: lighten($radical-red, 10%);
+      }
+    }
+
+    &.external,
+    &.keyword {
+      color: $turquoiseblue;
+    }
+
+    &.option {
+      color: $confetti;
+    }
+  }
+
+  &.internal {
+    color: $inchworm;
+
+    &:hover {
+      color: lighten($inchworm, 10%);
+    }
+  }
+
+  @media #{$medium-screen}{
+    &:link:not(.button){  
+      position: relative;
+
       &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: $mercury;
+        transform: scaleX(0);
+        transition: inherit;
+      }
+
+      &:hover:before {
         transform: scaleX(1);
       }
     }
@@ -99,4 +144,12 @@ a {
 pre {
   font-family: $monospace;
   white-space: normal;
+}
+
+.keyword {
+  color: $turquoiseblue;
+}
+
+.option {
+  color: $confetti;
 }

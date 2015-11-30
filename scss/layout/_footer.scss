@@ -1,15 +1,20 @@
 .main-footer {
-  height: em-calc(200px);
-  padding: em-calc(50px);
+  min-height: em-calc(150px);
+  padding: em-calc(65px) em-calc(40px);
+
+  @media #{$medium-screen}{
+    padding: em-calc(60px);
+  }
 
   .copyright {
     text-align: center;
+    margin-bottom: 0;
 
     .keyword {
       display: inline-block;
       color: $radical-red;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.15s $ease;
 
       &:hover {
         transform: scale(1.25);

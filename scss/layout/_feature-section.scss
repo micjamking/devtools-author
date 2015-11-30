@@ -1,14 +1,63 @@
+$wave-speed: 1.5s;
+
 .feature-section {
+  background-image: url('images/chrome-512.png');
+  background-repeat: no-repeat;
+  background-position: center 118%;
+  background-size: em-calc(300px);
+
+  @media #{$medium-screen}{
+    background-position: center 155%;
+    background-size: auto auto;
+  }
 
   .callout {
-    min-height: em-calc(200px);
+    height: em-calc(160px);
+
+    @media #{$medium-screen}{
+      height: em-calc(180px);
+      margin-bottom: 5rem;
+    }
+
+    @media #{$large-screen}{
+      height: em-calc(200px);
+      margin-bottom: 5rem;
+    }
 
     h4 {
-      font-size: type-scale(0);
-      position: absolute;
-      bottom: 1rem;
+      font-size: type-scale(1);
       width: 100%;
-      margin-left: -2em;
+      margin: 0 auto;
+
+      @media #{$medium-screen}{
+        font-size: type-scale(0);
+        padding: 0 em-calc(14px);
+      }
+      
+      @media only screen and (min-width: 790px){
+        padding: 0;
+      }
+
+      @media #{$large-screen}{
+        position: absolute;
+        bottom: 0.5rem;
+        padding: 0 em-calc(20px);
+        margin: 0 0 1em -2rem;
+      }
+    }
+
+    &.font-family h4 {
+      @media #{$medium-screen}{
+        padding: 0;
+      }
+      
+      @media only screen and (min-width: 783px){
+        padding: 0 em-calc(14px);
+      }
+      
+      @media only screen and (min-width: 790px){
+        padding: 0;
+      }
     }
 
     .theme-demo {
@@ -56,8 +105,20 @@
     }
 
     .hack-demo {
+      display: inline-block;
       font-family: $monospace;
       font-size: type-scale(4);
+      margin: 0.70rem 0 0.45rem;
+
+      @media #{$medium-screen}{
+        font-size: type-scale(3);
+        margin: 1.15rem 0 0.35rem;
+      }
+
+      @media #{$large-screen}{
+        font-size: type-scale(4);
+        margin: 0.25rem 0 0.35rem;
+      }
     }
 
     [class^='font-size-']{
@@ -66,23 +127,111 @@
     }
 
     .font-size-demo {
-      margin-top: 0.75rem;
+      margin: 0.75rem 0 1em;
+
+      @media #{$medium-screen}{
+        font-size: em-calc(16px);
+        margin: 1.35rem 0 0.9rem;
+      }
+
+      @media only screen and (min-width: 790px){
+        font-size: em-calc(18px);
+        margin: 1.15rem 0;
+      }
+
+      @media #{$large-screen}{
+        font-size: em-calc(20px);
+      }
     }
 
     .font-size-10 {
-      font-size: em-calc(20px);
+      font-size: em-calc(20px, $base-font, 'em');
     }
 
     .font-size-12 {
-      font-size: em-calc(24px);
+      font-size: em-calc(24px, $base-font, 'em');
     }
 
     .font-size-14 {
-      font-size: em-calc(28px);
+      font-size: em-calc(28px, $base-font, 'em');
     }
 
     .font-size-16 {
-      font-size: em-calc(32px);
+      font-size: em-calc(32px, $base-font, 'em');
+    }
+  }
+
+  .storage-section {
+    padding-bottom: em-calc(160px);
+    
+    @media #{$medium-screen}{
+      padding-bottom: em-calc(140px);
+    }
+    
+    @media only screen and (min-width: 802px){
+      padding-bottom: em-calc(160px);
+    }
+
+    .cloud {
+      display: block;
+      width: 50%;
+      height: auto;
+      min-width: em-calc(110px);
+      max-width: em-calc(160px);
+      margin: 0 auto;
+
+      @media #{$medium-screen}{
+        width: auto;
+        height: auto;
+        max-width: em-calc(183px);
+      }
+      
+      .cumulonimbus {
+        @include animation(
+          $name: svg-stroke-change,
+          $duration: $wave-speed * 2,
+          $delay: $wave-speed / 3
+        );
+      }
+    }
+
+    .radio {
+      position: relative;
+      top: em-calc(20px);
+      display: block;
+      width: auto;
+      height: auto;
+      min-height: em-calc(20px);
+      max-height: em-calc(30px);
+      margin: 0 auto;
+
+      @include animation(
+        $name: rotate-pause,
+        $duration: $wave-speed * 2
+      );
+
+      @media #{$medium-screen}{
+        top: em-calc(25px);
+        width: auto;
+        height: auto;
+        max-height: em-calc(50px);
+      }
+
+      .wave {
+        @include animation(
+          $name: svg-fill-change,
+          $duration: $wave-speed,
+          $timing-function: map-get($ease, 'in-out-cubic')
+        );
+
+        &:nth-child(2) {
+          animation-delay: $wave-speed * ( 1 / 12); 
+        }
+
+        &:nth-child(3) {
+          animation-delay: $wave-speed * ( 1 / 6); 
+        }
+      }
     }
   }
 }

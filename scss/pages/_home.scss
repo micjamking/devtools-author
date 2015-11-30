@@ -1,4 +1,19 @@
 .dark-bg {
   color: $mercury;
   background-color: $rangoon-green;
+
+  a:link:not(.button){
+
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+      color: $mercury;
+    }
+
+    &:hover {
+      color: $mercury;
+    }
+  }
 }

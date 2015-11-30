@@ -15,6 +15,7 @@ $blackhunt: rgba(0, 0, 0, 0.2);
 $lilywhite: rgba(234, 234, 234, 1);
 $mercury: rgba(230, 230, 230, 1);
 $armadillo: rgba(74, 74, 74, 1);
+$googleblue: rgba(69, 134, 243, 1);
 
 // Monokai
 $rangoon-green: rgba(30, 30, 25, 1);
@@ -23,6 +24,20 @@ $turquoiseblue: #5DD9F3;
 $inchworm: rgba(171, 223, 0, 1);
 $radical-red: #FB2E72; // Sass color functions don't like rgba... ?
 $confetti: rgba(234, 217, 92, 1);
+
+// General screen sizes
+$medium: 640px;
+$large: 1024px;
+$xlarge: 1440px;
+
+// Media Queries
+$small-screen:  'only screen';
+$medium-screen: 'only screen and (min-width: #{$medium})';
+$large-screen:  'only screen and (min-width: #{$large})';
+$xlarge-screen: 'only screen and (min-width: #{$xlarge})';
+
+// Animation
+$ease: cubic-bezier(0.400,  0.000, 0.200, 1.000);
 
 /*
  * Mixins
@@ -99,11 +114,3 @@ $confetti: rgba(234, 217, 92, 1);
 @function type-scale($i, $scale: 1.25){
   @return exponent($scale, $i) * 1em;
 }
-
-/**
- * Media Queries
- */
-$small-screen:  'only screen';
-$medium-screen: 'only screen and (min-width: 640px)';
-$large-screen:  'only screen and (min-width: 1024px)';
-$xlarge-screen: 'only screen and (min-width: 1440px)';

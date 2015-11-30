@@ -1,48 +1,34 @@
 .usage-section {
   
   .installation {
-    width: em-calc(660px);
-    margin: 0 auto;
+    width: 100%;
+    max-width: em-calc($medium);
+    margin: 0 auto 3em;
     background-color: $blackhunt;
-    font-size: type-scale(-1);
-    padding: 2rem;
     border-radius: 3px;
+    padding: 1rem;
+
+    @media #{$medium-screen}{
+      font-size: type-scale(-1);
+      padding: 2rem;
+    }
 
     li {
-      margin-left: 1.5rem;
+      margin: 0 0 0.5rem 1.5rem;
     }
 
     .link {
-      color: $radical-red;
 
       &:before {
         background-color: $radical-red;
       }
 
-      &:hover {
-        color: lighten($radical-red, 10%);
-      }
-
       &.internal {
         display: inline-block;
-        color: $inchworm;
-
-        &:before {
-          background-color: $inchworm;
-        }
-
-        &:hover {
-          color: lighten($inchworm, 10%);
-        }
+        word-wrap: break-word;
+        word-break: break-word;
+        overflow-wrap: break-word;
       }
-    }
-
-    .keyword {
-      color: $turquoiseblue; 
-    }
-
-    .option {
-      color: $confetti;
     }
 
     .comment {
@@ -58,6 +44,24 @@
           color: lighten($turquoiseblue, 10%);
         }
       }
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .github-issues {
+    &::before {
+      content: '';
+      display: block;
+      width: em-calc(48px);
+      height: em-calc(48px);
+      background-image: url('images/GitHub-Mark-Light-64px.png');
+      background-repeat: no-repeat;
+      background-size: 48px;
+      margin: -0.4rem auto 1.4rem;
+      opacity: 0.1;
     }
   }
 }

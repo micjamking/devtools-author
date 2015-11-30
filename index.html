@@ -9,7 +9,7 @@
   <!-- Search -->
   <meta name="author" content="Mike King" />
   <meta name="description" content="DevTools Author is a Google Chrome extension which provides a simple set of editor settings for Chrome Developer Tools." />
-  <meta name="keywords" content="Mike King, devtools author, chrome devtools, devtools, devtools themes, devtools fonts, custom themes, custom fonts, frontend development" />
+  <meta name="keywords" content="Mike King, devtools author, chrome devtools, devtools, devtools themes, devtools fonts, custom themes, custom fonts, frontend development, design in browser, develop in browser" />
 
   <!-- Facebook -->
   <meta property="og:type" content="website" />
@@ -34,7 +34,7 @@
   <link rel="publisher" href="//plus.google.com/112398162809101288990/about" />
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic">
   <link rel="stylesheet" href="style.css" />
 
   <title>DevTools Author | A simple set of editor settings for Chrome Developer Tools</title>
@@ -44,12 +44,16 @@
   <header class="main-header">
     <div class="container">
       <div class="row">
-        <img src="images/icon_512.png" width="320" class="logo" alt="logo" />
-        <h1 class="sitename">DevTools Author</h1>
+        <div class="col-12">
+          <img src="images/icon_512.png" width="320" class="logo" alt="DevTools Author Logo" />
+          <h1 class="sitename">DevTools Author</h1>
+        </div>
       </div>
       <div class="row">
-        <a href="https://github.com/micjamking/devtools-author" class="stargazers" title="Stargazers on GitHub"></a>
-        <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="stargazers" title="DevTool Authors"></a>
+        <div class="col-12">
+          <a href="//github.com/micjamking/devtools-author" class="stargazers" title="Stargazers on GitHub"></a>
+          <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="stargazers" title="DevTool Authors"></a>
+        </div>
       </div>
     </div>
   </header>
@@ -65,8 +69,8 @@
           <div class="content">
             <h3 class="subtitle">A simple set of author settings for Chrome Developer Tools.</h3>
             <p>If you use DevTools as your frontend development environment, <em>DevTools Author</em> provides a <a href="#features" title="DevTools Feature Set"><em>small set</em></a> of options to enhance your authoring experience.</p>
-            <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="button cta" title="Add DevTools Author to Chrome">Add DevTools Author to Chrome</a>
-            <span class="link-to-github">or <a href="https://github.com/micjamking/devtools-author" class="link" title="View DevTools Author on GitHub">View on GitHub</a></span>
+            <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="button cta" title="DevTools Author on Chrome Web Store">Download from Chrome Web Store</a>
+            <span class="link-to-github">or <a href="//github.com/micjamking/devtools-author" title="DevTools Author on GitHub">View on GitHub</a></span>
           </div>
         </div>
       </div>
@@ -93,7 +97,7 @@
         <div class="col-4 ">
           <div class="callout font-family">
             <span class="hack-demo">Hack</span>
-            <h4>*Custom Font Support</h4>
+            <h4>Custom Font Support</h4>
           </div>
         </div>
         <div class="col-4">
@@ -105,46 +109,119 @@
           </div>
         </div>
       </div>
+      <div class="row storage-section">
+        <div class="col-12">
+          <h4 class="storage-title">Your settings are saved automatically & persisted using Chrome Storage.</h4>
+          <div class="persistance-animation">
+            <svg class="cloud" width="183px" height="106px" viewBox="-10 0 220 120">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g transform="translate(-629.000000, -2182.000000)">
+                        <path class="cumulonimbus" d="M793.872629,2247.64412 C792.998612,2227.50183 776.370857,2211.43992 755.986692,2211.43992 C751.530338,2211.43992 747.253518,2212.20759 743.281588,2213.61772 C735.599382,2195.5894 717.698904,2182.949 696.842205,2182.949 C669.868654,2182.949 647.839597,2204.091 646.463621,2230.6871 C636.171259,2235.30138 629,2245.6386 629,2257.6508 C629,2273.96517 642.21941,2287.18407 658.526378,2287.18407 L715.634998,2287.18407 L792.203626,2287.18407 C803.126652,2287.18407 812,2278.31722 812,2267.37941 C812,2257.00167 804.0248,2248.49174 793.872629,2247.64412 L793.872629,2247.64412 Z" stroke="#EAEAEA" stroke-width="10"></path>
+                    </g>
+                </g>
+            </svg>
+            <svg class="radio" width="117px" height="73px" viewBox="0 0 117 73">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g transform="translate(-662.000000, -2317.000000)">
+                        <g transform="translate(720.342053, 2347.462585) rotate(-45.000000) translate(-720.342053, -2347.462585) translate(674.342053, 2301.962585)">
+                            <path class="wave" d="M0.776994612,50.1467535 C23.362047,50.1467535 41.6708494,68.4142051 41.6708494,90.9482485 L31.4473857,90.9482485 C31.4473857,74.0477159 17.7157839,60.3471273 0.776994612,60.3471273 L0.776994612,50.1467535 L0.776994612,50.1467535 Z" fill="#EAEAEA"></path>
+                            <path class="wave" d="M5.06703911,25.4608596 C38.9446176,25.4608596 66.4078212,52.862037 66.4078212,86.6631022 L56.1843575,86.6631022 C56.1843575,58.4955478 33.2983545,35.6612334 5.06703911,35.6612334 L5.06703911,25.4608596 L5.06703911,25.4608596 Z" fill="#EAEAEA"></path>
+                            <path class="wave" d="M91.1447931,82.3779558 L80.9213294,82.3779558 C80.9213294,42.9433797 48.8809252,10.9753395 9.3570836,10.9753395 L9.3570836,0.774965747 C54.5271883,0.774965747 91.1447931,37.3098688 91.1447931,82.3779558 Z" fill="#EAEAEA"></path>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Usage Section -->
   <section id="usage" class="usage-section dark-bg">
     <div class="container">
-      <h3>Getting Setup</h3>
-      <pre class="installation">
-        <ol>
-          <li>Install the <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="link" title="DevTools Author Chrome Extension">DevTools Author Chrome Extension</a></li>
-          <li>Enable DevTools experiments in <a href="chrome://flags/#enable-devtools-experiments" class="link internal" title="Enable DevTools Experiments in Chrome Flags">chrome://flags/#enable-devtools-experiments</a></li>
-          <li>Open DevTools (<span class="keyword">cmd</span> + <span class="keyword">opt</span> + <span class="keyword">I</span>); Settings > Experiments > check <span class="option"><strong>Allow custom UI Themes</strong></span>.</li>
-        </ol>
-        <p class="comment">/* After restarting DevTools, you should see the default theme 3024 take affect within the Sources and Console panels. */</p>
-        <p class="comment">/* DevTools Author currently supports custom monospace fonts <a href="http://sourcefoundry.org/hack/" class="keyword" title="Hack font">Hack</a>, <a href="http://adobe-fonts.github.io/source-code-pro/" class="keyword" title="Source Code Pro Font">Source Code Pro</a>, and <a href="https://www.google.com/fonts/specimen/Droid+Sans+Mono" class="keyword" title="Droid Sans Mono Font">Droid Sans Mono</a>. (Must be installed on your computer).*/</p>
-      </pre>
+      <div class="row">
+        <div class="col-12">
+          <h3>Getting Setup</h3>
+          <pre class="installation">
+            <ol>
+              <li>Install <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="link" title="DevTools Author on Chrome Web Store">DevTools Author from Chrome Web Store</a></li>
+              <li>Enable DevTools experiments in <span class="comment">(copy below in to omnibox)</span> <a class="internal" title="Enable DevTools Experiments in Chrome Flags">chrome://flags/#enable-devtools-experiments</a></li>
+              <li>Open DevTools (<span class="keyword">cmd</span> + <span class="keyword">opt</span> + <span class="keyword">I</span>); Settings > Experiments > check <span class="option"><strong>Allow custom UI Themes</strong></span>.</li>
+            </ol>
+            <p class="comment">/* After restarting DevTools, you should see the default theme 3024 take affect within the Sources and Console panels. */</p>
+            <p class="comment">/* DevTools Author currently supports custom monospace fonts <a href="//sourcefoundry.org/hack/" class="keyword" title="Hack font">Hack</a>, <a href="//adobe-fonts.github.io/source-code-pro/" class="keyword" title="Source Code Pro Font">Source Code Pro</a>, and <a href="//www.google.com/fonts/specimen/Droid+Sans+Mono" class="keyword" title="Droid Sans Mono Font">Droid Sans Mono</a>. (Must be installed on your computer).*/</p>
+          </pre>
+          <h4 class="github-issues">Have a Question, Issue or Suggestion?<br/><small><a href="//github.com/micjamking/devtools-author/issues" title="DevTools Author Issues on GitHub">See existing discussions</a> or <a href="//github.com/micjamking/devtools-author/issues/new" title="Create an Issue on GitHub">open a new issue.</a></small></h4>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- faq Section -->
+  <!-- FAQ Section -->
   <section id="faq" class="faq-section">
     <div class="container">
-      <h3>Common Questions</h3>
-      <dl>
-        <dt>Why should I use DevTools instead of <span class="fake-element">&lt;insert editor here&gt;</span>?</dt>
-        <dd>See <a href="https://medium.com/p/779c599b022">Chrome DevTools: an IDE for the Web</a></dd>
-      </dl>
-      <h3>Chrome DevTools Resources</h3>
       <div class="row">
-        <div class="col-3">
-          <div class="callout"></div>
+        <div class="col-12">
+          <h3>Most Common Question:</h3>
+          <dl>
+            <dt>Why should I use DevTools instead of <span class="fake-element">&lt;insert editor here&gt;</span>?</dt>
+            <dd>See <a href="//medium.com/p/779c599b022" class="link" alt="Chrome DevTools: an IDE for the Web">Chrome DevTools: an IDE for the Web</a></dd>
+            <dd>Also:</dd>
+            <dd class="video-link"><a href="//www.youtube.com/watch?v=BaneWEqNcpE" alt="Wait, Chrome DevTools could do THAT?">YouTube: Wait, Chrome DevTools could do THAT?</a></dd>
+            <dd><a href="//medium.com/google-developers/devtools-tips-for-sublime-text-users-cdd559ee80f8" alt="DevTools Tips For Sublime Text Users">Medium: DevTools Tips For Sublime Text Users</a></dd>
+            <dd><a href="//medium.com/jotform-form-builder/how-to-use-chrome-devtools-like-a-pro-b9bd414870e3" alt="How to use Chrome DevTools like a Pro">Medium: How to use Chrome DevTools like a Pro</a></dd>
+          </dl>
         </div>
-        <div class="col-3">
-          <div class="callout"></div>
+      </div>
+      
+      <div class="row">
+        <div class="col-12">
+          <h3>Chrome DevTools Resources</h3>
         </div>
-        <div class="col-3">
-          <div class="callout"></div>
+        
+        <div class="col-3 col-6-medium col-3-large">
+          <a href="//developers.google.com/web/tools/chrome-devtools/" alt="Chrome DevTools on Google Developers">
+            <div class="callout resource google-developer">
+              <div class="thumbnail">
+                <img src="images/chrome_devtools_256px.png" alt="Chrome DevTools Logo" width="256" height="256" />
+              </div>
+              <h6>Google Developer:<br/>Chrome DevTools</h6>
+            </div>
+          </a>
         </div>
-        <div class="col-3">
-          <div class="callout"></div>
+        
+        <div class="col-3 col-6-medium col-3-large">
+          <a href="//developer.chrome.com/devtools" alt="Chrome DevTools on Chrome Developers">
+            <div class="callout resource chrome-developer">
+              <div class="thumbnail">
+                <img src="images/google-chrome_flatlogo.png" alt="Chrome Developers Logo" width="300" height="300" />
+              </div>
+              <h6>Chrome Developer:<br/>Chrome DevTools</h6>
+            </div>
+          </a>
+        </div>
+        
+        <div class="col-3 col-6-medium col-3-large">
+          <a href="//discover-devtools.codeschool.com" alt="Code School - Discover DevTools">
+            <div class="callout resource code-school">
+              <div class="thumbnail">
+                <img src="images/completed-discover-devtools.png" alt="Code School - Discover DevTools badge" width="440" height="440" />
+              </div>
+              <h6>Code School:<br/>Discover DevTools</h6>
+            </div>
+          </a>
+        </div>
+        
+        <div class="col-3 col-6-medium col-3-large">
+          <a href="//addyosmani.com/blog/chrome-devtools-state-of-the-union-2015/" alt="Chrome DevTools: State Of The Union 2015">
+            <div class="callout resource addy-osmani">
+              <div class="thumbnail">
+                <img src="images/addy-dev.svg" alt="Addy Osmani Logo" width="172" height="92" />
+              </div>
+              <h6>Chrome DevTools:<br/>State Of The Union 2015</h6>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -153,7 +230,11 @@
   <!-- Main Footer -->
   <footer class="main-footer dark-bg">
     <div class="container">
-      <p class="copyright">Made with <span class="keyword">&#10084;</span> and aloha by <a href="//mikeking.io" title="Mike King">Mike King</a> &copy; <span class="currentYear"></span></p>
+      <div class="row">
+        <div class="col-12">
+          <p class="copyright">Made with <span class="keyword">&#10084;</span> and aloha by <a href="//mikeking.io" title="Mike King">Mike King</a> &copy; <span class="currentYear"></span></p>
+        </div>
+      </div>
     </div>
   </footer>
 

@@ -1,8 +1,13 @@
 .callout {
   position: relative;
-  padding: 2em;
+  padding: 1em;
   background-color: $lilywhite;
-  border-radius: 4px 4px 0px 0px;
-  box-shadow: 0px 5px 0px 0px #272821;
+  border-radius: 4px;
+  box-shadow: transparent;
   text-align: center;
+  margin-bottom: 3em;
+
+  @media #{$large-screen}{
+    padding: 2em;
+  }
 }

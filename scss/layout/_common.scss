@@ -7,17 +7,33 @@
 .feature-section,
 .usage-section,
 .faq-section {
-  height: em-calc(900px);
+  min-height: em-calc(900px);
+}
+
+.main-intro,
+.feature-section,
+.usage-section,
+.faq-section {
+  padding-top: em-calc(70px);
 }
 
 .feature-section,
 .usage-section,
 .faq-section {
-  padding-top: em-calc(200px);
+
+  @media #{$medium-screen}{
+    padding-top: em-calc(100px);
+    padding-bottom: em-calc(100px);
+  }
   
-  h3 {
+  h3, h4 {
+    width: 90%;
     text-align: center;
     font-style: italic;
-    margin-bottom: 2em;
+    margin: 0 auto 2em;
+
+    @media #{$medium-screen}{
+      width: 100%;
+    }
   }
 }

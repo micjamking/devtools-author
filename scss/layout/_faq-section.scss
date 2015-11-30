@@ -1,8 +1,9 @@
 .faq-section {
 
   dl {
-    width: em-calc(660px);
-    margin: 0 auto 6em;
+    width: 100%;
+    max-width: em-calc($medium);
+    margin: 0 auto em-calc(80px);
     text-align: center;
 
     dt {
@@ -11,6 +12,8 @@
     }
 
     dd {
+      max-width: 80%;
+
       a {
         color: $turquoiseblue;
 
@@ -18,15 +21,100 @@
           background-color: $turquoiseblue;
         }
       }
+
+      &.video-link {
+        position: relative;
+
+        &::before {
+          content: '';
+          display: block;
+          background-image: url('images/YouTube-social-icon_dark_24px.png');
+          background-size: contain;
+          width: em-calc(24px);
+          height: em-calc(17px);
+          position: absolute;
+          top: 50%;
+          left: -2.5%;
+          margin-top: -8.5px;
+          opacity: 0.5;
+        }
+      }
     }
 
     dt,
     dd {
-      margin: 0 0 1rem;
+      margin: 0 auto 1rem;
     }
   }
 
   .fake-element {
     color: $pablo;
+  }
+
+  .thumbnail {
+    position: relative;
+    width: 100%;
+    height: em-calc(60px);
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: em-calc(20px);
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: 120%;
+      height: em-calc(10px);
+      background-image: linear-gradient(0deg, rgba(0,0,0,0.15), transparent 50%);
+    }
+
+    img {
+      transition: all 0.25s $ease;
+    }
+  }
+
+  .resource {
+    padding: 2rem 3rem;
+    height: em-calc(210px);
+
+    &.google-developer {
+      img {
+        max-width: em-calc(256px);
+        margin-top: em-calc(-3px);
+      }
+    }
+
+    &.chrome-developer {
+      img {
+        width: em-calc(120px);
+        margin-top: em-calc(10px);
+      }
+    }
+
+    &.addy-osmani {
+      img {
+        width: em-calc(230px);
+        margin-top: em-calc(5px);
+        margin-left: em-calc(20px);
+      }
+    }
+
+    &.code-school {
+      img {
+        width: em-calc(120px);
+        margin-top: em-calc(10px);
+      }
+    }
+
+    &:hover {
+      img {
+        transform: translateY(-10px);
+      }
+    }
+
+    @media #{$medium-screen}{
+      padding: 2rem;
+    }
   }
 }

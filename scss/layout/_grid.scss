@@ -5,15 +5,26 @@
 .container {
   width: 100%;
   height: 100%;
-  max-width: 960px;
+  max-width: em-calc(1000px);
   margin: 0 auto;
+  padding: 0 em-calc(20px);
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .row {
+  width: 100%;
   position: relative;
-  margin-left: -1em;
-  margin-right: -1em;
   @include cf;
+
+  @media #{$medium-screen}{
+    width: auto;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
 }
 
 [class^="col-"] {
@@ -25,7 +36,23 @@
 
 @for $i from 1 through 12 {
   .col-#{$i} { 
-    @media screen and (min-width: 600px){
+    @media #{$medium-screen}{
+      width: ($i / 12) * 100%;
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i}-medium { 
+    @media #{$medium-screen}{
+      width: ($i / 12) * 100%;
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i}-large { 
+    @media #{$large-screen}{
       width: ($i / 12) * 100%;
     }
   }
