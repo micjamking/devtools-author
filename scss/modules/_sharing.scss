@@ -1,0 +1,55 @@
+/*
+ * Social sharing links
+ */
+.share-links {
+  display: none;
+  margin-top: em-calc(-15px);
+  max-width: em-calc(310px);
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+
+  @media screen and (min-width: 445px){
+    max-width: inherit;
+  }
+
+  @media #{$large-screen}{
+    margin-top: em-calc(15px);
+  }
+
+  #___plusone_0,
+  .github-star,
+  .twitter-share-button,
+  .fb-share-button {
+    display: inline-block !important;
+    margin: 1rem !important;
+    vertical-align: top !important;
+  }
+
+  #___plusone_0 {
+    width: em-calc(50px) !important;
+  }
+
+  .github-star {
+    width: em-calc(52px) !important;
+  }
+
+  .twitter-share-button {
+    width: em-calc(62px) !important;
+  }
+
+  .fb-share-button {
+    width: em-calc(58px) !important;
+    height: em-calc(20px) !important;
+    text-align: center !important;
+    width: em-calc(58px) !important;
+
+    > span {
+      vertical-align: top !important;
+    }
+  }
+
+  :first-child {
+    margin-left: 0 !important;
+  }
+}

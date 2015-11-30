@@ -13,6 +13,10 @@
   .sitename {
     font-weight: 300;
     line-height: 1.25;
+
+    @media #{$medium-screen}{
+      margin-bottom: 0.5em;
+    }
   }
 
   .button {
@@ -54,29 +58,6 @@
       margin-left: em-calc(25px);
       width: 40%;
       float: left;
-    }
-  }
-
-  .share-links {
-    display: none;
-    margin-top: em-calc(25px);
-
-    #___plusone_0,
-    .github-star,
-    .twitter-share-button, 
-    .fb-share-button {
-      width: 90px !important;
-    }
-
-    #___plusone_0 {
-      position: relative;
-      top: 5px;
-    }
-
-    .fb-share-button {
-      > span {
-        vertical-align: initial !important;
-      }
     }
   }
 }
