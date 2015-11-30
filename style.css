@@ -327,20 +327,17 @@ pre {
   }
 }
 
-@-webkit-keyframes chrome-bump-large {
+@-webkit-keyframes chrome-bump-small {
   0% {
     background-position: center 118%;
   }
-  5% {
+  3% {
     background-position: center 119%;
   }
+  5% {
+    background-position: center 116%;
+  }
   10% {
-    background-position: center 118%;
-  }
-  30% {
-    background-position: center 118%;
-  }
-  40% {
     background-position: center 118%;
   }
   100% {
@@ -348,24 +345,57 @@ pre {
   }
 }
 
-@keyframes chrome-bump-large {
+@keyframes chrome-bump-small {
   0% {
     background-position: center 118%;
   }
-  5% {
+  3% {
     background-position: center 119%;
+  }
+  5% {
+    background-position: center 116%;
   }
   10% {
     background-position: center 118%;
   }
-  30% {
-    background-position: center 118%;
-  }
-  40% {
-    background-position: center 118%;
-  }
   100% {
     background-position: center 118%;
+  }
+}
+
+@-webkit-keyframes chrome-bump-large {
+  0% {
+    background-position: center 155%;
+  }
+  3% {
+    background-position: center 157%;
+  }
+  5% {
+    background-position: center 151%;
+  }
+  10% {
+    background-position: center 155%;
+  }
+  100% {
+    background-position: center 155%;
+  }
+}
+
+@keyframes chrome-bump-large {
+  0% {
+    background-position: center 155%;
+  }
+  3% {
+    background-position: center 157%;
+  }
+  5% {
+    background-position: center 151%;
+  }
+  10% {
+    background-position: center 155%;
+  }
+  100% {
+    background-position: center 155%;
   }
 }
 
@@ -869,12 +899,44 @@ pre {
   background-repeat: no-repeat;
   background-position: center 118%;
   background-size: 15rem;
+  -webkit-animation-name: chrome-bump-small;
+          animation-name: chrome-bump-small;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-animation-delay: -0.2666666667s;
+          animation-delay: -0.2666666667s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
 }
 
 @media only screen and (min-width: 640px) {
   .feature-section {
     background-position: center 155%;
     background-size: auto auto;
+    -webkit-animation-name: chrome-bump-large;
+            animation-name: chrome-bump-large;
+    -webkit-animation-duration: 4s;
+            animation-duration: 4s;
+    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-animation-delay: -0.2666666667s;
+            animation-delay: -0.2666666667s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-direction: normal;
+            animation-direction: normal;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
   }
 }
 
@@ -1058,11 +1120,11 @@ pre {
 
 @media only screen and (min-width: 640px) {
   .feature-section .storage-section {
-    padding-bottom: 7rem;
+    padding-bottom: 7.5rem;
   }
 }
 
-@media only screen and (min-width: 802px) {
+@media only screen and (min-width: 865px) {
   .feature-section .storage-section {
     padding-bottom: 8rem;
   }
@@ -1160,13 +1222,13 @@ pre {
 }
 
 .feature-section .storage-section .radio .wave:nth-child(2) {
-  -webkit-animation-delay: 0.1666666667s;
-          animation-delay: 0.1666666667s;
+  -webkit-animation-delay: 0.1333333333s;
+          animation-delay: 0.1333333333s;
 }
 
 .feature-section .storage-section .radio .wave:nth-child(3) {
-  -webkit-animation-delay: 0.3333333333s;
-          animation-delay: 0.3333333333s;
+  -webkit-animation-delay: 0.2666666667s;
+          animation-delay: 0.2666666667s;
 }
 
 .faq-section dl {
@@ -1342,7 +1404,7 @@ pre {
 
 .main-footer {
   min-height: 7.5rem;
-  padding: 3.25rem 2rem;
+  padding: 3.25rem 1.5rem;
 }
 
 @media only screen and (min-width: 640px) {

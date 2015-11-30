@@ -56,11 +56,18 @@ $play-state:      running;
   100% { transform: rotate(180deg); }
 }
 
-@keyframes chrome-bump-large {
+@keyframes chrome-bump-small {
   0%   { background-position: center 118%; }
-  5%   { background-position: center 119%; }
+  3%   { background-position: center 119%; }
+  5%   { background-position: center 116%; }
   10%  { background-position: center 118%; }
-  30%  { background-position: center 118%; }
-  40%  { background-position: center 118%; }
   100% { background-position: center 118%; }
+}
+
+@keyframes chrome-bump-large {
+  0%   { background-position: center 155%; }
+  3%   { background-position: center 157%; }
+  5%   { background-position: center 151%; }
+  10%  { background-position: center 155%; }
+  100% { background-position: center 155%; }
 }

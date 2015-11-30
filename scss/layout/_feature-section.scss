@@ -1,3 +1,4 @@
+$wave-scale: 15;
 $wave-speed: 2s;
 
 .feature-section {
@@ -6,9 +7,21 @@ $wave-speed: 2s;
   background-position: center 118%;
   background-size: em-calc(300px);
 
+  @include animation(
+    $name: chrome-bump-small,
+    $duration: $wave-speed * 2,
+    $delay: $wave-speed * ( 2 / -$wave-scale )
+  );
+
   @media #{$medium-screen}{
     background-position: center 155%;
     background-size: auto auto;
+
+    @include animation(
+      $name: chrome-bump-large,
+      $duration: $wave-speed * 2,
+      $delay: $wave-speed * ( 2 / -$wave-scale )
+    );
   }
 
   .callout {
@@ -165,10 +178,10 @@ $wave-speed: 2s;
     padding-bottom: em-calc(160px);
     
     @media #{$medium-screen}{
-      padding-bottom: em-calc(140px);
+      padding-bottom: em-calc(150px);
     }
     
-    @media only screen and (min-width: 802px){
+    @media only screen and (min-width: 865px){
       padding-bottom: em-calc(160px);
     }
 
@@ -225,11 +238,11 @@ $wave-speed: 2s;
         );
 
         &:nth-child(2) {
-          animation-delay: $wave-speed * ( 1 / 12); 
+          animation-delay: $wave-speed * ( 1 / $wave-scale ); 
         }
 
         &:nth-child(3) {
-          animation-delay: $wave-speed * ( 1 / 6); 
+          animation-delay: $wave-speed * ( 2 / $wave-scale ); 
         }
       }
     }
