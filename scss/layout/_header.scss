@@ -15,6 +15,14 @@
     line-height: 1.25;
   }
 
+  .button {
+    font-size: type-scale(-1);
+  }
+
+  .call-to-action {
+    text-align: center;
+  }
+
   @media #{$medium-screen}{
     .row {
       margin: 0 auto;
@@ -32,7 +40,7 @@
   @media #{$large-screen}{
     text-align: left;
 
-    .row {
+    .hero {
       max-width: 60%;
     }
 
@@ -46,6 +54,29 @@
       margin-left: em-calc(25px);
       width: 40%;
       float: left;
+    }
+  }
+
+  .share-links {
+    display: none;
+    margin-top: em-calc(25px);
+
+    #___plusone_0,
+    .github-star,
+    .twitter-share-button, 
+    .fb-share-button {
+      width: 90px !important;
+    }
+
+    #___plusone_0 {
+      position: relative;
+      top: 5px;
+    }
+
+    .fb-share-button {
+      > span {
+        vertical-align: initial !important;
+      }
     }
   }
 }

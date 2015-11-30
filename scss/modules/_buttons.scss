@@ -5,23 +5,36 @@ input[type="reset"],
 input[type="button"] {
   appearance: none;
   background-color: transparent;
-  border: 0 none;
 
   display: inline-block; // Make display properties consistent across the board
   text-decoration: none; // Remove underline for anchor buttons
   color: inherit;        // Inherit the default color (ie. black)
   padding: 1em;
   margin-bottom: 0.5em;
-  background-color: #DEDEDE;
+  border: 1px solid $armadillo;
   border-radius: 3px;
   text-align: center;
 
   &:hover {
-    background-color: #CACACA;          
+    background-color: $armadillo; 
+    color: $lilywhite;         
   }
 
   &:focus,
   &:active {
     outline: none;
+  }
+
+  &.cta {
+    display: inline-block;
+    border: 1px solid $radical-red;
+    color: $radical-red;
+    background-color: transparent;
+
+    &:focus,
+    &:hover {
+      background-color: $radical-red;
+      color: $lilywhite;
+    }
   }
 }
