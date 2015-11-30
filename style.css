@@ -16,10 +16,7 @@
  * Mixins
  */
 /*
- * Utilities
- */
-/*
- * @section Functions
+ * Functions
  */
 /*
  * Easing
@@ -49,6 +46,12 @@
  * @param {$i} increment of scale; 0 is base
  * @param {$scale} scale ratio; defaults to 1.25
  */
+@media only screen and (min-width: 640px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
 /**
  * Typography
  */
@@ -1306,8 +1309,9 @@ pre {
 }
 
 .faq-section .resource {
-  padding: 2rem 3rem;
   height: 10.5rem;
+  padding: 2rem 3rem;
+  margin-bottom: 2em;
 }
 
 .faq-section .resource.google-developer img {
@@ -1340,6 +1344,20 @@ pre {
   .faq-section .resource {
     padding: 2rem;
   }
+}
+
+.faq-section .back-to-top {
+  display: block;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+.faq-section .back-to-top::before {
+  display: block;
+  content: '\261D';
+  font-size: 2.44140625em;
 }
 
 .usage-section .installation {
