@@ -2,8 +2,7 @@
   color: $mercury;
   background-color: $rangoon-green;
 
-  a:link:not(.button){
-
+  a:not(.button){
     &:visited,
     &:hover,
     &:active,

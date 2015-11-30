@@ -1,4 +1,4 @@
-$wave-speed: 1.5s;
+$wave-speed: 2s;
 
 .feature-section {
   background-image: url('images/chrome-512.png');
@@ -188,7 +188,7 @@ $wave-speed: 1.5s;
       
       .cumulonimbus {
         @include animation(
-          $name: svg-stroke-change,
+          $name: cloud-stroke-fill,
           $duration: $wave-speed * 2,
           $delay: $wave-speed / 3
         );
@@ -219,9 +219,9 @@ $wave-speed: 1.5s;
 
       .wave {
         @include animation(
-          $name: svg-fill-change,
+          $name: wave-fill,
           $duration: $wave-speed,
-          $timing-function: map-get($ease, 'in-out-cubic')
+          $timing-function: ease('in-out-cubic')
         );
 
         &:nth-child(2) {
