@@ -16,10 +16,7 @@
  * Mixins
  */
 /*
- * Utilities
- */
-/*
- * @section Functions
+ * Functions
  */
 /*
  * Easing
@@ -49,6 +46,12 @@
  * @param {$i} increment of scale; 0 is base
  * @param {$scale} scale ratio; defaults to 1.25
  */
+@media only screen and (min-width: 640px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
 /**
  * Typography
  */
@@ -730,6 +733,14 @@ pre {
   line-height: 1.25;
 }
 
+.main-header .button {
+  font-size: 0.8em;
+}
+
+.main-header .call-to-action {
+  text-align: center;
+}
+
 @media only screen and (min-width: 640px) {
   .main-header .row {
     margin: 0 auto;
@@ -746,7 +757,7 @@ pre {
   .main-header {
     text-align: left;
   }
-  .main-header .row {
+  .main-header .hero {
     max-width: 60%;
   }
   .main-header .logo {
@@ -759,6 +770,27 @@ pre {
     width: 40%;
     float: left;
   }
+}
+
+.main-header .share-links {
+  display: none;
+  margin-top: 1.25rem;
+}
+
+.main-header .share-links #___plusone_0,
+.main-header .share-links .github-star,
+.main-header .share-links .twitter-share-button,
+.main-header .share-links .fb-share-button {
+  width: 90px !important;
+}
+
+.main-header .share-links #___plusone_0 {
+  position: relative;
+  top: 5px;
+}
+
+.main-header .share-links .fb-share-button > span {
+  vertical-align: initial !important;
 }
 
 .main-intro {
@@ -825,21 +857,21 @@ pre {
   height: 100%;
 }
 
-.main-intro .cta {
+.main-intro .button.cta {
   display: block;
   background-color: #FB2E72;
   color: #eaeaea;
   margin: 2rem 0 1rem;
 }
 
-.main-intro .cta:focus,
-.main-intro .cta:hover {
+.main-intro .button.cta:focus,
+.main-intro .button.cta:hover {
   -webkit-transform: scale(1.03);
           transform: scale(1.03);
   background-color: #fb1561;
 }
 
-.main-intro .cta:active {
+.main-intro .button.cta:active {
   -webkit-transform: scale(0.93);
           transform: scale(0.93);
 }
@@ -1306,8 +1338,9 @@ pre {
 }
 
 .faq-section .resource {
-  padding: 2rem 3rem;
   height: 10.5rem;
+  padding: 2rem 3rem;
+  margin-bottom: 2em;
 }
 
 .faq-section .resource.google-developer img {
@@ -1340,6 +1373,20 @@ pre {
   .faq-section .resource {
     padding: 2rem;
   }
+}
+
+.faq-section .back-to-top {
+  display: block;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+.faq-section .back-to-top::before {
+  display: block;
+  content: '\261D';
+  font-size: 2.44140625em;
 }
 
 .usage-section .installation {
@@ -1442,13 +1489,12 @@ input[type="button"] {
      -moz-appearance: none;
           appearance: none;
   background-color: transparent;
-  border: 0 none;
   display: inline-block;
   text-decoration: none;
   color: inherit;
   padding: 1em;
   margin-bottom: 0.5em;
-  background-color: #DEDEDE;
+  border: 1px solid #4a4a4a;
   border-radius: 3px;
   text-align: center;
 }
@@ -1458,7 +1504,8 @@ button:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover {
-  background-color: #CACACA;
+  background-color: #4a4a4a;
+  color: #eaeaea;
 }
 
 .button:focus,
@@ -1472,6 +1519,31 @@ input[type="reset"]:active,
 input[type="button"]:focus,
 input[type="button"]:active {
   outline: none;
+}
+
+.button.cta,
+button.cta,
+input[type="submit"].cta,
+input[type="reset"].cta,
+input[type="button"].cta {
+  display: inline-block;
+  border: 1px solid #FB2E72;
+  color: #FB2E72;
+  background-color: transparent;
+}
+
+.button.cta:focus,
+.button.cta:hover,
+button.cta:focus,
+button.cta:hover,
+input[type="submit"].cta:focus,
+input[type="submit"].cta:hover,
+input[type="reset"].cta:focus,
+input[type="reset"].cta:hover,
+input[type="button"].cta:focus,
+input[type="button"].cta:hover {
+  background-color: #FB2E72;
+  color: #eaeaea;
 }
 
 .callout {

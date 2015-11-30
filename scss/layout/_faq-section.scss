@@ -75,8 +75,9 @@
   }
 
   .resource {
-    padding: 2rem 3rem;
     height: em-calc(210px);
+    padding: 2rem 3rem;
+    margin-bottom: 2em;
 
     &.google-developer {
       img {
@@ -115,6 +116,20 @@
 
     @media #{$medium-screen}{
       padding: 2rem;
+    }
+  }
+
+  .back-to-top {
+    display: block;
+    text-align: center;
+    margin-bottom: em-calc(40px);
+    text-transform: uppercase;
+    font-size: type-scale(-1);
+
+    &::before {
+      display: block;
+      content: '\261D';
+      font-size: type-scale(4);
     }
   }
 }

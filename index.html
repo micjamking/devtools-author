@@ -41,19 +41,26 @@
   <title>DevTools Author | A simple set of editor settings for Chrome Developer Tools</title>
 </head>
 <body>
+  <div id="fb-root"></div>
   <!-- Main Header -->
-  <header class="main-header">
+  <header id="top" class="main-header">
     <div class="container">
-      <div class="row">
+      <div class="row hero">
         <div class="col-12">
           <img src="images/icon_512.png" width="320" class="logo" alt="DevTools Author Logo" />
           <h1 class="sitename">DevTools Author</h1>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <a href="//github.com/micjamking/devtools-author" class="stargazers" title="Stargazers on GitHub"></a>
-          <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="stargazers" title="DevTool Authors"></a>
+      <div class="row call-to-action">
+<!--         <div class="col-12">
+          <a href="//github.com/micjamking/devtools-author" class="button" title="DevTools Author on GitHub">View DevTools Author on GitHub</a>
+          <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="button cta" title="DevTools Author on Chrome Web Store">Download from Chrome Web Store</a>
+        </div> -->
+        <div class="col-12 share-links">
+          <g:plusone data-size="small" data-recommendations="false"></g:plusone>
+          <iframe class="github-star" src="https://ghbtns.com/github-btn.html?user=micjamking&repo=devtools-author&type=star&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
+          <a class="twitter-share-button"{count} href="https://twitter.com/share" data-via="micjamking" data-hashtags="devtools">Tweet</a>
+          <div class="fb-share-button" data-href="http://mikeking.io/devtools-author/" data-layout="button_count"></div>
         </div>
       </div>
     </div>
@@ -225,6 +232,12 @@
           </a>
         </div>
       </div>
+
+      <div class="row mobile-only">
+        <div class="col-12">
+          <a class="back-to-top" href="#top" alt="Back to top">Back to top</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -240,6 +253,15 @@
   </footer>
 
   <!-- Scripts -->
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   <script src="script.js"></script>
 </body>
 </html>
