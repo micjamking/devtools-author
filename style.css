@@ -1571,10 +1571,6 @@ input[type="button"].cta:hover {
   }
 }
 
-.share-links :first-child {
-  margin-left: 0 !important;
-}
-
 .share-links #___plusone_0,
 .share-links .github-star,
 .share-links .twitter-share-button,
@@ -1605,6 +1601,11 @@ input[type="button"].cta:hover {
 
 .share-links .fb-share-button > span {
   vertical-align: top !important;
+}
+
+.share-links #___plusone_0,
+.share-links :first-child {
+  margin-left: 0 !important;
 }
 
 /*
