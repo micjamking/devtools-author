@@ -733,6 +733,12 @@ pre {
   line-height: 1.25;
 }
 
+@media only screen and (min-width: 640px) {
+  .main-header .sitename {
+    margin-bottom: 0.5em;
+  }
+}
+
 .main-header .button {
   font-size: 0.8em;
 }
@@ -770,27 +776,6 @@ pre {
     width: 40%;
     float: left;
   }
-}
-
-.main-header .share-links {
-  display: none;
-  margin-top: 1.25rem;
-}
-
-.main-header .share-links #___plusone_0,
-.main-header .share-links .github-star,
-.main-header .share-links .twitter-share-button,
-.main-header .share-links .fb-share-button {
-  width: 90px !important;
-}
-
-.main-header .share-links #___plusone_0 {
-  position: relative;
-  top: 5px;
-}
-
-.main-header .share-links .fb-share-button > span {
-  vertical-align: initial !important;
 }
 
 .main-intro {
@@ -1560,6 +1545,66 @@ input[type="button"].cta:hover {
   .callout {
     padding: 2em;
   }
+}
+
+/*
+ * Social sharing links
+ */
+.share-links {
+  display: none;
+  margin-top: -0.75rem;
+  max-width: 15.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+
+@media screen and (min-width: 445px) {
+  .share-links {
+    max-width: inherit;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .share-links {
+    margin-top: 0.75rem;
+  }
+}
+
+.share-links :first-child {
+  margin-left: 0 !important;
+}
+
+.share-links #___plusone_0,
+.share-links .github-star,
+.share-links .twitter-share-button,
+.share-links .fb-share-button {
+  display: inline-block !important;
+  margin: 1rem !important;
+  vertical-align: top !important;
+}
+
+.share-links #___plusone_0 {
+  width: 2.5rem !important;
+}
+
+.share-links .github-star {
+  width: 2.6rem !important;
+}
+
+.share-links .twitter-share-button {
+  width: 3.1rem !important;
+}
+
+.share-links .fb-share-button {
+  width: 2.9rem !important;
+  height: 1rem !important;
+  text-align: center !important;
+  width: 2.9rem !important;
+}
+
+.share-links .fb-share-button > span {
+  vertical-align: top !important;
 }
 
 /*

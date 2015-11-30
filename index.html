@@ -38,7 +38,6 @@
   <title>DevTools Author | A simple set of editor settings for Chrome Developer Tools</title>
 </head>
 <body>
-  <div id="fb-root"></div>
   <!-- Main Header -->
   <header id="top" class="main-header">
     <div class="container">
@@ -49,15 +48,9 @@
         </div>
       </div>
       <div class="row call-to-action">
-<!--         <div class="col-12">
-          <a href="//github.com/micjamking/devtools-author" class="button" title="DevTools Author on GitHub">View DevTools Author on GitHub</a>
+        <div class="col-12">
+          <!-- <a href="//github.com/micjamking/devtools-author" class="button" title="DevTools Author on GitHub">View DevTools Author on GitHub</a> -->
           <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="button cta" title="DevTools Author on Chrome Web Store">Download from Chrome Web Store</a>
-        </div> -->
-        <div class="col-12 share-links">
-          <g:plusone data-href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" data-size="small" data-recommendations="false"></g:plusone>
-          <iframe class="github-star" src="//ghbtns.com/github-btn.html?user=micjamking&repo=devtools-author&type=star&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
-          <a class="twitter-share-button"{count} href="//twitter.com/share" data-via="micjamking" data-hashtags="devtools">Tweet</a>
-          <div class="fb-share-button" data-share="true" data-layout="button_count"></div>
         </div>
       </div>
     </div>
@@ -74,8 +67,14 @@
           <div class="content">
             <h3 class="subtitle">A simple set of author settings for Chrome Developer Tools.</h3>
             <p>If you use DevTools as your frontend development environment, <em>DevTools Author</em> provides a <a href="#features" title="DevTools Feature Set"><em>small set</em></a> of options to enhance your authoring experience.</p>
-            <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="button cta" title="DevTools Author on Chrome Web Store">Download from Chrome Web Store</a>
-            <span class="link-to-github">or <a href="//github.com/micjamking/devtools-author/" title="DevTools Author on GitHub">View on GitHub</a></span>
+            <div class="row">
+              <div class="col-12 share-links">
+                <iframe class="github-star" src="//ghbtns.com/github-btn.html?user=micjamking&repo=devtools-author&type=star&count=false" frameborder="0" scrolling="0" width="52px" height="20px"></iframe>
+                <g:plusone href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" size="tall" annotation="none" recommendations="false"></g:plusone>
+                <a class="twitter-share-button"{count} href="//twitter.com/share" data-via="micjamking" data-hashtags="devtools">Tweet</a>
+                <div class="fb-share-button" data-share="true" data-layout="button"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -250,25 +249,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '1686524291587989',
-        xfbml      : true,
-        version    : 'v2.5'
-      });
-    };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-  </script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   <script src="script.js"></script>
 </body>
 </html>
