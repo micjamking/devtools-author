@@ -29,15 +29,33 @@ $confetti: rgba(234, 217, 92, 1);
 $medium: 640px;
 $large: 1024px;
 $xlarge: 1440px;
+$min-dpr: 1.25;
+$min-dpi: 200;
 
 // Media Queries
 $small-screen:  'only screen';
-$medium-screen: 'only screen and (min-width: #{$medium})';
-$large-screen:  'only screen and (min-width: #{$large})';
-$xlarge-screen: 'only screen and (min-width: #{$xlarge})';
+$medium-screen: '#{$small-screen} and (min-width: #{$medium})';
+$large-screen:  '#{$small-screen} and (min-width: #{$large})';
+$xlarge-screen: '#{$small-screen} and (min-width: #{$xlarge})';
+$retina: (
+  '#{$small-screen} and (-webkit-min-device-pixel-ratio: #{$min-dpr})',
+  '#{$small-screen} and (min--moz-device-pixel-ratio: #{$min-dpr})',
+  '#{$small-screen} and (-o-min-device-pixel-ratio: #{$min-dpr}/1)',
+  '#{$small-screen} and (min-device-pixel-ratio: #{$min-dpr})',
+  '#{$small-screen} and (min-resolution: #{$min-dpi}dpi)',
+  '#{$small-screen} and (min-resolution: #{$min-dpr}dppx)'
+);
 
-// Animation
-$ease: cubic-bezier(0.400,  0.000, 0.200, 1.000);
+// Easing functions
+$ease: (
+  in-out-quad:  cubic-bezier(0.455,  0.030, 0.515, 0.955),
+  in-out-cubic: cubic-bezier(0.645,  0.045, 0.355, 1.000),
+  in-out-quart: cubic-bezier(0.770,  0.000, 0.175, 1.000),
+  in-out-quint: cubic-bezier(0.860,  0.000, 0.070, 1.000),
+  in-out-circ:  cubic-bezier(0.785,  0.135, 0.150, 0.860),
+  swift-out:    cubic-bezier(0.550,  0.000, 0.100, 1.000),
+  material:     cubic-bezier(0.400,  0.000, 0.200, 1.000)
+);
 
 /*
  * Mixins
@@ -61,6 +79,21 @@ $ease: cubic-bezier(0.400,  0.000, 0.200, 1.000);
 /*
  * @section Functions
  */
+
+/*
+ * Easing
+ *
+ * Gets easing function from $ease map
+ * @param {$key} key (name) of specific easing function to return
+ */
+@function ease($key) {
+  @if map-has-key($ease, $key) {
+    @return map-get($ease, $key);
+  }
+
+  @warn "Unknown '#{$key}' in $ease.";
+  @return null;
+}
 
 /*
  * rem/em Calculator

@@ -2,20 +2,9 @@
  * Animations
  */
 
-// Easing functions
-$ease: (
-  in-out-quad:  cubic-bezier(0.455,  0.030, 0.515, 0.955),
-  in-out-cubic: cubic-bezier(0.645,  0.045, 0.355, 1.000),
-  in-out-quart: cubic-bezier(0.770,  0.000, 0.175, 1.000),
-  in-out-quint: cubic-bezier(0.860,  0.000, 0.070, 1.000),
-  in-out-circ:  cubic-bezier(0.785,  0.135, 0.150, 0.860),
-  swift-out:    cubic-bezier(0.550,  0.000, 0.100, 1.000),
-  material:     cubic-bezier(0.400,  0.000, 0.200, 1.000)
-);
-
 // Animation properties 
 $duration:        0.25s;
-$timing-function: map-get($ease, 'material');
+$timing-function: ease('material');
 $delay:           0s;
 $iteration-count: infinite;
 $direction:       normal;
@@ -44,7 +33,7 @@ $play-state:      running;
 }
 
 // Animations
-@keyframes svg-fill-change {
+@keyframes wave-fill {
   0%   { fill: transparent; }
   10%  { fill: $googleblue; }
   30%  { fill: $googleblue; }
@@ -52,11 +41,11 @@ $play-state:      running;
   100% { fill: transparent; }
 }
 
-@keyframes svg-stroke-change {
+@keyframes cloud-stroke-fill {
   0%   { stroke: $lilywhite;  fill: transparent; }
   10%  { stroke: $googleblue; fill: $googleblue; }
-  30%  { stroke: $googleblue; fill: $googleblue; }
-  40%  { stroke: $lilywhite;  fill: transparent; }
+  45%  { stroke: $googleblue; fill: $googleblue; }
+  55%  { stroke: $lilywhite;  fill: transparent; }
   100% { stroke: $lilywhite;  fill: transparent; }
 }
 
@@ -67,9 +56,18 @@ $play-state:      running;
   100% { transform: rotate(180deg); }
 }
 
-@keyframes rotate-pause-slow {
-  0%   { transform: rotate(0); }
-  30%  { transform: rotate(0); }
-  40%  { transform: rotate(45deg); }
-  100% { transform: rotate(45deg); }
+@keyframes chrome-bump-small {
+  0%   { background-position: center 118%; }
+  3%   { background-position: center 119%; }
+  5%   { background-position: center 116%; }
+  10%  { background-position: center 118%; }
+  100% { background-position: center 118%; }
+}
+
+@keyframes chrome-bump-large {
+  0%   { background-position: center 155%; }
+  3%   { background-position: center 157%; }
+  5%   { background-position: center 151%; }
+  10%  { background-position: center 155%; }
+  100% { background-position: center 155%; }
 }

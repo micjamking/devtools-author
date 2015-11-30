@@ -70,7 +70,7 @@
     }
 
     img {
-      transition: all 0.25s $ease;
+      transition: all 0.25s ease('material');
     }
   }
 
@@ -80,7 +80,7 @@
 
     &.google-developer {
       img {
-        max-width: em-calc(256px);
+        max-width: em-calc(128px);
         margin-top: em-calc(-3px);
       }
     }
@@ -92,18 +92,18 @@
       }
     }
 
+    &.code-school {
+      img {
+        width: em-calc(120px);
+        margin-top: em-calc(10px);
+      }
+    }
+
     &.addy-osmani {
       img {
         width: em-calc(230px);
         margin-top: em-calc(5px);
         margin-left: em-calc(20px);
-      }
-    }
-
-    &.code-school {
-      img {
-        width: em-calc(120px);
-        margin-top: em-calc(10px);
       }
     }
 

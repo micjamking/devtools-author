@@ -22,6 +22,12 @@
  * @section Functions
  */
 /*
+ * Easing
+ *
+ * Gets easing function from $ease map
+ * @param {$key} key (name) of specific easing function to return
+ */
+/*
  * rem/em Calculator
  *
  * target / context = result
@@ -202,7 +208,7 @@ pre {
 /**
  * Animations
  */
-@-webkit-keyframes svg-fill-change {
+@-webkit-keyframes wave-fill {
   0% {
     fill: transparent;
   }
@@ -219,7 +225,7 @@ pre {
     fill: transparent;
   }
 }
-@keyframes svg-fill-change {
+@keyframes wave-fill {
   0% {
     fill: transparent;
   }
@@ -237,7 +243,7 @@ pre {
   }
 }
 
-@-webkit-keyframes svg-stroke-change {
+@-webkit-keyframes cloud-stroke-fill {
   0% {
     stroke: #eaeaea;
     fill: transparent;
@@ -246,11 +252,11 @@ pre {
     stroke: #4586f3;
     fill: #4586f3;
   }
-  30% {
+  45% {
     stroke: #4586f3;
     fill: #4586f3;
   }
-  40% {
+  55% {
     stroke: #eaeaea;
     fill: transparent;
   }
@@ -260,7 +266,7 @@ pre {
   }
 }
 
-@keyframes svg-stroke-change {
+@keyframes cloud-stroke-fill {
   0% {
     stroke: #eaeaea;
     fill: transparent;
@@ -269,11 +275,11 @@ pre {
     stroke: #4586f3;
     fill: #4586f3;
   }
-  30% {
+  45% {
     stroke: #4586f3;
     fill: #4586f3;
   }
-  40% {
+  55% {
     stroke: #eaeaea;
     fill: transparent;
   }
@@ -321,41 +327,75 @@ pre {
   }
 }
 
-@-webkit-keyframes rotate-pause-slow {
+@-webkit-keyframes chrome-bump-small {
   0% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+    background-position: center 118%;
   }
-  30% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+  3% {
+    background-position: center 119%;
   }
-  40% {
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
+  5% {
+    background-position: center 116%;
+  }
+  10% {
+    background-position: center 118%;
   }
   100% {
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
+    background-position: center 118%;
   }
 }
 
-@keyframes rotate-pause-slow {
+@keyframes chrome-bump-small {
   0% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+    background-position: center 118%;
   }
-  30% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+  3% {
+    background-position: center 119%;
   }
-  40% {
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
+  5% {
+    background-position: center 116%;
+  }
+  10% {
+    background-position: center 118%;
   }
   100% {
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
+    background-position: center 118%;
+  }
+}
+
+@-webkit-keyframes chrome-bump-large {
+  0% {
+    background-position: center 155%;
+  }
+  3% {
+    background-position: center 157%;
+  }
+  5% {
+    background-position: center 151%;
+  }
+  10% {
+    background-position: center 155%;
+  }
+  100% {
+    background-position: center 155%;
+  }
+}
+
+@keyframes chrome-bump-large {
+  0% {
+    background-position: center 155%;
+  }
+  3% {
+    background-position: center 157%;
+  }
+  5% {
+    background-position: center 151%;
+  }
+  10% {
+    background-position: center 155%;
+  }
+  100% {
+    background-position: center 155%;
   }
 }
 
@@ -859,12 +899,44 @@ pre {
   background-repeat: no-repeat;
   background-position: center 118%;
   background-size: 15rem;
+  -webkit-animation-name: chrome-bump-small;
+          animation-name: chrome-bump-small;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-animation-delay: -0.2666666667s;
+          animation-delay: -0.2666666667s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
 }
 
 @media only screen and (min-width: 640px) {
   .feature-section {
     background-position: center 155%;
     background-size: auto auto;
+    -webkit-animation-name: chrome-bump-large;
+            animation-name: chrome-bump-large;
+    -webkit-animation-duration: 4s;
+            animation-duration: 4s;
+    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-animation-delay: -0.2666666667s;
+            animation-delay: -0.2666666667s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-direction: normal;
+            animation-direction: normal;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
   }
 }
 
@@ -1048,11 +1120,11 @@ pre {
 
 @media only screen and (min-width: 640px) {
   .feature-section .storage-section {
-    padding-bottom: 7rem;
+    padding-bottom: 7.5rem;
   }
 }
 
-@media only screen and (min-width: 802px) {
+@media only screen and (min-width: 865px) {
   .feature-section .storage-section {
     padding-bottom: 8rem;
   }
@@ -1076,14 +1148,14 @@ pre {
 }
 
 .feature-section .storage-section .cloud .cumulonimbus {
-  -webkit-animation-name: svg-stroke-change;
-          animation-name: svg-stroke-change;
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
+  -webkit-animation-name: cloud-stroke-fill;
+          animation-name: cloud-stroke-fill;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
   -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
+  -webkit-animation-delay: 0.6666666667s;
+          animation-delay: 0.6666666667s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-direction: normal;
@@ -1105,8 +1177,8 @@ pre {
   margin: 0 auto;
   -webkit-animation-name: rotate-pause;
           animation-name: rotate-pause;
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
   -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   -webkit-animation-delay: 0s;
@@ -1131,10 +1203,10 @@ pre {
 }
 
 .feature-section .storage-section .radio .wave {
-  -webkit-animation-name: svg-fill-change;
-          animation-name: svg-fill-change;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
+  -webkit-animation-name: wave-fill;
+          animation-name: wave-fill;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
   -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
           animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
   -webkit-animation-delay: 0s;
@@ -1150,13 +1222,13 @@ pre {
 }
 
 .feature-section .storage-section .radio .wave:nth-child(2) {
-  -webkit-animation-delay: 0.125s;
-          animation-delay: 0.125s;
+  -webkit-animation-delay: 0.1333333333s;
+          animation-delay: 0.1333333333s;
 }
 
 .feature-section .storage-section .radio .wave:nth-child(3) {
-  -webkit-animation-delay: 0.25s;
-          animation-delay: 0.25s;
+  -webkit-animation-delay: 0.2666666667s;
+          animation-delay: 0.2666666667s;
 }
 
 .faq-section dl {
@@ -1230,7 +1302,7 @@ pre {
 }
 
 .faq-section .thumbnail img {
-  transition: all 0.25s (in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955), in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1), in-out-quart: cubic-bezier(0.77, 0, 0.175, 1), in-out-quint: cubic-bezier(0.86, 0, 0.07, 1), in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86), swift-out: cubic-bezier(0.55, 0, 0.1, 1), material: cubic-bezier(0.4, 0, 0.2, 1));
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .faq-section .resource {
@@ -1239,7 +1311,7 @@ pre {
 }
 
 .faq-section .resource.google-developer img {
-  max-width: 12.8rem;
+  max-width: 6.4rem;
   margin-top: -0.15rem;
 }
 
@@ -1248,15 +1320,15 @@ pre {
   margin-top: 0.5rem;
 }
 
+.faq-section .resource.code-school img {
+  width: 6rem;
+  margin-top: 0.5rem;
+}
+
 .faq-section .resource.addy-osmani img {
   width: 11.5rem;
   margin-top: 0.25rem;
   margin-left: 1rem;
-}
-
-.faq-section .resource.code-school img {
-  width: 6rem;
-  margin-top: 0.5rem;
 }
 
 .faq-section .resource:hover img {
@@ -1332,7 +1404,7 @@ pre {
 
 .main-footer {
   min-height: 7.5rem;
-  padding: 3.25rem 2rem;
+  padding: 3.25rem 1.5rem;
 }
 
 @media only screen and (min-width: 640px) {
@@ -1426,15 +1498,15 @@ input[type="button"]:active {
   background-color: #1e1e19;
 }
 
-.dark-bg a:link:not(.button):visited,
-.dark-bg a:link:not(.button):hover,
-.dark-bg a:link:not(.button):active,
-.dark-bg a:link:not(.button):focus {
+.dark-bg a:not(.button):visited,
+.dark-bg a:not(.button):hover,
+.dark-bg a:not(.button):active,
+.dark-bg a:not(.button):focus {
   outline: none;
   color: #e6e6e6;
 }
 
-.dark-bg a:link:not(.button):hover {
+.dark-bg a:not(.button):hover {
   color: #e6e6e6;
 }
 /*# sourceMappingURL=style.css.map */
