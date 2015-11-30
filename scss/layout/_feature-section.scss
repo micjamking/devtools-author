@@ -1,3 +1,5 @@
+$wave-speed: 1.5s;
+
 .feature-section {
   background-image: url('images/chrome-512.png');
   background-repeat: no-repeat;
@@ -183,23 +185,52 @@
         height: auto;
         max-width: em-calc(183px);
       }
+      
+      .cumulonimbus {
+        @include animation(
+          $name: svg-stroke-change,
+          $duration: $wave-speed * 2,
+          $delay: $wave-speed / 3
+        );
+      }
     }
 
     .radio {
       position: relative;
-      top: em-calc(15px);
+      top: em-calc(20px);
       display: block;
       width: auto;
       height: auto;
       min-height: em-calc(20px);
-      max-height: em-calc(35px);
+      max-height: em-calc(30px);
       margin: 0 auto;
 
+      @include animation(
+        $name: rotate-pause,
+        $duration: $wave-speed * 2
+      );
+
       @media #{$medium-screen}{
-        top: em-calc(20px);
+        top: em-calc(25px);
         width: auto;
         height: auto;
         max-height: em-calc(50px);
+      }
+
+      .wave {
+        @include animation(
+          $name: svg-fill-change,
+          $duration: $wave-speed,
+          $timing-function: map-get($ease, 'in-out-cubic')
+        );
+
+        &:nth-child(2) {
+          animation-delay: $wave-speed * ( 1 / 12); 
+        }
+
+        &:nth-child(3) {
+          animation-delay: $wave-speed * ( 1 / 6); 
+        }
       }
     }
   }
