@@ -8,22 +8,26 @@
 
   <!-- Search -->
   <meta name="author" content="Mike King" />
-  <meta name="description" content="DevTools Author is a Google Chrome extension which provides a simple set of editor settings for Chrome Developer Tools." />
-  <meta name="keywords" content="Mike King, devtools author, chrome devtools, devtools, devtools themes, devtools fonts, custom themes, custom fonts, frontend development, design in browser, develop in browser" />
+  <meta name="description" content="DevTools Author is a Google Chrome extension which provides a selection of author settings for Chrome Developer Tools." />
+  <meta name="keywords" content="Mike King, devtools author, chrome devtools, devtools, devtools themes, devtools fonts, author themes, author fonts, frontend development, design in browser, develop in browser" />
 
-  <!-- Facebook -->
-  <meta property="fb:app_id" content="1686524291587989" /> 
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Mike King | DevTools Author" />
   <meta property="og:url" content="http://mikeking.io/devtools-author/" />
-  <meta property="og:title" content="DevTools Author, a simple set of editor settings for Chrome Developer Tools" />
-  <meta property="og:site_name" content="DevTools Author | A simple set of editor settings for Chrome Developer Tools" />
-  <meta property="og:description" content="DevTools Author is a Google Chrome extension which provides a simple set of editor settings for Chrome Developer Tools." />
+  <meta property="og:title" content="DevTools Author | A selection of author settings for Chrome Developer Tools" />
+  <meta property="og:description" content="DevTools Author is a Google Chrome extension which provides a selection of author settings for Chrome Developer Tools." />
+  <meta property="og:image" content="//mikeking.io/devtools-author/images/devtools-author-settings.png" />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="832">
+  <meta property="og:image:height" content="639">
+  <meta property="fb:app_id" content="1686524291587989" /> 
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@micjamking">
-  <meta name="twitter:title" content="DevTools Author | A simple set of editor settings for Chrome Developer Tools">
-  <meta name="twitter:description" content="DevTools Author is a Google Chrome extension which provides a simple set of editor settings for Chrome Developer Tools.">
+  <meta name="twitter:title" content="DevTools Author | A selection of author settings for Chrome Developer Tools">
+  <meta name="twitter:description" content="DevTools Author is a Google Chrome extension which provides a selection of author settings for Chrome Developer Tools.">
   <meta name="twitter:creator" content="@micjamking">
 
   <!-- Google+ -->
@@ -35,7 +39,7 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic">
   <link rel="stylesheet" href="style.css" />
 
-  <title>DevTools Author | A simple set of editor settings for Chrome Developer Tools</title>
+  <title>DevTools Author | A selection of author settings for Chrome Developer Tools</title>
 </head>
 <body>
   <!-- Main Header -->
@@ -49,8 +53,8 @@
       </div>
       <div class="row call-to-action">
         <div class="col-12">
-          <a href="//github.com/micjamking/devtools-author" class="button" title="DevTools Author on GitHub">View DevTools Author on GitHub</a>
-          <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="button cta" title="DevTools Author on Chrome Web Store">Download from Chrome Web Store</a>
+          <a href="//github.com/micjamking/devtools-author" class="button" title="DevTools Author on GitHub">View <span class="desktop-only">DevTools Author </span>on GitHub</a>
+          <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="button cta" title="DevTools Author on Chrome Web Store">Download from Chrome <span class="desktop-only">Web Store</span></a>
         </div>
       </div>
     </div>
@@ -65,7 +69,7 @@
         </div>
         <div class="col-6">
           <div class="content">
-            <h3 class="subtitle">A simple set of author settings for Chrome Developer Tools.</h3>
+            <h3 class="subtitle">A selection of author settings for Chrome Developer Tools.</h3>
             <p>If you use DevTools as your frontend development environment, <em>DevTools Author</em> provides a <a href="#features" title="DevTools Feature Set"><em>small set</em></a> of options to enhance your authoring experience.</p>
             <div class="row">
               <div class="col-12 share-links">
@@ -84,8 +88,10 @@
   <!-- Feature Section -->
   <section id="features" class="feature-section">
     <div class="container">
-      <h3>Enhance Your Authoring Experience</h3>
+      <h3 class="title">Enhance Your Authoring Experience</h3>
       <div class="row">
+
+        <!-- Editor Themes -->
         <div class="col-4">
           <div class="callout themes">
             <div class="theme-demo">
@@ -98,12 +104,16 @@
             <h4>+25 Editor Themes</h4>
           </div>
         </div>
+
+        <!-- Custom Fonts -->
         <div class="col-4 ">
           <div class="callout font-family">
             <span class="hack-demo">Hack</span>
             <h4>Custom Font Support</h4>
           </div>
         </div>
+
+        <!-- Font Size -->
         <div class="col-4">
           <div class="callout font-size">
             <div class="font-size-demo">
@@ -115,7 +125,7 @@
       </div>
       <div class="row storage-section">
         <div class="col-12">
-          <h4 class="storage-title">Your settings are saved automatically & persisted using Chrome cloud storage.</h4>
+          <h4 class="storage-title subtitle">Your settings are saved automatically & persisted using Chrome cloud storage.</h4>
           <div class="persistance-animation">
             <svg class="cloud" width="183px" height="106px" viewBox="-10 0 220 120">
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -146,7 +156,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h3>Getting Setup</h3>
+          <h3 class="title">Getting Setup</h3>
           <pre class="installation">
             <ol>
               <li>Install <a href="//chrome.google.com/webstore/detail/devtools-author/egfhcfdfnajldliefpdoaojgahefjhhi" class="link" title="DevTools Author on Chrome Web Store">DevTools Author from Chrome Web Store</a></li>
@@ -156,7 +166,7 @@
             <p class="comment">/* After restarting DevTools, you should see the default theme 3024 take affect within the Sources and Console panels. */</p>
             <p class="comment">/* DevTools Author currently supports custom monospace fonts <a href="//sourcefoundry.org/hack/" class="keyword" title="Hack font">Hack</a>, <a href="//adobe-fonts.github.io/source-code-pro/" class="keyword" title="Source Code Pro Font">Source Code Pro</a>, and <a href="//www.google.com/fonts/specimen/Droid+Sans+Mono" class="keyword" title="Droid Sans Mono Font">Droid Sans Mono</a>. (Must be installed on your computer).*/</p>
           </pre>
-          <h4 class="github-issues">Have a Question, Issue or Suggestion?<br/><small><a href="//github.com/micjamking/devtools-author/issues" title="DevTools Author Issues on GitHub">See existing discussions</a> or <a href="//github.com/micjamking/devtools-author/issues/new" title="Create an Issue on GitHub">open a new issue.</a></small></h4>
+          <h4 class="github-issues"><span class="subtitle">Have a Question, Issue or Suggestion?</span><br/><small><a href="//github.com/micjamking/devtools-author/issues" title="DevTools Author Issues on GitHub">See existing discussions</a> or <a href="//github.com/micjamking/devtools-author/issues/new" title="Create an Issue on GitHub">open a new issue.</a></small></h4>
         </div>
       </div>
     </div>
@@ -167,11 +177,11 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h3>Most Common Question:</h3>
+          <h3 class="title">Most Common Question:</h3>
           <dl>
-            <dt>Why should I use DevTools instead of <span class="fake-element">&lt;insert editor here&gt;</span>?</dt>
-            <dd>See <a href="//medium.com/p/779c599b022" class="link" alt="Chrome DevTools: an IDE for the Web">Chrome DevTools: an IDE for the Web</a></dd>
-            <dd>Also:</dd>
+            <dt>Why should I use DevTools instead of &lt;insert editor here&gt;?</dt>
+            <dd><span class="subtitle">See</span><br/><a href="//medium.com/p/779c599b022" class="link" alt="Chrome DevTools: an IDE for the Web">Chrome DevTools: an IDE for the Web</a></dd>
+            <dd><span class="subtitle">Additional References:</span></dd>
             <dd class="video-link"><a href="//www.youtube.com/watch?v=BaneWEqNcpE" alt="Wait, Chrome DevTools could do THAT?">YouTube: Wait, Chrome DevTools could do THAT?</a></dd>
             <dd><a href="//medium.com/google-developers/devtools-tips-for-sublime-text-users-cdd559ee80f8" alt="DevTools Tips For Sublime Text Users">Medium: DevTools Tips For Sublime Text Users</a></dd>
             <dd><a href="//medium.com/jotform-form-builder/how-to-use-chrome-devtools-like-a-pro-b9bd414870e3" alt="How to use Chrome DevTools like a Pro">Medium: How to use Chrome DevTools like a Pro</a></dd>
@@ -181,10 +191,10 @@
       
       <div class="row">
         <div class="col-12">
-          <h3>Chrome DevTools Resources</h3>
+          <h3 class="title">Chrome DevTools Resources</h3>
         </div>
         
-        <div class="col-3 col-6-medium col-3-large">
+        <div class="col-4">
           <a href="//developers.google.com/web/tools/chrome-devtools/" alt="Chrome DevTools on Google Developers">
             <div class="callout resource google-developer">
               <div class="thumbnail">
@@ -195,7 +205,7 @@
           </a>
         </div>
         
-        <div class="col-3 col-6-medium col-3-large">
+        <!-- <div class="col-4">
           <a href="//developer.chrome.com/devtools" alt="Chrome DevTools on Chrome Developers">
             <div class="callout resource chrome-developer">
               <div class="thumbnail">
@@ -204,9 +214,9 @@
               <h6>Chrome Developer:<br/>Chrome DevTools</h6>
             </div>
           </a>
-        </div>
+        </div> -->
         
-        <div class="col-3 col-6-medium col-3-large">
+        <div class="col-4">
           <a href="//discover-devtools.codeschool.com" alt="Code School - Discover DevTools">
             <div class="callout resource code-school">
               <div class="thumbnail">
@@ -217,7 +227,7 @@
           </a>
         </div>
         
-        <div class="col-3 col-6-medium col-3-large">
+        <div class="col-4">
           <a href="//addyosmani.com/blog/chrome-devtools-state-of-the-union-2015/" alt="Chrome DevTools: State Of The Union 2015">
             <div class="callout resource addy-osmani">
               <div class="thumbnail">
@@ -249,7 +259,6 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script src="script.js"></script>
+  <script src="script.js" async defer></script>
 </body>
 </html>

@@ -13,32 +13,6 @@
 
     dd {
       max-width: 80%;
-
-      a {
-        color: $turquoiseblue;
-
-        &::before {
-          background-color: $turquoiseblue;
-        }
-      }
-
-      &.video-link {
-        position: relative;
-
-        &::before {
-          content: '';
-          display: block;
-          background-image: url('images/YouTube-social-icon_dark_24px.png');
-          background-size: contain;
-          width: em-calc(24px);
-          height: em-calc(17px);
-          position: absolute;
-          top: 50%;
-          left: -2.5%;
-          margin-top: -8.5px;
-          opacity: 0.5;
-        }
-      }
     }
 
     dt,

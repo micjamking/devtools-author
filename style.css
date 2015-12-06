@@ -52,6 +52,16 @@
   }
 }
 
+.desktop-only {
+  display: none;
+}
+
+@media only screen and (min-width: 640px) {
+  .desktop-only {
+    display: initial;
+  }
+}
+
 /**
  * Typography
  */
@@ -402,6 +412,24 @@ pre {
   }
 }
 
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /*
  * Layout
  */
@@ -439,7 +467,6 @@ pre {
 .faq-section h3, .faq-section h4 {
   width: 90%;
   text-align: center;
-  font-style: italic;
   margin: 0 auto 2em;
 }
 
@@ -451,6 +478,15 @@ pre {
   .faq-section h3, .faq-section h4 {
     width: 100%;
   }
+}
+
+.feature-section .title,
+.feature-section .subtitle,
+.usage-section .title,
+.usage-section .subtitle,
+.faq-section .title,
+.faq-section .subtitle {
+  font-style: italic;
 }
 
 /*
@@ -720,8 +756,9 @@ pre {
   background-image: url("images/devtools-author-monokai-theme.png");
   background-repeat: no-repeat;
   background-position: center 200%;
-  box-shadow: inset 0 10px 0 0 #1e1e19;
+  /* box-shadow: inset 0 10px 0 0 $rangoon-green; */
   text-align: center;
+  min-height: 47rem;
 }
 
 .main-header .logo {
@@ -745,6 +782,18 @@ pre {
 
 .main-header .call-to-action {
   text-align: center;
+}
+
+@media only screen and (min-width: 360px) {
+  .main-header {
+    min-height: 45rem;
+  }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 1024px) {
+  .main-header {
+    min-height: 46rem;
+  }
 }
 
 @media only screen and (min-width: 640px) {
@@ -1264,32 +1313,6 @@ pre {
   max-width: 80%;
 }
 
-.faq-section dl dd a {
-  color: #5DD9F3;
-}
-
-.faq-section dl dd a::before {
-  background-color: #5DD9F3;
-}
-
-.faq-section dl dd.video-link {
-  position: relative;
-}
-
-.faq-section dl dd.video-link::before {
-  content: '';
-  display: block;
-  background-image: url("images/YouTube-social-icon_dark_24px.png");
-  background-size: contain;
-  width: 1.2rem;
-  height: 0.85rem;
-  position: absolute;
-  top: 50%;
-  left: -2.5%;
-  margin-top: -8.5px;
-  opacity: 0.5;
-}
-
 .faq-section dl dt,
 .faq-section dl dd {
   margin: 0 auto 1rem;
@@ -1478,7 +1501,7 @@ input[type="button"] {
   text-decoration: none;
   color: inherit;
   padding: 1em;
-  margin-bottom: 0.5em;
+  margin-bottom: 1.25em;
   border: 1px solid #4a4a4a;
   border-radius: 3px;
   text-align: center;
@@ -1552,11 +1575,27 @@ input[type="button"].cta:hover {
  */
 .share-links {
   display: none;
-  margin-top: -0.75rem;
+  margin-top: 0;
   max-width: 15.5rem;
   margin-left: auto;
   margin-right: auto;
   float: none;
+  -webkit-animation-name: fade-in;
+          animation-name: fade-in;
+  -webkit-animation-duration: 0.75s;
+          animation-duration: 0.75s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
 }
 
 @media screen and (min-width: 445px) {
@@ -1576,8 +1615,17 @@ input[type="button"].cta:hover {
 .share-links .twitter-share-button,
 .share-links .fb-share-button {
   display: inline-block !important;
-  margin: 1rem !important;
+  margin: 0.45rem !important;
   vertical-align: top !important;
+}
+
+@media only screen and (min-width: 640px) {
+  .share-links #___plusone_0,
+  .share-links .github-star,
+  .share-links .twitter-share-button,
+  .share-links .fb-share-button {
+    margin: 1rem !important;
+  }
 }
 
 .share-links #___plusone_0 {
@@ -1596,16 +1644,18 @@ input[type="button"].cta:hover {
   width: 2.9rem !important;
   height: 1rem !important;
   text-align: center !important;
-  width: 2.9rem !important;
 }
 
 .share-links .fb-share-button > span {
   vertical-align: top !important;
 }
 
-.share-links #___plusone_0,
-.share-links :first-child {
+.share-links #___plusone_0:first-child {
   margin-left: 0 !important;
+}
+
+.share-links .fb-share-button:last-child {
+  margin-right: 0 !important;
 }
 
 /*
@@ -1616,7 +1666,6 @@ input[type="button"].cta:hover {
   background-color: #1e1e19;
 }
 
-.dark-bg a:not(.button):visited,
 .dark-bg a:not(.button):hover,
 .dark-bg a:not(.button):active,
 .dark-bg a:not(.button):focus {

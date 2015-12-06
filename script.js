@@ -1,20 +1,41 @@
 /*globals FB*/
 
+/*
+ * Google API
+ */
+(function(d, s, id){
+  'use strict';
+
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s); js.id = id;
+   js.src = '//apis.google.com/js/platform.js';
+   fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'google-sdk'));
+
+/*
+ * Facebook SDK Init
+ */
 window.fbAsyncInit = function() {
   'use strict';
 
   FB.init({
-    appId      : '1686524291587989',
-    xfbml      : true,
-    version    : 'v2.5'
+    appId   : '1686524291587989',
+    xfbml   : true,
+    version : 'v2.5'
   });
-
+  
+  // Publish event after Facebook 
+  // share has rendered (since it takes the longest)
   FB.Event.subscribe('xfbml.render', function() {
-    var fbLoaded = new CustomEvent('facebook-loaded');
+    var fbLoaded = new CustomEvent('social-loaded');
     window.dispatchEvent(fbLoaded);
   });
 };
 
+/*
+ * Facebook SDK
+ */
 (function(d, s, id){
   'use strict';
 
@@ -25,6 +46,9 @@ window.fbAsyncInit = function() {
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
 
+/*
+ * Twitter Widgets API
+ */
 (function(d,s,id){
   'use strict';
 
@@ -37,18 +61,92 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js,fjs);
   }
 }(document, 'script', 'twitter-wjs'));
-
 /*
- * Custom scripts
+ * Utility functions
  */
 (function(
-  w, // window
-  $  // document.querySelectorAll
+  w,  // window
+  DA  // DevTools Author global
 ){
   'use strict';
 
+  /** @object utils */
+  var utils = {};
+  
+  /*
+   * easeInOut timing function
+   * @params currentTime Length of time (ms) that has passed since start
+   * @params start initial starting point
+   * @params change distance to travel
+   * @params duration speed of travel
+   */ 
+  utils.easeInOut = function(currentTime, start, change, duration) {
+      currentTime /= duration / 2;
+      if (currentTime < 1) {
+          return change / 2 * currentTime * currentTime + start;
+      }
+      currentTime -= 1;
+      return -change / 2 * (currentTime * (currentTime - 2) - 1) + start;
+  };
+
+  /** @export UI */
+  DA.utils = utils;
+})(window, window.DA = window.DA || {});
+/*
+ * User Interface
+ */
+(function(
+  w,  // window
+  DA  // DevTools Author global
+){
+  'use strict';
+  
+  /** @object UI */
+  var UI = {};
+  
+  /*
+   * scroll to anchor
+   * @params targetElement Element to scroll to
+   * @params duration Speed of scroll animation
+   * @params callback Callback function after scroll has completed
+   */
+  UI.scrollTo = function(targetElement, duration, callback) {
+      var currentScrollPos = document.body.scrollTop,
+          distanceToScroll = targetElement.offsetTop - currentScrollPos,
+          speed            = 16;
+      
+      // Scroll animation
+      (function animateScroll(elapsedTime) {  
+          elapsedTime += speed;
+          document.body.scrollTop = DA.utils.easeInOut(elapsedTime, currentScrollPos, distanceToScroll, duration); 
+          if (elapsedTime < duration) {
+              w.requestAnimationFrame(function() {
+                  animateScroll(elapsedTime);
+              });
+          } else if (elapsedTime >= duration) {
+            return callback();
+          }
+      })(0);
+  };
+
+  /** @export UI */
+  DA.UI = UI;
+})(window, window.DA = window.DA || {});
+/*
+ * Custom behavior
+ */
+(function(
+  w,  // window
+  $,  // document.querySelectorAll
+  DA  // DevTools Author global
+){
+  'use strict';
+
+  var internalLinks = $('a[href^="#"]');
+
   function initSocial(){
     var links = $('.share-links')[0];
+    
     if (links){
       links.style.display = 'block';
     }
@@ -57,16 +155,42 @@ window.fbAsyncInit = function() {
   function setYear(){
     var year = $('.currentYear')[0];
     var date = new Date();
-    year.innerHTML = date.getFullYear();
+    
+    if (year){
+      year.innerHTML = date.getFullYear();
+    }
+  }
+
+  function scrollToInternalLinks(linksArray){
+    
+    function scrollToListener(event){
+      event.preventDefault();
+      
+      var hash    = (event.target.href) ? event.target.getAttribute('href') : event.target.parentNode.getAttribute('href'), 
+          element = $(hash)[0];
+      
+      function changeURLHash(){
+        w.location.hash = hash;
+      }
+      
+      DA.UI.scrollTo(element, 1250, changeURLHash);
+    }
+
+    if (linksArray){
+      for (var i = 0; i < linksArray.length; i++){
+        linksArray[i].addEventListener('click', scrollToListener, true);
+      }
+    } else {
+      console.log('No internal links found!');
+    }
   }
 
   function init(){
     setYear();
+    scrollToInternalLinks(internalLinks);
   }
 
-  window.addEventListener('load', init);
-  window.addEventListener('facebook-loaded', initSocial);
-})(
-window,
-document.querySelectorAll.bind(document)
-);
+  w.addEventListener('load', init);
+  w.addEventListener('social-loaded', initSocial);
+
+})( window, document.querySelectorAll.bind(document), window.DA );
