@@ -29,11 +29,15 @@
   h3, h4 {
     width: 90%;
     text-align: center;
-    font-style: italic;
     margin: 0 auto 2em;
 
     @media #{$medium-screen}{
       width: 100%;
     }
+  }
+
+  .title, 
+  .subtitle {
+    font-style: italic;
   }
 }

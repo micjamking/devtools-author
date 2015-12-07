@@ -149,3 +149,10 @@ $ease: (
     display: none;
   }
 }
+
+.desktop-only {
+  display: none;
+  @media #{$medium-screen}{
+    display: initial;
+  }
+}

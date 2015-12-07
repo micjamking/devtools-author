@@ -3,11 +3,17 @@
  */
 .share-links {
   display: none;
-  margin-top: em-calc(-15px);
+  margin-top: 0;
   max-width: em-calc(310px);
   margin-left: auto;
   margin-right: auto;
   float: none;
+  
+  @include animation(
+    $name: fade-in,
+    $duration: 0.75s,
+    $iteration-count: 1
+  );
 
   @media screen and (min-width: 445px){
     max-width: inherit;
@@ -22,8 +28,12 @@
   .twitter-share-button,
   .fb-share-button {
     display: inline-block !important;
-    margin: 1rem !important;
+    margin: 0.45rem !important;
     vertical-align: top !important;
+
+    @media #{$medium-screen}{
+      margin: 1rem !important;
+    }
   }
 
   #___plusone_0 {
@@ -42,15 +52,17 @@
     width: em-calc(58px) !important;
     height: em-calc(20px) !important;
     text-align: center !important;
-    width: em-calc(58px) !important;
 
     > span {
       vertical-align: top !important;
     }
   }
 
-  #___plusone_0,
-  :first-child {
+  #___plusone_0:first-child {
     margin-left: 0 !important;
+  }
+
+  .fb-share-button:last-child {
+    margin-right: 0 !important;
   }
 }

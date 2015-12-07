@@ -3,8 +3,9 @@
   background-image: url('images/devtools-author-monokai-theme.png');
   background-repeat: no-repeat;
   background-position: center 200%;
-  box-shadow: inset 0 10px 0 0 $rangoon-green;
+  /* box-shadow: inset 0 10px 0 0 $rangoon-green; */
   text-align: center;
+  min-height: 47rem;
 
   .logo {
     max-width: em-calc(240px);
@@ -25,6 +26,14 @@
 
   .call-to-action {
     text-align: center;
+  }
+
+  @media only screen and (min-width: 360px){
+    min-height: 45rem;
+  }
+
+  @media only screen and (min-width: 640px) and (max-width: 1024px){
+    min-height: 46rem;
   }
 
   @media #{$medium-screen}{
