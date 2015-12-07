@@ -71,22 +71,53 @@ window.fbAsyncInit = function() {
   'use strict';
 
   /** @object utils */
-  var utils = {};
-  
+  var utils  = {},
+      
+      /*
+       * Easing Functions - inspired from http://gizma.com/easing/
+       */
+      easing = {
+        // no easing, no acceleration
+        linear: function (t) { return t; },
+        // accelerating from zero velocity
+        easeInQuad: function (t) { return t*t; },
+        // decelerating to zero velocity
+        easeOutQuad: function (t) { return t*(2-t); },
+        // acceleration until halfway, then deceleration
+        easeInOutQuad: function (t) { return t<0.5 ? 2*t*t : -1+(4-2*t)*t; },
+        // accelerating from zero velocity 
+        easeInCubic: function (t) { return t*t*t; },
+        // decelerating to zero velocity 
+        easeOutCubic: function (t) { return (--t)*t*t+1; },
+        // acceleration until halfway, then deceleration 
+        easeInOutCubic: function (t) { return t<0.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1; },
+        // accelerating from zero velocity 
+        easeInQuart: function (t) { return t*t*t*t; },
+        // decelerating to zero velocity 
+        easeOutQuart: function (t) { return 1-(--t)*t*t*t; },
+        // acceleration until halfway, then deceleration
+        easeInOutQuart: function (t) { return t<0.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t; },
+        // accelerating from zero velocity
+        easeInQuint: function (t) { return t*t*t*t*t; },
+        // decelerating to zero velocity
+        easeOutQuint: function (t) { return 1+(--t)*t*t*t*t; },
+        // acceleration until halfway, then deceleration 
+        easeInOutQuint: function (t) { return t<0.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t; }
+      };
+
   /*
-   * easeInOut timing function
-   * @params currentTime Length of time (ms) that has passed since start
+   * easing
+   * @params easingFunction Name of easing function to use
+   * @params elapsedTime Length of time (ms) that has passed since start
    * @params start initial starting point
    * @params change distance to travel
    * @params duration speed of travel
-   */ 
-  utils.easeInOut = function(currentTime, start, change, duration) {
-      currentTime /= duration / 2;
-      if (currentTime < 1) {
-          return change / 2 * currentTime * currentTime + start;
-      }
-      currentTime -= 1;
-      return -change / 2 * (currentTime * (currentTime - 2) - 1) + start;
+   */
+  utils.ease = function(easingFunction, elapsedTime, start, change, duration) {
+    var time        = Math.min(1, (elapsedTime / duration)),
+        easedTiming = easing[easingFunction](time);
+    
+    return (easedTiming * change) + start;
   };
 
   /** @export UI */
@@ -97,6 +128,7 @@ window.fbAsyncInit = function() {
  */
 (function(
   w,  // window
+  $,  // document.querySelectorAll
   DA  // DevTools Author global
 ){
   'use strict';
@@ -105,7 +137,7 @@ window.fbAsyncInit = function() {
   var UI = {};
   
   /*
-   * scroll to anchor
+   * scroll to element
    * @params targetElement Element to scroll to
    * @params duration Speed of scroll animation
    * @params callback Callback function after scroll has completed
@@ -118,7 +150,7 @@ window.fbAsyncInit = function() {
       // Scroll animation
       (function animateScroll(elapsedTime) {  
           elapsedTime += speed;
-          document.body.scrollTop = DA.utils.easeInOut(elapsedTime, currentScrollPos, distanceToScroll, duration); 
+          document.body.scrollTop = DA.utils.ease('easeInOutQuad', elapsedTime, currentScrollPos, distanceToScroll, duration); 
           if (elapsedTime < duration) {
               w.requestAnimationFrame(function() {
                   animateScroll(elapsedTime);
@@ -129,40 +161,11 @@ window.fbAsyncInit = function() {
       })(0);
   };
 
-  /** @export UI */
-  DA.UI = UI;
-})(window, window.DA = window.DA || {});
-/*
- * Custom behavior
- */
-(function(
-  w,  // window
-  $,  // document.querySelectorAll
-  DA  // DevTools Author global
-){
-  'use strict';
-
-  var internalLinks = $('a[href^="#"]');
-
-  function initSocial(){
-    var links = $('.share-links')[0];
-    
-    if (links){
-      links.style.display = 'block';
-    }
-  }
-  
-  function setYear(){
-    var year = $('.currentYear')[0];
-    var date = new Date();
-    
-    if (year){
-      year.innerHTML = date.getFullYear();
-    }
-  }
-
-  function scrollToInternalLinks(linksArray){
-    
+  /*
+   * scroll to all anchors
+   * @params linksArray Array of anchor elements
+   */
+  UI.scrollToInternalLinks = function(linksArray){
     function scrollToListener(event){
       event.preventDefault();
       
@@ -173,7 +176,7 @@ window.fbAsyncInit = function() {
         w.location.hash = hash;
       }
       
-      DA.UI.scrollTo(element, 1250, changeURLHash);
+      UI.scrollTo(element, 1250, changeURLHash);
     }
 
     if (linksArray){
@@ -183,14 +186,50 @@ window.fbAsyncInit = function() {
     } else {
       console.log('No internal links found!');
     }
+  };
+  
+  /*
+   * Set Year
+   * @params year Element to set year text within
+   */
+  UI.setYear = function(year){
+    var date = new Date();
+    if (year){
+      year.innerHTML = date.getFullYear();
+    }
+  };
+
+  /** @export UI */
+  DA.UI = UI;
+})(window, document.querySelectorAll.bind(document), window.DA = window.DA || {});
+/*
+ * App
+ */
+(function(
+  w,  // window
+  $,  // document.querySelectorAll.bind(document)
+  DA  // window.DA (DevTools Author global)
+){
+  'use strict';
+
+  var internalLinks = $('a[href^="#"]'),
+      currentYear   = $('.currentYear')[0],
+      links         = $('.share-links')[0];
+
+  function initSocial(){
+    if (links){
+      links.style.display = 'block';
+    }
   }
 
-  function init(){
-    setYear();
-    scrollToInternalLinks(internalLinks);
+  function initUI(){
+    DA.UI.setYear(currentYear);
+    DA.UI.scrollToInternalLinks(internalLinks);
   }
-
-  w.addEventListener('load', init);
+  
+  w.addEventListener('DOMContentLoaded', initUI);
+  //w.addEventListener('load', initUI);
   w.addEventListener('social-loaded', initSocial);
 
 })( window, document.querySelectorAll.bind(document), window.DA );
+//# sourceMappingURL=script.js.map

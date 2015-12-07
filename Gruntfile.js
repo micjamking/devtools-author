@@ -138,6 +138,9 @@ module.exports = function (grunt) {
        * https://github.com/gruntjs/grunt-contrib-concat
        */
       concat: {
+        options: {
+          sourceMap: true,
+        },
         dist: {
           src: [
             // Vendor
