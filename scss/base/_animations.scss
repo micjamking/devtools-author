@@ -32,7 +32,7 @@ $play-state:      running;
   animation-play-state: $play-state;
 }
 
-// Animations
+// Specific Animations
 @keyframes wave-fill {
   0%   { fill: transparent; }
   10%  { fill: $googleblue; }
@@ -72,7 +72,53 @@ $play-state:      running;
   100% { background-position: center 155%; }
 }
 
+@keyframes devtools-peep {
+  0%   { background-position: center 350%; }
+  70%  { background-position: center 192%; }
+  85%  { background-position: center 206%; }
+  100% { background-position: center 200%; }
+}
+
+@keyframes move-logo-left {
+  0% { 
+    transform: translate3d(40%, 0, 0);
+  }
+
+  100% { 
+    transform: none;
+  }
+}
+
+// General Animations
 @keyframes fade-in {
   0%   { opacity: 0; }
   100% { opacity: 1; }
+}
+
+@keyframes fade-in-down {
+  0% { 
+    opacity: 0;
+    transform: translate3d(0, -25%, 0);
+  }
+
+  100% { 
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-in-right {
+  0% { 
+    opacity: 0;
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  30% { 
+    opacity: 0;
+  }
+
+  100% { 
+    opacity: 1;
+    transform: none;
+  }
 }
