@@ -13,7 +13,8 @@
   @include animation(
     $name: fade-in,
     $duration: 0.75s,
-    $iteration-count: 1
+    $iteration-count: 1,
+    $delay: 2s
   );
 
   @media screen and (min-width: 445px){
