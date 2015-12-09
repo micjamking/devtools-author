@@ -1,6 +1,14 @@
 /*
  * Common layout styles
  */
+body {
+  @include animation(
+    $name: fade-in, 
+    $duration: 0.5s,
+    $iteration-count: 1,
+    $timing-function: ease('in-out-quad')
+  );
+}
 
 .main-header,
 .main-intro,
