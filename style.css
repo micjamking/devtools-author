@@ -896,8 +896,8 @@ body {
           animation-duration: 1.75s;
   -webkit-animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
           animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-  -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+  -webkit-animation-delay: 3.5s;
+          animation-delay: 3.5s;
   -webkit-animation-iteration-count: 1;
           animation-iteration-count: 1;
   -webkit-animation-direction: normal;
@@ -915,8 +915,8 @@ body {
           animation-duration: 1s;
   -webkit-animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
           animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
   -webkit-animation-iteration-count: 1;
           animation-iteration-count: 1;
   -webkit-animation-direction: normal;
@@ -927,15 +927,17 @@ body {
           animation-play-state: running;
 }
 
-.main-header .hero .sitename {
+.main-header .hero .sitename .devtools,
+.main-header .hero .sitename .author {
+  display: inline-block;
   -webkit-animation-name: fade-in-down;
           animation-name: fade-in-down;
   -webkit-animation-duration: 1.75s;
           animation-duration: 1.75s;
   -webkit-animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
           animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-  -webkit-animation-delay: 1.75s;
-          animation-delay: 1.75s;
+  -webkit-animation-delay: 2.25s;
+          animation-delay: 2.25s;
   -webkit-animation-iteration-count: 1;
           animation-iteration-count: 1;
   -webkit-animation-direction: normal;
@@ -946,24 +948,16 @@ body {
           animation-play-state: running;
 }
 
+.main-header .hero .sitename .author {
+  -webkit-animation-delay: 2.55s;
+          animation-delay: 2.55s;
+}
+
 @media only screen and (min-width: 640px) {
-  .main-header .hero .sitename {
+  .main-header .hero .sitename .devtools,
+  .main-header .hero .sitename .author {
     -webkit-animation-name: fade-in-right;
             animation-name: fade-in-right;
-    -webkit-animation-duration: 1.75s;
-            animation-duration: 1.75s;
-    -webkit-animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-            animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-    -webkit-animation-delay: 1.75s;
-            animation-delay: 1.75s;
-    -webkit-animation-iteration-count: 1;
-            animation-iteration-count: 1;
-    -webkit-animation-direction: normal;
-            animation-direction: normal;
-    -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-    -webkit-animation-play-state: running;
-            animation-play-state: running;
   }
 }
 
@@ -1017,8 +1011,8 @@ body {
             animation-duration: 1s;
     -webkit-animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
             animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-    -webkit-animation-delay: 2s;
-            animation-delay: 2s;
+    -webkit-animation-delay: 2.5s;
+            animation-delay: 2.5s;
     -webkit-animation-iteration-count: 1;
             animation-iteration-count: 1;
     -webkit-animation-direction: normal;

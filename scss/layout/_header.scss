@@ -14,27 +14,33 @@ $header-duration: 1.75s;
       $name: fade-in-down, 
       $duration: 1s,
       $timing-function: ease('swift-out'),
-      $delay: 1s,
+      $delay: 1.5s,
       $iteration-count: 1
     );
 
     .sitename {
-      @include animation(
+
+      .devtools,
+      .author {
+        display: inline-block;
+        @include animation(
           $name: fade-in-down,
           $duration: $header-duration,
           $timing-function: ease('swift-out'),
-          $delay: $header-duration,
-          $iteration-count: 1
-      );
-
-      @media #{$medium-screen}{
-        @include animation(
-          $name: fade-in-right,
-          $duration: $header-duration,
-          $timing-function: ease('swift-out'),
-          $delay: $header-duration,
+          $delay: $header-duration + 0.5,
           $iteration-count: 1
         );
+      }
+
+      .author {
+        animation-delay: $header-duration + 0.8;
+      }
+
+      @media #{$medium-screen}{
+        .devtools,
+        .author {
+          animation-name: fade-in-right;
+        }
       }
     }
   }
@@ -43,7 +49,7 @@ $header-duration: 1.75s;
     $name: devtools-peep,
     $duration: $header-duration,
     $timing-function: ease('swift-out'),
-    $delay: $header-delay + 2,
+    $delay: $header-delay + 2.5,
     $iteration-count: 1
   );
 
@@ -91,7 +97,7 @@ $header-duration: 1.75s;
         $name: move-logo-left, 
         $duration: 1s,
         $timing-function: ease('swift-out'),
-        $delay: $header-duration + 0.25s,
+        $delay: $header-duration + 0.75s,
         $iteration-count: 1
       );
     }
