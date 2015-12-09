@@ -20,8 +20,21 @@ $wave-speed: 2s;
     @include animation(
       $name: chrome-bump-large,
       $duration: $wave-speed * 2,
-      $delay: $wave-speed * ( 2 / -$wave-scale )
+      $delay: $wave-speed * ( 2 / -$wave-scale ),
+      $play-state: paused
     );
+    
+    // Play animations on hover
+    // on desktop only
+    &:hover {
+      animation-play-state: running;
+
+      .storage-section .cloud .cumulonimbus,
+      .storage-section .radio,
+      .storage-section .radio .wave {
+        animation-play-state: running;
+      }
+    }
   }
 
   .callout {
@@ -192,12 +205,6 @@ $wave-speed: 2s;
       min-width: em-calc(110px);
       max-width: em-calc(160px);
       margin: 0 auto;
-
-      @media #{$medium-screen}{
-        width: auto;
-        height: auto;
-        max-width: em-calc(183px);
-      }
       
       .cumulonimbus {
         @include animation(
@@ -205,6 +212,15 @@ $wave-speed: 2s;
           $duration: $wave-speed * 2,
           $delay: $wave-speed / 3
         );
+      }
+
+      @media #{$medium-screen}{
+        width: auto;
+        max-width: em-calc(183px);
+
+        .cumulonimbus {
+          animation-play-state: paused;
+        }
       }
     }
 
@@ -225,9 +241,8 @@ $wave-speed: 2s;
 
       @media #{$medium-screen}{
         top: em-calc(25px);
-        width: auto;
-        height: auto;
         max-height: em-calc(50px);
+        animation-play-state: paused;
       }
 
       .wave {
@@ -243,6 +258,10 @@ $wave-speed: 2s;
 
         &:nth-child(3) {
           animation-delay: $wave-speed * ( 2 / $wave-scale ); 
+        }
+
+        @media #{$medium-screen}{
+          animation-play-state: paused;
         }
       }
     }

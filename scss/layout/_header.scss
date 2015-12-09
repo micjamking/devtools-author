@@ -1,11 +1,57 @@
+$header-delay: 1s;
+$header-duration: 1.75s;
+
 .main-header {
   padding-top: em-calc(80px);
   background-image: url('images/devtools-author-monokai-theme.png');
   background-repeat: no-repeat;
   background-position: center 200%;
-  /* box-shadow: inset 0 10px 0 0 $rangoon-green; */
   text-align: center;
   min-height: 47rem;
+
+  .hero {
+    @include animation(
+      $name: fade-in-down, 
+      $duration: 1s,
+      $timing-function: ease('swift-out'),
+      $delay: 1.5s,
+      $iteration-count: 1
+    );
+
+    .sitename {
+
+      .devtools,
+      .author {
+        display: inline-block;
+        @include animation(
+          $name: fade-in-down,
+          $duration: $header-duration,
+          $timing-function: ease('swift-out'),
+          $delay: $header-duration + 0.5,
+          $iteration-count: 1
+        );
+      }
+
+      .author {
+        animation-delay: $header-duration + 0.8;
+      }
+
+      @media #{$medium-screen}{
+        .devtools,
+        .author {
+          animation-name: fade-in-right;
+        }
+      }
+    }
+  }
+
+  @include animation(
+    $name: devtools-peep,
+    $duration: $header-duration,
+    $timing-function: ease('swift-out'),
+    $delay: $header-delay + 2.5,
+    $iteration-count: 1
+  );
 
   .logo {
     max-width: em-calc(240px);
@@ -47,6 +93,13 @@
     
     .logo {
       max-width: em-calc(280px);
+      @include animation(
+        $name: move-logo-left, 
+        $duration: 1s,
+        $timing-function: ease('swift-out'),
+        $delay: $header-duration + 0.75s,
+        $iteration-count: 1
+      );
     }
   }
 

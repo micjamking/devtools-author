@@ -8,11 +8,13 @@
   margin-left: auto;
   margin-right: auto;
   float: none;
+  text-align: center;
   
   @include animation(
     $name: fade-in,
     $duration: 0.75s,
-    $iteration-count: 1
+    $iteration-count: 1,
+    $delay: 2s
   );
 
   @media screen and (min-width: 445px){
@@ -32,7 +34,7 @@
     vertical-align: top !important;
 
     @media #{$medium-screen}{
-      margin: 1rem !important;
+      margin: 0.65rem !important;
     }
   }
 

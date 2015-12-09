@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: #FFFFFF;
+}
+
 /* 
  * Variables
  */
@@ -141,7 +145,6 @@ a:link:not(.button) {
   color: #76705c;
 }
 
-a:link:not(.button):visited,
 a:link:not(.button):hover,
 a:link:not(.button):active,
 a:link:not(.button):focus {
@@ -412,6 +415,58 @@ pre {
   }
 }
 
+@-webkit-keyframes devtools-peep {
+  0% {
+    background-position: center 350%;
+  }
+  70% {
+    background-position: center 192%;
+  }
+  85% {
+    background-position: center 206%;
+  }
+  100% {
+    background-position: center 200%;
+  }
+}
+
+@keyframes devtools-peep {
+  0% {
+    background-position: center 350%;
+  }
+  70% {
+    background-position: center 192%;
+  }
+  85% {
+    background-position: center 206%;
+  }
+  100% {
+    background-position: center 200%;
+  }
+}
+
+@-webkit-keyframes move-logo-left {
+  0% {
+    -webkit-transform: translate3d(40%, 0, 0);
+            transform: translate3d(40%, 0, 0);
+  }
+  100% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes move-logo-left {
+  0% {
+    -webkit-transform: translate3d(40%, 0, 0);
+            transform: translate3d(40%, 0, 0);
+  }
+  100% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
 @-webkit-keyframes fade-in {
   0% {
     opacity: 0;
@@ -430,12 +485,89 @@ pre {
   }
 }
 
+@-webkit-keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -25%, 0);
+            transform: translate3d(0, -25%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -25%, 0);
+            transform: translate3d(0, -25%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, 0, 0);
+            transform: translate3d(-50%, 0, 0);
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, 0, 0);
+            transform: translate3d(-50%, 0, 0);
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
 /*
  * Layout
  */
 /*
  * Common layout styles
  */
+body {
+  -webkit-animation-name: fade-in;
+          animation-name: fade-in;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+          animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
 .main-header,
 .main-intro,
 .feature-section,
@@ -756,9 +888,77 @@ pre {
   background-image: url("images/devtools-author-monokai-theme.png");
   background-repeat: no-repeat;
   background-position: center 200%;
-  /* box-shadow: inset 0 10px 0 0 $rangoon-green; */
   text-align: center;
   min-height: 47rem;
+  -webkit-animation-name: devtools-peep;
+          animation-name: devtools-peep;
+  -webkit-animation-duration: 1.75s;
+          animation-duration: 1.75s;
+  -webkit-animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+          animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  -webkit-animation-delay: 3.5s;
+          animation-delay: 3.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.main-header .hero {
+  -webkit-animation-name: fade-in-down;
+          animation-name: fade-in-down;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+          animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.main-header .hero .sitename .devtools,
+.main-header .hero .sitename .author {
+  display: inline-block;
+  -webkit-animation-name: fade-in-down;
+          animation-name: fade-in-down;
+  -webkit-animation-duration: 1.75s;
+          animation-duration: 1.75s;
+  -webkit-animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+          animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  -webkit-animation-delay: 2.25s;
+          animation-delay: 2.25s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.main-header .hero .sitename .author {
+  -webkit-animation-delay: 2.55s;
+          animation-delay: 2.55s;
+}
+
+@media only screen and (min-width: 640px) {
+  .main-header .hero .sitename .devtools,
+  .main-header .hero .sitename .author {
+    -webkit-animation-name: fade-in-right;
+            animation-name: fade-in-right;
+  }
 }
 
 .main-header .logo {
@@ -805,6 +1005,22 @@ pre {
   }
   .main-header .logo {
     max-width: 14rem;
+    -webkit-animation-name: move-logo-left;
+            animation-name: move-logo-left;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+            animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+    -webkit-animation-delay: 2.5s;
+            animation-delay: 2.5s;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+            animation-direction: normal;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
   }
 }
 
@@ -848,7 +1064,7 @@ pre {
   display: none;
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.15);
   margin-bottom: 3.5rem;
-  transition: all 0.25s (in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955), in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1), in-out-quart: cubic-bezier(0.77, 0, 0.175, 1), in-out-quint: cubic-bezier(0.86, 0, 0.07, 1), in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86), swift-out: cubic-bezier(0.55, 0, 0.1, 1), material: cubic-bezier(0.4, 0, 0.2, 1));
+  transition: all 0.25s (in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955), in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1), in-out-quart: cubic-bezier(0.77, 0, 0.175, 1), in-out-quint: cubic-bezier(0.86, 0, 0.07, 1), in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86), swift-out: cubic-bezier(0.55, 0, 0.1, 1), material: cubic-bezier(0.4, 0, 0.2, 1), in-back: cubic-bezier(0.6, -0.28, 0.74, 0.05));
 }
 
 @media only screen and (min-width: 640px) {
@@ -1001,6 +1217,16 @@ pre {
             animation-direction: normal;
     -webkit-animation-fill-mode: both;
             animation-fill-mode: both;
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+  }
+  .feature-section:hover {
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
+  }
+  .feature-section:hover .storage-section .cloud .cumulonimbus,
+  .feature-section:hover .storage-section .radio,
+  .feature-section:hover .storage-section .radio .wave {
     -webkit-animation-play-state: running;
             animation-play-state: running;
   }
@@ -1205,14 +1431,6 @@ pre {
   margin: 0 auto;
 }
 
-@media only screen and (min-width: 640px) {
-  .feature-section .storage-section .cloud {
-    width: auto;
-    height: auto;
-    max-width: 9.15rem;
-  }
-}
-
 .feature-section .storage-section .cloud .cumulonimbus {
   -webkit-animation-name: cloud-stroke-fill;
           animation-name: cloud-stroke-fill;
@@ -1230,6 +1448,17 @@ pre {
           animation-fill-mode: both;
   -webkit-animation-play-state: running;
           animation-play-state: running;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section .storage-section .cloud {
+    width: auto;
+    max-width: 9.15rem;
+  }
+  .feature-section .storage-section .cloud .cumulonimbus {
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+  }
 }
 
 .feature-section .storage-section .radio {
@@ -1262,9 +1491,9 @@ pre {
 @media only screen and (min-width: 640px) {
   .feature-section .storage-section .radio {
     top: 1.25rem;
-    width: auto;
-    height: auto;
     max-height: 2.5rem;
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
   }
 }
 
@@ -1295,6 +1524,13 @@ pre {
 .feature-section .storage-section .radio .wave:nth-child(3) {
   -webkit-animation-delay: 0.2666666667s;
           animation-delay: 0.2666666667s;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section .storage-section .radio .wave {
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+  }
 }
 
 .faq-section dl {
@@ -1477,7 +1713,7 @@ pre {
   display: inline-block;
   color: #FB2E72;
   cursor: pointer;
-  transition: all 0.15s (in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955), in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1), in-out-quart: cubic-bezier(0.77, 0, 0.175, 1), in-out-quint: cubic-bezier(0.86, 0, 0.07, 1), in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86), swift-out: cubic-bezier(0.55, 0, 0.1, 1), material: cubic-bezier(0.4, 0, 0.2, 1));
+  transition: all 0.15s (in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955), in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1), in-out-quart: cubic-bezier(0.77, 0, 0.175, 1), in-out-quint: cubic-bezier(0.86, 0, 0.07, 1), in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86), swift-out: cubic-bezier(0.55, 0, 0.1, 1), material: cubic-bezier(0.4, 0, 0.2, 1), in-back: cubic-bezier(0.6, -0.28, 0.74, 0.05));
 }
 
 .main-footer .copyright .keyword:hover {
@@ -1580,14 +1816,15 @@ input[type="button"].cta:hover {
   margin-left: auto;
   margin-right: auto;
   float: none;
+  text-align: center;
   -webkit-animation-name: fade-in;
           animation-name: fade-in;
   -webkit-animation-duration: 0.75s;
           animation-duration: 0.75s;
   -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
   -webkit-animation-iteration-count: 1;
           animation-iteration-count: 1;
   -webkit-animation-direction: normal;
@@ -1624,7 +1861,7 @@ input[type="button"].cta:hover {
   .share-links .github-star,
   .share-links .twitter-share-button,
   .share-links .fb-share-button {
-    margin: 1rem !important;
+    margin: 0.65rem !important;
   }
 }
 

@@ -54,7 +54,8 @@ $ease: (
   in-out-quint: cubic-bezier(0.860,  0.000, 0.070, 1.000),
   in-out-circ:  cubic-bezier(0.785,  0.135, 0.150, 0.860),
   swift-out:    cubic-bezier(0.550,  0.000, 0.100, 1.000),
-  material:     cubic-bezier(0.400,  0.000, 0.200, 1.000)
+  material:     cubic-bezier(0.400,  0.000, 0.200, 1.000),
+  in-back:      cubic-bezier(0.600, -0.280, 0.740, 0.050)
 );
 
 /*

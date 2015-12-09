@@ -143,10 +143,6 @@ module.exports = function (grunt) {
         },
         dist: {
           src: [
-            // Vendor
-            './js/vendor/*.js',
-
-            // Microsite scripts
             './js/utils.js',
             './js/ui.js',
             './js/app.js'
