@@ -141,7 +141,6 @@ a:link:not(.button) {
   color: #76705c;
 }
 
-a:link:not(.button):visited,
 a:link:not(.button):hover,
 a:link:not(.button):active,
 a:link:not(.button):focus {
@@ -1001,6 +1000,16 @@ pre {
             animation-direction: normal;
     -webkit-animation-fill-mode: both;
             animation-fill-mode: both;
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+  }
+  .feature-section:hover {
+    -webkit-animation-play-state: running;
+            animation-play-state: running;
+  }
+  .feature-section:hover .storage-section .cloud .cumulonimbus,
+  .feature-section:hover .storage-section .radio,
+  .feature-section:hover .storage-section .radio .wave {
     -webkit-animation-play-state: running;
             animation-play-state: running;
   }
@@ -1205,14 +1214,6 @@ pre {
   margin: 0 auto;
 }
 
-@media only screen and (min-width: 640px) {
-  .feature-section .storage-section .cloud {
-    width: auto;
-    height: auto;
-    max-width: 9.15rem;
-  }
-}
-
 .feature-section .storage-section .cloud .cumulonimbus {
   -webkit-animation-name: cloud-stroke-fill;
           animation-name: cloud-stroke-fill;
@@ -1230,6 +1231,17 @@ pre {
           animation-fill-mode: both;
   -webkit-animation-play-state: running;
           animation-play-state: running;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section .storage-section .cloud {
+    width: auto;
+    max-width: 9.15rem;
+  }
+  .feature-section .storage-section .cloud .cumulonimbus {
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+  }
 }
 
 .feature-section .storage-section .radio {
@@ -1262,9 +1274,9 @@ pre {
 @media only screen and (min-width: 640px) {
   .feature-section .storage-section .radio {
     top: 1.25rem;
-    width: auto;
-    height: auto;
     max-height: 2.5rem;
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
   }
 }
 
@@ -1295,6 +1307,13 @@ pre {
 .feature-section .storage-section .radio .wave:nth-child(3) {
   -webkit-animation-delay: 0.2666666667s;
           animation-delay: 0.2666666667s;
+}
+
+@media only screen and (min-width: 640px) {
+  .feature-section .storage-section .radio .wave {
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+  }
 }
 
 .faq-section dl {
