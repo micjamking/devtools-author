@@ -184,7 +184,7 @@ module.exports = function (grunt) {
         },
         scripts: {
           files: 'js/**/*.js',
-          tasks: ['jshint:scripts', 'concat']
+          tasks: ['jshint:scripts', 'jsdoc', 'concat']
         },
         gruntfile: {
           files: 'Gruntfile.js',
@@ -199,6 +199,7 @@ module.exports = function (grunt) {
         'sass',
         'postcss:serve',
         'jshint',
+        'jsdoc',
         'concat',
         'watch'
     ]);
@@ -208,6 +209,7 @@ module.exports = function (grunt) {
         'sass',
         'postcss:dist',
         'jshint',
+        'jsdoc',
         'concat',
         'uglify'
     ]);
