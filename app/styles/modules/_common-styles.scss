@@ -210,9 +210,11 @@ $accent                 // Accent / Highlight
     }
 
     // CSS Properties
+    .webkit-css-property,
     .cm-css-property,
     .cm-s-default .cm-keyword,
-    .cm-s-default .cm-builtin {
+    .cm-s-default .cm-builtin,
+    .object-properties-section .name {
       color: $property;
     }
 
@@ -237,7 +239,9 @@ $accent                 // Accent / Highlight
     .cm-s-default .cm-variable-2,
     .cm-s-default .cm-meta,
     .CodeMirror pre,
-    .CodeMirror .CodeMirror-matchingbracket {
+    .CodeMirror .CodeMirror-matchingbracket,
+    .properties-widget-section span,
+    .object-properties-section-separator {
       color: $body-text !important;
       position: relative;
     }
@@ -260,7 +264,9 @@ $accent                 // Accent / Highlight
     .object-value-boolean,
     .object-value-string,
     .object-value-regexp,
-    .object-value-symbol {
+    .object-value-symbol,
+    .object-value-object,
+    .object-value-array {
       color: $strings;
     }
 
@@ -283,7 +289,8 @@ $accent                 // Accent / Highlight
     .cm-css-variable,
     .cm-js-keyword,
     .object-value-null,
-    .object-value-undefined {
+    .object-value-undefined,
+    .object-value-function {
       color: $selectors;
     }
 
@@ -619,13 +626,64 @@ $accent                 // Accent / Highlight
         // Body Text
         .styles-section,
         .styles-sidebar-pane-toolbar,
-        .metrics-and-styles .metrics {
-          color: $body-text !important;
+        .metrics-and-styles .metrics,
+        ::shadow .event-listener-tree > li {
           border-color: darken($background, 3.5%) !important;
+        }
+
+        .metrics {
+            .margin,
+            .border,
+            .padding,
+            .content {
+                color: $body-text;
+                background-color: $background;
+                border-color: $body-text;
+/*                 padding: 4px;
+                margin: 4px; */
+            }
+        }
+
+        .styles-section,
+        .styles-sidebar-pane-toolbar {
+          color: $body-text !important;
         }
 
         .styles-section.read-only {
             background-color: $background-highlight;
+        }
+
+        .styles-section .style-properties li.filter-match, 
+        .styles-section .simple-selector.filter-match {
+	       background-color: $selectors;
+	       @if $dark-theme == true {
+	           color: white;
+	       } @else {
+	           color: $body-text;
+	       }
+        }
+
+        ::shadow {
+            .tree-outline {
+                .webkit-css-property,
+                .name {
+                   color: $property; 
+                }
+
+                .value,
+                .selection,
+                .parent {
+                    color: $body-text !important;
+                } 
+
+                li:hover {
+                    background-color: $background-highlight !important;
+                }
+
+                li.odd-row {
+                    background-color: $background-highlight;
+                }
+            }
         }
 
         .sidebar-separator {
@@ -650,7 +708,8 @@ $accent                 // Accent / Highlight
         }
 
         // HTML Tags, Class/Id Selectors, JS keywords
-        .simple-selector {
+        .simple-selector,
+        ::shadow .object-value-function {
           color: $selectors;
         }
 
@@ -665,24 +724,47 @@ $accent                 // Accent / Highlight
         }
                 
       }
-    }
 
-    .elements-disclosure li.selected .selection {
-        background-color: $selectors;
-    }
+      ::shadow .elements-disclosure {
+          
+          li.selected .selection {
+              height: 22px !important;
+              background-color: $background-highlight;
+          }
 
-    #elements-crumbs {
+          ol:focus li.selected .selection {
+            background-color: $selectors;
+          }
+      }
+
+      #elements-crumbs {
         background-color: darken($background, 3.5%) !important;
         border-top: 0 none !important;
         
         ::shadow .crumbs .crumb {
-            color: white;
+            color: $comments;
+
+            &:hover {
+              @if $dark-theme == true {
+                  color: white;
+              } @else {
+                  color: $body-text;
+              }
+              background-color: $background-highlight;
+            }
             
             &.selected,
             &.selected:hover {
-                background-color: $background-highlight;
+                @if $dark-theme == true {
+                    color: white;
+                } @else {
+                    color: $body-text;
+                }
+                background-color: $background;
             }
         }
+      }
+    
     }
 
     ::-webkit-scrollbar {
