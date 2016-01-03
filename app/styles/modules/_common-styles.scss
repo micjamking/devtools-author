@@ -583,6 +583,18 @@ $accent                 // Accent / Highlight
       .sidebar-tabbed-pane.insertion-point-sidebar {
         background-color: $background !important;
 
+        .toolbar {
+            border-color: darken($background, 3.5%) !important;
+        }
+
+        .dom-breakpoint {
+          color: $body-text !important;
+        }
+
+        .breakpoint-list li:hover {
+            background-color: $background-highlight;
+        }
+
         &::shadow {
             .tabbed-pane-header {
                 padding-bottom: 0.5em;
@@ -632,6 +644,8 @@ $accent                 // Accent / Highlight
         }
 
         .metrics {
+            border-color: darken($background, 3.5%) !important;
+            
             .margin,
             .border,
             .padding,
@@ -639,8 +653,8 @@ $accent                 // Accent / Highlight
                 color: $body-text;
                 background-color: $background;
                 border-color: $body-text;
-/*                 padding: 4px;
-                margin: 4px; */
+                padding: 4px;
+                margin: 4px;
             }
         }
 
