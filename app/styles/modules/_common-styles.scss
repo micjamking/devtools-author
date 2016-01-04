@@ -606,10 +606,11 @@ $accent                 // Accent / Highlight
         }
 
         .styles-sidebar-pane-filter-box > input {
+            color: $body-text;
             background-color: $background-highlight;
 
-            &::focus {
-                box-shadow: inset 0 1px 0 0 $selectors;
+            &:focus {
+                box-shadow: inset 0 -1px 0 0 $selectors;
             }
 
             &::-webkit-input-placeholder {
@@ -661,6 +662,10 @@ $accent                 // Accent / Highlight
         .styles-section,
         .styles-sidebar-pane-toolbar {
           color: $body-text !important;
+        }
+
+        .styles-filter-engaged {
+            background-color: transparent !important;
         }
 
         .styles-section.read-only {
