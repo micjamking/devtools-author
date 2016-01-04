@@ -62,6 +62,28 @@
       console.log('No internal links found!');
     }
   };
+
+  /**
+   * Add class to element when it is scrolled in to view
+   * @params {HTMLElement} elements - Array of HTML elements to watch
+   */
+  UI.addClassOnScrollInToView = function(elements){
+      
+    function toggleActiveClass(el){
+      if (DA.utils.isElementInViewport(el)) {
+        el.classList.add('active');
+      } else {
+        el.classList.remove('active');
+      }
+    }
+
+    function scrollCallback(){
+      Array.prototype.forEach.call(elements, toggleActiveClass);
+    }
+
+    DA.utils.throttle('scroll', 'optimizedScroll');
+    w.addEventListener('optimizedScroll', scrollCallback);
+  };
   
   /**
    * Set Year

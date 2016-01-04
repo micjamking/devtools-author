@@ -57,6 +57,45 @@
     return (easedTiming * change) + start;
   };
 
+  /**
+   * Throttle an event (ie. scroll) and provide custom event for callback
+   * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
+   * @param {String} type - Type of event to throttle
+   * @param {String} name - Name of new event to dispatchEvent
+   * @param {Object} obj - Object to attach event to and dispatch the custom event from
+   */
+  utils.throttle = function(type, name, obj) {
+      obj = obj || w;
+      var running = false;
+      
+      var func = function() {
+          if (running) { return; }
+          running = true;
+          requestAnimationFrame(function() {
+              obj.dispatchEvent(new CustomEvent(name));
+              running = false;
+          });
+      };
+      
+      obj.addEventListener(type, func);
+  };
+
+  /**
+   * Check if element is currently visible in viewport
+   * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
+   * @param {HTMLElement} element - DOM element to check if currently visible
+   */
+  utils.isElementInViewport = function(element) {
+    var rect = element.getBoundingClientRect();
+
+    return (
+        rect.bottom >= 0 &&
+        rect.right  >= 0 &&
+        rect.top  <= ( ( window.innerHeight || document.documentElement.clientHeight ) / 2 ) &&
+        rect.left <= ( ( window.innerWidth || document.documentElement.clientWidth ) / 2 )
+    );
+  };
+
   /** @export UI */
   DA.utils = utils;
 })(window, window.DA = window.DA || {});

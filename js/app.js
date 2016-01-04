@@ -10,19 +10,21 @@
 ){
   'use strict';
 
-  var internalLinks = $('a[href^="#"]'),
-      currentYear   = $('.currentYear')[0],
-      links         = $('.share-links')[0];
+  var $internalLinks = $('a[href^="#"]'),
+      $panels        = $('.panel'),
+      $currentYear   = $('.currentYear')[0],
+      $links         = $('.share-links')[0];
 
   function initSocialUI(){
-    if (links){
-      links.style.display = 'block';
+    if ($links){
+      $links.style.display = 'block';
     }
   }
 
   function initUI(){
-    DA.UI.setYear(currentYear);
-    DA.UI.scrollToInternalLinks(internalLinks);
+    DA.UI.setYear($currentYear);
+    DA.UI.scrollToInternalLinks($internalLinks);
+    DA.UI.addClassOnScrollInToView($panels);
   }
 
   function initSocial(){

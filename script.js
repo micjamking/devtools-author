@@ -57,6 +57,45 @@
     return (easedTiming * change) + start;
   };
 
+  /**
+   * Throttle an event (ie. scroll) and provide custom event for callback
+   * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
+   * @param {String} type - Type of event to throttle
+   * @param {String} name - Name of new event to dispatchEvent
+   * @param {Object} obj - Object to attach event to and dispatch the custom event from
+   */
+  utils.throttle = function(type, name, obj) {
+      obj = obj || w;
+      var running = false;
+      
+      var func = function() {
+          if (running) { return; }
+          running = true;
+          requestAnimationFrame(function() {
+              obj.dispatchEvent(new CustomEvent(name));
+              running = false;
+          });
+      };
+      
+      obj.addEventListener(type, func);
+  };
+
+  /**
+   * Check if element is currently visible in viewport
+   * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
+   * @param {HTMLElement} element - DOM element to check if currently visible
+   */
+  utils.isElementInViewport = function(element) {
+    var rect = element.getBoundingClientRect();
+
+    return (
+        rect.bottom >= 0 &&
+        rect.right  >= 0 &&
+        rect.top  <= ( ( window.innerHeight || document.documentElement.clientHeight ) / 2 ) &&
+        rect.left <= ( ( window.innerWidth || document.documentElement.clientWidth ) / 2 )
+    );
+  };
+
   /** @export UI */
   DA.utils = utils;
 })(window, window.DA = window.DA || {});
@@ -124,6 +163,28 @@
       console.log('No internal links found!');
     }
   };
+
+  /**
+   * Add class to element when it is scrolled in to view
+   * @params {HTMLElement} elements - Array of HTML elements to watch
+   */
+  UI.addClassOnScrollInToView = function(elements){
+      
+    function toggleActiveClass(el){
+      if (DA.utils.isElementInViewport(el)) {
+        el.classList.add('active');
+      } else {
+        el.classList.remove('active');
+      }
+    }
+
+    function scrollCallback(){
+      Array.prototype.forEach.call(elements, toggleActiveClass);
+    }
+
+    DA.utils.throttle('scroll', 'optimizedScroll');
+    w.addEventListener('optimizedScroll', scrollCallback);
+  };
   
   /**
    * Set Year
@@ -151,19 +212,21 @@
 ){
   'use strict';
 
-  var internalLinks = $('a[href^="#"]'),
-      currentYear   = $('.currentYear')[0],
-      links         = $('.share-links')[0];
+  var $internalLinks = $('a[href^="#"]'),
+      $panels        = $('.panel'),
+      $currentYear   = $('.currentYear')[0],
+      $links         = $('.share-links')[0];
 
   function initSocialUI(){
-    if (links){
-      links.style.display = 'block';
+    if ($links){
+      $links.style.display = 'block';
     }
   }
 
   function initUI(){
-    DA.UI.setYear(currentYear);
-    DA.UI.scrollToInternalLinks(internalLinks);
+    DA.UI.setYear($currentYear);
+    DA.UI.scrollToInternalLinks($internalLinks);
+    DA.UI.addClassOnScrollInToView($panels);
   }
 
   function initSocial(){
