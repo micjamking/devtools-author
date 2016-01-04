@@ -84,15 +84,18 @@
    * Check if element is currently visible in viewport
    * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
    * @param {HTMLElement} element - DOM element to check if currently visible
+   * @param {Number} percentage - The percentage of screen threshold the element must be within
    */
-  utils.isElementInViewport = function(element) {
+  utils.isElementInViewport = function(element, percentage) {
     var rect = element.getBoundingClientRect();
+
+    percentage = percentage || 1;
 
     return (
         rect.bottom >= 0 &&
         rect.right  >= 0 &&
-        rect.top  <= ( ( window.innerHeight || document.documentElement.clientHeight ) / 2 ) &&
-        rect.left <= ( ( window.innerWidth || document.documentElement.clientWidth ) / 2 )
+        rect.top  <= ( ( window.innerHeight || document.documentElement.clientHeight ) * percentage ) &&
+        rect.left <= ( ( window.innerWidth || document.documentElement.clientWidth ) * percentage )
     );
   };
 
@@ -171,7 +174,7 @@
   UI.addClassOnScrollInToView = function(elements){
       
     function toggleActiveClass(el){
-      if (DA.utils.isElementInViewport(el)) {
+      if (DA.utils.isElementInViewport(el, 0.75)) {
         el.classList.add('active');
       } else {
         el.classList.remove('active');

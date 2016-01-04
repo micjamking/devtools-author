@@ -70,7 +70,7 @@
   UI.addClassOnScrollInToView = function(elements){
       
     function toggleActiveClass(el){
-      if (DA.utils.isElementInViewport(el)) {
+      if (DA.utils.isElementInViewport(el, 0.75)) {
         el.classList.add('active');
       } else {
         el.classList.remove('active');

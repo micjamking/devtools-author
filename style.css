@@ -1227,8 +1227,112 @@ body {
   }
 }
 
+.feature-section.active .callout {
+  visibility: visible;
+  -webkit-animation-name: fade-in-down;
+          animation-name: fade-in-down;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.feature-section.active .callout h4 {
+  -webkit-animation-name: fade-in;
+          animation-name: fade-in;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.feature-section.active .callout [class^='theme-'] {
+  -webkit-animation-name: fade-in;
+          animation-name: fade-in;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.feature-section.active .callout .theme-monokai-1 {
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+
+.feature-section.active .callout .theme-monokai-2 {
+  -webkit-animation-delay: 0.95s;
+          animation-delay: 0.95s;
+}
+
+.feature-section.active .callout .theme-monokai-3 {
+  -webkit-animation-delay: 1.15s;
+          animation-delay: 1.15s;
+}
+
+.feature-section.active .callout .theme-monokai-4 {
+  -webkit-animation-delay: 1.35s;
+          animation-delay: 1.35s;
+}
+
+.feature-section.active .callout .theme-monokai-5 {
+  -webkit-animation-delay: 1.55s;
+          animation-delay: 1.55s;
+}
+
 .feature-section .callout {
+  visibility: hidden;
   height: 8rem;
+}
+
+.feature-section .callout.font-family {
+  -webkit-animation-delay: 1.25s;
+          animation-delay: 1.25s;
+}
+
+.feature-section .callout.font-family h4 {
+  -webkit-animation-delay: 1.75s;
+          animation-delay: 1.75s;
+}
+
+.feature-section .callout.font-size {
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+.feature-section .callout.font-size h4 {
+  -webkit-animation-delay: 2.5s;
+          animation-delay: 2.5s;
 }
 
 @media only screen and (min-width: 640px) {
