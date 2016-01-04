@@ -1,6 +1,6 @@
 {
    "name": "DevTools Author",
-   "description": "A simple set of author settings for Chrome Developer Tools.",
+   "description": "A selection of author settings for Chrome Developer Tools.",
    "permissions": [ "storage" ],
    "devtools_page": "devtools.html",
    "manifest_version": 2,

@@ -1,5 +1,5 @@
 # DevTools Author
-*A simple set of editor settings for Chrome Developer Tools.*
+> A selection of author settings for Chrome Developer Tools.
 
 ![Devtools Author Logo](app/images/1400x560_marquee.png)
 
