@@ -949,7 +949,7 @@ body {
           animation-delay: 2.55s;
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 1024px) {
   .main-header .hero .sitename .devtools,
   .main-header .hero .sitename .author {
     -webkit-animation-name: fade-in-right;
@@ -1001,6 +1001,19 @@ body {
   }
   .main-header .logo {
     max-width: 14rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .main-header {
+    text-align: left;
+  }
+  .main-header .hero {
+    max-width: 60%;
+  }
+  .main-header .logo {
+    max-width: 16rem;
+    float: left;
     -webkit-animation-name: move-logo-left;
             animation-name: move-logo-left;
     -webkit-animation-duration: 1s;
@@ -1017,19 +1030,6 @@ body {
             animation-fill-mode: both;
     -webkit-animation-play-state: running;
             animation-play-state: running;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .main-header {
-    text-align: left;
-  }
-  .main-header .hero {
-    max-width: 60%;
-  }
-  .main-header .logo {
-    max-width: 16rem;
-    float: left;
   }
   .main-header .sitename {
     margin-top: 5rem;

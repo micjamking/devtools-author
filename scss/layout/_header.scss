@@ -36,7 +36,7 @@ $header-duration: 1.75s;
         animation-delay: $header-duration + 0.8;
       }
 
-      @media #{$medium-screen}{
+      @media #{$large-screen}{
         .devtools,
         .author {
           animation-name: fade-in-right;
@@ -93,13 +93,6 @@ $header-duration: 1.75s;
     
     .logo {
       max-width: em-calc(280px);
-      @include animation(
-        $name: move-logo-left, 
-        $duration: 1s,
-        $timing-function: ease('swift-out'),
-        $delay: $header-duration + 0.75s,
-        $iteration-count: 1
-      );
     }
   }
 
@@ -113,6 +106,13 @@ $header-duration: 1.75s;
     .logo {
       max-width: em-calc(320px);
       float: left;
+      @include animation(
+        $name: move-logo-left, 
+        $duration: 1s,
+        $timing-function: ease('swift-out'),
+        $delay: $header-duration + 0.75s,
+        $iteration-count: 1
+      );
     }
 
     .sitename {
