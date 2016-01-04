@@ -214,6 +214,7 @@ $accent                 // Accent / Highlight
     .cm-css-property,
     .cm-s-default .cm-keyword,
     .cm-s-default .cm-builtin,
+    .console-view-object-properties-section::shadow .object-properties-section .name,
     .object-properties-section .name {
       color: $property;
     }
@@ -241,7 +242,8 @@ $accent                 // Accent / Highlight
     .CodeMirror pre,
     .CodeMirror .CodeMirror-matchingbracket,
     .properties-widget-section span,
-    .object-properties-section-separator {
+    .object-properties-section-separator,
+    .console-view-object-properties-section::shadow .object-properties-section-separator {
       color: $body-text !important;
       position: relative;
     }
@@ -260,6 +262,15 @@ $accent                 // Accent / Highlight
     .cm-string,
     .cm-s-default .cm-string,
     .cm-s-default .cm-string-2,
+    .console-view-object-properties-section > span,
+    .console-view-object-properties-section::shadow .object-properties-section-name,
+    .console-view-object-properties-section::shadow .object-value-number,
+    .console-view-object-properties-section::shadow .object-value-boolean,
+    .console-view-object-properties-section::shadow .object-value-string,
+    .console-view-object-properties-section::shadow .object-value-regexp,
+    .console-view-object-properties-section::shadow .object-value-symbol,
+    .console-view-object-properties-section::shadow .object-value-object,
+    .console-view-object-properties-section::shadow .object-value-array,
     .object-value-number, 
     .object-value-boolean,
     .object-value-string,
@@ -267,7 +278,7 @@ $accent                 // Accent / Highlight
     .object-value-symbol,
     .object-value-object,
     .object-value-array {
-      color: $strings;
+      color: $strings !important;
     }
 
     // Numbers
@@ -578,13 +589,110 @@ $accent                 // Accent / Highlight
        
        ::shadow .shadow-split-widget.hbox > .shadow-split-widget-sidebar:not(.maximized) {
             border-left: 1px solid darken($background, 3.5%) !important;
+            border-right: 0 none !important;
         }
 
       .sidebar-tabbed-pane.insertion-point-sidebar {
         background-color: $background !important;
 
+          &::shadow .tabbed-pane-header {
+            background: darken($background, 3.5%) !important;
+            border-bottom: 0 none;
+
+            .tabbed-pane-header-tabs-drop-down-container {
+              opacity: 1;
+              color: $comments;
+              padding: 4px 15px;
+              height: 33px;
+
+              &:hover {
+                background-color: darken($background, 2.25%);
+              }
+            }
+
+            #tab-Styles {
+              min-width: 84px !important;
+            }
+
+            #tab-Computed {
+              min-width: 107px !important;
+            }
+
+            .tabbed-pane-header-tab:nth-child(3) {
+              min-width: 129px !important;
+            }
+
+            .tabbed-pane-header-tab:nth-child(4) {
+              min-width: 141px !important;
+            }
+
+            #tab-Properties {
+              min-width: 106px !important;
+            }
+
+            .tabbed-pane-header-tab {
+              position: relative;
+              margin-right: 1px;
+              margin-top: 0;
+
+              @if $dark-theme == true {
+                background: darken($background, 2%);
+              } @else {
+                background: darken($background, 1.5%);   
+              }
+
+              border: 0 none !important;
+              box-shadow: inset 0 1px 0 darken($background, 3.5%),
+                          inset 0 -1px 0 darken($background, 3.5%);
+              color: $comments;
+              transition: transform 0.15s ease;
+
+              .tabbed-pane-header-tab-title {
+                box-sizing: content-box;
+                padding: 0 16px;
+              }
+
+              &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background-color: $selectors;
+                transform: scaleX(0);
+                transition: inherit;
+              }
+
+              &.selected {
+                position: relative;
+                background: $background;
+                box-shadow: 0 1px 0 $background;
+                color: $body-text-highlight;
+
+                &:before {
+                  transform: scaleX(1);
+                }
+              }
+
+              &:hover {
+                ::shadow .close-button-gray {
+                  visibility: visible;
+                  opacity: 1;
+                  transform: scale(1);
+                }
+              }
+            }
+          }
+
         .toolbar {
             border-color: darken($background, 3.5%) !important;
+
+            /deep/ .glyph, 
+            /deep/ .long-click-glyph {
+                background-color: $comments !important;
+            }
         }
 
         .dom-breakpoint {
@@ -597,7 +705,7 @@ $accent                 // Accent / Highlight
 
         &::shadow {
             .tabbed-pane-header {
-                padding-bottom: 0.5em;
+                /* padding-bottom: 0.5em; */
             }
 
             .tabbed-pane-header-tab {
@@ -607,7 +715,9 @@ $accent                 // Accent / Highlight
 
         .styles-sidebar-pane-filter-box > input {
             color: $body-text;
-            background-color: $background-highlight;
+            background-color: $background;
+            margin-left: 0;
+	        padding-left: 0.5em;
 
             &:focus {
                 box-shadow: inset 0 -1px 0 0 $selectors;
@@ -664,6 +774,7 @@ $accent                 // Accent / Highlight
           color: $body-text !important;
         }
 
+        .styles-sidebar-pane-toolbar,
         .styles-filter-engaged {
             background-color: transparent !important;
         }
@@ -743,6 +854,11 @@ $accent                 // Accent / Highlight
         }
                 
       }
+
+       #elements-content ::shadow .selected .being-edited.editing *,  
+       ::shadow #elements-content ::shadow .selected .being-edited.editing *{
+            color: #333 !important;
+        }
 
       ::shadow .elements-disclosure {
           
