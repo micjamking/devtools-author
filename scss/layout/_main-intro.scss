@@ -16,7 +16,7 @@
     display: none;
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.15);
     margin-bottom: em-calc(70px);
-    transition: all 0.25s $ease;
+    transition: all 0.25s ease('swift-out');
 
     @media #{$medium-screen}{
       display: block;

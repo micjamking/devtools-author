@@ -44,15 +44,6 @@ module.exports = function (grunt) {
                  */
                 require('autoprefixer')({
                     browsers: ['last 2 versions']
-                }),
-
-                /* 
-                 * Style Guide: Generate a style guide automatically
-                 * https://github.com/morishitter/postcss-style-guide
-                 */
-                require('postcss-style-guide')({
-                    name: 'DevTools Author',
-                    dir: 'docs/css'
                 })
               ]
             },
@@ -208,6 +199,7 @@ module.exports = function (grunt) {
         'sass',
         'postcss:dist',
         'jshint',
+        'jsdoc',
         'concat',
         'uglify'
     ]);

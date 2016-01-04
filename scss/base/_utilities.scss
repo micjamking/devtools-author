@@ -101,7 +101,11 @@ $ease: (
  * @param {$unit} unit for rem/em output, defaults to 'em'
  */
 @function em-calc($target, $context: $base-font, $unit: 'rem'){
-  @return #{$target/$context} + $unit;
+  @if ($unit == 'rem'){
+    @return #{ ($target/$context) * 1rem };
+  } @else {
+    @return #{ ($target/$context) * 1em };
+  }
 }
 
 /*

@@ -37,8 +37,76 @@ $wave-speed: 2s;
     }
   }
 
+  &.active {
+    .callout {
+      visibility: visible;
+      
+      @include animation(
+        $name: fade-in-down, 
+        $duration: 0.5s,
+        $iteration-count: 1,
+        $timing-function: ease-in
+      );
+
+      h4 {
+        @include animation(
+          $name: fade-in, 
+          $duration: 0.5s,
+          $iteration-count: 1,
+          $delay: 0.5s
+        );
+      }
+
+       [class^='theme-'] {
+        @include animation(
+          $name: fade-in, 
+          $duration: 0.5s,
+          $iteration-count: 1,
+          $delay: 0.25s
+        );
+      }
+
+      .theme-monokai-1 { 
+        animation-delay: 0.75s;
+      }
+
+      .theme-monokai-2 { 
+        animation-delay: 0.95s;
+      }
+
+      .theme-monokai-3 { 
+        animation-delay: 1.15s;
+      }
+
+      .theme-monokai-4 { 
+        animation-delay: 1.35s;
+      }
+
+      .theme-monokai-5 { 
+        animation-delay: 1.55s;
+      }
+    }
+  }
+
   .callout {
+    visibility: hidden;
     height: em-calc(160px);
+
+    &.font-family {
+      animation-delay: 1.25s;
+
+      h4 {
+        animation-delay: 1.75s;
+      }
+    }
+
+    &.font-size {
+      animation-delay: 2s;
+
+      h4 {
+        animation-delay: 2.5s;
+      }
+    }
 
     @media #{$medium-screen}{
       height: em-calc(180px);
