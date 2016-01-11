@@ -862,13 +862,10 @@ $accent                 // Accent / Highlight
 
       ::shadow .elements-disclosure {
           
-          li.selected .selection {
-              min-height: 22px !important;
-              background-color: $background-highlight;
-          }
-
+          li.selected .selection,
           ol:focus li.selected .selection {
-            background-color: $selectors;
+              min-height: 22px !important;
+              background-color: $selectors;
           }
       }
 
