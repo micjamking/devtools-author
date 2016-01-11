@@ -863,7 +863,7 @@ $accent                 // Accent / Highlight
       ::shadow .elements-disclosure {
           
           li.selected .selection {
-              height: 22px !important;
+              min-height: 22px !important;
               background-color: $background-highlight;
           }
 
