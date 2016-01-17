@@ -105,8 +105,12 @@ module.exports = function (grunt) {
       esdoc : {
         dist : {
           options: {
+            source: './js',
             destination: 'docs/es',
-            source: './js'
+            title: 'DevTools Author',
+            index: './README.md',
+            package: './package.json',
+            access: ['public', 'protected', 'private']
           }
         }
       },

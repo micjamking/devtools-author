@@ -10,7 +10,7 @@
     "access": null,
     "description": null,
     "lineNumber": 5,
-    "content": "/*eslint no-console: 1*/\n/**\n * Application entry point\n */\nimport { w, $ } from './utils.js';\nimport UI from './ui.js';\n\n/**\n * Creates DevTools Author\n */\nexport class DevToolsAuthor {\n\n  constructor() {\n    \n    /** \n     * DOM References to primary elements\n     * @type {Object}\n     */\n    this.$els = {\n      internalLinks: $('a[href^=\"#\"]'),\n      panels: $('.panel'),\n      currentYear: $('.currentYear')[0],\n      links: $('.share-links')[0]\n    };\n    \n    /** Setup event listeners */\n    this._registerListeners();\n  \n  }\n  \n  /**\n   * Setup UI\n   * @private\n   */\n  _initUI() {\n    var ui = new UI();\n    \n    if ( this.$els.currentYear ){\n      ui.setYear( this.$els.currentYear );\n    }\n    \n    if ( this.$els.internalLinks ){\n      ui.scrollToInternalLinks( this.$els.internalLinks );\n    }\n    \n    if ( this.$els.panels ){\n      ui.addClassOnScrollInToView( this.$els.panels );\n    }\n  \n  }\n  \n  /**\n   * Social Media APIs\n   * @emits {social-loaded} Emits event when Facebook API has completely rendered\n   * @private\n   */\n  _initSocial() {\n    \n    /** Google API */\n    ((d, s, id) => {\n       var js, fjs = d.getElementsByTagName(s)[0];\n       if (d.getElementById(id)) { return; }\n       js = d.createElement(s); \n       js.id = id;\n       js.src = '//apis.google.com/js/platform.js';\n       fjs.parentNode.insertBefore(js, fjs);\n    })(document, 'script', 'google-sdk');\n\n    /** Twitter API */\n    ((d, s, id) => {\n      var js, fjs = d.getElementsByTagName(s)[0];\n      if (d.getElementById(id)) { return; }\n      js = d.createElement(s);\n      js.id = id;\n      js.src = '//platform.twitter.com/widgets.js';\n      fjs.parentNode.insertBefore(js, fjs);\n    })(document, 'script', 'twitter-wjs');\n\n    /** Facebook SDK */\n    ((d, s, id) => {\n       var js, fjs = d.getElementsByTagName(s)[0];\n       if (d.getElementById(id)) { return; }\n       js = d.createElement(s); \n       js.id = id;\n       js.src = '//connect.facebook.net/en_US/sdk.js';\n       fjs.parentNode.insertBefore(js, fjs);\n    })(document, 'script', 'facebook-jssdk');\n\n    /** Facebook SDK Init */\n    window.fbAsyncInit = function() {\n      \n      FB.init({\n        appId   : '1686524291587989',\n        xfbml   : true,\n        version : 'v2.5'\n      });\n\n      /**\n       * Publish event after Facebook \n       * share has rendered (since it *seems* to take the longest)\n       */\n      FB.Event.subscribe('xfbml.render', () => {\n        var fbLoaded = new CustomEvent( 'social-loaded' );\n        window.dispatchEvent( fbLoaded );\n      });\n    \n    };\n  \n  }\n  \n  /**\n   * Setup social media UI\n   * @private\n   */\n  _initSocialUI() {\n    \n    if ( this.$els.links ){\n      this.$els.links.style.display = 'block';\n    }\n  \n  }\n  \n  /**\n   * Setup Event Listeners\n   * @listens {DOMContentLoaded} Listen for event to initialize UI\n   * @listens {load} Listen for event to initialize Social Media API\n   * @listens {social-loaded} Listen for event to initialize Social Media UI\n   * @private\n   */\n  _registerListeners() {\n    \n    w.addEventListener( 'DOMContentLoaded', () => {\n       this._initUI(); \n    });\n    \n    w.addEventListener( 'load', () => { \n      this._initSocial(); \n    });\n    \n    w.addEventListener( 'social-loaded', () => { \n      this._initSocialUI();\n    });\n  \n  }\n\n}\n\n/** hello.world */\nnew DevToolsAuthor();"
+    "content": "/*eslint no-console: 1*/\n/**\n * Application entry point\n */\nimport { w, $ } from './utils.js';\nimport UI from './ui.js';\n\n/**\n * Creates DevTools Author\n */\nexport class DevToolsAuthor {\n  \n  /**\n   * Setup DOM references and event listeners\n   */\n  constructor() {\n    \n    /** \n     * DOM References to primary elements\n     * @type {Object}\n     * @property {HTMLElement} internalLinks - Anchor links with a hash (#) href value\n     * @property {HTMLElement} panels - Elements with the class of `.panel`\n     * @property {HTMLElement} currentYear - Element with the class of `.currentYear`\n     * @property {HTMLElement} links - Element with the class of `.share-links`\n     * @private\n     */\n    this._$els = {\n      internalLinks: $('a[href^=\"#\"]'),\n      panels: $('.panel'),\n      currentYear: $('.currentYear')[0],\n      links: $('.share-links')[0]\n    };\n    \n    /** Setup event listeners */\n    this._registerListeners();\n  \n  }\n  \n  /**\n   * Setup UI\n   * @private\n   */\n  _initUI() {\n    var ui = new UI();\n\n    if ( this._$els.currentYear ){\n      ui.setYear( this._$els.currentYear );\n    }\n    \n    if ( this._$els.internalLinks ){\n      ui.scrollToInternalLinks( this._$els.internalLinks );\n    }\n    \n    if ( this._$els.panels ){\n      ui.addClassOnScrollInToView( this._$els.panels );\n    }\n  \n  }\n  \n  /**\n   * Social Media APIs\n   * @emits {social-loaded} Emits event when Facebook API has completely rendered\n   * @private\n   */\n  _initSocial() {\n    \n    /** Google API */\n    ((d, s, id) => {\n       var js, fjs = d.getElementsByTagName(s)[0];\n       if (d.getElementById(id)) { return; }\n       js = d.createElement(s); \n       js.id = id;\n       js.src = '//apis.google.com/js/platform.js';\n       fjs.parentNode.insertBefore(js, fjs);\n    })(document, 'script', 'google-sdk');\n\n    /** Twitter API */\n    ((d, s, id) => {\n      var js, fjs = d.getElementsByTagName(s)[0];\n      if (d.getElementById(id)) { return; }\n      js = d.createElement(s);\n      js.id = id;\n      js.src = '//platform.twitter.com/widgets.js';\n      fjs.parentNode.insertBefore(js, fjs);\n    })(document, 'script', 'twitter-wjs');\n\n    /** Facebook SDK */\n    ((d, s, id) => {\n       var js, fjs = d.getElementsByTagName(s)[0];\n       if (d.getElementById(id)) { return; }\n       js = d.createElement(s); \n       js.id = id;\n       js.src = '//connect.facebook.net/en_US/sdk.js';\n       fjs.parentNode.insertBefore(js, fjs);\n    })(document, 'script', 'facebook-jssdk');\n\n    /** Facebook SDK Init */\n    window.fbAsyncInit = function() {\n      \n      FB.init({\n        appId   : '1686524291587989',\n        xfbml   : true,\n        version : 'v2.5'\n      });\n\n      /**\n       * Publish event after Facebook \n       * share has rendered (since it *seems* to take the longest)\n       */\n      FB.Event.subscribe('xfbml.render', () => {\n        var fbLoaded = new CustomEvent( 'social-loaded' );\n        window.dispatchEvent( fbLoaded );\n      });\n    \n    };\n  \n  }\n  \n  /**\n   * Setup social media UI\n   * @private\n   */\n  _initSocialUI() {\n    \n    if ( this._$els.links ){\n      this._$els.links.style.display = 'block';\n    }\n  \n  }\n  \n  /**\n   * Setup Event Listeners\n   * @listens {DOMContentLoaded} Initialize UI\n   * @listens {load} Initialize Social Media API\n   * @listens {social-loaded} Initialize Social Media UI\n   * @private\n   */\n  _registerListeners() {\n    \n    w.addEventListener( 'DOMContentLoaded', () => {\n       this._initUI(); \n    });\n    \n    w.addEventListener( 'load', () => { \n      this._initSocial(); \n    });\n    \n    w.addEventListener( 'social-loaded', () => { \n      this._initSocialUI();\n    });\n  \n  }\n\n}\n\n/** hello.world */\nnew DevToolsAuthor();"
   },
   {
     "__docId__": 1,
@@ -37,9 +37,8 @@
     "memberof": "js/app.js~DevToolsAuthor",
     "longname": "js/app.js~DevToolsAuthor#constructor",
     "access": null,
-    "description": null,
-    "lineNumber": 13,
-    "undocument": true,
+    "description": "Setup DOM references and event listeners",
+    "lineNumber": 16,
     "params": [],
     "generator": false
   },
@@ -48,12 +47,54 @@
     "kind": "member",
     "static": false,
     "variation": null,
-    "name": "$els",
+    "name": "_$els",
     "memberof": "js/app.js~DevToolsAuthor",
-    "longname": "js/app.js~DevToolsAuthor#$els",
-    "access": null,
+    "longname": "js/app.js~DevToolsAuthor#_$els",
+    "access": "private",
     "description": "DOM References to primary elements",
-    "lineNumber": 19,
+    "lineNumber": 27,
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "internalLinks",
+        "description": "Anchor links with a hash (#) href value"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "panels",
+        "description": "Elements with the class of `.panel`"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "currentYear",
+        "description": "Element with the class of `.currentYear`"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "links",
+        "description": "Element with the class of `.share-links`"
+      }
+    ],
     "type": {
       "nullable": null,
       "types": [
@@ -73,7 +114,7 @@
     "longname": "js/app.js~DevToolsAuthor#_initUI",
     "access": "private",
     "description": "Setup UI",
-    "lineNumber": 35,
+    "lineNumber": 43,
     "params": [],
     "generator": false
   },
@@ -87,7 +128,7 @@
     "longname": "js/app.js~DevToolsAuthor#_initSocial",
     "access": "private",
     "description": "Social Media APIs",
-    "lineNumber": 57,
+    "lineNumber": 65,
     "params": [],
     "emits": [
       {
@@ -109,7 +150,7 @@
     "longname": "js/app.js~DevToolsAuthor#_initSocialUI",
     "access": "private",
     "description": "Setup social media UI",
-    "lineNumber": 115,
+    "lineNumber": 123,
     "params": [],
     "generator": false
   },
@@ -123,26 +164,26 @@
     "longname": "js/app.js~DevToolsAuthor#_registerListeners",
     "access": "private",
     "description": "Setup Event Listeners",
-    "lineNumber": 130,
+    "lineNumber": 138,
     "params": [],
     "listens": [
       {
         "types": [
           "DOMContentLoaded"
         ],
-        "description": "Listen for event to initialize UI"
+        "description": "Initialize UI"
       },
       {
         "types": [
           "load"
         ],
-        "description": "Listen for event to initialize Social Media API"
+        "description": "Initialize Social Media API"
       },
       {
         "types": [
           "social-loaded"
         ],
-        "description": "Listen for event to initialize Social Media UI"
+        "description": "Initialize Social Media UI"
       }
     ],
     "generator": false
@@ -158,7 +199,7 @@
     "access": null,
     "description": null,
     "lineNumber": 4,
-    "content": "/**\n * User Interface\n */\nimport utils, { w, $ } from './utils.js';\n  \n/**\n * Sets up user interface \n */\nexport default class UI {\n\n  constructor(){\n    this._utils = new utils();\n  }\n\n  /**\n   * Scroll to element\n   * @params {HTMLElement} targetElement - Element to scroll to\n   * @params {Number} duration - Speed of scroll animation\n   * @params {Function} callback - Callback function after scroll has completed\n   * @private\n   */\n  _scrollTo(targetElement, duration, callback) {\n\n      var currentScrollPos = document.body.scrollTop,\n          distanceToScroll = targetElement.offsetTop - currentScrollPos,\n          speed            = 16;\n\n      /** Scroll animation */\n      (function animateScroll(elapsedTime) {  \n          elapsedTime += speed;\n          document.body.scrollTop = this._utils.ease('easeInOutQuad', elapsedTime, currentScrollPos, distanceToScroll, duration); \n          if (elapsedTime < duration) {\n              w.requestAnimationFrame(() => { animateScroll(elapsedTime); });\n          } else if (elapsedTime >= duration) {\n            return callback();\n          }\n      })(0);\n\n  }\n\n  /**\n   * Scroll to all anchors\n   * @params {Array} linksArray - Array of anchor elements\n   */\n  scrollToInternalLinks(linksArray) {\n\n    /** Click event callback */\n    function scrollToListener(event){\n      event.preventDefault();\n\n      var hash    = (event.target.href) ? event.target.getAttribute('href') : event.target.parentNode.getAttribute('href'), \n          element = $(hash)[0];\n\n      function changeURLHash(){\n        w.location.hash = hash;\n      }\n\n      this._scrollTo(element, 1250, changeURLHash);\n    }\n\n    /** Attach click event listener */\n    if (linksArray){\n      for (var i = 0; i < linksArray.length; i++){\n        linksArray[i].addEventListener('click', scrollToListener, true);\n      }\n    }\n\n  }\n\n  /**\n   * Add class to element when it is scrolled in to view\n   * @params {Array} elements - Array of HTML elements to watch\n   */\n  addClassOnScrollInToView(elements) {\n\n    var that = this;\n\n    /** Scroll event callback  */\n    function _scrollCallback(){\n\n      function toggleActiveClass(el){\n        if (that._utils.isElementInViewport(el, 0.75)) {\n          el.classList.add('active');\n        } else {\n          el.classList.remove('active');\n        }\n      }\n\n      Array.prototype.forEach.call(elements, toggleActiveClass);\n\n    }\n\n    /** Throttle default scroll event and listen for optimizedScroll event */\n    this._utils.throttle('scroll', 'optimizedScroll');\n    w.addEventListener('optimizedScroll', () => { _scrollCallback(); } );\n\n  }\n\n  /**\n   * Set current year in footer\n   * @params {HTMLElement} year - Element to set year text within\n   */\n  setYear(year) {\n\n    var date = new Date();\n\n    if (year){\n      year.innerHTML = (date.getFullYear() === 2015) ? date.getFullYear() : '2015 - ' + date.getFullYear();\n    }\n\n  }\n}"
+    "content": "/**\n * User Interface\n */\nimport utils, { w, $ } from './utils.js';\n  \n/**\n * Sets up user interface \n */\nexport default class UI {\n\n  /**\n   * Setup utils\n   */\n  constructor(){\n    this._utils = new utils();\n  }\n\n  /**\n   * Scroll to element\n   * @param {HTMLElement} targetElement - Element to scroll to\n   * @param {Number} duration - Speed of scroll animation\n   * @param {Function} callback - Callback function after scroll has completed\n   * @private\n   */\n  _scrollTo(targetElement, duration, callback) {\n\n      var currentScrollPos = document.body.scrollTop,\n          distanceToScroll = targetElement.offsetTop - currentScrollPos,\n          speed            = 16;\n\n      /** Scroll animation */\n      (function animateScroll(elapsedTime) {  \n          elapsedTime += speed;\n          document.body.scrollTop = this._utils.ease('easeInOutQuad', elapsedTime, currentScrollPos, distanceToScroll, duration); \n          if (elapsedTime < duration) {\n              w.requestAnimationFrame(() => { animateScroll(elapsedTime); });\n          } else if (elapsedTime >= duration) {\n            return callback();\n          }\n      })(0);\n\n  }\n\n  /**\n   * Scroll to all anchors\n   * @param {Array} linksArray - Array of anchor elements\n   */\n  scrollToInternalLinks(linksArray) {\n\n    /** Click event callback */\n    function _scrollToListener(event){\n      event.preventDefault();\n\n      var hash    = (event.target.href) ? event.target.getAttribute('href') : event.target.parentNode.getAttribute('href'), \n          element = $(hash)[0];\n\n      function changeURLHash(){\n        w.location.hash = hash;\n      }\n\n      this._scrollTo(element, 1250, changeURLHash);\n    }\n\n    /** Attach click event listener */\n    if (linksArray){\n      for (var i = 0; i < linksArray.length; i++){\n        linksArray[i].addEventListener('click', (e) => { _scrollToListener(e); }, true);\n      }\n    }\n\n  }\n\n  /**\n   * Add class to element when it is scrolled in to view\n   * @param {Array} elements - Array of HTML elements to watch\n   */\n  addClassOnScrollInToView(elements) {\n\n    var that = this;\n\n    /** Scroll event callback  */\n    function _scrollCallback(){\n\n      function toggleActiveClass(el){\n        if (that._utils.isElementInViewport(el, 0.75)) {\n          el.classList.add('active');\n        } else {\n          el.classList.remove('active');\n        }\n      }\n\n      Array.prototype.forEach.call(elements, toggleActiveClass);\n\n    }\n\n    /** Throttle default scroll event and listen for optimizedScroll event */\n    this._utils.throttleEvent('scroll', 'optimizedScroll');\n    w.addEventListener('optimizedScroll', () => { _scrollCallback(); } );\n\n  }\n\n  /**\n   * Set current year in footer\n   * @param {HTMLElement} year - Element to set year text within\n   */\n  setYear(year) {\n\n    var date = new Date();\n\n    if (year){\n      year.innerHTML = (date.getFullYear() === 2015) ? date.getFullYear() : '2015 - ' + date.getFullYear();\n    }\n\n  }\n}"
   },
   {
     "__docId__": 9,
@@ -185,9 +226,8 @@
     "memberof": "js/ui.js~UI",
     "longname": "js/ui.js~UI#constructor",
     "access": null,
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
+    "description": "Setup utils",
+    "lineNumber": 14,
     "params": [],
     "generator": false
   },
@@ -201,7 +241,7 @@
     "longname": "js/ui.js~UI#_utils",
     "access": null,
     "description": null,
-    "lineNumber": 12,
+    "lineNumber": 15,
     "undocument": true,
     "type": {
       "types": [
@@ -219,39 +259,37 @@
     "longname": "js/ui.js~UI#_scrollTo",
     "access": "private",
     "description": "Scroll to element",
-    "lineNumber": 22,
-    "unknown": [
-      {
-        "tagName": "@params",
-        "tagValue": "{HTMLElement} targetElement - Element to scroll to"
-      },
-      {
-        "tagName": "@params",
-        "tagValue": "{Number} duration - Speed of scroll animation"
-      },
-      {
-        "tagName": "@params",
-        "tagValue": "{Function} callback - Callback function after scroll has completed"
-      }
-    ],
+    "lineNumber": 25,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "targetElement",
-        "types": [
-          "*"
-        ]
+        "description": "Element to scroll to"
       },
       {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "duration",
-        "types": [
-          "*"
-        ]
+        "description": "Speed of scroll animation"
       },
       {
-        "name": "callback",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "Callback function after scroll has completed"
       }
     ],
     "generator": false
@@ -266,19 +304,17 @@
     "longname": "js/ui.js~UI#scrollToInternalLinks",
     "access": null,
     "description": "Scroll to all anchors",
-    "lineNumber": 45,
-    "unknown": [
-      {
-        "tagName": "@params",
-        "tagValue": "{Array} linksArray - Array of anchor elements"
-      }
-    ],
+    "lineNumber": 48,
     "params": [
       {
-        "name": "linksArray",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "linksArray",
+        "description": "Array of anchor elements"
       }
     ],
     "generator": false
@@ -293,19 +329,17 @@
     "longname": "js/ui.js~UI#addClassOnScrollInToView",
     "access": null,
     "description": "Add class to element when it is scrolled in to view",
-    "lineNumber": 74,
-    "unknown": [
-      {
-        "tagName": "@params",
-        "tagValue": "{Array} elements - Array of HTML elements to watch"
-      }
-    ],
+    "lineNumber": 77,
     "params": [
       {
-        "name": "elements",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "elements",
+        "description": "Array of HTML elements to watch"
       }
     ],
     "generator": false
@@ -320,19 +354,17 @@
     "longname": "js/ui.js~UI#setYear",
     "access": null,
     "description": "Set current year in footer",
-    "lineNumber": 103,
-    "unknown": [
-      {
-        "tagName": "@params",
-        "tagValue": "{HTMLElement} year - Element to set year text within"
-      }
-    ],
+    "lineNumber": 106,
     "params": [
       {
-        "name": "year",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "year",
+        "description": "Element to set year text within"
       }
     ],
     "generator": false
@@ -348,10 +380,30 @@
     "access": null,
     "description": null,
     "lineNumber": 4,
-    "content": "/**\n * Utility methods\n */\nvar \n\n/** @type {Object} Window */\nw = window,\n\n/** @type {Function} Query selector */\n$ = document.querySelectorAll.bind(document);\n\n/**\n * utility object \n */\nexport default class utils {\n\n  constructor(){\n    /**\n     * Easing Functions\n     * @see http://gizma.com/easing/\n     * @type {Object} _easing\n     * @type {Function} _easing.linear - no easing, no acceleration\n     * @type {Function} _easing.easeInQuad - accelerating from zero velocity\n     * @type {Function} _easing.easeOutQuad - decelerating to zero velocity\n     * @type {Function} _easing.easeInOutQuad - acceleration until halfway, then deceleration\n     * @type {Function} _easing.easeInCubic - accelerating from zero velocity\n     * @type {Function} _easing.easeOutCubic - decelerating to zero velocity\n     * @type {Function} _easing.easeInOutCubic - acceleration until halfway, then deceleration\n     * @type {Function} _easing.easeInQuart - accelerating from zero velocity\n     * @type {Function} _easing.easeOutQuart - decelerating to zero velocity\n     * @type {Function} _easing.easeInOutQuart - acceleration until halfway, then deceleration\n     * @type {Function} _easing.easeInQuint - accelerating from zero velocity\n     * @type {Function} _easing.easeOutQuint - decelerating to zero velocity\n     * @type {Function} _easing.easeInOutQuint - acceleration until halfway, then deceleration\n     */\n    this._easing = {\n      linear: (t) => { return t; },\n      easeInQuad: (t) => { return t*t; },\n      easeOutQuad: (t) => { return t*(2-t); },\n      easeInOutQuad: (t) => { return t<0.5 ? 2*t*t : -1+(4-2*t)*t; },\n      easeInCubic: (t) => { return t*t*t; },\n      easeOutCubic: (t) => { return (--t)*t*t+1; },\n      easeInOutCubic: (t) => { return t<0.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1; },\n      easeInQuart: (t) => { return t*t*t*t; },\n      easeOutQuart: (t) => { return 1-(--t)*t*t*t; },\n      easeInOutQuart: (t) => { return t<0.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t; },\n      easeInQuint: (t) => { return t*t*t*t*t; },\n      easeOutQuint: (t) => { return 1+(--t)*t*t*t*t; },\n      easeInOutQuint: (t) => { return t<0.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t; }\n    };\n  }\n\n  /**\n   * Easing\n   * @params {String} easingFunction - Name of easing function to use\n   * @params {Number} elapsedTime - Length of time (ms) that has passed since start\n   * @params {Number} start - Initial (y) starting position\n   * @params {Number} change - Distance to travel\n   * @params {Number} duration - Speed of travel\n   */\n  ease(easingFunction, elapsedTime, start, change, duration) {\n\n    var time        = Math.min(1, (elapsedTime / duration)),\n        easedTiming = this._easing[easingFunction](time);\n\n    return (easedTiming * change) + start;\n\n  }\n\n  /**\n   * Throttle an event (ie. scroll) and provide custom event for callback\n   * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll\n   * @param {String} type - Type of event to throttle\n   * @param {String} name - Name of new event to dispatchEvent\n   * @param {Object} obj - Object to attach event to and dispatch the custom event from\n   */\n  throttle(type, name, obj) {\n\n      obj = obj || w;\n      var running = false;\n\n      var func = function() {\n          if (running) { return; }\n          running = true;\n          requestAnimationFrame(() => {\n              obj.dispatchEvent(new CustomEvent(name));\n              running = false;\n          });\n      };\n\n      obj.addEventListener(type, func);\n\n  }\n\n  /**\n   * Check if element is currently visible in viewport\n   * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll\n   * @param {HTMLElement} element - DOM element to check if currently visible\n   * @param {Number} percentage - The percentage of screen threshold the element must be within\n   */\n  isElementInViewport(element, percentage) {\n\n    var rect = element.getBoundingClientRect();\n\n    percentage = percentage || 1;\n\n    return (\n        rect.bottom >= 0 &&\n        rect.right  >= 0 &&\n        rect.top  <= ( ( window.innerHeight || document.documentElement.clientHeight ) * percentage ) &&\n        rect.left <= ( ( window.innerWidth || document.documentElement.clientWidth ) * percentage )\n    );\n\n  }\n}\n\nexport { w, $ };"
+    "content": "/**\n * Utility methods\n */\nexport var \n\n/** @type {Object} Window */\nw = window,\n\n/** @type {Function} Query selector */\n$ = document.querySelectorAll.bind(document);\n\n/**\n * utility object \n */\nexport default class utils {\n\n  constructor(){\n    /**\n     * Easing Functions\n     * @see http://gizma.com/easing/\n     * @type {Object} _easing\n     * @property {Function(t: Number): Number} linear - no easing, no acceleration\n     * @property {Function(t: Number): Number} easeInQuad - accelerating from zero velocity\n     * @property {Function(t: Number): Number} easeOutQuad - decelerating to zero velocity\n     * @property {Function(t: Number): Number} easeInOutQuad - acceleration until halfway, then deceleration\n     * @property {Function(t: Number): Number} easeInCubic - accelerating from zero velocity\n     * @property {Function(t: Number): Number} easeOutCubic - decelerating to zero velocity\n     * @property {Function(t: Number): Number} easeInOutCubic - acceleration until halfway, then deceleration\n     * @property {Function(t: Number): Number} easeInQuart - accelerating from zero velocity\n     * @property {Function(t: Number): Number} easeOutQuart - decelerating to zero velocity\n     * @property {Function(t: Number): Number} easeInOutQuart - acceleration until halfway, then deceleration\n     * @property {Function(t: Number): Number} easeInQuint - accelerating from zero velocity\n     * @property {Function(t: Number): Number} easeOutQuint - decelerating to zero velocity\n     * @property {Function(t: Number): Number} easeInOutQuint - acceleration until halfway, then deceleration\n     */\n    this._easing = {\n      linear: (t) => { return t; },\n      easeInQuad: (t) => { return t*t; },\n      easeOutQuad: (t) => { return t*(2-t); },\n      easeInOutQuad: (t) => { return t<0.5 ? 2*t*t : -1+(4-2*t)*t; },\n      easeInCubic: (t) => { return t*t*t; },\n      easeOutCubic: (t) => { return (--t)*t*t+1; },\n      easeInOutCubic: (t) => { return t<0.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1; },\n      easeInQuart: (t) => { return t*t*t*t; },\n      easeOutQuart: (t) => { return 1-(--t)*t*t*t; },\n      easeInOutQuart: (t) => { return t<0.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t; },\n      easeInQuint: (t) => { return t*t*t*t*t; },\n      easeOutQuint: (t) => { return 1+(--t)*t*t*t*t; },\n      easeInOutQuint: (t) => { return t<0.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t; }\n    };\n  }\n\n  /**\n   * Easing Timing\n   * @param {String} easingFunction - Name of easing function to use\n   * @param {Number} elapsedTime - Length of time (ms) that has passed since start\n   * @param {Number} start - Initial (y) starting position\n   * @param {Number} change - Distance to travel\n   * @param {Number} duration - Speed of travel\n   * @return {Number} eased timing\n   */\n  ease(easingFunction, elapsedTime, start, change, duration) {\n\n    var time        = Math.min(1, (elapsedTime / duration)),\n        easedTiming = this._easing[easingFunction](time);\n\n    return (easedTiming * change) + start;\n\n  }\n\n  /**\n   * Throttle an event and provide custom event for callback\n   * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll\n   * @param {String} type - Type of event to throttle\n   * @param {String} name - Name of new event to dispatchEvent\n   * @param {Object} obj - Object to attach event to and dispatch the custom event from\n   * @listens {String} type - Listen for event to throttle and dispatch custom event for\n   */\n  throttleEvent(type, name, obj) {\n\n      obj = obj || w;\n      var running = false;\n\n      var func = function() {\n          if (running) { return; }\n          running = true;\n          requestAnimationFrame(() => {\n              obj.dispatchEvent(new CustomEvent(name));\n              running = false;\n          });\n      };\n\n      obj.addEventListener(type, func);\n\n  }\n\n  /**\n   * Check if element is currently visible in viewport\n   * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll\n   * @param {HTMLElement} element - DOM element to check if currently visible\n   * @param {Number} percentage - The percentage of screen threshold the element must be within\n   * @return {Boolean} true|false\n   */\n  isElementInViewport(element, percentage) {\n\n    var rect = element.getBoundingClientRect();\n\n    percentage = percentage || 1;\n\n    return (\n        rect.bottom >= 0 &&\n        rect.right  >= 0 &&\n        rect.top  <= ( ( window.innerHeight || document.documentElement.clientHeight ) * percentage ) &&\n        rect.left <= ( ( window.innerWidth || document.documentElement.clientWidth ) * percentage )\n    );\n\n  }\n}"
   },
   {
     "__docId__": 17,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "w",
+    "memberof": "js/utils.js",
+    "longname": "js/utils.js~w",
+    "access": null,
+    "export": true,
+    "importPath": "devtools-author-site/js/utils.js",
+    "importStyle": "{w}",
+    "description": "Utility methods",
+    "lineNumber": 4,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 18,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -367,7 +419,7 @@
     "interface": false
   },
   {
-    "__docId__": 18,
+    "__docId__": 19,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -382,7 +434,7 @@
     "generator": false
   },
   {
-    "__docId__": 19,
+    "__docId__": 20,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -395,17 +447,149 @@
       "http://gizma.com/easing/"
     ],
     "lineNumber": 36,
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "linear",
+        "description": "no easing, no acceleration"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInQuad",
+        "description": "accelerating from zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeOutQuad",
+        "description": "decelerating to zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInOutQuad",
+        "description": "acceleration until halfway, then deceleration"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInCubic",
+        "description": "accelerating from zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeOutCubic",
+        "description": "decelerating to zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInOutCubic",
+        "description": "acceleration until halfway, then deceleration"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInQuart",
+        "description": "accelerating from zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeOutQuart",
+        "description": "decelerating to zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInOutQuart",
+        "description": "acceleration until halfway, then deceleration"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInQuint",
+        "description": "accelerating from zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeOutQuint",
+        "description": "decelerating to zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInOutQuint",
+        "description": "acceleration until halfway, then deceleration"
+      }
+    ],
     "type": {
       "nullable": null,
       "types": [
-        "Function"
+        "Object"
       ],
       "spread": false,
       "description": null
     }
   },
   {
-    "__docId__": 20,
+    "__docId__": 21,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -413,83 +597,84 @@
     "memberof": "js/utils.js~utils",
     "longname": "js/utils.js~utils#ease",
     "access": null,
-    "description": "Easing",
-    "lineNumber": 61,
-    "unknown": [
-      {
-        "tagName": "@params",
-        "tagValue": "{String} easingFunction - Name of easing function to use"
-      },
-      {
-        "tagName": "@params",
-        "tagValue": "{Number} elapsedTime - Length of time (ms) that has passed since start"
-      },
-      {
-        "tagName": "@params",
-        "tagValue": "{Number} start - Initial (y) starting position"
-      },
-      {
-        "tagName": "@params",
-        "tagValue": "{Number} change - Distance to travel"
-      },
-      {
-        "tagName": "@params",
-        "tagValue": "{Number} duration - Speed of travel"
-      }
-    ],
+    "description": "Easing Timing",
+    "lineNumber": 62,
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "easingFunction",
-        "types": [
-          "*"
-        ]
+        "description": "Name of easing function to use"
       },
       {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "elapsedTime",
-        "types": [
-          "*"
-        ]
+        "description": "Length of time (ms) that has passed since start"
       },
       {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "start",
-        "types": [
-          "*"
-        ]
+        "description": "Initial (y) starting position"
       },
       {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "change",
-        "types": [
-          "*"
-        ]
+        "description": "Distance to travel"
       },
       {
-        "name": "duration",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "duration",
+        "description": "Speed of travel"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Number"
+      ],
+      "spread": false,
+      "description": "eased timing"
     },
     "generator": false
   },
   {
-    "__docId__": 21,
+    "__docId__": 22,
     "kind": "method",
     "static": false,
     "variation": null,
-    "name": "throttle",
+    "name": "throttleEvent",
     "memberof": "js/utils.js~utils",
-    "longname": "js/utils.js~utils#throttle",
+    "longname": "js/utils.js~utils#throttleEvent",
     "access": null,
-    "description": "Throttle an event (ie. scroll) and provide custom event for callback",
+    "description": "Throttle an event and provide custom event for callback",
     "see": [
       "https://developer.mozilla.org/en-US/docs/Web/Events/scroll"
     ],
-    "lineNumber": 77,
+    "lineNumber": 79,
     "params": [
       {
         "nullable": null,
@@ -522,10 +707,18 @@
         "description": "Object to attach event to and dispatch the custom event from"
       }
     ],
+    "listens": [
+      {
+        "types": [
+          "String"
+        ],
+        "description": "type - Listen for event to throttle and dispatch custom event for"
+      }
+    ],
     "generator": false
   },
   {
-    "__docId__": 22,
+    "__docId__": 23,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -537,7 +730,7 @@
     "see": [
       "https://developer.mozilla.org/en-US/docs/Web/Events/scroll"
     ],
-    "lineNumber": 101,
+    "lineNumber": 104,
     "params": [
       {
         "nullable": null,
@@ -561,31 +754,14 @@
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Boolean"
+      ],
+      "spread": false,
+      "description": "true|false"
     },
     "generator": false
-  },
-  {
-    "__docId__": 23,
-    "kind": "variable",
-    "static": true,
-    "variation": null,
-    "name": "w",
-    "memberof": "js/utils.js",
-    "longname": "js/utils.js~w",
-    "access": null,
-    "export": true,
-    "importPath": "devtools-author-site/js/utils.js",
-    "importStyle": "{w}",
-    "description": "Utility methods",
-    "lineNumber": 4,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
   },
   {
     "__docId__": 25,

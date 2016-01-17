@@ -9,14 +9,22 @@ import UI from './ui.js';
  * Creates DevTools Author
  */
 export class DevToolsAuthor {
-
+  
+  /**
+   * Setup DOM references and event listeners
+   */
   constructor() {
     
     /** 
      * DOM References to primary elements
      * @type {Object}
+     * @property {HTMLElement} internalLinks - Anchor links with a hash (#) href value
+     * @property {HTMLElement} panels - Elements with the class of `.panel`
+     * @property {HTMLElement} currentYear - Element with the class of `.currentYear`
+     * @property {HTMLElement} links - Element with the class of `.share-links`
+     * @private
      */
-    this.$els = {
+    this._$els = {
       internalLinks: $('a[href^="#"]'),
       panels: $('.panel'),
       currentYear: $('.currentYear')[0],
@@ -34,17 +42,17 @@ export class DevToolsAuthor {
    */
   _initUI() {
     var ui = new UI();
-    
-    if ( this.$els.currentYear ){
-      ui.setYear( this.$els.currentYear );
+
+    if ( this._$els.currentYear ){
+      ui.setYear( this._$els.currentYear );
     }
     
-    if ( this.$els.internalLinks ){
-      ui.scrollToInternalLinks( this.$els.internalLinks );
+    if ( this._$els.internalLinks ){
+      ui.scrollToInternalLinks( this._$els.internalLinks );
     }
     
-    if ( this.$els.panels ){
-      ui.addClassOnScrollInToView( this.$els.panels );
+    if ( this._$els.panels ){
+      ui.addClassOnScrollInToView( this._$els.panels );
     }
   
   }
@@ -114,17 +122,17 @@ export class DevToolsAuthor {
    */
   _initSocialUI() {
     
-    if ( this.$els.links ){
-      this.$els.links.style.display = 'block';
+    if ( this._$els.links ){
+      this._$els.links.style.display = 'block';
     }
   
   }
   
   /**
    * Setup Event Listeners
-   * @listens {DOMContentLoaded} Listen for event to initialize UI
-   * @listens {load} Listen for event to initialize Social Media API
-   * @listens {social-loaded} Listen for event to initialize Social Media UI
+   * @listens {DOMContentLoaded} Initialize UI
+   * @listens {load} Initialize Social Media API
+   * @listens {social-loaded} Initialize Social Media UI
    * @private
    */
   _registerListeners() {

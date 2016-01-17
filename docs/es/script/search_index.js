@@ -360,10 +360,34 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/app.js~devtoolsauthor#$els",
-    "class/js/app.js~DevToolsAuthor.html#instance-member-$els",
-    "js/app.js~DevToolsAuthor#$els",
+    "js/app.js~devtoolsauthor#_$els",
+    "class/js/app.js~DevToolsAuthor.html#instance-member-_$els",
+    "js/app.js~DevToolsAuthor#_$els",
     "member"
+  ],
+  [
+    "js/app.js~devtoolsauthor#_initsocial",
+    "class/js/app.js~DevToolsAuthor.html#instance-method-_initSocial",
+    "js/app.js~DevToolsAuthor#_initSocial",
+    "method"
+  ],
+  [
+    "js/app.js~devtoolsauthor#_initsocialui",
+    "class/js/app.js~DevToolsAuthor.html#instance-method-_initSocialUI",
+    "js/app.js~DevToolsAuthor#_initSocialUI",
+    "method"
+  ],
+  [
+    "js/app.js~devtoolsauthor#_initui",
+    "class/js/app.js~DevToolsAuthor.html#instance-method-_initUI",
+    "js/app.js~DevToolsAuthor#_initUI",
+    "method"
+  ],
+  [
+    "js/app.js~devtoolsauthor#_registerlisteners",
+    "class/js/app.js~DevToolsAuthor.html#instance-method-_registerListeners",
+    "js/app.js~DevToolsAuthor#_registerListeners",
+    "method"
   ],
   [
     "js/app.js~devtoolsauthor#constructor",
@@ -376,6 +400,18 @@ window.esdocSearchIndex = [
     "file/js/ui.js.html",
     "js/ui.js",
     "file"
+  ],
+  [
+    "js/ui.js~ui#_scrollto",
+    "class/js/ui.js~UI.html#instance-method-_scrollTo",
+    "js/ui.js~UI#_scrollTo",
+    "method"
+  ],
+  [
+    "js/ui.js~ui#_utils",
+    "class/js/ui.js~UI.html#instance-member-_utils",
+    "js/ui.js~UI#_utils",
+    "member"
   ],
   [
     "js/ui.js~ui#addclassonscrollintoview",
@@ -408,6 +444,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "js/utils.js~utils#_easing",
+    "class/js/utils.js~utils.html#instance-member-_easing",
+    "js/utils.js~utils#_easing",
+    "member"
+  ],
+  [
     "js/utils.js~utils#constructor",
     "class/js/utils.js~utils.html#instance-constructor-constructor",
     "js/utils.js~utils#constructor",
@@ -426,9 +468,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "js/utils.js~utils#throttle",
-    "class/js/utils.js~utils.html#instance-method-throttle",
-    "js/utils.js~utils#throttle",
+    "js/utils.js~utils#throttleevent",
+    "class/js/utils.js~utils.html#instance-method-throttleEvent",
+    "js/utils.js~utils#throttleEvent",
     "method"
   ]
 ]

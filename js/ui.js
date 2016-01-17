@@ -8,15 +8,18 @@ import utils, { w, $ } from './utils.js';
  */
 export default class UI {
 
+  /**
+   * Setup utils
+   */
   constructor(){
     this._utils = new utils();
   }
 
   /**
    * Scroll to element
-   * @params {HTMLElement} targetElement - Element to scroll to
-   * @params {Number} duration - Speed of scroll animation
-   * @params {Function} callback - Callback function after scroll has completed
+   * @param {HTMLElement} targetElement - Element to scroll to
+   * @param {Number} duration - Speed of scroll animation
+   * @param {Function} callback - Callback function after scroll has completed
    * @private
    */
   _scrollTo(targetElement, duration, callback) {
@@ -40,12 +43,12 @@ export default class UI {
 
   /**
    * Scroll to all anchors
-   * @params {Array} linksArray - Array of anchor elements
+   * @param {Array} linksArray - Array of anchor elements
    */
   scrollToInternalLinks(linksArray) {
 
     /** Click event callback */
-    function scrollToListener(event){
+    function _scrollToListener(event){
       event.preventDefault();
 
       var hash    = (event.target.href) ? event.target.getAttribute('href') : event.target.parentNode.getAttribute('href'), 
@@ -61,7 +64,7 @@ export default class UI {
     /** Attach click event listener */
     if (linksArray){
       for (var i = 0; i < linksArray.length; i++){
-        linksArray[i].addEventListener('click', scrollToListener, true);
+        linksArray[i].addEventListener('click', (e) => { _scrollToListener(e); }, true);
       }
     }
 
@@ -69,7 +72,7 @@ export default class UI {
 
   /**
    * Add class to element when it is scrolled in to view
-   * @params {Array} elements - Array of HTML elements to watch
+   * @param {Array} elements - Array of HTML elements to watch
    */
   addClassOnScrollInToView(elements) {
 
@@ -91,14 +94,14 @@ export default class UI {
     }
 
     /** Throttle default scroll event and listen for optimizedScroll event */
-    this._utils.throttle('scroll', 'optimizedScroll');
+    this._utils.throttleEvent('scroll', 'optimizedScroll');
     w.addEventListener('optimizedScroll', () => { _scrollCallback(); } );
 
   }
 
   /**
    * Set current year in footer
-   * @params {HTMLElement} year - Element to set year text within
+   * @param {HTMLElement} year - Element to set year text within
    */
   setYear(year) {
 

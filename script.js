@@ -71,14 +71,24 @@
 	 */
 	
 	var DevToolsAuthor = exports.DevToolsAuthor = function () {
+	
+	  /**
+	   * Setup DOM references and event listeners
+	   */
+	
 	  function DevToolsAuthor() {
 	    _classCallCheck(this, DevToolsAuthor);
 	
 	    /** 
 	     * DOM References to primary elements
 	     * @type {Object}
+	     * @property {HTMLElement} internalLinks - Anchor links with a hash (#) href value
+	     * @property {HTMLElement} panels - Elements with the class of `.panel`
+	     * @property {HTMLElement} currentYear - Element with the class of `.currentYear`
+	     * @property {HTMLElement} links - Element with the class of `.share-links`
+	     * @private
 	     */
-	    this.$els = {
+	    this._$els = {
 	      internalLinks: (0, _utils.$)('a[href^="#"]'),
 	      panels: (0, _utils.$)('.panel'),
 	      currentYear: (0, _utils.$)('.currentYear')[0],
@@ -99,16 +109,16 @@
 	    value: function _initUI() {
 	      var ui = new _ui2.default();
 	
-	      if (this.$els.currentYear) {
-	        ui.setYear(this.$els.currentYear);
+	      if (this._$els.currentYear) {
+	        ui.setYear(this._$els.currentYear);
 	      }
 	
-	      if (this.$els.internalLinks) {
-	        ui.scrollToInternalLinks(this.$els.internalLinks);
+	      if (this._$els.internalLinks) {
+	        ui.scrollToInternalLinks(this._$els.internalLinks);
 	      }
 	
-	      if (this.$els.panels) {
-	        ui.addClassOnScrollInToView(this.$els.panels);
+	      if (this._$els.panels) {
+	        ui.addClassOnScrollInToView(this._$els.panels);
 	      }
 	    }
 	
@@ -190,16 +200,16 @@
 	    key: '_initSocialUI',
 	    value: function _initSocialUI() {
 	
-	      if (this.$els.links) {
-	        this.$els.links.style.display = 'block';
+	      if (this._$els.links) {
+	        this._$els.links.style.display = 'block';
 	      }
 	    }
 	
 	    /**
 	     * Setup Event Listeners
-	     * @listens {DOMContentLoaded} Listen for event to initialize UI
-	     * @listens {load} Listen for event to initialize Social Media API
-	     * @listens {social-loaded} Listen for event to initialize Social Media UI
+	     * @listens {DOMContentLoaded} Initialize UI
+	     * @listens {load} Initialize Social Media API
+	     * @listens {social-loaded} Initialize Social Media UI
 	     * @private
 	     */
 	
@@ -249,10 +259,10 @@
 	var
 	
 	/** @type {Object} Window */
-	w = window,
+	w = exports.w = window,
 	
 	/** @type {Function} Query selector */
-	$ = document.querySelectorAll.bind(document);
+	$ = exports.$ = document.querySelectorAll.bind(document);
 	
 	/**
 	 * utility object 
@@ -266,19 +276,19 @@
 	     * Easing Functions
 	     * @see http://gizma.com/easing/
 	     * @type {Object} _easing
-	     * @type {Function} _easing.linear - no easing, no acceleration
-	     * @type {Function} _easing.easeInQuad - accelerating from zero velocity
-	     * @type {Function} _easing.easeOutQuad - decelerating to zero velocity
-	     * @type {Function} _easing.easeInOutQuad - acceleration until halfway, then deceleration
-	     * @type {Function} _easing.easeInCubic - accelerating from zero velocity
-	     * @type {Function} _easing.easeOutCubic - decelerating to zero velocity
-	     * @type {Function} _easing.easeInOutCubic - acceleration until halfway, then deceleration
-	     * @type {Function} _easing.easeInQuart - accelerating from zero velocity
-	     * @type {Function} _easing.easeOutQuart - decelerating to zero velocity
-	     * @type {Function} _easing.easeInOutQuart - acceleration until halfway, then deceleration
-	     * @type {Function} _easing.easeInQuint - accelerating from zero velocity
-	     * @type {Function} _easing.easeOutQuint - decelerating to zero velocity
-	     * @type {Function} _easing.easeInOutQuint - acceleration until halfway, then deceleration
+	     * @property {Function(t: Number): Number} linear - no easing, no acceleration
+	     * @property {Function(t: Number): Number} easeInQuad - accelerating from zero velocity
+	     * @property {Function(t: Number): Number} easeOutQuad - decelerating to zero velocity
+	     * @property {Function(t: Number): Number} easeInOutQuad - acceleration until halfway, then deceleration
+	     * @property {Function(t: Number): Number} easeInCubic - accelerating from zero velocity
+	     * @property {Function(t: Number): Number} easeOutCubic - decelerating to zero velocity
+	     * @property {Function(t: Number): Number} easeInOutCubic - acceleration until halfway, then deceleration
+	     * @property {Function(t: Number): Number} easeInQuart - accelerating from zero velocity
+	     * @property {Function(t: Number): Number} easeOutQuart - decelerating to zero velocity
+	     * @property {Function(t: Number): Number} easeInOutQuart - acceleration until halfway, then deceleration
+	     * @property {Function(t: Number): Number} easeInQuint - accelerating from zero velocity
+	     * @property {Function(t: Number): Number} easeOutQuint - decelerating to zero velocity
+	     * @property {Function(t: Number): Number} easeInOutQuint - acceleration until halfway, then deceleration
 	     */
 	    this._easing = {
 	      linear: function linear(t) {
@@ -324,12 +334,13 @@
 	  }
 	
 	  /**
-	   * Easing
-	   * @params {String} easingFunction - Name of easing function to use
-	   * @params {Number} elapsedTime - Length of time (ms) that has passed since start
-	   * @params {Number} start - Initial (y) starting position
-	   * @params {Number} change - Distance to travel
-	   * @params {Number} duration - Speed of travel
+	   * Easing Timing
+	   * @param {String} easingFunction - Name of easing function to use
+	   * @param {Number} elapsedTime - Length of time (ms) that has passed since start
+	   * @param {Number} start - Initial (y) starting position
+	   * @param {Number} change - Distance to travel
+	   * @param {Number} duration - Speed of travel
+	   * @return {Number} eased timing
 	   */
 	
 	  _createClass(utils, [{
@@ -343,16 +354,17 @@
 	    }
 	
 	    /**
-	     * Throttle an event (ie. scroll) and provide custom event for callback
+	     * Throttle an event and provide custom event for callback
 	     * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
 	     * @param {String} type - Type of event to throttle
 	     * @param {String} name - Name of new event to dispatchEvent
 	     * @param {Object} obj - Object to attach event to and dispatch the custom event from
+	     * @listens {String} type - Listen for event to throttle and dispatch custom event for
 	     */
 	
 	  }, {
-	    key: "throttle",
-	    value: function throttle(type, name, obj) {
+	    key: "throttleEvent",
+	    value: function throttleEvent(type, name, obj) {
 	
 	      obj = obj || w;
 	      var running = false;
@@ -376,6 +388,7 @@
 	     * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
 	     * @param {HTMLElement} element - DOM element to check if currently visible
 	     * @param {Number} percentage - The percentage of screen threshold the element must be within
+	     * @return {Boolean} true|false
 	     */
 	
 	  }, {
@@ -394,8 +407,6 @@
 	}();
 	
 	exports.default = utils;
-	exports.w = w;
-	exports.$ = $;
 
 /***/ },
 /* 2 */
@@ -424,6 +435,11 @@
 	 */
 	
 	var UI = function () {
+	
+	  /**
+	   * Setup utils
+	   */
+	
 	  function UI() {
 	    _classCallCheck(this, UI);
 	
@@ -432,9 +448,9 @@
 	
 	  /**
 	   * Scroll to element
-	   * @params {HTMLElement} targetElement - Element to scroll to
-	   * @params {Number} duration - Speed of scroll animation
-	   * @params {Function} callback - Callback function after scroll has completed
+	   * @param {HTMLElement} targetElement - Element to scroll to
+	   * @param {Number} duration - Speed of scroll animation
+	   * @param {Function} callback - Callback function after scroll has completed
 	   * @private
 	   */
 	
@@ -462,7 +478,7 @@
 	
 	    /**
 	     * Scroll to all anchors
-	     * @params {Array} linksArray - Array of anchor elements
+	     * @param {Array} linksArray - Array of anchor elements
 	     */
 	
 	  }, {
@@ -470,7 +486,7 @@
 	    value: function scrollToInternalLinks(linksArray) {
 	
 	      /** Click event callback */
-	      function scrollToListener(event) {
+	      function _scrollToListener(event) {
 	        event.preventDefault();
 	
 	        var hash = event.target.href ? event.target.getAttribute('href') : event.target.parentNode.getAttribute('href'),
@@ -486,14 +502,16 @@
 	      /** Attach click event listener */
 	      if (linksArray) {
 	        for (var i = 0; i < linksArray.length; i++) {
-	          linksArray[i].addEventListener('click', scrollToListener, true);
+	          linksArray[i].addEventListener('click', function (e) {
+	            _scrollToListener(e);
+	          }, true);
 	        }
 	      }
 	    }
 	
 	    /**
 	     * Add class to element when it is scrolled in to view
-	     * @params {Array} elements - Array of HTML elements to watch
+	     * @param {Array} elements - Array of HTML elements to watch
 	     */
 	
 	  }, {
@@ -517,7 +535,7 @@
 	      }
 	
 	      /** Throttle default scroll event and listen for optimizedScroll event */
-	      this._utils.throttle('scroll', 'optimizedScroll');
+	      this._utils.throttleEvent('scroll', 'optimizedScroll');
 	      _utils.w.addEventListener('optimizedScroll', function () {
 	        _scrollCallback();
 	      });
@@ -525,7 +543,7 @@
 	
 	    /**
 	     * Set current year in footer
-	     * @params {HTMLElement} year - Element to set year text within
+	     * @param {HTMLElement} year - Element to set year text within
 	     */
 	
 	  }, {

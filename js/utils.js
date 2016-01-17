@@ -1,7 +1,7 @@
 /**
  * Utility methods
  */
-var 
+export var 
 
 /** @type {Object} Window */
 w = window,
@@ -19,19 +19,19 @@ export default class utils {
      * Easing Functions
      * @see http://gizma.com/easing/
      * @type {Object} _easing
-     * @type {Function} _easing.linear - no easing, no acceleration
-     * @type {Function} _easing.easeInQuad - accelerating from zero velocity
-     * @type {Function} _easing.easeOutQuad - decelerating to zero velocity
-     * @type {Function} _easing.easeInOutQuad - acceleration until halfway, then deceleration
-     * @type {Function} _easing.easeInCubic - accelerating from zero velocity
-     * @type {Function} _easing.easeOutCubic - decelerating to zero velocity
-     * @type {Function} _easing.easeInOutCubic - acceleration until halfway, then deceleration
-     * @type {Function} _easing.easeInQuart - accelerating from zero velocity
-     * @type {Function} _easing.easeOutQuart - decelerating to zero velocity
-     * @type {Function} _easing.easeInOutQuart - acceleration until halfway, then deceleration
-     * @type {Function} _easing.easeInQuint - accelerating from zero velocity
-     * @type {Function} _easing.easeOutQuint - decelerating to zero velocity
-     * @type {Function} _easing.easeInOutQuint - acceleration until halfway, then deceleration
+     * @property {Function(t: Number): Number} linear - no easing, no acceleration
+     * @property {Function(t: Number): Number} easeInQuad - accelerating from zero velocity
+     * @property {Function(t: Number): Number} easeOutQuad - decelerating to zero velocity
+     * @property {Function(t: Number): Number} easeInOutQuad - acceleration until halfway, then deceleration
+     * @property {Function(t: Number): Number} easeInCubic - accelerating from zero velocity
+     * @property {Function(t: Number): Number} easeOutCubic - decelerating to zero velocity
+     * @property {Function(t: Number): Number} easeInOutCubic - acceleration until halfway, then deceleration
+     * @property {Function(t: Number): Number} easeInQuart - accelerating from zero velocity
+     * @property {Function(t: Number): Number} easeOutQuart - decelerating to zero velocity
+     * @property {Function(t: Number): Number} easeInOutQuart - acceleration until halfway, then deceleration
+     * @property {Function(t: Number): Number} easeInQuint - accelerating from zero velocity
+     * @property {Function(t: Number): Number} easeOutQuint - decelerating to zero velocity
+     * @property {Function(t: Number): Number} easeInOutQuint - acceleration until halfway, then deceleration
      */
     this._easing = {
       linear: (t) => { return t; },
@@ -51,12 +51,13 @@ export default class utils {
   }
 
   /**
-   * Easing
-   * @params {String} easingFunction - Name of easing function to use
-   * @params {Number} elapsedTime - Length of time (ms) that has passed since start
-   * @params {Number} start - Initial (y) starting position
-   * @params {Number} change - Distance to travel
-   * @params {Number} duration - Speed of travel
+   * Easing Timing
+   * @param {String} easingFunction - Name of easing function to use
+   * @param {Number} elapsedTime - Length of time (ms) that has passed since start
+   * @param {Number} start - Initial (y) starting position
+   * @param {Number} change - Distance to travel
+   * @param {Number} duration - Speed of travel
+   * @return {Number} eased timing
    */
   ease(easingFunction, elapsedTime, start, change, duration) {
 
@@ -68,13 +69,14 @@ export default class utils {
   }
 
   /**
-   * Throttle an event (ie. scroll) and provide custom event for callback
+   * Throttle an event and provide custom event for callback
    * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
    * @param {String} type - Type of event to throttle
    * @param {String} name - Name of new event to dispatchEvent
    * @param {Object} obj - Object to attach event to and dispatch the custom event from
+   * @listens {String} type - Listen for event to throttle and dispatch custom event for
    */
-  throttle(type, name, obj) {
+  throttleEvent(type, name, obj) {
 
       obj = obj || w;
       var running = false;
@@ -97,6 +99,7 @@ export default class utils {
    * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
    * @param {HTMLElement} element - DOM element to check if currently visible
    * @param {Number} percentage - The percentage of screen threshold the element must be within
+   * @return {Boolean} true|false
    */
   isElementInViewport(element, percentage) {
 
@@ -113,5 +116,3 @@ export default class utils {
 
   }
 }
-
-export { w, $ };
