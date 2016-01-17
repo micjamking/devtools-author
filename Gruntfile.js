@@ -56,6 +56,14 @@ module.exports = function (grunt) {
               processors: [
 
                 /* 
+                 * Autoprefixer: Add vendor prefixes using caniuse.com
+                 * https://github.com/postcss/autoprefixer
+                 */
+                require('autoprefixer')({
+                    browsers: ['last 2 versions']
+                }),
+
+                /* 
                  * CSS Nano: Modular minifier
                  * https://github.com/ben-eb/cssnano
                  */
@@ -77,34 +85,13 @@ module.exports = function (grunt) {
       },
 
       /*
-       * JSHint: Validate JavaScript files
-       * https://github.com/gruntjs/grunt-contrib-jshint
+       * ESLint: The pluggable linting utility for JavaScript
+       * https://github.com/sindresorhus/grunt-eslint
        */
-      jshint: {
-          options: {
-            node: true,
-            browser: true,
-            esnext: true,
-            bitwise: true,
-            camelcase: false,
-            curly: true,
-            eqeqeq: true,
-            immed: true,
-            indent: 2,
-            latedef: true,
-            newcap: true,
-            noarg: true,
-            quotmark: 'single',
-            regexp: true,
-            undef: true,
-            unused: true,
-            strict: true,
-            trailing: true,
-            smarttabs: true,
-            globals: {}
-          },
+      eslint: {
+          options: {},
           grunt: [
-            'Gruntfile.js',
+            'Gruntfile.js'
           ],
           scripts: [
             './js/**/*.js'
@@ -123,23 +110,32 @@ module.exports = function (grunt) {
           src: './js/**/*.js'
         }
       },
-
+      
       /*
-       * Concat: Concatenate JS files
-       * https://github.com/gruntjs/grunt-contrib-concat
+       * Webpack: Flexible Module Loader
+       * https://github.com/webpack/grunt-webpack
        */
-      concat: {
-        options: {
-          sourceMap: true,
-        },
-        dist: {
-          src: [
-            './js/utils.js',
-            './js/ui.js',
-            './js/app.js'
-          ],
-          dest: './script.js',
-        },
+      webpack: {
+        build: {
+          devtool: 'source-map',
+          entry: './js/app.js',
+          output: {
+            path: './',
+            filename: 'script.js'
+          },
+          module: {
+            loaders: [{
+              test: /\.js$/,
+              loader: 'babel-loader',
+              query: {
+                presets: ['es2015']
+              }
+            }]
+          },
+          resolve: {
+            root: ['./js']
+          }
+        }
       },
 
       /*
@@ -170,16 +166,16 @@ module.exports = function (grunt) {
           files: ['./**/*.html']
         },
         sass: {
-          files: 'scss/**/*.scss',
+          files: './scss/**/*.scss',
           tasks: ['sass', 'postcss:serve']
         },
         scripts: {
-          files: 'js/**/*.js',
-          tasks: ['jshint:scripts', 'concat']
+          files: './js/**/*.js',
+          tasks: ['eslint:scripts', 'webpack']
         },
         gruntfile: {
-          files: 'Gruntfile.js',
-          tasks: ['jshint:grunt']
+          files: './Gruntfile.js',
+          tasks: ['eslint:grunt']
         }
       }
 
@@ -189,8 +185,8 @@ module.exports = function (grunt) {
     grunt.registerTask('serve', [
         'sass',
         'postcss:serve',
-        'jshint',
-        'concat',
+        'eslint',
+        'webpack',
         'watch'
     ]);
 
@@ -198,7 +194,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'sass',
         'postcss:dist',
-        'jshint',
+        'eslint',
         'jsdoc',
         'concat',
         'uglify'
