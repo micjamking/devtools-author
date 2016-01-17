@@ -46,6 +46,10 @@
 
 	'use strict';
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @file Application entry point
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+	
 	var _utils = __webpack_require__(1);
 	
 	var _ui = __webpack_require__(2);
@@ -54,97 +58,141 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var $internalLinks = (0, _utils.$)('a[href^="#"]'),
-	    $panels = (0, _utils.$)('.panel'),
-	    $currentYear = (0, _utils.$)('.currentYear')[0],
-	    $links = (0, _utils.$)('.share-links')[0];
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	function initSocialUI() {
-	  if ($links) {
-	    $links.style.display = 'block';
-	  }
-	}
+	/**
+	 * Creates DevTools Author
+	 * @class
+	 */
 	
-	function initUI() {
-	  if ($currentYear) {
-	    _ui2.default.setYear($currentYear);
-	  }
-	  if ($internalLinks) {
-	    _ui2.default.scrollToInternalLinks($internalLinks);
-	  }
-	  if ($panels) {
-	    _ui2.default.addClassOnScrollInToView($panels);
-	  }
-	}
+	var DevToolsAuthor = function () {
 	
-	function initSocial() {
 	  /**
-	   * Google API
+	   * @constructs
 	   */
-	  (function (d, s, id) {
-	    var js,
-	        fjs = d.getElementsByTagName(s)[0];
-	    if (d.getElementById(id)) {
-	      return;
+	
+	  function DevToolsAuthor() {
+	    _classCallCheck(this, DevToolsAuthor);
+	
+	    this.$els_ = {
+	      internalLinks: (0, _utils.$)('a[href^="#"]'),
+	      panels: (0, _utils.$)('.panel'),
+	      currentYear: (0, _utils.$)('.currentYear')[0],
+	      links: (0, _utils.$)('.share-links')[0]
+	    };
+	
+	    this.registerListeners_();
+	  }
+	
+	  _createClass(DevToolsAuthor, [{
+	    key: 'registerListeners_',
+	    value: function registerListeners_() {
+	      var _this = this;
+	
+	      _utils.w.addEventListener('DOMContentLoaded', function () {
+	        _this.initUI_();
+	      });
+	
+	      _utils.w.addEventListener('load', function () {
+	        _this.initSocial_();
+	      });
+	
+	      _utils.w.addEventListener('social-loaded', function () {
+	        _this.initSocialUI_();
+	      });
 	    }
-	    js = d.createElement(s);
-	    js.id = id;
-	    js.src = '//apis.google.com/js/platform.js';
-	    fjs.parentNode.insertBefore(js, fjs);
-	  })(document, 'script', 'google-sdk');
-	
-	  /**
-	   * Twitter Widgets API
-	   */
-	  (function (d, s, id) {
-	    var js,
-	        fjs = d.getElementsByTagName(s)[0];
-	    if (d.getElementById(id)) {
-	      return;
+	  }, {
+	    key: 'initUI_',
+	    value: function initUI_() {
+	      if (this.$els_.currentYear) {
+	        _ui2.default.setYear(this.$els_.currentYear);
+	      }
+	      if (this.$els_.internalLinks) {
+	        _ui2.default.scrollToInternalLinks(this.$els_.internalLinks);
+	      }
+	      if (this.$els_.panels) {
+	        _ui2.default.addClassOnScrollInToView(this.$els_.panels);
+	      }
 	    }
-	    js = d.createElement(s);
-	    js.id = id;
-	    js.src = '//platform.twitter.com/widgets.js';
-	    fjs.parentNode.insertBefore(js, fjs);
-	  })(document, 'script', 'twitter-wjs');
+	  }, {
+	    key: 'initSocial_',
+	    value: function initSocial_() {
+	      /**
+	       * Google API
+	       */
+	      (function (d, s, id) {
+	        var js,
+	            fjs = d.getElementsByTagName(s)[0];
+	        if (d.getElementById(id)) {
+	          return;
+	        }
+	        js = d.createElement(s);
+	        js.id = id;
+	        js.src = '//apis.google.com/js/platform.js';
+	        fjs.parentNode.insertBefore(js, fjs);
+	      })(document, 'script', 'google-sdk');
 	
-	  /**
-	   * Facebook SDK
-	   */
-	  (function (d, s, id) {
-	    var js,
-	        fjs = d.getElementsByTagName(s)[0];
-	    if (d.getElementById(id)) {
-	      return;
+	      /**
+	       * Twitter Widgets API
+	       */
+	      (function (d, s, id) {
+	        var js,
+	            fjs = d.getElementsByTagName(s)[0];
+	        if (d.getElementById(id)) {
+	          return;
+	        }
+	        js = d.createElement(s);
+	        js.id = id;
+	        js.src = '//platform.twitter.com/widgets.js';
+	        fjs.parentNode.insertBefore(js, fjs);
+	      })(document, 'script', 'twitter-wjs');
+	
+	      /**
+	       * Facebook SDK
+	       */
+	      (function (d, s, id) {
+	        var js,
+	            fjs = d.getElementsByTagName(s)[0];
+	        if (d.getElementById(id)) {
+	          return;
+	        }
+	        js = d.createElement(s);
+	        js.id = id;
+	        js.src = '//connect.facebook.net/en_US/sdk.js';
+	        fjs.parentNode.insertBefore(js, fjs);
+	      })(document, 'script', 'facebook-jssdk');
+	
+	      /**
+	       * Facebook SDK Init
+	       */
+	      window.fbAsyncInit = function () {
+	        FB.init({
+	          appId: '1686524291587989',
+	          xfbml: true,
+	          version: 'v2.5'
+	        });
+	
+	        // Publish event after Facebook
+	        // share has rendered (since it *seems* to take the longest)
+	        FB.Event.subscribe('xfbml.render', function () {
+	          var fbLoaded = new CustomEvent('social-loaded');
+	          window.dispatchEvent(fbLoaded);
+	        });
+	      };
 	    }
-	    js = d.createElement(s);
-	    js.id = id;
-	    js.src = '//connect.facebook.net/en_US/sdk.js';
-	    fjs.parentNode.insertBefore(js, fjs);
-	  })(document, 'script', 'facebook-jssdk');
+	  }, {
+	    key: 'initSocialUI_',
+	    value: function initSocialUI_() {
+	      if (this.$els_.links) {
+	        this.$els_.links.style.display = 'block';
+	      }
+	    }
+	  }]);
 	
-	  /**
-	   * Facebook SDK Init
-	   */
-	  window.fbAsyncInit = function () {
-	    FB.init({
-	      appId: '1686524291587989',
-	      xfbml: true,
-	      version: 'v2.5'
-	    });
+	  return DevToolsAuthor;
+	}();
 	
-	    // Publish event after Facebook
-	    // share has rendered (since it *seems* to take the longest)
-	    FB.Event.subscribe('xfbml.render', function () {
-	      var fbLoaded = new CustomEvent('social-loaded');
-	      window.dispatchEvent(fbLoaded);
-	    });
-	  };
-	}
-	
-	_utils.w.addEventListener('DOMContentLoaded', initUI);
-	_utils.w.addEventListener('load', initSocial);
-	_utils.w.addEventListener('social-loaded', initSocialUI);
+	new DevToolsAuthor();
 
 /***/ },
 /* 1 */
@@ -156,17 +204,17 @@
 	    value: true
 	});
 	/**
-	 * Utility functions
+	 * @file Utility functions
 	 */
 	
-	/** @object utils */
-	var utils = {},
-	    w = window,
+	var w = window,
+	    $ = document.querySelectorAll.bind(document),
+	    utils = {},
 	
 	/**
 	 * Easing Functions - inspired from http://gizma.com/easing/
 	 */
-	easing = {
+	easing_ = {
 	    // no easing, no acceleration
 	    linear: function linear(t) {
 	        return t;
@@ -231,7 +279,7 @@
 	 */
 	utils.ease = function (easingFunction, elapsedTime, start, change, duration) {
 	    var time = Math.min(1, elapsedTime / duration),
-	        easedTiming = easing[easingFunction](time);
+	        easedTiming = easing_[easingFunction](time);
 	
 	    return easedTiming * change + start;
 	};
@@ -275,9 +323,9 @@
 	    return rect.bottom >= 0 && rect.right >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight) * percentage && rect.left <= (window.innerWidth || document.documentElement.clientWidth) * percentage;
 	};
 	
-	exports.utils = utils;
 	exports.w = w;
-	var $ = exports.$ = document.querySelectorAll.bind(document);
+	exports.$ = $;
+	exports.utils = utils;
 
 /***/ },
 /* 2 */
@@ -291,10 +339,6 @@
 	
 	var _utils = __webpack_require__(1);
 	
-	/**
-	 * User Interface
-	 */
-	
 	/** @object UI */
 	var UI = {};
 	
@@ -303,6 +347,9 @@
 	 * @params targetElement Element to scroll to
 	 * @params duration Speed of scroll animation
 	 * @params callback Callback function after scroll has completed
+	 */
+	/**
+	 * @file User Interface
 	 */
 	UI.scrollTo = function (targetElement, duration, callback) {
 	  var currentScrollPos = document.body.scrollTop,

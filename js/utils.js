@@ -1,41 +1,41 @@
 /**
- * Utility functions
+ * @file Utility functions
  */
 
-/** @object utils */
-var utils  = {},
-    w = window,
+var w     = window,
+    $     = document.querySelectorAll.bind(document),
+    utils = {},
 
     /**
      * Easing Functions - inspired from http://gizma.com/easing/
      */
-    easing = {
+    easing_ = {
       // no easing, no acceleration
-      linear: function (t) { return t; },
+      linear: (t) => { return t; },
       // accelerating from zero velocity
-      easeInQuad: function (t) { return t*t; },
+      easeInQuad: (t) => { return t*t; },
       // decelerating to zero velocity
-      easeOutQuad: function (t) { return t*(2-t); },
+      easeOutQuad: (t) => { return t*(2-t); },
       // acceleration until halfway, then deceleration
-      easeInOutQuad: function (t) { return t<0.5 ? 2*t*t : -1+(4-2*t)*t; },
+      easeInOutQuad: (t) => { return t<0.5 ? 2*t*t : -1+(4-2*t)*t; },
       // accelerating from zero velocity 
-      easeInCubic: function (t) { return t*t*t; },
+      easeInCubic: (t) => { return t*t*t; },
       // decelerating to zero velocity 
-      easeOutCubic: function (t) { return (--t)*t*t+1; },
+      easeOutCubic: (t) => { return (--t)*t*t+1; },
       // acceleration until halfway, then deceleration 
-      easeInOutCubic: function (t) { return t<0.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1; },
+      easeInOutCubic: (t) => { return t<0.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1; },
       // accelerating from zero velocity 
-      easeInQuart: function (t) { return t*t*t*t; },
+      easeInQuart: (t) => { return t*t*t*t; },
       // decelerating to zero velocity 
-      easeOutQuart: function (t) { return 1-(--t)*t*t*t; },
+      easeOutQuart: (t) => { return 1-(--t)*t*t*t; },
       // acceleration until halfway, then deceleration
-      easeInOutQuart: function (t) { return t<0.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t; },
+      easeInOutQuart: (t) => { return t<0.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t; },
       // accelerating from zero velocity
-      easeInQuint: function (t) { return t*t*t*t*t; },
+      easeInQuint: (t) => { return t*t*t*t*t; },
       // decelerating to zero velocity
-      easeOutQuint: function (t) { return 1+(--t)*t*t*t*t; },
+      easeOutQuint: (t) => { return 1+(--t)*t*t*t*t; },
       // acceleration until halfway, then deceleration 
-      easeInOutQuint: function (t) { return t<0.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t; }
+      easeInOutQuint: (t) => { return t<0.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t; }
     };
 
 /**
@@ -48,7 +48,7 @@ var utils  = {},
  */
 utils.ease = function(easingFunction, elapsedTime, start, change, duration) {
   var time        = Math.min(1, (elapsedTime / duration)),
-      easedTiming = easing[easingFunction](time);
+      easedTiming = easing_[easingFunction](time);
 
   return (easedTiming * change) + start;
 };
@@ -67,7 +67,7 @@ utils.throttle = function(type, name, obj) {
     var func = function() {
         if (running) { return; }
         running = true;
-        requestAnimationFrame(function() {
+        requestAnimationFrame(() => {
             obj.dispatchEvent(new CustomEvent(name));
             running = false;
         });
@@ -95,5 +95,4 @@ utils.isElementInViewport = function(element, percentage) {
   );
 };
 
-export { utils, w };
-export var $ = document.querySelectorAll.bind(document);
+export { w, $, utils };

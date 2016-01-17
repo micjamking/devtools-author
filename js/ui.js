@@ -1,8 +1,7 @@
-import { utils, w, $ } from 'utils.js';
-
 /**
- * User Interface
+ * @file User Interface
  */
+import { utils, w, $ } from './utils.js';
   
 /** @object UI */
 var UI = {};
@@ -23,9 +22,7 @@ UI.scrollTo = function(targetElement, duration, callback) {
         elapsedTime += speed;
         document.body.scrollTop = utils.ease('easeInOutQuad', elapsedTime, currentScrollPos, distanceToScroll, duration); 
         if (elapsedTime < duration) {
-            w.requestAnimationFrame(function() {
-                animateScroll(elapsedTime);
-            });
+            w.requestAnimationFrame(() => { animateScroll(elapsedTime); });
         } else if (elapsedTime >= duration) {
           return callback();
         }
