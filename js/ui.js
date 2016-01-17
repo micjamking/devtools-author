@@ -13,6 +13,7 @@ var UI = {};
  * @params callback Callback function after scroll has completed
  */
 UI.scrollTo = function(targetElement, duration, callback) {
+    
     var currentScrollPos = document.body.scrollTop,
         distanceToScroll = targetElement.offsetTop - currentScrollPos,
         speed            = 16;
@@ -27,6 +28,7 @@ UI.scrollTo = function(targetElement, duration, callback) {
           return callback();
         }
     })(0);
+
 };
 
 /**
@@ -34,6 +36,7 @@ UI.scrollTo = function(targetElement, duration, callback) {
  * @params linksArray Array of anchor elements
  */
 UI.scrollToInternalLinks = function(linksArray){
+  
   function scrollToListener(event){
     event.preventDefault();
 
@@ -52,6 +55,7 @@ UI.scrollToInternalLinks = function(linksArray){
       linksArray[i].addEventListener('click', scrollToListener, true);
     }
   }
+
 };
 
 /**
@@ -74,6 +78,7 @@ UI.addClassOnScrollInToView = function(elements){
 
   utils.throttle('scroll', 'optimizedScroll');
   w.addEventListener('optimizedScroll', scrollCallback);
+
 };
 
 /**
@@ -81,10 +86,13 @@ UI.addClassOnScrollInToView = function(elements){
  * @params year Element to set year text within
  */
 UI.setYear = function(year){
+
   var date = new Date();
+
   if (year){
-    year.innerHTML = date.getFullYear();
+    year.innerHTML = (date.getFullYear() === 2015) ? date.getFullYear() : '2015 - ' + date.getFullYear();
   }
+
 };
 
 /** @export UI */

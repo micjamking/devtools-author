@@ -47,10 +47,12 @@ var w     = window,
  * @params duration speed of travel
  */
 utils.ease = function(easingFunction, elapsedTime, start, change, duration) {
+
   var time        = Math.min(1, (elapsedTime / duration)),
       easedTiming = easing_[easingFunction](time);
 
   return (easedTiming * change) + start;
+
 };
 
 /**
@@ -61,6 +63,7 @@ utils.ease = function(easingFunction, elapsedTime, start, change, duration) {
  * @param {Object} obj - Object to attach event to and dispatch the custom event from
  */
 utils.throttle = function(type, name, obj) {
+
     obj = obj || w;
     var running = false;
 
@@ -74,6 +77,7 @@ utils.throttle = function(type, name, obj) {
     };
 
     obj.addEventListener(type, func);
+
 };
 
 /**
@@ -83,6 +87,7 @@ utils.throttle = function(type, name, obj) {
  * @param {Number} percentage - The percentage of screen threshold the element must be within
  */
 utils.isElementInViewport = function(element, percentage) {
+
   var rect = element.getBoundingClientRect();
 
   percentage = percentage || 1;
@@ -93,6 +98,7 @@ utils.isElementInViewport = function(element, percentage) {
       rect.top  <= ( ( window.innerHeight || document.documentElement.clientHeight ) * percentage ) &&
       rect.left <= ( ( window.innerWidth || document.documentElement.clientWidth ) * percentage )
   );
+
 };
 
 export { w, $, utils };

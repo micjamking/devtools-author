@@ -85,31 +85,17 @@
 	  }
 	
 	  _createClass(DevToolsAuthor, [{
-	    key: 'registerListeners_',
-	    value: function registerListeners_() {
-	      var _this = this;
-	
-	      _utils.w.addEventListener('DOMContentLoaded', function () {
-	        _this.initUI_();
-	      });
-	
-	      _utils.w.addEventListener('load', function () {
-	        _this.initSocial_();
-	      });
-	
-	      _utils.w.addEventListener('social-loaded', function () {
-	        _this.initSocialUI_();
-	      });
-	    }
-	  }, {
 	    key: 'initUI_',
 	    value: function initUI_() {
+	
 	      if (this.$els_.currentYear) {
 	        _ui2.default.setYear(this.$els_.currentYear);
 	      }
+	
 	      if (this.$els_.internalLinks) {
 	        _ui2.default.scrollToInternalLinks(this.$els_.internalLinks);
 	      }
+	
 	      if (this.$els_.panels) {
 	        _ui2.default.addClassOnScrollInToView(this.$els_.panels);
 	      }
@@ -117,6 +103,7 @@
 	  }, {
 	    key: 'initSocial_',
 	    value: function initSocial_() {
+	
 	      /**
 	       * Google API
 	       */
@@ -166,6 +153,7 @@
 	       * Facebook SDK Init
 	       */
 	      window.fbAsyncInit = function () {
+	
 	        FB.init({
 	          appId: '1686524291587989',
 	          xfbml: true,
@@ -183,9 +171,27 @@
 	  }, {
 	    key: 'initSocialUI_',
 	    value: function initSocialUI_() {
+	
 	      if (this.$els_.links) {
 	        this.$els_.links.style.display = 'block';
 	      }
+	    }
+	  }, {
+	    key: 'registerListeners_',
+	    value: function registerListeners_() {
+	      var _this = this;
+	
+	      _utils.w.addEventListener('DOMContentLoaded', function () {
+	        _this.initUI_();
+	      });
+	
+	      _utils.w.addEventListener('load', function () {
+	        _this.initSocial_();
+	      });
+	
+	      _utils.w.addEventListener('social-loaded', function () {
+	        _this.initSocialUI_();
+	      });
 	    }
 	  }]);
 	
@@ -278,6 +284,7 @@
 	 * @params duration speed of travel
 	 */
 	utils.ease = function (easingFunction, elapsedTime, start, change, duration) {
+	
 	    var time = Math.min(1, elapsedTime / duration),
 	        easedTiming = easing_[easingFunction](time);
 	
@@ -292,6 +299,7 @@
 	 * @param {Object} obj - Object to attach event to and dispatch the custom event from
 	 */
 	utils.throttle = function (type, name, obj) {
+	
 	    obj = obj || w;
 	    var running = false;
 	
@@ -316,6 +324,7 @@
 	 * @param {Number} percentage - The percentage of screen threshold the element must be within
 	 */
 	utils.isElementInViewport = function (element, percentage) {
+	
 	    var rect = element.getBoundingClientRect();
 	
 	    percentage = percentage || 1;
@@ -352,6 +361,7 @@
 	 * @file User Interface
 	 */
 	UI.scrollTo = function (targetElement, duration, callback) {
+	
 	  var currentScrollPos = document.body.scrollTop,
 	      distanceToScroll = targetElement.offsetTop - currentScrollPos,
 	      speed = 16;
@@ -375,6 +385,7 @@
 	 * @params linksArray Array of anchor elements
 	 */
 	UI.scrollToInternalLinks = function (linksArray) {
+	
 	  function scrollToListener(event) {
 	    event.preventDefault();
 	
@@ -422,9 +433,11 @@
 	 * @params year Element to set year text within
 	 */
 	UI.setYear = function (year) {
+	
 	  var date = new Date();
+	
 	  if (year) {
-	    year.innerHTML = date.getFullYear();
+	    year.innerHTML = date.getFullYear() === 2015 ? date.getFullYear() : '2015 - ' + date.getFullYear();
 	  }
 	};
 	

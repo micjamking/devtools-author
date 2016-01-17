@@ -14,6 +14,7 @@ class DevToolsAuthor {
    * @constructs
    */
   constructor() {
+    
     this.$els_ = {
       internalLinks: $('a[href^="#"]'),
       panels: $('.panel'),
@@ -22,35 +23,27 @@ class DevToolsAuthor {
     };
 
     this.registerListeners_();
-  }
-
-  registerListeners_() {
-    w.addEventListener( 'DOMContentLoaded', () => {
-       this.initUI_(); 
-    });
-    
-    w.addEventListener( 'load', () => { 
-      this.initSocial_(); 
-    });
-    
-    w.addEventListener( 'social-loaded', () => { 
-      this.initSocialUI_();
-    });
+  
   }
   
-  initUI_(){
+  initUI_() {
+    
     if ( this.$els_.currentYear ){
-        UI.setYear( this.$els_.currentYear );
+      UI.setYear( this.$els_.currentYear );
     }
+    
     if ( this.$els_.internalLinks ){
-        UI.scrollToInternalLinks( this.$els_.internalLinks );
+      UI.scrollToInternalLinks( this.$els_.internalLinks );
     }
+    
     if ( this.$els_.panels ){
-        UI.addClassOnScrollInToView( this.$els_.panels );
+      UI.addClassOnScrollInToView( this.$els_.panels );
     }
+  
   }
 
-  initSocial_(){
+  initSocial_() {
+    
     /**
      * Google API
      */
@@ -61,7 +54,7 @@ class DevToolsAuthor {
        js.id = id;
        js.src = '//apis.google.com/js/platform.js';
        fjs.parentNode.insertBefore(js, fjs);
-     })(document, 'script', 'google-sdk');
+    })(document, 'script', 'google-sdk');
 
     /**
      * Twitter Widgets API
@@ -85,12 +78,13 @@ class DevToolsAuthor {
        js.id = id;
        js.src = '//connect.facebook.net/en_US/sdk.js';
        fjs.parentNode.insertBefore(js, fjs);
-     })(document, 'script', 'facebook-jssdk');
+    })(document, 'script', 'facebook-jssdk');
 
     /**
      * Facebook SDK Init
      */
     window.fbAsyncInit = function() {
+      
       FB.init({
         appId   : '1686524291587989',
         xfbml   : true,
@@ -103,14 +97,35 @@ class DevToolsAuthor {
         var fbLoaded = new CustomEvent( 'social-loaded' );
         window.dispatchEvent( fbLoaded );
       });
+    
     };
+  
   }
 
-  initSocialUI_(){
+  initSocialUI_() {
+    
     if ( this.$els_.links ){
       this.$els_.links.style.display = 'block';
     }
+  
   }
+
+  registerListeners_() {
+    
+    w.addEventListener( 'DOMContentLoaded', () => {
+       this.initUI_(); 
+    });
+    
+    w.addEventListener( 'load', () => { 
+      this.initSocial_(); 
+    });
+    
+    w.addEventListener( 'social-loaded', () => { 
+      this.initSocialUI_();
+    });
+  
+  }
+
 }
 
 new DevToolsAuthor();
