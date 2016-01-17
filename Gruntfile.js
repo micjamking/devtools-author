@@ -99,15 +99,15 @@ module.exports = function (grunt) {
       },
 
       /*
-       * JSDoc: Generate JS documentation
-       * https://github.com/gruntjs/grunt-contrib-concat
+       * ESDoc: Generate JavaScript(ES6) documentation
+       * https://github.com/cleversoap/grunt-esdoc
        */
-      jsdoc : {
-        options: {
-          destination: 'docs/js'
-        },
+      esdoc : {
         dist : {
-          src: './js/**/*.js'
+          options: {
+            destination: 'docs/es',
+            source: './js'
+          }
         }
       },
       
@@ -195,7 +195,7 @@ module.exports = function (grunt) {
         'sass',
         'postcss:dist',
         'eslint',
-        'jsdoc',
+        'esdoc',
         'concat',
         'uglify'
     ]);

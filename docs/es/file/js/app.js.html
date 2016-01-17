@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/app.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/micjamking/devtools-author.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/app.js~DevToolsAuthor.html">DevToolsAuthor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/ui.js~UI.html">UI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/utils.js~utils.html">utils</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-w">w</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/app.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/*eslint no-console: 1*/
+/**
+ * Application entry point
+ */
+import { w, $ } from &apos;./utils.js&apos;;
+import UI from &apos;./ui.js&apos;;
+
+/**
+ * Creates DevTools Author
+ */
+export class DevToolsAuthor {
+
+  constructor() {
+    
+    /** 
+     * DOM References to primary elements
+     * @type {Object}
+     */
+    this.$els = {
+      internalLinks: $(&apos;a[href^=&quot;#&quot;]&apos;),
+      panels: $(&apos;.panel&apos;),
+      currentYear: $(&apos;.currentYear&apos;)[0],
+      links: $(&apos;.share-links&apos;)[0]
+    };
+    
+    /** Setup event listeners */
+    this._registerListeners();
+  
+  }
+  
+  /**
+   * Setup UI
+   * @private
+   */
+  _initUI() {
+    var ui = new UI();
+    
+    if ( this.$els.currentYear ){
+      ui.setYear( this.$els.currentYear );
+    }
+    
+    if ( this.$els.internalLinks ){
+      ui.scrollToInternalLinks( this.$els.internalLinks );
+    }
+    
+    if ( this.$els.panels ){
+      ui.addClassOnScrollInToView( this.$els.panels );
+    }
+  
+  }
+  
+  /**
+   * Social Media APIs
+   * @emits {social-loaded} Emits event when Facebook API has completely rendered
+   * @private
+   */
+  _initSocial() {
+    
+    /** Google API */
+    ((d, s, id) =&gt; {
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) { return; }
+       js = d.createElement(s); 
+       js.id = id;
+       js.src = &apos;//apis.google.com/js/platform.js&apos;;
+       fjs.parentNode.insertBefore(js, fjs);
+    })(document, &apos;script&apos;, &apos;google-sdk&apos;);
+
+    /** Twitter API */
+    ((d, s, id) =&gt; {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = &apos;//platform.twitter.com/widgets.js&apos;;
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, &apos;script&apos;, &apos;twitter-wjs&apos;);
+
+    /** Facebook SDK */
+    ((d, s, id) =&gt; {
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) { return; }
+       js = d.createElement(s); 
+       js.id = id;
+       js.src = &apos;//connect.facebook.net/en_US/sdk.js&apos;;
+       fjs.parentNode.insertBefore(js, fjs);
+    })(document, &apos;script&apos;, &apos;facebook-jssdk&apos;);
+
+    /** Facebook SDK Init */
+    window.fbAsyncInit = function() {
+      
+      FB.init({
+        appId   : &apos;1686524291587989&apos;,
+        xfbml   : true,
+        version : &apos;v2.5&apos;
+      });
+
+      /**
+       * Publish event after Facebook 
+       * share has rendered (since it *seems* to take the longest)
+       */
+      FB.Event.subscribe(&apos;xfbml.render&apos;, () =&gt; {
+        var fbLoaded = new CustomEvent( &apos;social-loaded&apos; );
+        window.dispatchEvent( fbLoaded );
+      });
+    
+    };
+  
+  }
+  
+  /**
+   * Setup social media UI
+   * @private
+   */
+  _initSocialUI() {
+    
+    if ( this.$els.links ){
+      this.$els.links.style.display = &apos;block&apos;;
+    }
+  
+  }
+  
+  /**
+   * Setup Event Listeners
+   * @listens {DOMContentLoaded} Listen for event to initialize UI
+   * @listens {load} Listen for event to initialize Social Media API
+   * @listens {social-loaded} Listen for event to initialize Social Media UI
+   * @private
+   */
+  _registerListeners() {
+    
+    w.addEventListener( &apos;DOMContentLoaded&apos;, () =&gt; {
+       this._initUI(); 
+    });
+    
+    w.addEventListener( &apos;load&apos;, () =&gt; { 
+      this._initSocial(); 
+    });
+    
+    w.addEventListener( &apos;social-loaded&apos;, () =&gt; { 
+      this._initSocialUI();
+    });
+  
+  }
+
+}
+
+/** hello.world */
+new DevToolsAuthor();</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.3)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

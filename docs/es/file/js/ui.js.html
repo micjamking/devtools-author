@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/ui.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/micjamking/devtools-author.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/app.js~DevToolsAuthor.html">DevToolsAuthor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/ui.js~UI.html">UI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/utils.js~utils.html">utils</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-w">w</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/ui.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * User Interface
+ */
+import utils, { w, $ } from &apos;./utils.js&apos;;
+  
+/**
+ * Sets up user interface 
+ */
+export default class UI {
+
+  constructor(){
+    this._utils = new utils();
+  }
+
+  /**
+   * Scroll to element
+   * @params {HTMLElement} targetElement - Element to scroll to
+   * @params {Number} duration - Speed of scroll animation
+   * @params {Function} callback - Callback function after scroll has completed
+   * @private
+   */
+  _scrollTo(targetElement, duration, callback) {
+
+      var currentScrollPos = document.body.scrollTop,
+          distanceToScroll = targetElement.offsetTop - currentScrollPos,
+          speed            = 16;
+
+      /** Scroll animation */
+      (function animateScroll(elapsedTime) {  
+          elapsedTime += speed;
+          document.body.scrollTop = this._utils.ease(&apos;easeInOutQuad&apos;, elapsedTime, currentScrollPos, distanceToScroll, duration); 
+          if (elapsedTime &lt; duration) {
+              w.requestAnimationFrame(() =&gt; { animateScroll(elapsedTime); });
+          } else if (elapsedTime &gt;= duration) {
+            return callback();
+          }
+      })(0);
+
+  }
+
+  /**
+   * Scroll to all anchors
+   * @params {Array} linksArray - Array of anchor elements
+   */
+  scrollToInternalLinks(linksArray) {
+
+    /** Click event callback */
+    function scrollToListener(event){
+      event.preventDefault();
+
+      var hash    = (event.target.href) ? event.target.getAttribute(&apos;href&apos;) : event.target.parentNode.getAttribute(&apos;href&apos;), 
+          element = $(hash)[0];
+
+      function changeURLHash(){
+        w.location.hash = hash;
+      }
+
+      this._scrollTo(element, 1250, changeURLHash);
+    }
+
+    /** Attach click event listener */
+    if (linksArray){
+      for (var i = 0; i &lt; linksArray.length; i++){
+        linksArray[i].addEventListener(&apos;click&apos;, scrollToListener, true);
+      }
+    }
+
+  }
+
+  /**
+   * Add class to element when it is scrolled in to view
+   * @params {Array} elements - Array of HTML elements to watch
+   */
+  addClassOnScrollInToView(elements) {
+
+    var that = this;
+
+    /** Scroll event callback  */
+    function _scrollCallback(){
+
+      function toggleActiveClass(el){
+        if (that._utils.isElementInViewport(el, 0.75)) {
+          el.classList.add(&apos;active&apos;);
+        } else {
+          el.classList.remove(&apos;active&apos;);
+        }
+      }
+
+      Array.prototype.forEach.call(elements, toggleActiveClass);
+
+    }
+
+    /** Throttle default scroll event and listen for optimizedScroll event */
+    this._utils.throttle(&apos;scroll&apos;, &apos;optimizedScroll&apos;);
+    w.addEventListener(&apos;optimizedScroll&apos;, () =&gt; { _scrollCallback(); } );
+
+  }
+
+  /**
+   * Set current year in footer
+   * @params {HTMLElement} year - Element to set year text within
+   */
+  setYear(year) {
+
+    var date = new Date();
+
+    if (year){
+      year.innerHTML = (date.getFullYear() === 2015) ? date.getFullYear() : &apos;2015 - &apos; + date.getFullYear();
+    }
+
+  }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.3)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

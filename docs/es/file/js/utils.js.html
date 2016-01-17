@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/utils.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/micjamking/devtools-author.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/app.js~DevToolsAuthor.html">DevToolsAuthor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/ui.js~UI.html">UI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/utils.js~utils.html">utils</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-w">w</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/utils.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Utility methods
+ */
+var 
+
+/** @type {Object} Window */
+w = window,
+
+/** @type {Function} Query selector */
+$ = document.querySelectorAll.bind(document);
+
+/**
+ * utility object 
+ */
+export default class utils {
+
+  constructor(){
+    /**
+     * Easing Functions
+     * @see http://gizma.com/easing/
+     * @type {Object} _easing
+     * @type {Function} _easing.linear - no easing, no acceleration
+     * @type {Function} _easing.easeInQuad - accelerating from zero velocity
+     * @type {Function} _easing.easeOutQuad - decelerating to zero velocity
+     * @type {Function} _easing.easeInOutQuad - acceleration until halfway, then deceleration
+     * @type {Function} _easing.easeInCubic - accelerating from zero velocity
+     * @type {Function} _easing.easeOutCubic - decelerating to zero velocity
+     * @type {Function} _easing.easeInOutCubic - acceleration until halfway, then deceleration
+     * @type {Function} _easing.easeInQuart - accelerating from zero velocity
+     * @type {Function} _easing.easeOutQuart - decelerating to zero velocity
+     * @type {Function} _easing.easeInOutQuart - acceleration until halfway, then deceleration
+     * @type {Function} _easing.easeInQuint - accelerating from zero velocity
+     * @type {Function} _easing.easeOutQuint - decelerating to zero velocity
+     * @type {Function} _easing.easeInOutQuint - acceleration until halfway, then deceleration
+     */
+    this._easing = {
+      linear: (t) =&gt; { return t; },
+      easeInQuad: (t) =&gt; { return t*t; },
+      easeOutQuad: (t) =&gt; { return t*(2-t); },
+      easeInOutQuad: (t) =&gt; { return t&lt;0.5 ? 2*t*t : -1+(4-2*t)*t; },
+      easeInCubic: (t) =&gt; { return t*t*t; },
+      easeOutCubic: (t) =&gt; { return (--t)*t*t+1; },
+      easeInOutCubic: (t) =&gt; { return t&lt;0.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1; },
+      easeInQuart: (t) =&gt; { return t*t*t*t; },
+      easeOutQuart: (t) =&gt; { return 1-(--t)*t*t*t; },
+      easeInOutQuart: (t) =&gt; { return t&lt;0.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t; },
+      easeInQuint: (t) =&gt; { return t*t*t*t*t; },
+      easeOutQuint: (t) =&gt; { return 1+(--t)*t*t*t*t; },
+      easeInOutQuint: (t) =&gt; { return t&lt;0.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t; }
+    };
+  }
+
+  /**
+   * Easing
+   * @params {String} easingFunction - Name of easing function to use
+   * @params {Number} elapsedTime - Length of time (ms) that has passed since start
+   * @params {Number} start - Initial (y) starting position
+   * @params {Number} change - Distance to travel
+   * @params {Number} duration - Speed of travel
+   */
+  ease(easingFunction, elapsedTime, start, change, duration) {
+
+    var time        = Math.min(1, (elapsedTime / duration)),
+        easedTiming = this._easing[easingFunction](time);
+
+    return (easedTiming * change) + start;
+
+  }
+
+  /**
+   * Throttle an event (ie. scroll) and provide custom event for callback
+   * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
+   * @param {String} type - Type of event to throttle
+   * @param {String} name - Name of new event to dispatchEvent
+   * @param {Object} obj - Object to attach event to and dispatch the custom event from
+   */
+  throttle(type, name, obj) {
+
+      obj = obj || w;
+      var running = false;
+
+      var func = function() {
+          if (running) { return; }
+          running = true;
+          requestAnimationFrame(() =&gt; {
+              obj.dispatchEvent(new CustomEvent(name));
+              running = false;
+          });
+      };
+
+      obj.addEventListener(type, func);
+
+  }
+
+  /**
+   * Check if element is currently visible in viewport
+   * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
+   * @param {HTMLElement} element - DOM element to check if currently visible
+   * @param {Number} percentage - The percentage of screen threshold the element must be within
+   */
+  isElementInViewport(element, percentage) {
+
+    var rect = element.getBoundingClientRect();
+
+    percentage = percentage || 1;
+
+    return (
+        rect.bottom &gt;= 0 &amp;&amp;
+        rect.right  &gt;= 0 &amp;&amp;
+        rect.top  &lt;= ( ( window.innerHeight || document.documentElement.clientHeight ) * percentage ) &amp;&amp;
+        rect.left &lt;= ( ( window.innerWidth || document.documentElement.clientWidth ) * percentage )
+    );
+
+  }
+}
+
+export { w, $ };</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.3)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

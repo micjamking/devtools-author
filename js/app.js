@@ -1,52 +1,62 @@
+/*eslint no-console: 1*/
 /**
- * @file Application entry point
+ * Application entry point
  */
 import { w, $ } from './utils.js';
 import UI from './ui.js';
 
 /**
  * Creates DevTools Author
- * @class
  */
-class DevToolsAuthor {
+export class DevToolsAuthor {
 
-  /**
-   * @constructs
-   */
   constructor() {
     
-    this.$els_ = {
+    /** 
+     * DOM References to primary elements
+     * @type {Object}
+     */
+    this.$els = {
       internalLinks: $('a[href^="#"]'),
       panels: $('.panel'),
       currentYear: $('.currentYear')[0],
       links: $('.share-links')[0]
     };
-
-    this.registerListeners_();
+    
+    /** Setup event listeners */
+    this._registerListeners();
   
   }
   
-  initUI_() {
+  /**
+   * Setup UI
+   * @private
+   */
+  _initUI() {
+    var ui = new UI();
     
-    if ( this.$els_.currentYear ){
-      UI.setYear( this.$els_.currentYear );
+    if ( this.$els.currentYear ){
+      ui.setYear( this.$els.currentYear );
     }
     
-    if ( this.$els_.internalLinks ){
-      UI.scrollToInternalLinks( this.$els_.internalLinks );
+    if ( this.$els.internalLinks ){
+      ui.scrollToInternalLinks( this.$els.internalLinks );
     }
     
-    if ( this.$els_.panels ){
-      UI.addClassOnScrollInToView( this.$els_.panels );
+    if ( this.$els.panels ){
+      ui.addClassOnScrollInToView( this.$els.panels );
     }
   
   }
-
-  initSocial_() {
+  
+  /**
+   * Social Media APIs
+   * @emits {social-loaded} Emits event when Facebook API has completely rendered
+   * @private
+   */
+  _initSocial() {
     
-    /**
-     * Google API
-     */
+    /** Google API */
     ((d, s, id) => {
        var js, fjs = d.getElementsByTagName(s)[0];
        if (d.getElementById(id)) { return; }
@@ -56,9 +66,7 @@ class DevToolsAuthor {
        fjs.parentNode.insertBefore(js, fjs);
     })(document, 'script', 'google-sdk');
 
-    /**
-     * Twitter Widgets API
-     */
+    /** Twitter API */
     ((d, s, id) => {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) { return; }
@@ -68,9 +76,7 @@ class DevToolsAuthor {
       fjs.parentNode.insertBefore(js, fjs);
     })(document, 'script', 'twitter-wjs');
 
-    /**
-     * Facebook SDK
-     */
+    /** Facebook SDK */
     ((d, s, id) => {
        var js, fjs = d.getElementsByTagName(s)[0];
        if (d.getElementById(id)) { return; }
@@ -80,9 +86,7 @@ class DevToolsAuthor {
        fjs.parentNode.insertBefore(js, fjs);
     })(document, 'script', 'facebook-jssdk');
 
-    /**
-     * Facebook SDK Init
-     */
+    /** Facebook SDK Init */
     window.fbAsyncInit = function() {
       
       FB.init({
@@ -91,8 +95,10 @@ class DevToolsAuthor {
         version : 'v2.5'
       });
 
-      // Publish event after Facebook 
-      // share has rendered (since it *seems* to take the longest)
+      /**
+       * Publish event after Facebook 
+       * share has rendered (since it *seems* to take the longest)
+       */
       FB.Event.subscribe('xfbml.render', () => {
         var fbLoaded = new CustomEvent( 'social-loaded' );
         window.dispatchEvent( fbLoaded );
@@ -101,31 +107,43 @@ class DevToolsAuthor {
     };
   
   }
-
-  initSocialUI_() {
+  
+  /**
+   * Setup social media UI
+   * @private
+   */
+  _initSocialUI() {
     
-    if ( this.$els_.links ){
-      this.$els_.links.style.display = 'block';
+    if ( this.$els.links ){
+      this.$els.links.style.display = 'block';
     }
   
   }
-
-  registerListeners_() {
+  
+  /**
+   * Setup Event Listeners
+   * @listens {DOMContentLoaded} Listen for event to initialize UI
+   * @listens {load} Listen for event to initialize Social Media API
+   * @listens {social-loaded} Listen for event to initialize Social Media UI
+   * @private
+   */
+  _registerListeners() {
     
     w.addEventListener( 'DOMContentLoaded', () => {
-       this.initUI_(); 
+       this._initUI(); 
     });
     
     w.addEventListener( 'load', () => { 
-      this.initSocial_(); 
+      this._initSocial(); 
     });
     
     w.addEventListener( 'social-loaded', () => { 
-      this.initSocialUI_();
+      this._initSocialUI();
     });
   
   }
 
 }
 
+/** hello.world */
 new DevToolsAuthor();
