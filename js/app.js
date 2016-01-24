@@ -1,4 +1,3 @@
-/*eslint no-console: 1*/
 /**
  * Application entry point
  */
@@ -17,7 +16,7 @@ export class DevToolsAuthor {
     
     /** 
      * DOM References to primary elements
-     * @type {Object}
+     * @type {Object} _$els
      * @property {HTMLElement} internalLinks - Anchor links with a hash (#) href value
      * @property {HTMLElement} panels - Elements with the class of `.panel`
      * @property {HTMLElement} currentYear - Element with the class of `.currentYear`
@@ -30,10 +29,16 @@ export class DevToolsAuthor {
       currentYear: $('.currentYear')[0],
       links: $('.share-links')[0]
     };
+
+    /**
+     * Reference to user interface methods
+     * @type {Object} _ui
+     * @private
+     */
+    this._ui = new UI();
     
     /** Setup event listeners */
     this._registerListeners();
-  
   }
   
   /**
@@ -41,18 +46,17 @@ export class DevToolsAuthor {
    * @private
    */
   _initUI() {
-    var ui = new UI();
 
     if ( this._$els.currentYear ){
-      ui.setYear( this._$els.currentYear );
+      this._ui.setYear( this._$els.currentYear );
     }
     
     if ( this._$els.internalLinks ){
-      ui.scrollToInternalLinks( this._$els.internalLinks );
+      this._ui.scrollToInternalLinks( this._$els.internalLinks );
     }
     
     if ( this._$els.panels ){
-      ui.addClassOnScrollInToView( this._$els.panels );
+      this._ui.addClassOnScrollInToView( this._$els.panels );
     }
   
   }

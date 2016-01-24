@@ -1,5 +1,11 @@
 window.esdocSearchIndex = [
   [
+    "devtools-author-site/js/utils.js~$",
+    "variable/index.html#static-variable-$",
+    "<span>$</span> <span class=\"search-result-import-path\">devtools-author-site/js/utils.js</span>",
+    "variable"
+  ],
+  [
     "devtools-author-site/js/app.js~devtoolsauthor",
     "class/js/app.js~DevToolsAuthor.html",
     "<span>DevToolsAuthor</span> <span class=\"search-result-import-path\">devtools-author-site/js/app.js</span>",
@@ -390,6 +396,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/app.js~devtoolsauthor#_ui",
+    "class/js/app.js~DevToolsAuthor.html#instance-member-_ui",
+    "js/app.js~DevToolsAuthor#_ui",
+    "member"
+  ],
+  [
     "js/app.js~devtoolsauthor#constructor",
     "class/js/app.js~DevToolsAuthor.html#instance-constructor-constructor",
     "js/app.js~DevToolsAuthor#constructor",
@@ -406,12 +418,6 @@ window.esdocSearchIndex = [
     "class/js/ui.js~UI.html#instance-method-_scrollTo",
     "js/ui.js~UI#_scrollTo",
     "method"
-  ],
-  [
-    "js/ui.js~ui#_utils",
-    "class/js/ui.js~UI.html#instance-member-_utils",
-    "js/ui.js~UI#_utils",
-    "member"
   ],
   [
     "js/ui.js~ui#addclassonscrollintoview",

@@ -46,10 +46,9 @@
 
 	'use strict';
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /*eslint no-console: 1*/
-	/**
-	 * Application entry point
-	 */
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Application entry point
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -81,7 +80,7 @@
 	
 	    /** 
 	     * DOM References to primary elements
-	     * @type {Object}
+	     * @type {Object} _$els
 	     * @property {HTMLElement} internalLinks - Anchor links with a hash (#) href value
 	     * @property {HTMLElement} panels - Elements with the class of `.panel`
 	     * @property {HTMLElement} currentYear - Element with the class of `.currentYear`
@@ -95,6 +94,13 @@
 	      links: (0, _utils.$)('.share-links')[0]
 	    };
 	
+	    /**
+	     * Reference to user interface methods
+	     * @type {Object} _ui
+	     * @private
+	     */
+	    this._ui = new _ui2.default();
+	
 	    /** Setup event listeners */
 	    this._registerListeners();
 	  }
@@ -107,18 +113,17 @@
 	  _createClass(DevToolsAuthor, [{
 	    key: '_initUI',
 	    value: function _initUI() {
-	      var ui = new _ui2.default();
 	
 	      if (this._$els.currentYear) {
-	        ui.setYear(this._$els.currentYear);
+	        this._ui.setYear(this._$els.currentYear);
 	      }
 	
 	      if (this._$els.internalLinks) {
-	        ui.scrollToInternalLinks(this._$els.internalLinks);
+	        this._ui.scrollToInternalLinks(this._$els.internalLinks);
 	      }
 	
 	      if (this._$els.panels) {
-	        ui.addClassOnScrollInToView(this._$els.panels);
+	        this._ui.addClassOnScrollInToView(this._$els.panels);
 	      }
 	    }
 	
@@ -256,19 +261,23 @@
 	/**
 	 * Utility methods
 	 */
-	var
 	
 	/** @type {Object} Window */
-	w = exports.w = window,
+	var w = exports.w = window;
 	
 	/** @type {Function} Query selector */
-	$ = exports.$ = document.querySelectorAll.bind(document);
+	var $ = exports.$ = document.querySelectorAll.bind(document);
 	
 	/**
-	 * utility object 
+	 * utility methods 
 	 */
 	
 	var utils = function () {
+	
+	  /**
+	   * Setup 
+	   */
+	
 	  function utils() {
 	    _classCallCheck(this, utils);
 	
@@ -357,9 +366,10 @@
 	     * Throttle an event and provide custom event for callback
 	     * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
 	     * @param {String} type - Type of event to throttle
-	     * @param {String} name - Name of new event to dispatchEvent
+	     * @param {String} name - Name of new CustomEvent to dispatch
 	     * @param {Object} obj - Object to attach event to and dispatch the custom event from
-	     * @listens {String} type - Listen for event to throttle and dispatch custom event for
+	     * @listens {type} Listen for event to throttle and dispatch custom event for
+	     * @emits {name} Custom event to dispatch on object
 	     */
 	
 	  }, {
@@ -388,7 +398,9 @@
 	     * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
 	     * @param {HTMLElement} element - DOM element to check if currently visible
 	     * @param {Number} percentage - The percentage of screen threshold the element must be within
-	     * @return {Boolean} true|false
+	     * @return {Boolean} true|false - Returns true if bottom and right property of element is greater
+	     * than 0, and top and left property of element is less than the window height and width respectively,
+	     * taking in to account a threshold percentage of the screen.
 	     */
 	
 	  }, {
@@ -422,13 +434,20 @@
 	  value: true
 	});
 	
-	var _utils = __webpack_require__(1);
+	var _utils2 = __webpack_require__(1);
 	
-	var _utils2 = _interopRequireDefault(_utils);
+	var _utils3 = _interopRequireDefault(_utils2);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	/**
+	 * Reference to utility method
+	 * @type {Object} _utils
+	 * @private
+	 */
+	var _utils = new _utils3.default();
 	
 	/**
 	 * Sets up user interface 
@@ -437,13 +456,11 @@
 	var UI = function () {
 	
 	  /**
-	   * Setup utils
+	   * Constructor
 	   */
 	
 	  function UI() {
 	    _classCallCheck(this, UI);
-	
-	    this._utils = new _utils2.default();
 	  }
 	
 	  /**
@@ -465,9 +482,9 @@
 	      /** Scroll animation */
 	      (function animateScroll(elapsedTime) {
 	        elapsedTime += speed;
-	        document.body.scrollTop = this._utils.ease('easeInOutQuad', elapsedTime, currentScrollPos, distanceToScroll, duration);
+	        document.body.scrollTop = _utils.ease('easeInOutQuad', elapsedTime, currentScrollPos, distanceToScroll, duration);
 	        if (elapsedTime < duration) {
-	          _utils.w.requestAnimationFrame(function () {
+	          _utils2.w.requestAnimationFrame(function () {
 	            animateScroll(elapsedTime);
 	          });
 	        } else if (elapsedTime >= duration) {
@@ -479,31 +496,33 @@
 	    /**
 	     * Scroll to all anchors
 	     * @param {Array} linksArray - Array of anchor elements
+	     * @listens {click} Listen for click event on internal links and fire callback method
 	     */
 	
 	  }, {
 	    key: 'scrollToInternalLinks',
 	    value: function scrollToInternalLinks(linksArray) {
+	      var _this = this;
 	
 	      /** Click event callback */
-	      function _scrollToListener(event) {
+	      function _scrollToListener(event, scrollTo) {
 	        event.preventDefault();
 	
 	        var hash = event.target.href ? event.target.getAttribute('href') : event.target.parentNode.getAttribute('href'),
-	            element = (0, _utils.$)(hash)[0];
+	            element = (0, _utils2.$)(hash)[0];
 	
 	        function changeURLHash() {
-	          _utils.w.location.hash = hash;
+	          _utils2.w.location.hash = hash;
 	        }
 	
-	        this._scrollTo(element, 1250, changeURLHash);
+	        scrollTo(element, 1250, changeURLHash);
 	      }
 	
 	      /** Attach click event listener */
 	      if (linksArray) {
 	        for (var i = 0; i < linksArray.length; i++) {
 	          linksArray[i].addEventListener('click', function (e) {
-	            _scrollToListener(e);
+	            _scrollToListener(e, _this._scrollTo);
 	          }, true);
 	        }
 	      }
@@ -512,19 +531,20 @@
 	    /**
 	     * Add class to element when it is scrolled in to view
 	     * @param {Array} elements - Array of HTML elements to watch
+	     * @listens {scroll} Listen for scroll event on window (default)
+	     * @listens {optimizedScroll} Listen for optimizedScroll event on window and fire callback function
+	     * @emits {optimizedScroll} Dispatch custom scroll event after throttling default scroll event
 	     */
 	
 	  }, {
 	    key: 'addClassOnScrollInToView',
 	    value: function addClassOnScrollInToView(elements) {
 	
-	      var that = this;
-	
 	      /** Scroll event callback  */
 	      function _scrollCallback() {
 	
 	        function toggleActiveClass(el) {
-	          if (that._utils.isElementInViewport(el, 0.75)) {
+	          if (_utils.isElementInViewport(el, 0.75)) {
 	            el.classList.add('active');
 	          } else {
 	            el.classList.remove('active');
@@ -535,8 +555,8 @@
 	      }
 	
 	      /** Throttle default scroll event and listen for optimizedScroll event */
-	      this._utils.throttleEvent('scroll', 'optimizedScroll');
-	      _utils.w.addEventListener('optimizedScroll', function () {
+	      _utils.throttleEvent('scroll', 'optimizedScroll');
+	      _utils2.w.addEventListener('optimizedScroll', function () {
 	        _scrollCallback();
 	      });
 	    }

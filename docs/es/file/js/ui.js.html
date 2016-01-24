@@ -35,6 +35,7 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/app.js~DevToolsAuthor.html">DevToolsAuthor</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/ui.js~UI.html">UI</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/utils.js~utils.html">utils</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$">$</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-w">w</a></span></span></li>
 </ul>
 </div>
@@ -45,6 +46,13 @@
  * User Interface
  */
 import utils, { w, $ } from &apos;./utils.js&apos;;
+
+/**
+ * Reference to utility method
+ * @type {Object} _utils
+ * @private
+ */
+var _utils = new utils();
   
 /**
  * Sets up user interface 
@@ -52,11 +60,9 @@ import utils, { w, $ } from &apos;./utils.js&apos;;
 export default class UI {
 
   /**
-   * Setup utils
+   * Constructor
    */
-  constructor(){
-    this._utils = new utils();
-  }
+  constructor(){}
 
   /**
    * Scroll to element
@@ -74,7 +80,7 @@ export default class UI {
       /** Scroll animation */
       (function animateScroll(elapsedTime) {  
           elapsedTime += speed;
-          document.body.scrollTop = this._utils.ease(&apos;easeInOutQuad&apos;, elapsedTime, currentScrollPos, distanceToScroll, duration); 
+          document.body.scrollTop = _utils.ease(&apos;easeInOutQuad&apos;, elapsedTime, currentScrollPos, distanceToScroll, duration); 
           if (elapsedTime &lt; duration) {
               w.requestAnimationFrame(() =&gt; { animateScroll(elapsedTime); });
           } else if (elapsedTime &gt;= duration) {
@@ -87,11 +93,12 @@ export default class UI {
   /**
    * Scroll to all anchors
    * @param {Array} linksArray - Array of anchor elements
+   * @listens {click} Listen for click event on internal links and fire callback method
    */
   scrollToInternalLinks(linksArray) {
 
     /** Click event callback */
-    function _scrollToListener(event){
+    function _scrollToListener(event, scrollTo){
       event.preventDefault();
 
       var hash    = (event.target.href) ? event.target.getAttribute(&apos;href&apos;) : event.target.parentNode.getAttribute(&apos;href&apos;), 
@@ -101,13 +108,13 @@ export default class UI {
         w.location.hash = hash;
       }
 
-      this._scrollTo(element, 1250, changeURLHash);
+      scrollTo(element, 1250, changeURLHash);
     }
 
     /** Attach click event listener */
     if (linksArray){
       for (var i = 0; i &lt; linksArray.length; i++){
-        linksArray[i].addEventListener(&apos;click&apos;, (e) =&gt; { _scrollToListener(e); }, true);
+        linksArray[i].addEventListener(&apos;click&apos;, (e) =&gt; { _scrollToListener(e, this._scrollTo); }, true);
       }
     }
 
@@ -116,16 +123,17 @@ export default class UI {
   /**
    * Add class to element when it is scrolled in to view
    * @param {Array} elements - Array of HTML elements to watch
+   * @listens {scroll} Listen for scroll event on window (default)
+   * @listens {optimizedScroll} Listen for optimizedScroll event on window and fire callback function
+   * @emits {optimizedScroll} Dispatch custom scroll event after throttling default scroll event
    */
   addClassOnScrollInToView(elements) {
-
-    var that = this;
 
     /** Scroll event callback  */
     function _scrollCallback(){
 
       function toggleActiveClass(el){
-        if (that._utils.isElementInViewport(el, 0.75)) {
+        if (_utils.isElementInViewport(el, 0.75)) {
           el.classList.add(&apos;active&apos;);
         } else {
           el.classList.remove(&apos;active&apos;);
@@ -137,7 +145,7 @@ export default class UI {
     }
 
     /** Throttle default scroll event and listen for optimizedScroll event */
-    this._utils.throttleEvent(&apos;scroll&apos;, &apos;optimizedScroll&apos;);
+    _utils.throttleEvent(&apos;scroll&apos;, &apos;optimizedScroll&apos;);
     w.addEventListener(&apos;optimizedScroll&apos;, () =&gt; { _scrollCallback(); } );
 
   }

@@ -35,19 +35,20 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/app.js~DevToolsAuthor.html">DevToolsAuthor</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/ui.js~UI.html">UI</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/utils.js~utils.html">utils</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$">$</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-w">w</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import utils from &apos;<span><a href="file/js/utils.js.html#lineNumber15">devtools-author-site/js/utils.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import utils from &apos;<span><a href="file/js/utils.js.html#lineNumber14">devtools-author-site/js/utils.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/utils.js.html#lineNumber15">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/utils.js.html#lineNumber14">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -67,7 +68,7 @@
 
   
   
-  <div class="description" data-ice="description"><p>utility object</p>
+  <div class="description" data-ice="description"><p>utility methods</p>
 </div>
 
   
@@ -102,7 +103,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Setup</p>
+</div>
       </div>
     </td>
     <td>
@@ -249,14 +251,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/utils.js.html#lineNumber17">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/utils.js.html#lineNumber19">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Setup</p>
+</div>
 
   
 
@@ -292,7 +295,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/utils.js.html#lineNumber36">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/utils.js.html#lineNumber38">source</a></span></span>
     </span>
   </h3>
 
@@ -437,7 +440,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/utils.js.html#lineNumber62">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/utils.js.html#lineNumber64">source</a></span></span>
     </span>
   </h3>
 
@@ -534,7 +537,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/utils.js.html#lineNumber104">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/utils.js.html#lineNumber109">source</a></span></span>
     </span>
   </h3>
 
@@ -578,7 +581,9 @@
     <table>
       <tr>
         <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></td>
-        <td class="return-desc" data-ice="returnDescription"><p>true|false</p>
+        <td class="return-desc" data-ice="returnDescription"><p>true|false - Returns true if bottom and right property of element is greater
+than 0, and top and left property of element is less than the window height and width respectively,
+taking in to account a threshold percentage of the screen.</p>
 </td>
       </tr>
     </table>
@@ -610,7 +615,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/utils.js.html#lineNumber79">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/utils.js.html#lineNumber82">source</a></span></span>
     </span>
   </h3>
 
@@ -641,7 +646,7 @@
       <td data-ice="name" data-depth="0">name</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>Name of new event to dispatchEvent</p>
+      <td data-ice="description"><p>Name of new CustomEvent to dispatch</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
@@ -658,7 +663,19 @@
 
   
 
-  
+  <div data-ice="emitWrap">
+    <h4>Emit:</h4>
+    <table>
+      <tbody>
+      
+      <tr class="emit" data-ice="emit">
+        <td><p data-ice="emitName"><span>name</span></p></td>
+        <td data-ice="emitDesc"><p>Custom event to dispatch on object</p>
+</td>
+      </tr>
+</tbody>
+    </table>
+  </div>
 
   <div data-ice="listenWrap">
     <h4>Listen:</h4>
@@ -666,8 +683,8 @@
       <tbody>
       
       <tr class="listen" data-ice="listen">
-        <td><p data-ice="listenName"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></p></td>
-        <td data-ice="listenDesc"><p>type - Listen for event to throttle and dispatch custom event for</p>
+        <td><p data-ice="listenName"><span>type</span></p></td>
+        <td data-ice="listenDesc"><p>Listen for event to throttle and dispatch custom event for</p>
 </td>
       </tr>
 </tbody>

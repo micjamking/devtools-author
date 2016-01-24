@@ -1,19 +1,21 @@
 /**
  * Utility methods
  */
-export var 
 
 /** @type {Object} Window */
-w = window,
+export var w = window;
 
 /** @type {Function} Query selector */
-$ = document.querySelectorAll.bind(document);
+export var $ = document.querySelectorAll.bind(document);
 
 /**
- * utility object 
+ * utility methods 
  */
 export default class utils {
-
+  
+  /**
+   * Setup 
+   */
   constructor(){
     /**
      * Easing Functions
@@ -72,9 +74,10 @@ export default class utils {
    * Throttle an event and provide custom event for callback
    * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
    * @param {String} type - Type of event to throttle
-   * @param {String} name - Name of new event to dispatchEvent
+   * @param {String} name - Name of new CustomEvent to dispatch
    * @param {Object} obj - Object to attach event to and dispatch the custom event from
-   * @listens {String} type - Listen for event to throttle and dispatch custom event for
+   * @listens {type} Listen for event to throttle and dispatch custom event for
+   * @emits {name} Custom event to dispatch on object
    */
   throttleEvent(type, name, obj) {
 
@@ -99,7 +102,9 @@ export default class utils {
    * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll
    * @param {HTMLElement} element - DOM element to check if currently visible
    * @param {Number} percentage - The percentage of screen threshold the element must be within
-   * @return {Boolean} true|false
+   * @return {Boolean} true|false - Returns true if bottom and right property of element is greater
+   * than 0, and top and left property of element is less than the window height and width respectively,
+   * taking in to account a threshold percentage of the screen.
    */
   isElementInViewport(element, percentage) {
 

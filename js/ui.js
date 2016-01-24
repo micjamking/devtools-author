@@ -2,6 +2,13 @@
  * User Interface
  */
 import utils, { w, $ } from './utils.js';
+
+/**
+ * Reference to utility method
+ * @type {Object} _utils
+ * @private
+ */
+var _utils = new utils();
   
 /**
  * Sets up user interface 
@@ -9,11 +16,9 @@ import utils, { w, $ } from './utils.js';
 export default class UI {
 
   /**
-   * Setup utils
+   * Constructor
    */
-  constructor(){
-    this._utils = new utils();
-  }
+  constructor(){}
 
   /**
    * Scroll to element
@@ -31,7 +36,7 @@ export default class UI {
       /** Scroll animation */
       (function animateScroll(elapsedTime) {  
           elapsedTime += speed;
-          document.body.scrollTop = this._utils.ease('easeInOutQuad', elapsedTime, currentScrollPos, distanceToScroll, duration); 
+          document.body.scrollTop = _utils.ease('easeInOutQuad', elapsedTime, currentScrollPos, distanceToScroll, duration); 
           if (elapsedTime < duration) {
               w.requestAnimationFrame(() => { animateScroll(elapsedTime); });
           } else if (elapsedTime >= duration) {
@@ -44,11 +49,12 @@ export default class UI {
   /**
    * Scroll to all anchors
    * @param {Array} linksArray - Array of anchor elements
+   * @listens {click} Listen for click event on internal links and fire callback method
    */
   scrollToInternalLinks(linksArray) {
 
     /** Click event callback */
-    function _scrollToListener(event){
+    function _scrollToListener(event, scrollTo){
       event.preventDefault();
 
       var hash    = (event.target.href) ? event.target.getAttribute('href') : event.target.parentNode.getAttribute('href'), 
@@ -58,13 +64,13 @@ export default class UI {
         w.location.hash = hash;
       }
 
-      this._scrollTo(element, 1250, changeURLHash);
+      scrollTo(element, 1250, changeURLHash);
     }
 
     /** Attach click event listener */
     if (linksArray){
       for (var i = 0; i < linksArray.length; i++){
-        linksArray[i].addEventListener('click', (e) => { _scrollToListener(e); }, true);
+        linksArray[i].addEventListener('click', (e) => { _scrollToListener(e, this._scrollTo); }, true);
       }
     }
 
@@ -73,16 +79,17 @@ export default class UI {
   /**
    * Add class to element when it is scrolled in to view
    * @param {Array} elements - Array of HTML elements to watch
+   * @listens {scroll} Listen for scroll event on window (default)
+   * @listens {optimizedScroll} Listen for optimizedScroll event on window and fire callback function
+   * @emits {optimizedScroll} Dispatch custom scroll event after throttling default scroll event
    */
   addClassOnScrollInToView(elements) {
-
-    var that = this;
 
     /** Scroll event callback  */
     function _scrollCallback(){
 
       function toggleActiveClass(el){
-        if (that._utils.isElementInViewport(el, 0.75)) {
+        if (_utils.isElementInViewport(el, 0.75)) {
           el.classList.add('active');
         } else {
           el.classList.remove('active');
@@ -94,7 +101,7 @@ export default class UI {
     }
 
     /** Throttle default scroll event and listen for optimizedScroll event */
-    this._utils.throttleEvent('scroll', 'optimizedScroll');
+    _utils.throttleEvent('scroll', 'optimizedScroll');
     w.addEventListener('optimizedScroll', () => { _scrollCallback(); } );
 
   }
