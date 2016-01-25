@@ -3,7 +3,7 @@
   dl {
     width: 100%;
     max-width: em-calc($medium);
-    margin: 0 auto em-calc(80px);
+    margin: 0 auto;
     text-align: center;
 
     dt {
@@ -46,6 +46,10 @@
     img {
       transition: all 0.25s ease('material');
     }
+  }
+
+  .official-resources {
+    margin-bottom: 2em;
   }
 
   .resource {

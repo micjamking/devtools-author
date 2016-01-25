@@ -1708,7 +1708,7 @@ body {
 .faq-section dl {
   width: 100%;
   max-width: 32rem;
-  margin: 0 auto 4rem;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -1751,6 +1751,10 @@ body {
 
 .faq-section .thumbnail img {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-section .official-resources {
+  margin-bottom: 2em;
 }
 
 .faq-section .resource {
