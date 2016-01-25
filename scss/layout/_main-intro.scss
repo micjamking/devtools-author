@@ -4,12 +4,8 @@
   background-repeat: no-repeat;
   background-position: center 200%;
 
-  @media #{$medium-screen}{
-    height: em-calc(900px);
-  }
-
-  .subtitle {
-    font-style: italic;
+  .row {
+    height: 100%;
   }
 
   .main-intro-image {
@@ -45,8 +41,8 @@
     }
   }
 
-  .row {
-    height: 100%;
+  .subtitle {
+    font-style: italic;
   }
 
   .button.cta {
@@ -80,6 +76,7 @@
   }
 
   @media #{$medium-screen} {
+    height: em-calc(900px);
     background-image: none;
     text-align: left;
     padding-top: 0;
