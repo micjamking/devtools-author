@@ -17,7 +17,7 @@
   <meta property="og:url" content="http://mikeking.io/devtools-author/" />
   <meta property="og:title" content="DevTools Author | A selection of author settings for Chrome Developer Tools" />
   <meta property="og:description" content="DevTools Author is a Google Chrome extension which provides a selection of author settings for Chrome Developer Tools." />
-  <meta property="og:image" content="//mikeking.io/devtools-author/images/devtools-author-settings.png" />
+  <meta property="og:image" content="http://mikeking.io/devtools-author/images/devtools-author-settings.png" />
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="832">
   <meta property="og:image:height" content="639">
@@ -33,6 +33,10 @@
   <!-- Google+ -->
   <link rel="author" href="//plus.google.com/112398162809101288990/posts" />
   <link rel="publisher" href="//plus.google.com/112398162809101288990/about" />
+  
+  <!-- DNS Prefetch -->
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css" />
@@ -40,6 +44,18 @@
   <link rel="stylesheet" href="style.css" />
 
   <title>DevTools Author | A selection of author settings for Chrome Developer Tools</title>
+  
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-67907671-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
 </head>
 <body>
   <!-- Main Header -->
@@ -159,7 +175,7 @@
               <li>Enable DevTools experiments in <span class="comment">(copy below in to omnibox)</span> <a class="internal" title="Enable DevTools Experiments in Chrome Flags">chrome://flags/#enable-devtools-experiments</a></li>
               <li>Open DevTools (<span class="keyword">cmd</span> + <span class="keyword">opt</span> + <span class="keyword">I</span>); Settings > Experiments > check <span class="option"><strong>Allow custom UI Themes</strong></span>.</li>
             </ol>
-            <p class="comment">/* After restarting DevTools, you should see the default theme 3024 take affect within the Sources and Console panels. */</p>
+            <p class="comment">/* After restarting DevTools, you should see the default theme 3024 take affect within the Elements, Sources and Console panels. */</p>
             <p class="comment">/* DevTools Author currently supports custom monospace fonts <a href="//sourcefoundry.org/hack/" class="keyword" title="Hack font">Hack</a>, <a href="//adobe-fonts.github.io/source-code-pro/" class="keyword" title="Source Code Pro Font">Source Code Pro</a>, and <a href="//www.google.com/fonts/specimen/Droid+Sans+Mono" class="keyword" title="Droid Sans Mono Font">Droid Sans Mono</a>. (Must be installed on your computer).*/</p>
           </pre>
           <h4 class="github-issues"><span class="subtitle">Have a Question, Issue or Suggestion?</span><br/><small><a href="//github.com/micjamking/devtools-author/issues" title="DevTools Author Issues on GitHub">See existing discussions</a> or <a href="//github.com/micjamking/devtools-author/issues/new" title="Create an Issue on GitHub">open a new issue.</a></small></h4>
@@ -176,7 +192,7 @@
           <h3 class="title">Most Common Question:</h3>
           <dl>
             <dt>Why should I use DevTools instead of &lt;insert editor here&gt;?</dt>
-            <dd><span class="subtitle">See</span><br/><a href="//medium.com/p/779c599b022" class="link" alt="Chrome DevTools: an IDE for the Web">Chrome DevTools: an IDE for the Web</a></dd>
+            <!-- <dd><span class="subtitle">See</span><br/><a href="//medium.com/p/779c599b022" class="link" alt="Chrome DevTools: an IDE for the Web">Chrome DevTools: an IDE for the Web</a></dd> -->
             <dd><span class="subtitle">Additional References:</span></dd>
             <dd class="video-link"><a href="//www.youtube.com/watch?v=BaneWEqNcpE" alt="Wait, Chrome DevTools could do THAT?">YouTube: Wait, Chrome DevTools could do THAT?</a></dd>
             <dd><a href="//medium.com/google-developers/devtools-tips-for-sublime-text-users-cdd559ee80f8" alt="DevTools Tips For Sublime Text Users">Medium: DevTools Tips For Sublime Text Users</a></dd>

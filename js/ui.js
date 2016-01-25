@@ -1,101 +1,122 @@
 /**
  * User Interface
  */
-(function(
-  w,  // window
-  $,  // document.querySelectorAll
-  DA  // DevTools Author global
-){
-  'use strict';
+import utils, { w, $ } from './utils.js';
+
+/**
+ * Reference to utility method
+ * @type {Object} _utils
+ * @private
+ */
+var _utils = new utils();
   
-  /** @object UI */
-  var UI = {};
-  
+/**
+ * Sets up user interface 
+ */
+export default class UI {
+
   /**
-   * scroll to element
-   * @params targetElement Element to scroll to
-   * @params duration Speed of scroll animation
-   * @params callback Callback function after scroll has completed
+   * Constructor
    */
-  UI.scrollTo = function(targetElement, duration, callback) {
+  constructor(){}
+
+  /**
+   * Scroll to element
+   * @param {HTMLElement} targetElement - Element to scroll to
+   * @param {Number} duration - Speed of scroll animation
+   * @param {Function} callback - Callback function after scroll has completed
+   * @private
+   */
+  _scrollTo(targetElement, duration, callback) {
+
       var currentScrollPos = document.body.scrollTop,
           distanceToScroll = targetElement.offsetTop - currentScrollPos,
           speed            = 16;
-      
-      // Scroll animation
+
+      /** Scroll animation */
       (function animateScroll(elapsedTime) {  
           elapsedTime += speed;
-          document.body.scrollTop = DA.utils.ease('easeInOutQuad', elapsedTime, currentScrollPos, distanceToScroll, duration); 
+          document.body.scrollTop = _utils.ease('easeInOutQuad', elapsedTime, currentScrollPos, distanceToScroll, duration); 
           if (elapsedTime < duration) {
-              w.requestAnimationFrame(function() {
-                  animateScroll(elapsedTime);
-              });
+              w.requestAnimationFrame(() => { animateScroll(elapsedTime); });
           } else if (elapsedTime >= duration) {
             return callback();
           }
       })(0);
-  };
+
+  }
 
   /**
-   * scroll to all anchors
-   * @params linksArray Array of anchor elements
+   * Scroll to all anchors
+   * @param {Array} linksArray - Array of anchor elements
+   * @listens {click} Listen for click event on internal links and fire callback method
    */
-  UI.scrollToInternalLinks = function(linksArray){
-    function scrollToListener(event){
+  scrollToInternalLinks(linksArray) {
+
+    /** Click event callback */
+    function _scrollToListener(event, scrollTo){
       event.preventDefault();
-      
+
       var hash    = (event.target.href) ? event.target.getAttribute('href') : event.target.parentNode.getAttribute('href'), 
           element = $(hash)[0];
-      
+
       function changeURLHash(){
         w.location.hash = hash;
       }
-      
-      UI.scrollTo(element, 1250, changeURLHash);
+
+      scrollTo(element, 1250, changeURLHash);
     }
 
+    /** Attach click event listener */
     if (linksArray){
       for (var i = 0; i < linksArray.length; i++){
-        linksArray[i].addEventListener('click', scrollToListener, true);
+        linksArray[i].addEventListener('click', (e) => { _scrollToListener(e, this._scrollTo); }, true);
       }
-    } else {
-      console.log('No internal links found!');
     }
-  };
+
+  }
 
   /**
    * Add class to element when it is scrolled in to view
-   * @params {HTMLElement} elements - Array of HTML elements to watch
+   * @param {Array} elements - Array of HTML elements to watch
+   * @listens {scroll} Listen for scroll event on window (default)
+   * @listens {optimizedScroll} Listen for optimizedScroll event on window and fire callback function
+   * @emits {optimizedScroll} Dispatch custom scroll event after throttling default scroll event
    */
-  UI.addClassOnScrollInToView = function(elements){
-      
-    function toggleActiveClass(el){
-      if (DA.utils.isElementInViewport(el, 0.75)) {
-        el.classList.add('active');
-      } else {
-        el.classList.remove('active');
+  addClassOnScrollInToView(elements) {
+
+    /** Scroll event callback  */
+    function _scrollCallback(){
+
+      function toggleActiveClass(el){
+        if (_utils.isElementInViewport(el, 0.75)) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
       }
-    }
 
-    function scrollCallback(){
       Array.prototype.forEach.call(elements, toggleActiveClass);
+
     }
 
-    DA.utils.throttle('scroll', 'optimizedScroll');
-    w.addEventListener('optimizedScroll', scrollCallback);
-  };
-  
+    /** Throttle default scroll event and listen for optimizedScroll event */
+    _utils.throttleEvent('scroll', 'optimizedScroll');
+    w.addEventListener('optimizedScroll', () => { _scrollCallback(); } );
+
+  }
+
   /**
-   * Set Year
-   * @params year Element to set year text within
+   * Set current year in footer
+   * @param {HTMLElement} year - Element to set year text within
    */
-  UI.setYear = function(year){
-    var date = new Date();
-    if (year){
-      year.innerHTML = date.getFullYear();
-    }
-  };
+  setYear(year) {
 
-  /** @export UI */
-  DA.UI = UI;
-})(window, document.querySelectorAll.bind(document), window.DA = window.DA || {});
+    var date = new Date();
+
+    if (year){
+      year.innerHTML = (date.getFullYear() === 2015) ? date.getFullYear() : '2015 - ' + date.getFullYear();
+    }
+
+  }
+}

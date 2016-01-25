@@ -1,0 +1,1569 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/app.js",
+    "memberof": null,
+    "longname": "js/app.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 4,
+    "content": "/**\n * Application entry point\n */\nimport { w, $ } from './utils.js';\nimport UI from './ui.js';\n\n/**\n * Creates DevTools Author\n */\nexport class DevToolsAuthor {\n  \n  /**\n   * Setup DOM references and event listeners\n   */\n  constructor() {\n    \n    /** \n     * DOM References to primary elements\n     * @type {Object} _$els\n     * @property {HTMLElement} internalLinks - Anchor links with a hash (#) href value\n     * @property {HTMLElement} panels - Elements with the class of `.panel`\n     * @property {HTMLElement} currentYear - Element with the class of `.currentYear`\n     * @property {HTMLElement} links - Element with the class of `.share-links`\n     * @private\n     */\n    this._$els = {\n      internalLinks: $('a[href^=\"#\"]'),\n      panels: $('.panel'),\n      currentYear: $('.currentYear')[0],\n      links: $('.share-links')[0]\n    };\n\n    /**\n     * Reference to user interface methods\n     * @type {Object} _ui\n     * @private\n     */\n    this._ui = new UI();\n    \n    /** Setup event listeners */\n    this._registerListeners();\n  }\n  \n  /**\n   * Setup UI\n   * @private\n   */\n  _initUI() {\n\n    if ( this._$els.currentYear ){\n      this._ui.setYear( this._$els.currentYear );\n    }\n    \n    if ( this._$els.internalLinks ){\n      this._ui.scrollToInternalLinks( this._$els.internalLinks );\n    }\n    \n    if ( this._$els.panels ){\n      this._ui.addClassOnScrollInToView( this._$els.panels );\n    }\n  \n  }\n  \n  /**\n   * Social Media APIs\n   * @emits {social-loaded} Emits event when Facebook API has completely rendered\n   * @private\n   */\n  _initSocial() {\n    \n    /** Google API */\n    ((d, s, id) => {\n       var js, fjs = d.getElementsByTagName(s)[0];\n       if (d.getElementById(id)) { return; }\n       js = d.createElement(s); \n       js.id = id;\n       js.src = '//apis.google.com/js/platform.js';\n       fjs.parentNode.insertBefore(js, fjs);\n    })(document, 'script', 'google-sdk');\n\n    /** Twitter API */\n    ((d, s, id) => {\n      var js, fjs = d.getElementsByTagName(s)[0];\n      if (d.getElementById(id)) { return; }\n      js = d.createElement(s);\n      js.id = id;\n      js.src = '//platform.twitter.com/widgets.js';\n      fjs.parentNode.insertBefore(js, fjs);\n    })(document, 'script', 'twitter-wjs');\n\n    /** Facebook SDK */\n    ((d, s, id) => {\n       var js, fjs = d.getElementsByTagName(s)[0];\n       if (d.getElementById(id)) { return; }\n       js = d.createElement(s); \n       js.id = id;\n       js.src = '//connect.facebook.net/en_US/sdk.js';\n       fjs.parentNode.insertBefore(js, fjs);\n    })(document, 'script', 'facebook-jssdk');\n\n    /** Facebook SDK Init */\n    window.fbAsyncInit = function() {\n      \n      FB.init({\n        appId   : '1686524291587989',\n        xfbml   : true,\n        version : 'v2.5'\n      });\n\n      /**\n       * Publish event after Facebook \n       * share has rendered (since it *seems* to take the longest)\n       */\n      FB.Event.subscribe('xfbml.render', () => {\n        var fbLoaded = new CustomEvent( 'social-loaded' );\n        window.dispatchEvent( fbLoaded );\n      });\n    \n    };\n  \n  }\n  \n  /**\n   * Setup social media UI\n   * @private\n   */\n  _initSocialUI() {\n    \n    if ( this._$els.links ){\n      this._$els.links.style.display = 'block';\n    }\n  \n  }\n  \n  /**\n   * Setup Event Listeners\n   * @listens {DOMContentLoaded} Initialize UI\n   * @listens {load} Initialize Social Media API\n   * @listens {social-loaded} Initialize Social Media UI\n   * @private\n   */\n  _registerListeners() {\n    \n    w.addEventListener( 'DOMContentLoaded', () => {\n       this._initUI(); \n    });\n    \n    w.addEventListener( 'load', () => { \n      this._initSocial(); \n    });\n    \n    w.addEventListener( 'social-loaded', () => { \n      this._initSocialUI();\n    });\n  \n  }\n\n}\n\n/** hello.world */\nnew DevToolsAuthor();"
+  },
+  {
+    "__docId__": 1,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "DevToolsAuthor",
+    "memberof": "js/app.js",
+    "longname": "js/app.js~DevToolsAuthor",
+    "access": null,
+    "export": true,
+    "importPath": "devtools-author-site/js/app.js",
+    "importStyle": "{DevToolsAuthor}",
+    "description": "Creates DevTools Author",
+    "lineNumber": 10,
+    "interface": false
+  },
+  {
+    "__docId__": 2,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "js/app.js~DevToolsAuthor",
+    "longname": "js/app.js~DevToolsAuthor#constructor",
+    "access": null,
+    "description": "Setup DOM references and event listeners",
+    "lineNumber": 15,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 3,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_$els",
+    "memberof": "js/app.js~DevToolsAuthor",
+    "longname": "js/app.js~DevToolsAuthor#_$els",
+    "access": "private",
+    "description": "DOM References to primary elements",
+    "lineNumber": 26,
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "internalLinks",
+        "description": "Anchor links with a hash (#) href value"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "panels",
+        "description": "Elements with the class of `.panel`"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "currentYear",
+        "description": "Element with the class of `.currentYear`"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "links",
+        "description": "Element with the class of `.share-links`"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 4,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_ui",
+    "memberof": "js/app.js~DevToolsAuthor",
+    "longname": "js/app.js~DevToolsAuthor#_ui",
+    "access": "private",
+    "description": "Reference to user interface methods",
+    "lineNumber": 38,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 5,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_initUI",
+    "memberof": "js/app.js~DevToolsAuthor",
+    "longname": "js/app.js~DevToolsAuthor#_initUI",
+    "access": "private",
+    "description": "Setup UI",
+    "lineNumber": 48,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 6,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_initSocial",
+    "memberof": "js/app.js~DevToolsAuthor",
+    "longname": "js/app.js~DevToolsAuthor#_initSocial",
+    "access": "private",
+    "description": "Social Media APIs",
+    "lineNumber": 69,
+    "params": [],
+    "emits": [
+      {
+        "types": [
+          "social-loaded"
+        ],
+        "description": "Emits event when Facebook API has completely rendered"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 7,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_initSocialUI",
+    "memberof": "js/app.js~DevToolsAuthor",
+    "longname": "js/app.js~DevToolsAuthor#_initSocialUI",
+    "access": "private",
+    "description": "Setup social media UI",
+    "lineNumber": 127,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 8,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_registerListeners",
+    "memberof": "js/app.js~DevToolsAuthor",
+    "longname": "js/app.js~DevToolsAuthor#_registerListeners",
+    "access": "private",
+    "description": "Setup Event Listeners",
+    "lineNumber": 142,
+    "params": [],
+    "listens": [
+      {
+        "types": [
+          "DOMContentLoaded"
+        ],
+        "description": "Initialize UI"
+      },
+      {
+        "types": [
+          "load"
+        ],
+        "description": "Initialize Social Media API"
+      },
+      {
+        "types": [
+          "social-loaded"
+        ],
+        "description": "Initialize Social Media UI"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 9,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/ui.js",
+    "memberof": null,
+    "longname": "js/ui.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 4,
+    "content": "/**\n * User Interface\n */\nimport utils, { w, $ } from './utils.js';\n\n/**\n * Reference to utility method\n * @type {Object} _utils\n * @private\n */\nvar _utils = new utils();\n  \n/**\n * Sets up user interface \n */\nexport default class UI {\n\n  /**\n   * Constructor\n   */\n  constructor(){}\n\n  /**\n   * Scroll to element\n   * @param {HTMLElement} targetElement - Element to scroll to\n   * @param {Number} duration - Speed of scroll animation\n   * @param {Function} callback - Callback function after scroll has completed\n   * @private\n   */\n  _scrollTo(targetElement, duration, callback) {\n\n      var currentScrollPos = document.body.scrollTop,\n          distanceToScroll = targetElement.offsetTop - currentScrollPos,\n          speed            = 16;\n\n      /** Scroll animation */\n      (function animateScroll(elapsedTime) {  \n          elapsedTime += speed;\n          document.body.scrollTop = _utils.ease('easeInOutQuad', elapsedTime, currentScrollPos, distanceToScroll, duration); \n          if (elapsedTime < duration) {\n              w.requestAnimationFrame(() => { animateScroll(elapsedTime); });\n          } else if (elapsedTime >= duration) {\n            return callback();\n          }\n      })(0);\n\n  }\n\n  /**\n   * Scroll to all anchors\n   * @param {Array} linksArray - Array of anchor elements\n   * @listens {click} Listen for click event on internal links and fire callback method\n   */\n  scrollToInternalLinks(linksArray) {\n\n    /** Click event callback */\n    function _scrollToListener(event, scrollTo){\n      event.preventDefault();\n\n      var hash    = (event.target.href) ? event.target.getAttribute('href') : event.target.parentNode.getAttribute('href'), \n          element = $(hash)[0];\n\n      function changeURLHash(){\n        w.location.hash = hash;\n      }\n\n      scrollTo(element, 1250, changeURLHash);\n    }\n\n    /** Attach click event listener */\n    if (linksArray){\n      for (var i = 0; i < linksArray.length; i++){\n        linksArray[i].addEventListener('click', (e) => { _scrollToListener(e, this._scrollTo); }, true);\n      }\n    }\n\n  }\n\n  /**\n   * Add class to element when it is scrolled in to view\n   * @param {Array} elements - Array of HTML elements to watch\n   * @listens {scroll} Listen for scroll event on window (default)\n   * @listens {optimizedScroll} Listen for optimizedScroll event on window and fire callback function\n   * @emits {optimizedScroll} Dispatch custom scroll event after throttling default scroll event\n   */\n  addClassOnScrollInToView(elements) {\n\n    /** Scroll event callback  */\n    function _scrollCallback(){\n\n      function toggleActiveClass(el){\n        if (_utils.isElementInViewport(el, 0.75)) {\n          el.classList.add('active');\n        } else {\n          el.classList.remove('active');\n        }\n      }\n\n      Array.prototype.forEach.call(elements, toggleActiveClass);\n\n    }\n\n    /** Throttle default scroll event and listen for optimizedScroll event */\n    _utils.throttleEvent('scroll', 'optimizedScroll');\n    w.addEventListener('optimizedScroll', () => { _scrollCallback(); } );\n\n  }\n\n  /**\n   * Set current year in footer\n   * @param {HTMLElement} year - Element to set year text within\n   */\n  setYear(year) {\n\n    var date = new Date();\n\n    if (year){\n      year.innerHTML = (date.getFullYear() === 2015) ? date.getFullYear() : '2015 - ' + date.getFullYear();\n    }\n\n  }\n}"
+  },
+  {
+    "__docId__": 10,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_utils",
+    "memberof": "js/ui.js",
+    "longname": "js/ui.js~_utils",
+    "access": "private",
+    "export": false,
+    "importPath": "devtools-author-site/js/ui.js",
+    "importStyle": null,
+    "description": "Reference to utility method",
+    "lineNumber": 11,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 11,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "UI",
+    "memberof": "js/ui.js",
+    "longname": "js/ui.js~UI",
+    "access": null,
+    "export": true,
+    "importPath": "devtools-author-site/js/ui.js",
+    "importStyle": "UI",
+    "description": "Sets up user interface",
+    "lineNumber": 16,
+    "interface": false
+  },
+  {
+    "__docId__": 12,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "js/ui.js~UI",
+    "longname": "js/ui.js~UI#constructor",
+    "access": null,
+    "description": "Constructor",
+    "lineNumber": 21,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 13,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "_scrollTo",
+    "memberof": "js/ui.js~UI",
+    "longname": "js/ui.js~UI#_scrollTo",
+    "access": "private",
+    "description": "Scroll to element",
+    "lineNumber": 30,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "targetElement",
+        "description": "Element to scroll to"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "duration",
+        "description": "Speed of scroll animation"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": "Callback function after scroll has completed"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 14,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "scrollToInternalLinks",
+    "memberof": "js/ui.js~UI",
+    "longname": "js/ui.js~UI#scrollToInternalLinks",
+    "access": null,
+    "description": "Scroll to all anchors",
+    "lineNumber": 54,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "linksArray",
+        "description": "Array of anchor elements"
+      }
+    ],
+    "listens": [
+      {
+        "types": [
+          "click"
+        ],
+        "description": "Listen for click event on internal links and fire callback method"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 15,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "addClassOnScrollInToView",
+    "memberof": "js/ui.js~UI",
+    "longname": "js/ui.js~UI#addClassOnScrollInToView",
+    "access": null,
+    "description": "Add class to element when it is scrolled in to view",
+    "lineNumber": 86,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "elements",
+        "description": "Array of HTML elements to watch"
+      }
+    ],
+    "emits": [
+      {
+        "types": [
+          "optimizedScroll"
+        ],
+        "description": "Dispatch custom scroll event after throttling default scroll event"
+      }
+    ],
+    "listens": [
+      {
+        "types": [
+          "scroll"
+        ],
+        "description": "Listen for scroll event on window (default)"
+      },
+      {
+        "types": [
+          "optimizedScroll"
+        ],
+        "description": "Listen for optimizedScroll event on window and fire callback function"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 16,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "setYear",
+    "memberof": "js/ui.js~UI",
+    "longname": "js/ui.js~UI#setYear",
+    "access": null,
+    "description": "Set current year in footer",
+    "lineNumber": 113,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "year",
+        "description": "Element to set year text within"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 17,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/utils.js",
+    "memberof": null,
+    "longname": "js/utils.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "content": "/**\n * Utility methods\n */\n\n/** @type {Object} Window */\nexport var w = window;\n\n/** @type {Function} Query selector */\nexport var $ = document.querySelectorAll.bind(document);\n\n/**\n * utility methods \n */\nexport default class utils {\n  \n  /**\n   * Setup \n   */\n  constructor(){\n    /**\n     * Easing Functions\n     * @see http://gizma.com/easing/\n     * @type {Object} _easing\n     * @property {Function(t: Number): Number} linear - no easing, no acceleration\n     * @property {Function(t: Number): Number} easeInQuad - accelerating from zero velocity\n     * @property {Function(t: Number): Number} easeOutQuad - decelerating to zero velocity\n     * @property {Function(t: Number): Number} easeInOutQuad - acceleration until halfway, then deceleration\n     * @property {Function(t: Number): Number} easeInCubic - accelerating from zero velocity\n     * @property {Function(t: Number): Number} easeOutCubic - decelerating to zero velocity\n     * @property {Function(t: Number): Number} easeInOutCubic - acceleration until halfway, then deceleration\n     * @property {Function(t: Number): Number} easeInQuart - accelerating from zero velocity\n     * @property {Function(t: Number): Number} easeOutQuart - decelerating to zero velocity\n     * @property {Function(t: Number): Number} easeInOutQuart - acceleration until halfway, then deceleration\n     * @property {Function(t: Number): Number} easeInQuint - accelerating from zero velocity\n     * @property {Function(t: Number): Number} easeOutQuint - decelerating to zero velocity\n     * @property {Function(t: Number): Number} easeInOutQuint - acceleration until halfway, then deceleration\n     */\n    this._easing = {\n      linear: (t) => { return t; },\n      easeInQuad: (t) => { return t*t; },\n      easeOutQuad: (t) => { return t*(2-t); },\n      easeInOutQuad: (t) => { return t<0.5 ? 2*t*t : -1+(4-2*t)*t; },\n      easeInCubic: (t) => { return t*t*t; },\n      easeOutCubic: (t) => { return (--t)*t*t+1; },\n      easeInOutCubic: (t) => { return t<0.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1; },\n      easeInQuart: (t) => { return t*t*t*t; },\n      easeOutQuart: (t) => { return 1-(--t)*t*t*t; },\n      easeInOutQuart: (t) => { return t<0.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t; },\n      easeInQuint: (t) => { return t*t*t*t*t; },\n      easeOutQuint: (t) => { return 1+(--t)*t*t*t*t; },\n      easeInOutQuint: (t) => { return t<0.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t; }\n    };\n  }\n\n  /**\n   * Easing Timing\n   * @param {String} easingFunction - Name of easing function to use\n   * @param {Number} elapsedTime - Length of time (ms) that has passed since start\n   * @param {Number} start - Initial (y) starting position\n   * @param {Number} change - Distance to travel\n   * @param {Number} duration - Speed of travel\n   * @return {Number} eased timing\n   */\n  ease(easingFunction, elapsedTime, start, change, duration) {\n\n    var time        = Math.min(1, (elapsedTime / duration)),\n        easedTiming = this._easing[easingFunction](time);\n\n    return (easedTiming * change) + start;\n\n  }\n\n  /**\n   * Throttle an event and provide custom event for callback\n   * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll\n   * @param {String} type - Type of event to throttle\n   * @param {String} name - Name of new CustomEvent to dispatch\n   * @param {Object} obj - Object to attach event to and dispatch the custom event from\n   * @listens {type} Listen for event to throttle and dispatch custom event for\n   * @emits {name} Custom event to dispatch on object\n   */\n  throttleEvent(type, name, obj) {\n\n      obj = obj || w;\n      var running = false;\n\n      var func = function() {\n          if (running) { return; }\n          running = true;\n          requestAnimationFrame(() => {\n              obj.dispatchEvent(new CustomEvent(name));\n              running = false;\n          });\n      };\n\n      obj.addEventListener(type, func);\n\n  }\n\n  /**\n   * Check if element is currently visible in viewport\n   * @see https://developer.mozilla.org/en-US/docs/Web/Events/scroll\n   * @param {HTMLElement} element - DOM element to check if currently visible\n   * @param {Number} percentage - The percentage of screen threshold the element must be within\n   * @return {Boolean} true|false - Returns true if bottom and right property of element is greater\n   * than 0, and top and left property of element is less than the window height and width respectively,\n   * taking in to account a threshold percentage of the screen.\n   */\n  isElementInViewport(element, percentage) {\n\n    var rect = element.getBoundingClientRect();\n\n    percentage = percentage || 1;\n\n    return (\n        rect.bottom >= 0 &&\n        rect.right  >= 0 &&\n        rect.top  <= ( ( window.innerHeight || document.documentElement.clientHeight ) * percentage ) &&\n        rect.left <= ( ( window.innerWidth || document.documentElement.clientWidth ) * percentage )\n    );\n\n  }\n}"
+  },
+  {
+    "__docId__": 18,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "w",
+    "memberof": "js/utils.js",
+    "longname": "js/utils.js~w",
+    "access": null,
+    "export": true,
+    "importPath": "devtools-author-site/js/utils.js",
+    "importStyle": "{w}",
+    "description": null,
+    "lineNumber": 6,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 19,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "$",
+    "memberof": "js/utils.js",
+    "longname": "js/utils.js~$",
+    "access": null,
+    "export": true,
+    "importPath": "devtools-author-site/js/utils.js",
+    "importStyle": "{$}",
+    "description": null,
+    "lineNumber": 9,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Function"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 20,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "utils",
+    "memberof": "js/utils.js",
+    "longname": "js/utils.js~utils",
+    "access": null,
+    "export": true,
+    "importPath": "devtools-author-site/js/utils.js",
+    "importStyle": "utils",
+    "description": "utility methods",
+    "lineNumber": 14,
+    "interface": false
+  },
+  {
+    "__docId__": 21,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "js/utils.js~utils",
+    "longname": "js/utils.js~utils#constructor",
+    "access": null,
+    "description": "Setup",
+    "lineNumber": 19,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 22,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "_easing",
+    "memberof": "js/utils.js~utils",
+    "longname": "js/utils.js~utils#_easing",
+    "access": null,
+    "description": "Easing Functions",
+    "see": [
+      "http://gizma.com/easing/"
+    ],
+    "lineNumber": 38,
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "linear",
+        "description": "no easing, no acceleration"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInQuad",
+        "description": "accelerating from zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeOutQuad",
+        "description": "decelerating to zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInOutQuad",
+        "description": "acceleration until halfway, then deceleration"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInCubic",
+        "description": "accelerating from zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeOutCubic",
+        "description": "decelerating to zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInOutCubic",
+        "description": "acceleration until halfway, then deceleration"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInQuart",
+        "description": "accelerating from zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeOutQuart",
+        "description": "decelerating to zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInOutQuart",
+        "description": "acceleration until halfway, then deceleration"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInQuint",
+        "description": "accelerating from zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeOutQuint",
+        "description": "decelerating to zero velocity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function(t: Number): Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easeInOutQuint",
+        "description": "acceleration until halfway, then deceleration"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 23,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "ease",
+    "memberof": "js/utils.js~utils",
+    "longname": "js/utils.js~utils#ease",
+    "access": null,
+    "description": "Easing Timing",
+    "lineNumber": 64,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "easingFunction",
+        "description": "Name of easing function to use"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "elapsedTime",
+        "description": "Length of time (ms) that has passed since start"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "start",
+        "description": "Initial (y) starting position"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "change",
+        "description": "Distance to travel"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "duration",
+        "description": "Speed of travel"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": "eased timing"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 24,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "throttleEvent",
+    "memberof": "js/utils.js~utils",
+    "longname": "js/utils.js~utils#throttleEvent",
+    "access": null,
+    "description": "Throttle an event and provide custom event for callback",
+    "see": [
+      "https://developer.mozilla.org/en-US/docs/Web/Events/scroll"
+    ],
+    "lineNumber": 82,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "type",
+        "description": "Type of event to throttle"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": "Name of new CustomEvent to dispatch"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "obj",
+        "description": "Object to attach event to and dispatch the custom event from"
+      }
+    ],
+    "emits": [
+      {
+        "types": [
+          "name"
+        ],
+        "description": "Custom event to dispatch on object"
+      }
+    ],
+    "listens": [
+      {
+        "types": [
+          "type"
+        ],
+        "description": "Listen for event to throttle and dispatch custom event for"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 25,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "isElementInViewport",
+    "memberof": "js/utils.js~utils",
+    "longname": "js/utils.js~utils#isElementInViewport",
+    "access": null,
+    "description": "Check if element is currently visible in viewport",
+    "see": [
+      "https://developer.mozilla.org/en-US/docs/Web/Events/scroll"
+    ],
+    "lineNumber": 109,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "HTMLElement"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "element",
+        "description": "DOM element to check if currently visible"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "percentage",
+        "description": "The percentage of screen threshold the element must be within"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Boolean"
+      ],
+      "spread": false,
+      "description": "true|false - Returns true if bottom and right property of element is greater\nthan 0, and top and left property of element is less than the window height and width respectively,\ntaking in to account a threshold percentage of the screen."
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 49,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 55,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 59,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 81,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": null,
+    "builtinExternal": true
+  }
+]

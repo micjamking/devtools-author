@@ -1,6 +1,22 @@
-/**
- * Animations
- */
+/*
+@styleguide
+
+# Animations
+
+Use the button classes on an `<a>`, `<button>`, `<input>` element.
+
+@include animation(
+  $name
+  $duration: 0.25s,
+  $timing-function: ease('material'),
+  $delay: 0s,
+  $iteration-count: infinite,
+  $direction: normal,
+  $fill-mode: both,
+  $play-state: running
+)
+
+*/
 
 // Animation properties 
 $duration:        0.25s;

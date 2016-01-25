@@ -43,9 +43,9 @@ $wave-speed: 2s;
       
       @include animation(
         $name: fade-in-down, 
-        $duration: 0.5s,
+        $duration: 0.75s,
         $iteration-count: 1,
-        $timing-function: ease-in
+        $timing-function: ease-out
       );
 
       h4 {
@@ -57,7 +57,7 @@ $wave-speed: 2s;
         );
       }
 
-       [class^='theme-'] {
+      [class^='theme-'] {
         @include animation(
           $name: fade-in, 
           $duration: 0.5s,
@@ -85,6 +85,39 @@ $wave-speed: 2s;
       .theme-monokai-5 { 
         animation-delay: 1.55s;
       }
+
+      .hack-demo {
+        @include animation(
+          $name: fade-in, 
+          $duration: 0.5s,
+          $iteration-count: 1,
+          $delay: 2.5s
+        );
+      }
+
+      [class^='font-size-']{
+        @include animation(
+          $name: fade-in, 
+          $duration: 0.5s,
+          $iteration-count: 1
+        );
+      }
+
+      .font-size-10 {
+        animation-delay: 3.5s;
+      }
+
+      .font-size-12 {
+        animation-delay: 3.75s;
+      }
+
+      .font-size-14 {
+        animation-delay: 4s;
+      }
+
+      .font-size-16 {
+        animation-delay: 4.25s;
+      }
     }
   }
 
@@ -93,18 +126,18 @@ $wave-speed: 2s;
     height: em-calc(160px);
 
     &.font-family {
-      animation-delay: 1.25s;
+      animation-delay: 1.5s;
 
       h4 {
-        animation-delay: 1.75s;
+        animation-delay: 2s;
       }
     }
 
     &.font-size {
-      animation-delay: 2s;
+      animation-delay: 3s;
 
       h4 {
-        animation-delay: 2.5s;
+        animation-delay: 3.5s;
       }
     }
 
