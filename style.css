@@ -1,6 +1,12 @@
 /*
  * Vendor
  */
+/**
+# Reset
+
+General reset
+
+*/
 *,
 *::before,
 *::after {
@@ -218,9 +224,23 @@ pre {
   color: #ead95c;
 }
 
-/**
- * Animations
- */
+/*
+# Animations
+
+Use the button classes on an `<a>`, `<button>`, `<input>` element.
+
+@include animation(
+  $name
+  $duration: 0.25s,
+  $timing-function: ease('material'),
+  $delay: 0s,
+  $iteration-count: infinite,
+  $direction: normal,
+  $fill-mode: both,
+  $play-state: running
+)
+
+*/
 @-webkit-keyframes wave-fill {
   0% {
     fill: transparent;
@@ -1908,8 +1928,8 @@ input[type="button"].cta:hover {
  */
 .share-links {
   display: none;
-  margin-top: 0;
-  max-width: 15.5rem;
+  margin-top: 2em;
+  padding: 0;
   margin-left: auto;
   margin-right: auto;
   float: none;
@@ -1932,6 +1952,12 @@ input[type="button"].cta:hover {
           animation-play-state: running;
 }
 
+@media screen and (min-width: 360px) {
+  .share-links {
+    margin-top: 0;
+  }
+}
+
 @media screen and (min-width: 445px) {
   .share-links {
     max-width: inherit;
@@ -1949,7 +1975,7 @@ input[type="button"].cta:hover {
 .share-links .twitter-share-button,
 .share-links .fb-share-button {
   display: inline-block !important;
-  margin: 0.45rem !important;
+  margin: 0.25rem !important;
   vertical-align: top !important;
 }
 

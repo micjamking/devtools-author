@@ -3,8 +3,8 @@
  */
 .share-links {
   display: none;
-  margin-top: 0;
-  max-width: em-calc(310px);
+  margin-top: 2em;
+  padding: 0;
   margin-left: auto;
   margin-right: auto;
   float: none;
@@ -16,6 +16,10 @@
     $iteration-count: 1,
     $delay: 2s
   );
+
+  @media screen and (min-width: 360px){
+    margin-top: 0;
+  }
 
   @media screen and (min-width: 445px){
     max-width: inherit;
@@ -30,7 +34,7 @@
   .twitter-share-button,
   .fb-share-button {
     display: inline-block !important;
-    margin: 0.45rem !important;
+    margin: 0.25rem !important;
     vertical-align: top !important;
 
     @media #{$medium-screen}{
