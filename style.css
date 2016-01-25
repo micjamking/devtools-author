@@ -1251,10 +1251,10 @@ body {
   visibility: visible;
   -webkit-animation-name: fade-in-down;
           animation-name: fade-in-down;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
-  -webkit-animation-timing-function: ease-in;
-          animation-timing-function: ease-in;
+  -webkit-animation-duration: 0.75s;
+          animation-duration: 0.75s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
   -webkit-animation-iteration-count: 1;
@@ -1330,29 +1330,87 @@ body {
           animation-delay: 1.55s;
 }
 
+.feature-section.active .callout .hack-demo {
+  -webkit-animation-name: fade-in;
+          animation-name: fade-in;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-animation-delay: 2.5s;
+          animation-delay: 2.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.feature-section.active .callout [class^='font-size-'] {
+  -webkit-animation-name: fade-in;
+          animation-name: fade-in;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.feature-section.active .callout .font-size-10 {
+  -webkit-animation-delay: 3.5s;
+          animation-delay: 3.5s;
+}
+
+.feature-section.active .callout .font-size-12 {
+  -webkit-animation-delay: 3.75s;
+          animation-delay: 3.75s;
+}
+
+.feature-section.active .callout .font-size-14 {
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+
+.feature-section.active .callout .font-size-16 {
+  -webkit-animation-delay: 4.25s;
+          animation-delay: 4.25s;
+}
+
 .feature-section .callout {
   visibility: hidden;
   height: 8rem;
 }
 
 .feature-section .callout.font-family {
-  -webkit-animation-delay: 1.25s;
-          animation-delay: 1.25s;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
 }
 
 .feature-section .callout.font-family h4 {
-  -webkit-animation-delay: 1.75s;
-          animation-delay: 1.75s;
-}
-
-.feature-section .callout.font-size {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 }
 
+.feature-section .callout.font-size {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+
 .feature-section .callout.font-size h4 {
-  -webkit-animation-delay: 2.5s;
-          animation-delay: 2.5s;
+  -webkit-animation-delay: 3.5s;
+          animation-delay: 3.5s;
 }
 
 @media only screen and (min-width: 640px) {
