@@ -1066,14 +1066,8 @@ body {
   background-position: center 200%;
 }
 
-@media only screen and (min-width: 640px) {
-  .main-intro {
-    height: 45rem;
-  }
-}
-
-.main-intro .subtitle {
-  font-style: italic;
+.main-intro .row {
+  height: 100%;
 }
 
 .main-intro .main-intro-image {
@@ -1119,8 +1113,8 @@ body {
   }
 }
 
-.main-intro .row {
-  height: 100%;
+.main-intro .subtitle {
+  font-style: italic;
 }
 
 .main-intro .button.cta {
@@ -1156,6 +1150,7 @@ body {
 
 @media only screen and (min-width: 640px) {
   .main-intro {
+    height: 45rem;
     background-image: none;
     text-align: left;
     padding-top: 0;
