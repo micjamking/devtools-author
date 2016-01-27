@@ -1,0 +1,42 @@
+/* ==============================================
+   Spacegray Eighties Dark
+   ============================================== */
+
+$dark-theme: true;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+$base00: #2d2d2d; // darkest
+$base01: #393939;
+$base02: #515151;
+$base03: #747369;
+$base04: #a09f93;
+$base05: #d3d0c8;
+$base06: #e8e6df;
+$base07: #f2f0ec; // brighest
+$base08: #f2777a; // red
+$base09: #f99157; // orange
+$base0A: #ffcc66; // yellow
+$base0B: #99cc99; // green
+$base0C: #66cccc; // aqua
+$base0D: #6699cc; // blue
+$base0E: #cc99cc; // purple
+$base0F: #d27b53; // brown
+
+// Styles
+@include styles(
+$base01, // Background
+$base02, // Background - Highlight
+$base03, // Comments / Secondary Content
+$base05, // Body text / default code / primary content
+$base07, // Optional emphasized content
+$base09, // CSS Properties
+$base09, // CSS3 pseudo-selectors / elements
+$base0E, // CSS Keywords (!important, etc.)
+$base08, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$base0B, // HTML/CSS/JS Strings
+$base0C, // CSS Tag Selectors / JS Operators (in Canary)
+$base0E  // Accent / Highlight
+);
