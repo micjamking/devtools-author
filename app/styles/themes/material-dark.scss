@@ -10,7 +10,7 @@ $dark-theme: true;
 // Styles
 @include styles(
 #212121, // Background
-#4F5B66, // Background - Highlight
+lighten(#212121, 5%), // Background - Highlight
 #444444, // Comments / Secondary Content
 #EEFFFF, // Body text / default code / primary content
 #EEFFFF, // Optional emphasized content
