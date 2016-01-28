@@ -117,6 +117,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   text-align: center;
   width: 100%;
   max-width: $row-width;
+  min-width: 380px;
   margin: 0 auto;
   padding: 0 2rem;
 
