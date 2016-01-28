@@ -138,16 +138,21 @@ input[type="range"]::-webkit-slider-runnable-track {
     }
   }
 
-  .title {
-    height: 9.85em;
+  h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1;
   }
 
   h1 {
-    font-size: 6em;
+    font-size: 4em;
     font-weight: lighter;
+    line-height: 1;
+    margin-top: 0.25em;
     margin-bottom: 0.25em;
     letter-spacing: 0.025em;
     animation: fadeInDownShort 0.5s $custom-easing both 0.5s;
+    pointer-events: none;
   }
 
   h4 {
@@ -224,6 +229,17 @@ input[type="range"]::-webkit-slider-runnable-track {
     input {
       display: block;
       background-image: none;
+    }
+  }
+}
+
+@media (min-width: $row-width) {
+  .container {
+    .title {
+      padding: 0.625rem 0;
+    }
+    h1 {
+      font-size: 6em;
     }
   }
 }
