@@ -586,6 +586,13 @@ $accent                 // Accent / Highlight
   }
 
     .elements {
+
+        .split-view-sidebar, 
+        .insertion-point-sidebar, 
+        ::shadow .split-view-sidebar, 
+        ::shadow .insertion-point-sidebar, .sources .split-view-sidebar {
+            background: inherit !important;
+        }
        
        ::shadow .shadow-split-widget.hbox > .shadow-split-widget-sidebar:not(.maximized) {
             border-left: 1px solid darken($background, 3.5%) !important;
