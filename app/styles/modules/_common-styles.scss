@@ -272,13 +272,15 @@ $accent                 // Accent / Highlight
     .console-view-object-properties-section::shadow .object-value-symbol,
     .console-view-object-properties-section::shadow .object-value-object,
     .console-view-object-properties-section::shadow .object-value-array,
+    .console-view-object-properties-section::shadow .tree-element-title,
+    .console-view-object-properties-section::shadow .info,
     .object-value-number, 
     .object-value-boolean,
     .object-value-string,
     .object-value-regexp,
     .object-value-symbol,
     .object-value-object,
-    .object-value-array {
+    .object-value-array{
       color: $strings !important;
     }
 
@@ -302,7 +304,8 @@ $accent                 // Accent / Highlight
     .cm-js-keyword,
     .object-value-null,
     .object-value-undefined,
-    .object-value-function {
+    ::shadow .object-value-function,
+    ::shadow .object-value-function::before {
       color: $selectors;
     }
 
