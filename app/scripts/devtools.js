@@ -92,6 +92,17 @@
             panel.applyStyleSheet(styles);
           }
         });
+        
+        // Get fontFamily from Chrome storage
+        storage.get('devtools-fontFamily', function(object){
+
+          var fontFamily = object['devtools-fontFamily'];
+
+          if (fontFamily){
+            var styles = ':host-context(.platform-mac) .monospace, :host-context(.platform-mac) .source-code, body.platform-mac .monospace, body.platform-mac .source-code, body.platform-mac ::shadow .monospace, body.platform-mac ::shadow .source-code { font-family: "' + fontFamily + '", monospace !important; } :host-context(.platform-windows) .monospace, :host-context(.platform-windows) .source-code, body.platform-windows .monospace, body.platform-windows .source-code, body.platform-windows ::shadow .monospace, body.platform-windows ::shadow .source-code { font-family: "' + fontFamily + '", monospace !important; } :host-context(.platform-linux) .monospace, :host-context(.platform-linux) .source-code, body.platform-linux .monospace, body.platform-linux .source-code, body.platform-linux ::shadow .monospace, body.platform-linux ::shadow .source-code { font-family: "' + fontFamily + '", monospace !important; }';
+            panel.applyStyleSheet(styles);
+          }
+        });
       });
     });
   };
