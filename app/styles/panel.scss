@@ -32,10 +32,16 @@ body {
 }
 
 select,
+input[type="text"],
 input[type="range"],
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   background: transparent;
+  outline: none;
+  width: 100%;
+  height: 2.3125rem;
+  padding: 0.5rem;
+  margin: 0;
 
   &:focus {
     outline: none;
@@ -44,10 +50,6 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 select {
-  width: 100%;
-  height: 2.3125rem;
-  padding: 0.5rem;
-  margin: 0;
   border-radius: 0.125rem;
   border: 0.0625rem solid #cccccc;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
@@ -60,11 +62,11 @@ select {
   text-transform: none;
 }
 
+input[type="text"] {
+  border: 0.0625rem solid #cccccc;
+}
+
 input[type="range"] {
-  width: 100%;
-  height: 2.3125rem;
-  padding: 0.5rem;
-  margin: 0;
   border: 0 none;
   line-height: normal;
   font: inherit;
@@ -215,12 +217,14 @@ input[type="range"]::-webkit-slider-runnable-track {
   }
 
   select,
+  .font-family,
   .font-size {
     width: 60%;
-    margin: 0 auto;
+    margin: 0 auto 2em;
     display: block;
   }
 
+  .font-family,
   .font-size {
     margin-top: 1.25rem;
 
@@ -229,9 +233,17 @@ input[type="range"]::-webkit-slider-runnable-track {
       text-align: left;
       margin-bottom: 0.5em;
     }
+    
     input {
       display: block;
       background-image: none;
+    }
+  }
+
+  .font-family {
+
+    input {
+      font-size: 0.875rem;
     }
   }
 }
@@ -253,7 +265,6 @@ input[type="range"]::-webkit-slider-runnable-track {
   right: 2.5%;
 
   a {
-    font-size: 80%;
     text-decoration: none;
     color: #6f6f6f;
   }
