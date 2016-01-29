@@ -15,7 +15,7 @@ body.platform-mac ::shadow {
     // Apply antialiased setting for dark themes only
     // http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
     @if $dark-theme == true {
-      -webkit-font-smoothing: antialiased;
+      -webkit-font-smoothing: auto;
     }
   }
 }
