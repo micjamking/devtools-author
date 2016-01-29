@@ -215,6 +215,7 @@ $accent                 // Accent / Highlight
     .cm-s-default .cm-keyword,
     .cm-s-default .cm-builtin,
     .console-view-object-properties-section::shadow .object-properties-section .name,
+    .console-object-preview .name,
     .object-properties-section .name {
       color: $property;
     }
@@ -906,7 +907,7 @@ $accent                 // Accent / Highlight
     
     }
 
-    ::-webkit-scrollbar {
+/*     ::-webkit-scrollbar {
         width: 2px;
 
         &:horizontal {
@@ -932,5 +933,5 @@ $accent                 // Accent / Highlight
     ::-webkit-scrollbar-corner,
     ::-webkit-resizer {
        background-color: transparent; 
-    }
+    } */
 }
