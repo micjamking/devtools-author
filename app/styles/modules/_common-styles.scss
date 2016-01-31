@@ -586,6 +586,11 @@ $accent                 // Accent / Highlight
     .CodeMirror .CodeMirror-selectedtext:not(.CodeMirror-persist-highlight) {
       color: white !important;
     }
+
+    #elements-content ::shadow .selected .being-edited.editing {
+        color: #333 !important;
+    }
+    
     .CodeMirror-selected {
       background: $selectors;
     }
