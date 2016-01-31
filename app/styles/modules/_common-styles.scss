@@ -891,7 +891,7 @@ $accent                 // Accent / Highlight
           
           li.selected .selection,
           ol:focus li.selected .selection {
-              min-height: 22px !important;
+/*               min-height: 22px !important; */
               background-color: $selectors;
           }
       }
