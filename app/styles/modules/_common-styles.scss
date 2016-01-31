@@ -38,6 +38,16 @@ $accent                 // Accent / Highlight
 
     .console-message-wrapper {
       border-bottom: 1px solid $background-highlight;
+
+      &.console-warning-level {
+        .console-message-text.source-code {
+          color: #888 !important;
+
+          a {
+              color: #333 !important;
+          }
+        }
+      }
     }
 
     // Background - Main Panel
@@ -244,7 +254,8 @@ $accent                 // Accent / Highlight
     .CodeMirror .CodeMirror-matchingbracket,
     .properties-widget-section span,
     .object-properties-section-separator,
-    .console-view-object-properties-section::shadow .object-properties-section-separator {
+    .console-view-object-properties-section::shadow .object-properties-section-separator,
+    .console-message-text.source-code {
       color: $body-text !important;
       position: relative;
     }
