@@ -1,0 +1,28 @@
+/* ==============================================
+   Theme Name
+   ============================================== */
+
+$dark-theme: true;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+// 16 color palette (based on smyck http://color.smyck.org/)
+// (eight monotones, eight accent colors)
+
+// Styles
+@include styles(
+#242424, // Background
+lighten(#242424, 5%), // Background - Highlight
+#B0B0B0, // Comments / Secondary Content
+#F7F7F7, // Body text / default code / primary content
+#C8A0D1, // Optional emphasized content
+#72B3CC, // CSS Properties
+#218693, // CSS3 pseudo-selectors / elements
+#FBB1F9, // CSS Keywords (!important, etc.)
+#77DFD8, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+#CDEE69, // HTML/CSS/JS Strings
+#8EB33B, // CSS Tag Selectors / JS Operators (in Canary)
+#FFE377 // Accent / Highlight
+);
