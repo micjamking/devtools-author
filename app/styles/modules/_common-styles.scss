@@ -818,6 +818,10 @@ $accent                 // Accent / Highlight
 	       }
         }
 
+        .styles-element-state-pane {
+            height: auto;
+        }
+
         ::shadow {
             .tree-outline {
                 .webkit-css-property,
