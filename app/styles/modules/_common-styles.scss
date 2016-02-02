@@ -39,7 +39,6 @@ $accent                 // Accent / Highlight
     .console-message-wrapper {
       border-bottom: 1px solid $background-highlight;
 
-      &.console-warning-level {
         .console-message-text.source-code {
           color: #888 !important;
 
@@ -47,7 +46,6 @@ $accent                 // Accent / Highlight
               color: #333 !important;
           }
         }
-      }
     }
 
     // Background - Main Panel
