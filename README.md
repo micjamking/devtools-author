@@ -7,7 +7,7 @@
 If you develop in the browser and/or use Chrome Developer Tools as your web authoring environment, this extension provides a small set of settings to enhance DevTools editing environment:
 
 - Choose from +25 editor themes (applies to [`Elements`, `Sources` and `Console` panels only](https://github.com/micjamking/devtools-author/issues/31))
-- Supports custom editor fonts [`Hack`](http://sourcefoundry.org/hack/), [`Source Code Pro`](http://adobe-fonts.github.io/source-code-pro/), [`Droid Sans Mono`](https://www.google.com/fonts/specimen/Droid+Sans+Mono) (must be installed prior on your computer)
+- Supports system enabled fonts (must be installed prior on your computer).
 - Change font size from 10px - 22px
 
 ## Usage
