@@ -1,3 +1,13 @@
 /* ==========================================================================
    Chrome Canary Overrides
    ========================================================================== */
+
+::shadow .elements-disclosure li.parent {
+  &::before {
+    -webkit-mask-position: 0px -92px;
+  }
+
+  &.expanded::before {
+    -webkit-mask-position: -17px -92px;
+  }
+}

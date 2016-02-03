@@ -11,24 +11,6 @@
   // App directory
   app.dir = 'dist/';
 
-  // AJAX request for Chrome version
-  var getChromeVersion = function(){
-    var ajax = new XMLHttpRequest();
-    // Chromium release tracker API
-    ajax.open('GET', 'https://omahaproxy.appspot.com/mac');
-    ajax.send(null);
-
-    ajax.onreadystatechange = function(){
-      if (ajax.readyState === 4) {
-        if (ajax.status === 200) {
-          return parseInt(ajax.responseText, 10);
-        } else {
-          console.log('Status Code: ' + ajax.status + '\nThere was an error with your request');
-        }
-      }
-    };
-  };
-
   // Method: load themes
   app.loadTheme = function(object, cb){
 
@@ -50,13 +32,31 @@
       };
     };
 
+    // AJAX request for Chrome version
+    var _getChromeVersion = function(){
+      var ajax = new XMLHttpRequest();
+      // Chromium release tracker API
+      ajax.open('GET', 'https://omahaproxy.appspot.com/mac');
+      ajax.send(null);
+
+      ajax.onreadystatechange = function(){
+        if (ajax.readyState === 4) {
+          if (ajax.status === 200) {
+            if (/Chrome\/(\d\d)/.exec(navigator.userAgent)[1] > parseInt(ajax.responseText, 10)) {
+              _request(object.isCanary);
+            }
+          } else {
+            console.log('Status Code: ' + ajax.status + '\nThere was an error with your request');
+          }
+        }
+      };
+    };
+
     // GET theme
     _request(object.theme);
-
+    
     // GET Canary CSS if pre-release (beta, canary, dev)
-    if (/Chrome\/(\d\d)/.exec(navigator.userAgent)[1] > getChromeVersion()) {
-      _request(object.isCanary);
-    }
+    _getChromeVersion();
   };
 
   // Method: initialize app
