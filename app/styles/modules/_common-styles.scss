@@ -623,11 +623,11 @@ $accent                 // Accent / Highlight
           &::shadow .tabbed-pane-header {
             background: darken($background, 3.5%) !important;
             border-bottom: 0 none;
+            flex: 0 0 28px !important;
 
             .tabbed-pane-header-tabs-drop-down-container {
               opacity: 1;
               color: $comments;
-              padding: 4px 15px;
               height: 33px;
 
               &:hover {
@@ -636,23 +636,23 @@ $accent                 // Accent / Highlight
             }
 
             #tab-Styles {
-              min-width: 84px !important;
+              min-width: 70px !important;
             }
 
             #tab-Computed {
-              min-width: 107px !important;
+              min-width: 90px !important;
             }
 
             .tabbed-pane-header-tab:nth-child(3) {
-              min-width: 129px !important;
+              min-width: 110px !important;
             }
 
             .tabbed-pane-header-tab:nth-child(4) {
-              min-width: 141px !important;
+              min-width: 130px !important;
             }
 
             #tab-Properties {
-              min-width: 106px !important;
+              min-width: 90px !important;
             }
 
             .tabbed-pane-header-tab {
@@ -670,12 +670,12 @@ $accent                 // Accent / Highlight
               box-shadow: inset 0 1px 0 darken($background, 3.5%),
                           inset 0 -1px 0 darken($background, 3.5%);
               color: $comments;
-              transition: transform 0.15s ease;
+/*               transition: transform 0.15s ease; */
 
-              .tabbed-pane-header-tab-title {
+/*               .tabbed-pane-header-tab-title {
                 box-sizing: content-box;
                 padding: 0 16px;
-              }
+              } */
 
               &:before {
                 content: '';
