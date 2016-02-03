@@ -237,9 +237,9 @@ $accent                 // Accent / Highlight
     }
 
     // Body Text
-    .webkit-html-attribute,
-    .webkit-html-attribute-name,
-    .webkit-html-text-node,
+    ::shadow .webkit-html-attribute,
+    ::shadow .webkit-html-attribute-name,
+    ::shadow .webkit-html-text-node,
     .cm-xml-attribute,
     .cm-css-variable-2,
     .cm-js-variable,
@@ -259,9 +259,9 @@ $accent                 // Accent / Highlight
     }
 
     // Strings
-    .webkit-html-attribute-value,
-    .webkit-html-resource-link,
-    .webkit-html-external-link,
+    ::shadow .webkit-html-attribute-value,
+    ::shadow .webkit-html-resource-link,
+    ::shadow .webkit-html-external-link,
     .cm-xml-string,
     .cm-css-atom,
     .cm-css-number,
@@ -303,9 +303,9 @@ $accent                 // Accent / Highlight
     }
 
     // HTML Tags, Class/Id Selectors, JS keywords
-    .webkit-html-tag,
-    .webkit-html-tag-name, 
-    .webkit-html-close-tag-name,
+    ::shadow .webkit-html-tag,
+    ::shadow .webkit-html-tag-name, 
+    ::shadow .webkit-html-close-tag-name,
     .cm-xml-tag,
     .cm-css-builtin,
     .cm-css-qualifier,
