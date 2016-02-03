@@ -1,0 +1,27 @@
+/* ==============================================
+   Theme Name
+   ============================================== */
+
+$dark-theme: true;
+
+// Import Styles
+@import "base/theme-config";
+
+// Palette
+// Color palette based on IntelliJ Dracula theme
+
+// Styles
+@include styles(
+#2B2B2B, // Background
+lighten(#2B2B2B, 5%), // Background - Highlight
+#629755, // Comments / Secondary Content
+#BED6FF, // Body text / default code / primary content
+#A9B7C6, // Optional emphasized content
+#CC7832, // CSS Properties
+#79ABFF, // CSS3 pseudo-selectors / elements
+#9876AA, // CSS Keywords (!important, etc.)
+#FFC66D, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+#84B977, // HTML/CSS/JS Strings
+#CCDF32, // CSS Tag Selectors / JS Operators (in Canary)
+#214283 // Accent / Highlight
+);
