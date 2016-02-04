@@ -288,7 +288,9 @@ $accent                 // Accent / Highlight
     .object-value-regexp,
     .object-value-symbol,
     .object-value-object,
-    .object-value-array{
+    .object-value-array,
+    .object-value-preview-node,
+    .section .object-value-node {
       color: $strings !important;
     }
 
@@ -302,9 +304,6 @@ $accent                 // Accent / Highlight
     }
 
     // HTML Tags, Class/Id Selectors, JS keywords
-    ::shadow .webkit-html-tag,
-    ::shadow .webkit-html-tag-name, 
-    ::shadow .webkit-html-close-tag-name,
     .cm-xml-tag,
     .cm-css-builtin,
     .cm-css-qualifier,
@@ -313,8 +312,13 @@ $accent                 // Accent / Highlight
     .object-value-null,
     .object-value-undefined,
     ::shadow .object-value-function,
-    ::shadow .object-value-function::before {
-      color: $selectors;
+    ::shadow .object-value-function::before,
+    ::shadow .webkit-html-tag,
+    ::shadow .webkit-html-tag-name, 
+    ::shadow .webkit-html-close-tag-name,
+    .webkit-html-tag-name, 
+    .webkit-html-close-tag-name {
+      color: $selectors !important;
     }
 
     // CSS-Keyword
