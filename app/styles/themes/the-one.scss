@@ -30,13 +30,28 @@ $base0F: #d19365; // brown
 $base00, // Background
 $base01, // Background - Highlight
 $base04, // Comments / Secondary Content
-$base06, // Body text / default code / primary content
+$base07, // Body text / default code / primary content / HTML attr name / CSS rule value
 $base07, // Optional emphasized content
-$base09, // CSS Properties
+$base07, // CSS Properties
 $base08, // CSS3 pseudo-selectors / elements
 $base0E, // CSS Keywords (!important, etc.)
-$base0D, // HTML Tags / CSS ID/Class Selectors / JS Keywords
+$base08, // HTML Tags / CSS ID/Class Selectors / JS Keywords / Current item highlight
 $base0B, // HTML/CSS/JS Strings
 $base0C, // CSS Tag Selectors / JS Operators (in Canary)
 $base0A  // Accent / Highlight
 );
+
+::shadow .webkit-html-attribute-name,
+.webkit-html-attribute-name { color: $base09 !important; }
+::shadow .webkit-html-attribute-value,
+.webkit-html-attribute-value { color: $base0B !important; }
+
+.style-properties .webkit-css-property,
+::shadow .tree-outline .webkit-css-property { color: $base07 !important; }
+.style-properties .value,
+::shadow .tree-outline .value { color: $base09 !important; }
+
+.elements ::shadow .elements-disclosure li.selected .selection,
+.elements ::shadow .elements-disclosure ol:focus li.selected .selection {
+	background-color: $base03 !important;
+}
