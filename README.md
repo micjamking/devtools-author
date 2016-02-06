@@ -12,7 +12,7 @@ If you develop in the browser and/or use Chrome Developer Tools as your web auth
 
 ## Usage
 1. Install the [Chrome extension](https://chrome.google.com/webstore/detail/devtools-themes/egfhcfdfnajldliefpdoaojgahefjhhi)
-2. Enable Developer Tools experiments in `chrome://flags/#enable-devtools-experiments`.
+2. Enable Developer Tools experiments in `chrome://flags/#enable-devtools-experiments`. Restart Chrome for flags to take effect.
 3. Open DevTools (`cmd + opt + I`); *Settings* > *Experiments* > check **Allow custom UI themes**.
 
 After restarting DevTools, you should see the default theme *3024* take affect within the *Sources* and *Console* panels.
