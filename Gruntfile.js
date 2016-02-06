@@ -84,7 +84,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= devtools.dist %>/styles/',
-          src: ['*.css', '!*.min.css'],
+          src: ['**/*.css'],
           dest: '<%= devtools.dist %>/styles/'
         }]
       }
