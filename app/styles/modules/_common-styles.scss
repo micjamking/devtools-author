@@ -927,8 +927,15 @@ $accent                 // Accent / Highlight
                 background-color: $background;
             }
         }
+      } 
+    }
+
+    .inspector-view-tabbed-pane.tabbed-pane:not(.insertion-point-sidebar)::shadow,
+    .inactive .inspector-view-tabbed-pane.tabbed-pane:not(.insertion-point-sidebar)::shadow {
+      .tabbed-pane-tab-slider, 
+      .-theme-selection-color {
+        background-color: $selectors;
       }
-    
     }
 
 /*     ::-webkit-scrollbar {
