@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Panel - Sources
+   ========================================================================== */
+
+
+.-theme-with-dark-background {
+    .sources {
+
+        // Sources Left Panel
+        .split-view-sidebar,
+        .insertion-point-sidebar {
+            background: inherit !important;
+
+            .sidebar-pane-stack .sidebar-pane-title {
+                border-color: rgb(54, 54, 54) !important;
+            }
+        }
+    }
+}
