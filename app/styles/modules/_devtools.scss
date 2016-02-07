@@ -9,6 +9,12 @@
     background-color: #e1e1e1;
   }
 
+  .tabbed-pane-tab-slider, .-theme-selection-color {
+    height: 3px;
+    top: -1px;
+    bottom: inherit;
+  }
+
   .tabbed-pane-header-contents .tabbed-pane-header-tab {
     position: relative;
     border-width: 0 !important;
