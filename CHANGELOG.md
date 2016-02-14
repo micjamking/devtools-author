@@ -1,24 +1,49 @@
 # Change Log
 
+## [Unreleased](https://github.com/micjamking/devtools-author/tree/HEAD)
+
+[Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.6.1...HEAD)
+
+**Closed issues:**
+
+- Add 'None/Default' theme option [\#121](https://github.com/micjamking/devtools-author/issues/121)
+
+## [v0.6.1](https://github.com/micjamking/devtools-author/tree/v0.6.1) (2016-02-14)
+[Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.6.0...v0.6.1)
+
+**Merged pull requests:**
+
+- Adding new screenshots of app after new updates [\#118](https://github.com/micjamking/devtools-author/pull/118) ([micjamking](https://github.com/micjamking))
+
+## [v0.6.0](https://github.com/micjamking/devtools-author/tree/v0.6.0) (2016-02-07)
+[Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.13...v0.6.0)
+
+**Implemented enhancements:**
+
+- Support default dark theme in sources panel in Chrome v50 [\#112](https://github.com/micjamking/devtools-author/issues/112)
+
+## [v0.5.13](https://github.com/micjamking/devtools-author/tree/v0.5.13) (2016-02-07)
+[Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.12...v0.5.13)
+
+**Implemented enhancements:**
+
+- Access to seperate css rules to have more precise styles [\#109](https://github.com/micjamking/devtools-author/issues/109)
+
 ## [v0.5.12](https://github.com/micjamking/devtools-author/tree/v0.5.12) (2016-02-06)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.11...v0.5.12)
 
 ## [v0.5.11](https://github.com/micjamking/devtools-author/tree/v0.5.11) (2016-02-04)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.10...v0.5.11)
 
+**Closed issues:**
+
+- cursor is missing on element attribute [\#107](https://github.com/micjamking/devtools-author/issues/107)
+
 ## [v0.5.10](https://github.com/micjamking/devtools-author/tree/v0.5.10) (2016-02-04)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.9...v0.5.10)
 
-**Fixed bugs:**
-
-- Tabs above CSS on Elements pane don't overflow properly [\#88](https://github.com/micjamking/devtools-author/issues/88)
-
 ## [v0.5.9](https://github.com/micjamking/devtools-author/tree/v0.5.9) (2016-02-03)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.8...v0.5.9)
-
-**Fixed bugs:**
-
-- Elements logged to console are barely legible in dark themes [\#101](https://github.com/micjamking/devtools-author/issues/101)
 
 ## [v0.5.8](https://github.com/micjamking/devtools-author/tree/v0.5.8) (2016-02-03)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.7...v0.5.8)
@@ -26,12 +51,9 @@
 ## [v0.5.7](https://github.com/micjamking/devtools-author/tree/v0.5.7) (2016-02-03)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.6...v0.5.7)
 
-**Closed issues:**
-
-- Content of the toggle element state is overflowing  [\#95](https://github.com/micjamking/devtools-author/issues/95)
-
 **Merged pull requests:**
 
+- Updated content on home page [\#100](https://github.com/micjamking/devtools-author/pull/100) ([micjamking](https://github.com/micjamking))
 - Updated microsite to match latest features [\#99](https://github.com/micjamking/devtools-author/pull/99) ([micjamking](https://github.com/micjamking))
 
 ## [v0.5.6](https://github.com/micjamking/devtools-author/tree/v0.5.6) (2016-02-02)
@@ -47,22 +69,18 @@
 ## [v0.5.4](https://github.com/micjamking/devtools-author/tree/v0.5.4) (2016-02-02)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.3...v0.5.4)
 
-## [v0.5.3](https://github.com/micjamking/devtools-author/tree/v0.5.3) (2016-01-31)
-[Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.2...v0.5.3)
-
 **Closed issues:**
 
-- Some characters not visible when editing attribute values [\#92](https://github.com/micjamking/devtools-author/issues/92)
+- .selected height is incorrect for smaller font sizes. [\#91](https://github.com/micjamking/devtools-author/issues/91)
+
+## [v0.5.3](https://github.com/micjamking/devtools-author/tree/v0.5.3) (2016-01-31)
+[Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.2...v0.5.3)
 
 ## [v0.5.2](https://github.com/micjamking/devtools-author/tree/v0.5.2) (2016-01-31)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.1...v0.5.2)
 
 ## [v0.5.1](https://github.com/micjamking/devtools-author/tree/v0.5.1) (2016-01-31)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.5.0...v0.5.1)
-
-**Closed issues:**
-
-- Not working on OSX El Capitan [\#93](https://github.com/micjamking/devtools-author/issues/93)
 
 ## [v0.5.0](https://github.com/micjamking/devtools-author/tree/v0.5.0) (2016-01-29)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.4.12...v0.5.0)
@@ -73,10 +91,14 @@
 ## [v0.4.11](https://github.com/micjamking/devtools-author/tree/v0.4.11) (2016-01-29)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.4.10...v0.4.11)
 
+**Closed issues:**
+
+- Please consider removing `-webkit-font-smoothing: antialiased;` [\#87](https://github.com/micjamking/devtools-author/issues/87)
+
 ## [v0.4.10](https://github.com/micjamking/devtools-author/tree/v0.4.10) (2016-01-29)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.4.9...v0.4.10)
 
-**Closed issues:**
+**Implemented enhancements:**
 
 - "Reload DevTools"?  [\#84](https://github.com/micjamking/devtools-author/issues/84)
 
@@ -105,31 +127,14 @@
 ## [v0.4.3](https://github.com/micjamking/devtools-author/tree/v0.4.3) (2016-01-28)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.4.2...v0.4.3)
 
-**Fixed bugs:**
-
-- Theme name with line-break prevents select UI [\#70](https://github.com/micjamking/devtools-author/issues/70)
-
-**Merged pull requests:**
-
-- Updated structure of stylesheets [\#68](https://github.com/micjamking/devtools-author/pull/68) ([micjamking](https://github.com/micjamking))
-
 ## [v0.4.2](https://github.com/micjamking/devtools-author/tree/v0.4.2) (2016-01-11)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.4.1...v0.4.2)
 
 ## [v0.4.1](https://github.com/micjamking/devtools-author/tree/v0.4.1) (2016-01-11)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.4.0...v0.4.1)
 
-**Fixed bugs:**
-
-- Wrapped text on elements panel is difficult to read [\#66](https://github.com/micjamking/devtools-author/issues/66)
-
 ## [v0.4.0](https://github.com/micjamking/devtools-author/tree/v0.4.0) (2016-01-04)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.3.3...v0.4.0)
-
-**Merged pull requests:**
-
-- Theming Elements panel and additional bug fixes [\#64](https://github.com/micjamking/devtools-author/pull/64) ([micjamking](https://github.com/micjamking))
-- Microsite [\#61](https://github.com/micjamking/devtools-author/pull/61) ([micjamking](https://github.com/micjamking))
 
 ## [v0.3.3](https://github.com/micjamking/devtools-author/tree/v0.3.3) (2015-10-24)
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.3.2...v0.3.3)
@@ -157,7 +162,6 @@
 
 **Implemented enhancements:**
 
-- Create json for themes & load via ajax in panel.js [\#20](https://github.com/micjamking/devtools-author/issues/20)
 - Add additional color palettes [\#9](https://github.com/micjamking/devtools-author/issues/9)
 
 ## [v0.1.7](https://github.com/micjamking/devtools-author/tree/v0.1.7) (2015-09-14)
@@ -180,10 +184,6 @@
 [Full Changelog](https://github.com/micjamking/devtools-author/compare/v0.1.2...v0.1.3)
 
 ## [v0.1.2](https://github.com/micjamking/devtools-author/tree/v0.1.2) (2015-09-13)
-**Implemented enhancements:**
-
-- Create icon and screen graphics for Chrome Store [\#10](https://github.com/micjamking/devtools-author/issues/10)
-
 
 
 \* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
