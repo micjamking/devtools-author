@@ -27,4 +27,51 @@
   .console-error-level ::shadow .stack-preview-container {
     color: #FF0033 !important;
   }
+  
+  @if $dark-theme == true {
+    #console-messages .link, 
+    #console-messages a {
+      color: #AAAAAA !important;
+    }
+  }
+
+  .console-message-formatted-table {
+    .data-grid {
+      font-size: inherit !important;
+      line-height: inherit !important;
+
+      .header-container {
+        height: auto !important;
+      }
+
+      th {
+        padding: 4px;
+      }
+      
+      td, 
+      th {
+        line-height: inherit !important;
+      }
+
+      table.data {
+        background-image: none !important;
+      }
+      
+      @if $dark-theme == true {
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        
+        th {
+          color: #AAAAAA;
+          background-color: rgba(255,255,255,0.15);
+          border-bottom: 1px solid rgba(255,255,255,0.25);
+        }
+      
+        td, 
+        th {
+          border-left: 1px solid rgba(255,255,255,0.25);
+        }
+      
+      }
+    }
+  }
 }
