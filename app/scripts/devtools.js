@@ -1,112 +1,117 @@
-(function($){
+/**
+ * @file DevTools Extension setup
+ */
+(function(
+app,      // Global app module
+storage,  // Chrome Storage API
+panel     // Chrome DevTools Panels API
+){
   'use strict';
+  
+  // App Module
+  app = (function(){
 
-  // Initialize app module
-  var app = app || {};
-
-  // Assign chrome methods to local variables
-  var storage = $.storage.sync;
-  var panel   = $.devtools.panels;
-
-  // App directory
-  app.dir = 'dist/';
-
-  // Method: load themes
-  app.loadTheme = function(object, cb){
-
-    // AJAX load of stylesheet
-    var _request = function(stylesheet){
-      var ajax = new XMLHttpRequest();
-      ajax.open('GET', './' + stylesheet);
-      ajax.send(null);
-
-      ajax.onreadystatechange = function(){
-        if (ajax.readyState === 4) {
-          if (ajax.status === 200) {
-            panel.applyStyleSheet(ajax.responseText);
-            cb();
-          } else {
-            return console.log('Status Code: ' + ajax.status + '\nThere was an error with your request');
-          }
-        }
-      };
-    };
-
-    // AJAX request for Chrome version
-    var _getChromeVersion = function(){
-      var ajax = new XMLHttpRequest();
-      // Chromium release tracker API
-      ajax.open('GET', 'https://omahaproxy.appspot.com/mac');
-      ajax.send(null);
-
-      ajax.onreadystatechange = function(){
-        if (ajax.readyState === 4) {
-          if (ajax.status === 200) {
-            if (/Chrome\/(\d\d)/.exec(navigator.userAgent)[1] > parseInt(ajax.responseText, 10)) {
-              _request(object.isCanary);
-            }
-          } else {
-            console.log('Status Code: ' + ajax.status + '\nThere was an error with your request');
-          }
-        }
-      };
-    };
-
-    // GET theme
-    _request(object.theme);
+    // App directory
+    var _dir = 'dist/';
     
-    // GET Canary CSS if pre-release (beta, canary, dev)
-    _getChromeVersion();
-  };
+    // AJAX requests
+    function AJAX(url, callback){
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+      xhr.send(null);
 
-  // Method: initialize app
-  app.init = function(){
-
-    var stylesDir = app.dir + 'styles/',
-        pagePath  = app.dir + 'panel.html';
-
-    // Create Devtools panel
-    panel.create(
-      'Author Settings',  // Panel title
-      null,     // Panel icon
-      pagePath, // Path of panel's HTML page
-      null      // Callback
-    );
-
-    // Get theme from Chrome storage
-    storage.get('devtools-theme', function(object){
-
-      var theme = object['devtools-theme'] || '3024';
-
-      app.loadTheme({
-        theme: stylesDir + 'themes/' + theme + '.css',
-        isCanary: stylesDir + 'canary.css'
-      }, function(){
-        // Get fontSize from Chrome storage
-        storage.get('devtools-fontSize', function(object){
-
-          var fontSize = object['devtools-fontSize'];
-
-          if (fontSize){
-            var styles = ':host-context(.platform-mac) .monospace, :host-context(.platform-mac) .source-code, body.platform-mac .monospace, body.platform-mac .source-code, body.platform-mac ::shadow .monospace, body.platform-mac ::shadow .source-code { font-size: ' + fontSize + 'px !important; } :host-context(.platform-windows) .monospace, :host-context(.platform-windows) .source-code, body.platform-windows .monospace, body.platform-windows .source-code, body.platform-windows ::shadow .monospace, body.platform-windows ::shadow .source-code { font-size: ' + fontSize + 'px !important; } :host-context(.platform-linux) .monospace, :host-context(.platform-linux) .source-code, body.platform-linux .monospace, body.platform-linux .source-code, body.platform-linux ::shadow .monospace, body.platform-linux ::shadow .source-code { font-size: ' + fontSize + 'px !important; }';
-            panel.applyStyleSheet(styles);
+      xhr.onreadystatechange = function(){
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            callback(xhr);
+          } else {
+            return console.log('Status Code: ' + xhr.status + '\nThere was an error with your request');
           }
-        });
-        
-        // Get fontFamily from Chrome storage
-        storage.get('devtools-fontFamily', function(object){
+        }
+      };
+    }
 
-          var fontFamily = object['devtools-fontFamily'];
+      // Method: load themes
+    function loadTheme(object, cb){
 
-          if (fontFamily){
-            var styles = ':host-context(.platform-mac) .monospace, :host-context(.platform-mac) .source-code, body.platform-mac .monospace, body.platform-mac .source-code, body.platform-mac ::shadow .monospace, body.platform-mac ::shadow .source-code { font-family: "' + fontFamily + '", monospace !important; } :host-context(.platform-windows) .monospace, :host-context(.platform-windows) .source-code, body.platform-windows .monospace, body.platform-windows .source-code, body.platform-windows ::shadow .monospace, body.platform-windows ::shadow .source-code { font-family: "' + fontFamily + '", monospace !important; } :host-context(.platform-linux) .monospace, :host-context(.platform-linux) .source-code, body.platform-linux .monospace, body.platform-linux .source-code, body.platform-linux ::shadow .monospace, body.platform-linux ::shadow .source-code { font-family: "' + fontFamily + '", monospace !important; }';
-            panel.applyStyleSheet(styles);
-          }
-        });
+      // GET Theme CSS
+      AJAX('./' + object.theme, function(ajax){
+        panel.applyStyleSheet(ajax.responseText);
+        cb();
       });
-    });
-  };
+      
+      // GET Canary CSS if pre-release (beta, canary, dev)
+      AJAX('https://omahaproxy.appspot.com/mac', function(ajax){
+        if (/Chrome\/(\d\d)/.exec(navigator.userAgent)[1] > parseInt(ajax.responseText, 10)) {
+          AJAX('./' + object.isCanary, function(ajax){
+            panel.applyStyleSheet(ajax.responseText);
+          });
+        }
+      });
+    }
 
-  // Fire app
+    function applyFontSettings(){
+      // Get fontSize from Chrome storage
+      storage.get('devtools-fontSize', function(object){
+        var fontSize = object['devtools-fontSize'];
+
+        if (fontSize){
+          var styles = ':host-context(.platform-mac) .monospace, :host-context(.platform-mac) .source-code, body.platform-mac .monospace, body.platform-mac .source-code, body.platform-mac ::shadow .monospace, body.platform-mac ::shadow .source-code { font-size: ' + fontSize + 'px !important; } :host-context(.platform-windows) .monospace, :host-context(.platform-windows) .source-code, body.platform-windows .monospace, body.platform-windows .source-code, body.platform-windows ::shadow .monospace, body.platform-windows ::shadow .source-code { font-size: ' + fontSize + 'px !important; } :host-context(.platform-linux) .monospace, :host-context(.platform-linux) .source-code, body.platform-linux .monospace, body.platform-linux .source-code, body.platform-linux ::shadow .monospace, body.platform-linux ::shadow .source-code { font-size: ' + fontSize + 'px !important; }';
+          panel.applyStyleSheet(styles);
+        }
+      });
+
+      // Get fontFamily from Chrome storage
+      storage.get('devtools-fontFamily', function(object){
+        var fontFamily = object['devtools-fontFamily'];
+
+        if (fontFamily){
+          var styles = ':host-context(.platform-mac) .monospace, :host-context(.platform-mac) .source-code, body.platform-mac .monospace, body.platform-mac .source-code, body.platform-mac ::shadow .monospace, body.platform-mac ::shadow .source-code { font-family: "' + fontFamily + '", monospace !important; } :host-context(.platform-windows) .monospace, :host-context(.platform-windows) .source-code, body.platform-windows .monospace, body.platform-windows .source-code, body.platform-windows ::shadow .monospace, body.platform-windows ::shadow .source-code { font-family: "' + fontFamily + '", monospace !important; } :host-context(.platform-linux) .monospace, :host-context(.platform-linux) .source-code, body.platform-linux .monospace, body.platform-linux .source-code, body.platform-linux ::shadow .monospace, body.platform-linux ::shadow .source-code { font-family: "' + fontFamily + '", monospace !important; }';
+          panel.applyStyleSheet(styles);
+        }
+      });
+    }
+
+    // Method: initialize app
+    function init(){
+
+      var stylesDir = _dir + 'styles/',
+          pagePath  = _dir + 'panel.html';
+
+      // Create DevTools panel
+      panel.create(
+        'Author Settings',  // Panel title
+        null,     // Panel icon
+        pagePath, // Path of panel's HTML page
+        null      // Callback
+      );
+
+      // Get theme from storage & load in to DevTools
+      storage.get('devtools-theme', function(object){
+
+        var theme = object['devtools-theme'] || '3024';
+        
+        loadTheme({
+          theme: stylesDir + 'themes/' + theme + '.css',
+          isCanary: stylesDir + 'canary.css'
+        }, applyFontSettings);
+      
+      });
+    
+    }
+
+    // Reveal public pointers to
+    // private functions and properties
+    return {
+      loadTheme: loadTheme,
+      init: init
+    };
+  })();
+
+  // Initialize app
   app.init();
-})(chrome);
+})(
+window.app = window.app || {},
+chrome.storage.sync,
+chrome.devtools.panels
+);
