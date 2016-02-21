@@ -1,4 +1,4 @@
-describe('DevTools Extension setup test', function (){
+describe('DevTools Extension setup', function (){
   var app;
 
   beforeAll(function(){
@@ -10,7 +10,7 @@ describe('DevTools Extension setup test', function (){
   	expect(chrome.devtools).toBeDefined();
   });
 
-  it('should load theme CSS file', function(){
+  it('should load theme CSS file from storage', function(){
 	expect(app).toBeDefined();
 	expect(chrome.storage).toBeDefined();
   });
