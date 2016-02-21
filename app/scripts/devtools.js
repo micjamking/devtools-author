@@ -2,7 +2,7 @@
  * @file DevTools Extension setup
  */
 (function(
-  app,      // App module
+  w,        // Window
   storage,  // Chrome Storage API
   panel     // Chrome DevTools Panels API
 ){
@@ -13,7 +13,7 @@
    * @namespace app
    * @global
    */
-  app = (function(){
+  var app = (function(){
 
     /** @private */
     var _dir = 'dist/';
@@ -148,9 +148,12 @@
   /** Initialize app */
   app.init();
 
+  /** Export as global */
+  w.app = app;
+
 })(
   /** Globals */
-  window.app = window.app || {},
+  window,
   chrome.storage.sync,
   chrome.devtools.panels
 );

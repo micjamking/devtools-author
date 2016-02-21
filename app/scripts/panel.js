@@ -2,10 +2,10 @@
  * @file DevTools Author Settings panel
  */
 (function(
-  panel,    // Panel module
+  w,        // Window
+  ga,       // Google Analytics
   $,        // document.querySelectorAll
-  storage,  // Chrome Storage API
-  ga        // Google Analytics
+  storage   // Chrome Storage API
 ){
   'use strict';
   
@@ -14,7 +14,7 @@
    * @namespace panel
    * @global
    */
-  panel = (function(){
+  var panel = (function(){
 
     /** @private */
     var $select = $('#theme-options')[0];
@@ -414,10 +414,13 @@
   /** Initialize panel */
   panel.init();
 
+  /** Export as global */
+  w.panel = panel;
+
 })(
   /** Globals */
-  window.panel = window.panel || {},
+  window,
+  window.ga,
   document.querySelectorAll.bind(document),
-  chrome.storage.sync,
-  window.ga
+  chrome.storage.sync
 );
