@@ -1,18 +1,20 @@
 describe('DevTools Extension setup', function (){
-  var app;
+  var app, storage, panel;
 
   beforeAll(function(){
-    app = window.app;
+    app 	= window.app;
+    storage = chrome.storage.sync;
+    panel   = chrome.devtools.panels;
   });
 
   it('should creates Author Settings panel', function(){
   	expect(app).toBeDefined();
-  	expect(chrome.devtools).toBeDefined();
+  	expect(panel).toBeDefined();
   });
 
   it('should load theme CSS file from storage', function(){
 	expect(app).toBeDefined();
-	expect(chrome.storage).toBeDefined();
+	expect(storage).toBeDefined();
   });
 
 });
