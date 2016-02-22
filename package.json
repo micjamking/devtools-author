@@ -49,7 +49,7 @@
     "karma": "^0.13.19",
     "karma-chrome-launcher": "^0.2.2",
     "karma-jasmine": "^0.3.7",
-    "karma-sinon-chrome": "thgaskell/karma-sinon-chrome#sinon-chrome-v1.1",
+    "karma-sinon-chrome": "^0.1.0",
     "load-grunt-tasks": "~0.4.0",
     "time-grunt": "~0.2.1"
   }
