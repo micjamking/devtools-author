@@ -2,7 +2,7 @@
  * @file DevTools Extension setup
  */
 (function(
-  app,      // App module
+  w,        // Window
   storage,  // Chrome Storage API
   panel     // Chrome DevTools Panels API
 ){
@@ -13,10 +13,10 @@
    * @namespace app
    * @global
    */
-  app = (function(){
+  var app = (function(){
 
     /** @private */
-    var _dir = 'dist/';
+    var _dir = '/dist/';
     
     /** @private */
     var _chromeVersionURL = 'https://omahaproxy.appspot.com/mac';
@@ -89,19 +89,21 @@
     function loadTheme(object, cb){
 
       /** GET Theme CSS file **/
-      _ajax('./' + object.theme, function(ajax){
+      _ajax(object.theme, function(ajax){
         panel.applyStyleSheet(ajax.responseText);
-        cb();
+        cb(ajax);
       });
       
       /** GET Canary CSS file, if pre-release (beta, canary, dev) **/
       _ajax(_chromeVersionURL, function(ajax){
         if ( _currentChromeVersion > parseInt(ajax.responseText, 10) ) {
-          _ajax('./' + object.canary, function(ajax){
+          _ajax(object.canary, function(ajax){
             panel.applyStyleSheet(ajax.responseText);
           });
         }
       });
+
+      return object.theme;
     
     }
 
@@ -114,26 +116,32 @@
 
       var stylesDir = _dir + 'styles/',
           pagePath  = _dir + 'panel.html';
+      
+      /** Get theme from storage & load in to DevTools */
+      function themeSetup(panelObj){
+
+        storage.get('devtools-theme', function(object){
+
+          var theme = object['devtools-theme'] || '3024';
+
+          loadTheme({
+            theme: stylesDir + 'themes/' + theme + '.css',
+            canary: stylesDir + 'canary.css'
+          },
+          _applyFontSettings // Callback
+          );
+        });
+
+        return panelObj;
+      }
 
       /** Create Author Settings panel */
       panel.create(
         'Author Settings',  // Panel title
         null,               // Panel icon
         pagePath,           // Path of panel's HTML page
-        null                // Callback
+        themeSetup          // Callback       
       );
-
-      /** Get theme from storage & load in to DevTools */
-      storage.get('devtools-theme', function(object){
-        var theme = object['devtools-theme'] || '3024';
-        
-        loadTheme({
-          theme: stylesDir + 'themes/' + theme + '.css',
-          canary: stylesDir + 'canary.css'
-        },
-        _applyFontSettings // Callback
-        );
-      });
     
     }
 
@@ -148,9 +156,12 @@
   /** Initialize app */
   app.init();
 
+  /** Export as global */
+  w.app = app;
+
 })(
   /** Globals */
-  window.app = window.app || {},
+  window,
   chrome.storage.sync,
   chrome.devtools.panels
 );

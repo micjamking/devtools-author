@@ -43,6 +43,10 @@ module.exports = function(grunt) {
       images: {
         files: [ '<%= devtools.app %>/images/{,*/}*.png'],
         tasks: ['copy:images']
+      },
+      jsTest: {
+        files: ['test/{,*/}*.js'],
+        tasks: ['newer:jshint:test', 'karma']
       }
     },
 
@@ -103,6 +107,14 @@ module.exports = function(grunt) {
       ]
     },
 
+    // Test settings
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        singleRun: true
+      }
+    },
+
     // Copies remaining files
     copy: {
       html: {
@@ -151,6 +163,15 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.registerTask('test', [
+    'jshint',
+    'clean',
+    'sass',
+    'autoprefixer',
+    'copy',
+    'karma'
+  ]);
+
   grunt.registerTask('serve', [
     'clean',
     'sass',
@@ -170,6 +191,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('package', [
+    'test',
     'default',
     'zip'
   ]);

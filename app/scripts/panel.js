@@ -2,10 +2,10 @@
  * @file DevTools Author Settings panel
  */
 (function(
-  panel,    // Panel module
+  w,        // Window
+  ga,       // Google Analytics
   $,        // document.querySelectorAll
-  storage,  // Chrome Storage API
-  ga        // Google Analytics
+  storage   // Chrome Storage API
 ){
   'use strict';
   
@@ -14,7 +14,7 @@
    * @namespace panel
    * @global
    */
-  panel = (function(){
+  var panel = (function(){
 
     /** @private */
     var $select = $('#theme-options')[0];
@@ -159,12 +159,13 @@
         
         _createLI(_themeLookUp(theme));
       }
+
+      console.log(changes);
       
       /** Update UI element text based on change */
       changes.forEach(function(change){
         if (change.name === 'currentTheme') {
           $themeTitle.innerHTML = change.object.currentTheme;
-          $themeTitle.style.display = 'block';
           updatePalette(change.object.currentTheme);
         }
         
@@ -174,6 +175,10 @@
 
         else if (change.name === 'currentFontFamily') {
           $fontInput.value = change.object.currentFontFamily;
+        }
+
+        if (change.type === 'update'){
+          $alert.style.display = 'block';
         }
       });
     
@@ -237,13 +242,11 @@
       function save(theme){
         storage.set({ 'devtools-theme': theme.value }, function(){
           _panel.currentTheme = theme.text;
-          $alert.style.display = 'block';
         });
         return theme.value;
       }
       
       if (event && event.type === 'change'){
-        $themeTitle.style.display = 'none';
         var el     = event.target || event.srcElement;
         var option = el.options[el.selectedIndex];
         return save(option);
@@ -265,7 +268,6 @@
       function save(fontFamily){
         storage.set({ 'devtools-fontFamily': fontFamily }, function(){
           _panel.currentFontFamily = fontFamily;
-          $alert.style.display = 'block';
         });
         return fontFamily;
       }
@@ -291,7 +293,6 @@
       function save(fontSize){
         storage.set({ 'devtools-fontSize': fontSize }, function(){
           _panel.currentFontSize = fontSize;
-          $alert.style.display = 'block';
         });
         return fontSize;
       }
@@ -414,10 +415,13 @@
   /** Initialize panel */
   panel.init();
 
+  /** Export as global */
+  w.panel = panel;
+
 })(
   /** Globals */
-  window.panel = window.panel || {},
+  window,
+  window.ga,
   document.querySelectorAll.bind(document),
-  chrome.storage.sync,
-  window.ga
+  chrome.storage.sync
 );
