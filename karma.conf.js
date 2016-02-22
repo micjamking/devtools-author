@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '.',
 
 
     // frameworks to use
@@ -15,11 +15,17 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'app/**/*.js',
       'dist/panel.html',
-      'dist/styles/themes/*.css',
-      'test/**/*-spec.js'
+      'dist/scripts/*.js',
+      'dist/styles/**/*.css',
+      'test/**/*-spec.js',
+      { pattern: 'dist/scripts/themes.json', included: false, served: true }
     ],
+    
+    // Allow resources to be reverse proxied
+    proxies:  {
+      '/dist/scripts/themes.json': '/base/dist/scripts/themes.json'
+    },
 
 
     // list of files to exclude
