@@ -19,7 +19,7 @@ describe('DevTools Author extension', function (){
 	
 	app.init();
 	
-	expect(app).toBeDefined();
+	expect(app.init).toBeDefined();
 	expect(app.init).toHaveBeenCalled();
 	expect(panel.create.calledWith('Author Settings', null, pagePath)).toBe(true);
   });
@@ -40,6 +40,7 @@ describe('DevTools Author extension', function (){
 	  theme: stylesDir + 'themes/' + theme + '.css' 
 	});
 	
+	expect(app.loadTheme).toBeDefined();
 	expect(theme).toEqual('3024');
 	expect(themeObject).toEqual('/dist/styles/themes/3024.css');
 	expect(XMLHttpRequest.prototype.open).toHaveBeenCalled();
