@@ -14,9 +14,13 @@ describe('DevTools Author extension', function (){
   /** app.init */
   it('should create Author Settings panel using chrome.devtools.panels', function(){
 	var pagePath  = '/dist/panel.html';
+
+  	spyOn(app, 'init');
 	
 	app.init();
 	
+	expect(app).toBeDefined();
+	expect(app.init).toHaveBeenCalled();
 	expect(panel.create.calledWith('Author Settings', null, pagePath)).toBe(true);
   });
 
@@ -29,12 +33,15 @@ describe('DevTools Author extension', function (){
 	spyOn(XMLHttpRequest.prototype, 'send');
 
 	storage.get('devtools-theme', function(object){
-	  theme 	  = object['devtools-theme'];
-	  themeObject = { theme: stylesDir + 'themes/' + theme + '.css' };
+	  theme = object['devtools-theme'];
+	});
+
+	themeObject = app.loadTheme({ 
+	  theme: stylesDir + 'themes/' + theme + '.css' 
 	});
 	
 	expect(theme).toEqual('3024');
-	expect(app.loadTheme(themeObject)).toEqual('/dist/styles/themes/3024.css');
+	expect(themeObject).toEqual('/dist/styles/themes/3024.css');
 	expect(XMLHttpRequest.prototype.open).toHaveBeenCalled();
   });
 
