@@ -40,6 +40,7 @@
     "grunt-contrib-cssmin": "~0.7.0",
     "grunt-contrib-jshint": "~0.7.1",
     "grunt-contrib-watch": "~0.5.2",
+    "grunt-karma": "^0.12.1",
     "grunt-newer": "~0.6.1",
     "grunt-sass": "^1.0.0",
     "grunt-wiredep": "^1.9.0",
