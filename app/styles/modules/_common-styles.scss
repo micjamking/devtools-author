@@ -54,9 +54,29 @@ $accent                 // Accent / Highlight
     #console-messages {
       background-color: $background !important;
 
+      .cm-execution-line {
+        background-color: lighten($selectors, 15%) !important;
+        outline: 1px solid $selectors !important;
+      }
+
+      .cm-execution-line-tail {
+        background-color: lighten($selectors, 15%) !important;
+          
+        @if ( lightness( lighten($selectors, 15%) ) > 60 ) {
+          color: white !important;
+        } @else {
+          color: $background !important;  
+        }
+      }
+
       .cm-line-without-source-mapping {
         background-color: $background !important;
       }
+
+      .cm-execution-line .CodeMirror-linenumber {
+        border-right: 1px solid lighten($selectors, 15%);
+      }
+
 
       .sources-editor-tabstrip-left {
         width: 25px;
