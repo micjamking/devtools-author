@@ -1,4 +1,4 @@
-# DevTools Author
+# DevTools Author [![Build Status](https://travis-ci.org/micjamking/devtools-author.svg?branch=master)](https://travis-ci.org/micjamking/devtools-author)
 > A selection of author settings for Chrome Developer Tools.
 
 ![Devtools Author Logo](app/images/1400x560_marquee.png)
