@@ -17,6 +17,7 @@
     "url": "https://github.com/micjamking/devtools-author/issues"
   },
   "scripts": {
+    "test": "grunt test",
     "preversion": "npm test",
     "postversion": "git push --tags"
   },
