@@ -55,21 +55,14 @@
     /** @private */
     var _defaultFontFamily = 'Hack';
 
-    /**
-     * Find theme colors
-     * @function _themeLookUp
-     * @param {String} theme - Theme name
-     * @returns {Array} List of theme colors in hex
-     */
-    function _themeLookUp(theme){
-      
-      for (var i = 0; i < _panel.themes.length; i++){
-        if (_panel.themes[i].name === theme) {
-          return _panel.themes[i].colors;
-        }
-      }
+    /** @private */
+    var _currentTheme = null;
+   
+    /** @private */
+    var _currentFontSize = null;
     
-    }
+    /** @private */
+    var _currentFontFamily = null;
 
     /**
      * Creates HTML list of colors
@@ -95,6 +88,39 @@
         $palette.appendChild(item);
       }
     
+    }
+
+    /**
+     * Find theme colors
+     * @function _themeLookUp
+     * @param {String} theme - Theme name
+     * @returns {Array} List of theme colors in hex
+     */
+    function _themeLookUp(theme){
+      
+      for (var i = 0; i < _panel.themes.length; i++){
+        if (_panel.themes[i].name === theme) {
+          return _panel.themes[i].colors;
+        }
+      }
+    
+    }
+
+    /**
+     * Recreate $palette using current theme
+     * @function _updatePalette
+     * @param {String} theme - Currently selected theme name
+     */
+    function _updatePalette(theme){
+      var children = $palette.querySelectorAll('li');
+
+      if (children.length){
+        for (var i = 0; i < children.length; i++){
+          $palette.removeChild(children[i]);
+        }
+      }
+
+      _createLI(_themeLookUp(theme));
     }
 
     /**
@@ -141,47 +167,62 @@
     }
 
     /**
-     * Object.observe handler for panel model settings updates
-     * @function _observer
-     * @param {Array} changes - Array of change objects from Object.observe
+     * Alert notification test
+     * @function _notification
+     * @param {String} oldValue - Original value for alert notification test
+     * @param {String} newValue - New value for alert notification test
      */
-    function _observer(changes){
-      
-      /** Recreate $palette using current theme */
-      function updatePalette(theme){
-        var children = $palette.querySelectorAll('li');
-
-        if (children.length){
-          for (var i = 0; i < children.length; i++){
-            $palette.removeChild(children[i]);
-          }
-        }
-        
-        _createLI(_themeLookUp(theme));
+    function _notification(oldValue, newValue){
+      if (oldValue !== newValue){
+        $alert.style.display = 'block';
       }
+    }
 
-      console.log(changes);
-      
-      /** Update UI element text based on change */
-      changes.forEach(function(change){
-        if (change.name === 'currentTheme') {
-          $themeTitle.innerHTML = change.object.currentTheme;
-          updatePalette(change.object.currentTheme);
-        }
-        
-        else if (change.name === 'currentFontSize') {
-          $range.value = $output.value = change.object.currentFontSize;
-        }
+    /**
+     * Object.defineProperty custom setters and getters for _panel model
+     * @function _panelModelSetup
+     */
+    function _panelModelSetup(){
 
-        else if (change.name === 'currentFontFamily') {
-          $fontInput.value = change.object.currentFontFamily;
-        }
-
-        if (change.type === 'update'){
-          $alert.style.display = 'block';
+      /** Observe changes to _panel.currentTheme */
+      Object.defineProperty(_panel, 'currentTheme', {
+        enumerable: true,
+        configurable: true,
+        get: function() {
+          return _currentTheme;
+        },
+        set: function(newValue) {
+          _notification(_currentTheme, newValue);
+          $themeTitle.innerHTML = _currentTheme = newValue;
+          _updatePalette(_currentTheme);
         }
       });
-    
+
+      /** Observe changes to _panel.currentFontSize */
+      Object.defineProperty(_panel, 'currentFontSize', {
+        enumerable: true,
+        configurable: true,
+        get: function() {
+          return _currentFontSize;
+        },
+        set: function(newValue) {
+          _notification(_currentFontSize, newValue);
+          $range.value = $output.value = _currentFontSize = newValue;
+        }
+      });
+
+      /** Observe changes to _panel.currentFontFamily */
+      Object.defineProperty(_panel, 'currentFontFamily', {
+        enumerable: true,
+        configurable: true,
+        get: function() {
+          return _currentFontFamily;
+        },
+        set: function(newValue) {
+          _notification(_currentFontFamily, newValue);
+          $fontInput.value = _currentFontFamily = newValue;
+        }
+      });
     }
 
     /**
@@ -189,9 +230,9 @@
      * @function _panelSetup
      */
     function _panelSetup(){
-
+      
       /** Observe changes to _panel model */
-      Object.observe(_panel, _observer, ['add', 'update']);
+      _panelModelSetup();
       
       /** Listen for changes to the select menu */
       $select.addEventListener('change', setTheme);
@@ -209,7 +250,7 @@
 
       /** Get current theme setting from storage */
       storage.get('devtools-theme', function(object){
-        _panel.currentTheme = getTheme( _panel.themes, object['devtools-theme'] );
+        _panel.currentTheme = _currentTheme = getTheme( _panel.themes, object['devtools-theme'] );
         _buildSelectMenu($select, _panel);
         
         /** Send Google Analytics 'Install' event on initial install */
@@ -220,12 +261,12 @@
 
       /** Get current `font-family` setting from storage */
       storage.get('devtools-fontFamily', function(object){
-        _panel.currentFontFamily = getFontFamily(object['devtools-fontFamily']);
+        _panel.currentFontFamily = _currentFontFamily = getFontFamily(object['devtools-fontFamily']);
       });
 
       /** Get current `font-size` setting from storage */
       storage.get('devtools-fontSize', function(object){
-        _panel.currentFontSize = getFontSize(object['devtools-fontSize']);
+        _panel.currentFontSize = _currentFontSize = getFontSize(object['devtools-fontSize']);
       });
     
     }
