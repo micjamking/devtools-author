@@ -895,6 +895,14 @@ $accent                 // Accent / Highlight
           color: $selectors;
         }
 
+        .simple-selector:not(.selector-matches) {
+          @if $dark-theme == true {
+            color: rgba($selectors, 0.6);
+          } @else {
+            color: rgba($selectors, 0.35);
+          }
+        }
+
         // CSS-Keyword
         .cm-css-keyword {
           color: $keyword;
