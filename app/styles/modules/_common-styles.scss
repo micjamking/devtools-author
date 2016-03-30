@@ -61,11 +61,11 @@ $accent                 // Accent / Highlight
 
       .cm-execution-line-tail {
         background-color: lighten($selectors, 15%) !important;
-          
+
         @if ( lightness( lighten($selectors, 15%) ) > 60 ) {
           color: white !important;
         } @else {
-          color: $background !important;  
+          color: $background !important;
         }
       }
 
@@ -101,13 +101,13 @@ $accent                 // Accent / Highlight
           position: relative;
           margin-right: 1px;
           margin-top: 0;
-          
+
           @if $dark-theme == true {
             background: darken($background, 2%);
           } @else {
-            background: darken($background, 1.5%);   
+            background: darken($background, 1.5%);
           }
-          
+
           border: 0 none !important;
           box-shadow: inset 0 1px 0 darken($background, 3.5%),
                       inset 0 -1px 0 darken($background, 3.5%);
@@ -196,7 +196,7 @@ $accent                 // Accent / Highlight
           z-index: 9;
       }
     }
-    
+
     // Console
     .console-view {
       .toolbar {
@@ -210,7 +210,7 @@ $accent                 // Accent / Highlight
           }
         }
       }
-      
+
       #console-messages {
         color: $body-text;
       }
@@ -302,7 +302,7 @@ $accent                 // Accent / Highlight
     .console-view-object-properties-section::shadow .object-value-array,
     .console-view-object-properties-section::shadow .tree-element-title,
     .console-view-object-properties-section::shadow .info,
-    .object-value-number, 
+    .object-value-number,
     .object-value-boolean,
     .object-value-string,
     .object-value-regexp,
@@ -334,9 +334,9 @@ $accent                 // Accent / Highlight
     ::shadow .object-value-function,
     ::shadow .object-value-function::before,
     ::shadow .webkit-html-tag,
-    ::shadow .webkit-html-tag-name, 
+    ::shadow .webkit-html-tag-name,
     ::shadow .webkit-html-close-tag-name,
-    .webkit-html-tag-name, 
+    .webkit-html-tag-name,
     .webkit-html-close-tag-name {
       color: $selectors !important;
     }
@@ -611,7 +611,7 @@ $accent                 // Accent / Highlight
     #elements-content ::shadow .selected .being-edited.editing {
         color: #333 !important;
     }
-    
+
     .CodeMirror-selected {
       background: $selectors;
     }
@@ -628,13 +628,13 @@ $accent                 // Accent / Highlight
 
     .elements {
 
-        .split-view-sidebar, 
-        .insertion-point-sidebar, 
-        ::shadow .split-view-sidebar, 
+        .split-view-sidebar,
+        .insertion-point-sidebar,
+        ::shadow .split-view-sidebar,
         ::shadow .insertion-point-sidebar, .sources .split-view-sidebar {
             background: inherit !important;
         }
-       
+
        ::shadow .shadow-split-widget.hbox > .shadow-split-widget-sidebar:not(.maximized) {
             border-left: 1px solid darken($background, 3.5%) !important;
             border-right: 0 none !important;
@@ -686,7 +686,7 @@ $accent                 // Accent / Highlight
               @if $dark-theme == true {
                 background: darken($background, 2%);
               } @else {
-                background: darken($background, 1.5%);   
+                background: darken($background, 1.5%);
               }
 
               border: 0 none !important;
@@ -737,7 +737,7 @@ $accent                 // Accent / Highlight
         .toolbar {
             border-color: darken($background, 3.5%) !important;
 
-            /deep/ .glyph, 
+            /deep/ .glyph,
             /deep/ .long-click-glyph {
                 background-color: $comments !important;
             }
@@ -804,7 +804,7 @@ $accent                 // Accent / Highlight
 
         .metrics {
             border-color: darken($background, 3.5%) !important;
-            
+
             .margin,
             .border,
             .padding,
@@ -831,7 +831,7 @@ $accent                 // Accent / Highlight
             background-color: $background-highlight;
         }
 
-        .styles-section .style-properties li.filter-match, 
+        .styles-section .style-properties li.filter-match,
         .styles-section .simple-selector.filter-match {
 	       background-color: $selectors;
 	       @if $dark-theme == true {
@@ -849,14 +849,14 @@ $accent                 // Accent / Highlight
             .tree-outline {
                 .webkit-css-property,
                 .name {
-                   color: $property; 
+                   color: $property;
                 }
 
                 .value,
                 .selection,
                 .parent {
                     color: $body-text !important;
-                } 
+                }
 
                 li:hover {
                     background-color: $background-highlight !important;
@@ -895,6 +895,14 @@ $accent                 // Accent / Highlight
           color: $selectors;
         }
 
+        .simple-selector:not(.selector-matches) {
+          @if $dark-theme == true {
+            color: rgba($selectors, 0.6);
+          } @else {
+            color: rgba($selectors, 0.35);
+          }
+        }
+
         // CSS-Keyword
         .cm-css-keyword {
           color: $keyword;
@@ -904,16 +912,16 @@ $accent                 // Accent / Highlight
         .cm-css-variable-3 {
           color: $pseudo !important;
         }
-                
+
       }
 
-       #elements-content ::shadow .selected .being-edited.editing *,  
+       #elements-content ::shadow .selected .being-edited.editing *,
        ::shadow #elements-content ::shadow .selected .being-edited.editing *{
             color: #333 !important;
         }
 
       ::shadow .elements-disclosure {
-          
+
           li.selected .selection,
           ol:focus li.selected .selection {
 /*               min-height: 22px !important; */
@@ -924,7 +932,7 @@ $accent                 // Accent / Highlight
       #elements-crumbs {
         background-color: darken($background, 3.5%) !important;
         border-top: 0 none !important;
-        
+
         ::shadow .crumbs .crumb {
             color: $comments;
 
@@ -936,7 +944,7 @@ $accent                 // Accent / Highlight
               }
               background-color: $background-highlight;
             }
-            
+
             &.selected,
             &.selected:hover {
                 @if $dark-theme == true {
@@ -947,12 +955,12 @@ $accent                 // Accent / Highlight
                 background-color: $background;
             }
         }
-      } 
+      }
     }
 
     .inspector-view-tabbed-pane.tabbed-pane:not(.insertion-point-sidebar)::shadow,
     .inactive .inspector-view-tabbed-pane.tabbed-pane:not(.insertion-point-sidebar)::shadow {
-      .tabbed-pane-tab-slider, 
+      .tabbed-pane-tab-slider,
       .-theme-selection-color {
         background-color: $selectors;
       }
@@ -979,10 +987,10 @@ $accent                 // Accent / Highlight
             background: $selectors;
         }
     }
-    
+
     ::-webkit-scrollbar,
     ::-webkit-scrollbar-corner,
     ::-webkit-resizer {
-       background-color: transparent; 
+       background-color: transparent;
     } */
 }
