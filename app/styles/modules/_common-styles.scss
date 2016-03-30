@@ -760,6 +760,12 @@ $accent                 // Accent / Highlight
                 /* box-sizing: content-box; */
             }
         }
+        
+        
+        .styles-section .selector,
+        .styles-section-title .media-list.media-matches .media.editable-media {
+            color: $comments;
+        }
 
         .styles-sidebar-pane-filter-box > input {
             color: $body-text;
