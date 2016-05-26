@@ -24,12 +24,11 @@ $blue:   #268bd2;
 $cyan:   #2aa198;
 $green:  #859900;
 
-// Comment out below if 
+// Comment out below if
 // customizing palette
+$base02: darken($base03, 3.5%);
 @if $dark-theme == true {
-$base02: lighten($base03, 5%);
-} @else {
-$base02: darken($base03, 3.5%);   
+  $base02: lighten($base03, 5%);
 }
 
 // Styles
